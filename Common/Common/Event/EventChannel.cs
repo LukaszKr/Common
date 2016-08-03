@@ -9,9 +9,9 @@ namespace Common.Event
 
 		public void Invoke(EventType message)
 		{
-			foreach(Action<EventType> listener in m_Listeners)
+			for(int x = m_Listeners.Count-1; x >= 0; x--)
 			{
-				listener(message);
+				m_Listeners[x](message);
 			}
 		}
 
