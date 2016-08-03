@@ -66,8 +66,8 @@ namespace Common.State
 			}
 			BaseState<StateIDType> oldState = m_CurrentState;
 			m_CurrentState = newState;
-			m_CurrentState.Enter();
 			StateChanged.Invoke(new StateChangedEvent<StateIDType>(oldState, newState));
+			m_CurrentState.Enter();
 			return true;
 		}
 
