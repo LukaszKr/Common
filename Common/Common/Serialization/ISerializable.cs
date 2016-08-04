@@ -3,6 +3,6 @@
 	public interface ISerializable
     {
 		void Serialize(ISerializer serializer);
-		void Deserialize(IDeserializer serializer);
+		void Deserialize(IDeserializer deserializer);
     }
 }
