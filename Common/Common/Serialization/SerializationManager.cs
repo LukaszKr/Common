@@ -1,6 +1,6 @@
 ﻿namespace Common.Serialization
 {
-	public abstract class SerializationManager
+	public class SerializationManager
     {
 		public ISerializer Serializer { get; private set; }
 		public IDeserializer Deserializer { get; private set; }
