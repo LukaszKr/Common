@@ -59,7 +59,7 @@ namespace Common.Action
 					currentContext = GetContext(m_CurrentContext);
 				}
 				if(m_CurrentContext == 0 && currentContext.Count == 0)
-				{
+				{	
 					break;
 				}
 				if(currentContext.Execute(m_Data))

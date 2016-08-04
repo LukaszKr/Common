@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Input
+namespace GameCommon.Input
 {
 	public abstract class BasePlayerController<ContextIDType, InputType>
     {

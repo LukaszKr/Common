@@ -13,5 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\BaseAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\ProgressAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\ToggleAchievement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\BasePlayerController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
   </ItemGroup>
 </Project>
