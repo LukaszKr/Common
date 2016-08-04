@@ -37,7 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Deserializer\Readers\ITextReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Deserializer\TextDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\ISerializable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\SerializationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializer\ISerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializer\BinarySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializer\TextSerializer.cs" />
