@@ -31,15 +31,15 @@ namespace Common.Action
 			}
 			else
 			{
-				GetContext(m_CurrentContext).PushAction(action);
+				GetContext(0).PushAction(action);
 			}
 		}
 
 		private ActionContext<DataType> GetContext(int depth)
 		{
-			if(depth >= m_Contexts.Capacity)
+			if(depth >= m_Contexts.Count)
 			{
-				for(int x = m_Contexts.Capacity; x < depth; x++)
+				for(int x = m_Contexts.Count; x < depth; x++)
 				{
 					m_Contexts.Add(new ActionContext<DataType>(x));
 				}
