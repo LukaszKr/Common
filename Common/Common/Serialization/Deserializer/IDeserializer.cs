@@ -7,14 +7,14 @@
 
 		#region Read
 		void Read<ObjectType>(ObjectType obj) where ObjectType : ISerializable;
-		void Read(out bool data);
-		void Read(out byte data);
-		void Read(out short data);
-		void Read(out int data);
-		void Read(out long data);
-		void Read(out float data);
-		void Read(out double data);
-		void Read(out string data);
+		bool ReadBool();
+		byte ReadByte();
+		short ReadShort();
+		int ReadInt();
+		long ReadLong();
+		float ReadFloat();
+		double ReadDouble();
+		string ReadString();
 		#endregion
 	}
 }

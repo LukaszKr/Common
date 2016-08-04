@@ -15,42 +15,42 @@ namespace Common.Serialization.Deserializer
 		}
 
 		#region Read
-		public void Read(out byte data)
+		public bool ReadBool()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out long data)
+		public byte ReadByte()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out string data)
+		public short ReadShort()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out double data)
+		public int ReadInt()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out float data)
+		public long ReadLong()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out int data)
+		public float ReadFloat()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out short data)
+		public double ReadDouble()
 		{
 			throw new NotImplementedException();
 		}
 
-		public void Read(out bool data)
+		public string ReadString()
 		{
 			throw new NotImplementedException();
 		}

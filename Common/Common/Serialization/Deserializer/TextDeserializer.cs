@@ -54,44 +54,44 @@
 			return m_Buffer[m_Head++];
 		}
 
-		public void Read(out byte data)
+		public byte ReadByte()
 		{
-			data = byte.Parse(GetFromBuffer());
+			return byte.Parse(GetFromBuffer());
 		}
 
-		public void Read(out long data)
+		public bool ReadBool()
 		{
-			data = long.Parse(GetFromBuffer());
+			return bool.Parse(GetFromBuffer());
 		}
 
-		public void Read(out string data)
+		public short ReadShort()
 		{
-			data = GetFromBuffer();
+			return short.Parse(GetFromBuffer());
 		}
 
-		public void Read(out double data)
+		public int ReadInt()
 		{
-			data = double.Parse(GetFromBuffer());
+			return int.Parse(GetFromBuffer());
 		}
 
-		public void Read(out float data)
+		public long ReadLong()
 		{
-			data = float.Parse(GetFromBuffer());
+			return long.Parse(GetFromBuffer());
 		}
 
-		public void Read(out int data)
+		public float ReadFloat()
 		{
-			data = int.Parse(GetFromBuffer());
+			return float.Parse(GetFromBuffer());
 		}
 
-		public void Read(out short data)
+		public double ReadDouble()
 		{
-			data = short.Parse(GetFromBuffer());
+			return double.Parse(GetFromBuffer());
 		}
 
-		public void Read(out bool data)
+		public string ReadString()
 		{
-			data = bool.Parse(GetFromBuffer());
+			return GetFromBuffer();
 		}
 
 		public void Read<ObjectType>(ObjectType obj) where ObjectType : ISerializable
