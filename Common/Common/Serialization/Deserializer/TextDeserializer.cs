@@ -31,11 +31,11 @@
 					case SEPARATOR:
 						if(isString)
 						{
-							m_Buffer.Add(text.Substring(lastIndex, x-1));
+							m_Buffer.Add(text.Substring(lastIndex+1, x-lastIndex-1));
 						}
 						else
 						{
-							m_Buffer.Add(text.Substring(lastIndex+1, x-2));
+							m_Buffer.Add(text.Substring(lastIndex, x-lastIndex));
 						}
 						lastIndex = x+1;
 						isString = false;
