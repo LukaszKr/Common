@@ -29,7 +29,7 @@ namespace Common.Serialization
 				builder.Append(m_Buffer[x]);
 				builder.Append(SEPARATOR);
 			}
-			m_Writer.Write(builder.ToString(0, m_BufferedData-1));
+			m_Writer.Write(builder.ToString(0, m_BufferedData+m_Buffer.Count-1));
 		}
 
 		#region Write
