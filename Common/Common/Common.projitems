@@ -9,6 +9,10 @@
     <Import_RootNamespace>Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Achievement\AchievementManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Achievement\BaseAchievement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Achievement\ProgressAchievement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Achievement\ToggleAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\BaseAction.cs" />
@@ -30,6 +34,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\BasePlayerController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\BinaryPersistence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Deserializer\IDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Deserializer\BinaryDeserializer.cs" />
