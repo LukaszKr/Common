@@ -1,11 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Common.Serialization;
+using System;
 
-namespace GameCommon.Highscore
+namespace Common.Highscore
 {
-    public class HighscoreEntry
+	public class HighscoreEntry: ISerializable
     {
-		public string m_Display;
-    }
+		public string Name { get; private set; }
+		public int Value { get; private set; }
+
+		public HighscoreEntry(IDeserializer deserializer)
+		{
+			Deserialize(deserializer);
+		}
+
+		public HighscoreEntry(string name, int value)
+		{
+			Name = name;
+			Value = value;
+		}
+
+		public void Deserialize(IDeserializer deserializer)
+		{
+			Name = deserializer.ReadString();
+			Value = deserializer.ReadInt();
+		}
+
+		public void Serialize(ISerializer serializer)
+		{
+			serializer.Write(Name);
+			serializer.Write(Value);
+		}
+	}
 }

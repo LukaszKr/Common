@@ -1,4 +1,4 @@
-﻿namespace GameCommon.Achievement
+﻿namespace Common.Achievement
 {
 	public class ToggleAchievement: BaseAchievement
     {
