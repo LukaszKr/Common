@@ -3,5 +3,6 @@
 	public interface IBinaryWriter
     {
 		void Write(byte[] data);
+		bool CanWrite();
     }
 }
