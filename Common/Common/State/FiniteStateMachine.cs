@@ -53,7 +53,7 @@ namespace Common.State
 			throw new IllegalTransitionException<StateIDType>(CurrentState.StateID, stateId);
 		}
 
-		public bool SetState(StateIDType stateId)
+		public bool SetState(StateIDType stateId, bool silient = false)
 		{
 			BaseState<StateIDType> newState;
 			if(!m_States.TryGetValue(stateId, out newState))
@@ -67,7 +67,10 @@ namespace Common.State
 			BaseState<StateIDType> oldState = m_CurrentState;
 			m_CurrentState = newState;
 			StateChanged.Invoke(new StateChangedEvent<StateIDType>(oldState, newState));
-			m_CurrentState.Enter();
+			if(!silient)
+			{
+				m_CurrentState.Enter();
+			}
 			return true;
 		}
 
