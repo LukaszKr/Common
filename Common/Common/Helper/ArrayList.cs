@@ -84,8 +84,8 @@ namespace Common.Helper
 		{
 			if(m_Data[index] != null)
 			{
-				m_Data[index] = m_Data[m_Head];
 				m_Head--;
+				m_Data[index] = m_Data[m_Head];
 				TryShrink();
 				return true;
 			}
