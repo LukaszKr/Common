@@ -15,7 +15,7 @@ namespace Common.Serialization
 			throw new NotImplementedException();
 		}
 
-		public void Save()
+		public void Save(IBinaryWriter writer)
 		{
 			throw new NotImplementedException();
 		}

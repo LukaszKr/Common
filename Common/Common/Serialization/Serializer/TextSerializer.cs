@@ -4,16 +4,9 @@ namespace Common.Serialization
 {
 	public class TextSerializer: TextPersistence, ISerializer
 	{
-		private ITextWriter m_Writer;
-
 		private int m_BufferedData = 0;
 
 		public int Count { get { return m_Buffer.Count; } }
-
-		public TextSerializer(ITextWriter writer)
-		{
-			m_Writer = writer;
-		}
 
 		public override void Clear()
 		{
@@ -21,7 +14,7 @@ namespace Common.Serialization
 			m_BufferedData = 0;
 		}
 
-		public void Save()
+		public void Save(ITextWriter writer)
 		{
 			StringBuilder builder = new StringBuilder(m_BufferedData+m_Buffer.Count-1);
 			for(int x = 0; x < m_Buffer.Count; x++)
@@ -29,7 +22,7 @@ namespace Common.Serialization
 				builder.Append(m_Buffer[x]);
 				builder.Append(SEPARATOR);
 			}
-			m_Writer.Write(builder.ToString());
+			writer.Write(builder.ToString());
 		}
 
 		#region Write

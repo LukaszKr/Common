@@ -2,15 +2,9 @@
 {
 	public class TextDeserializer: TextPersistence, IDeserializer
     {
-		private ITextReader m_Reader;
 		private int m_Head = 0;
 
 		public int Head { get { return m_Head; } }
-
-		public TextDeserializer(ITextReader reader)
-		{
-			m_Reader = reader;
-		}
 
 		public override void Clear()
 		{
@@ -18,9 +12,9 @@
 			m_Head = 0;
 		}
 
-		public void Load()
+		public void Load(ITextReader reader)
 		{
-			string text = m_Reader.Read();
+			string text = reader.Read();
 			int lastIndex = 0;
 			bool field = false;
 			bool isString = false;

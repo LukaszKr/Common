@@ -9,7 +9,7 @@ namespace Common.Serialization.Deserializer
 			base.Clear();
 		}
 
-		public void Load()
+		public void Load(IBinaryReader reader)
 		{
 			throw new NotImplementedException();
 		}
