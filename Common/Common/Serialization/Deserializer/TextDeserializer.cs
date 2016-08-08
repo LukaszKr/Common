@@ -12,9 +12,9 @@
 			m_Head = 0;
 		}
 
-		public void Load(ITextReader reader)
+		public void Load(IDataReader reader)
 		{
-			string text = reader.Read();
+			string text = reader.ReadString();
 			int lastIndex = 0;
 			bool field = false;
 			bool isString = false;

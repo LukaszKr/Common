@@ -14,7 +14,7 @@ namespace Common.Serialization
 			m_BufferedData = 0;
 		}
 
-		public void Save(ITextWriter writer)
+		public void Save(IDataWriter writer)
 		{
 			StringBuilder builder = new StringBuilder(m_BufferedData+m_Buffer.Count-1);
 			for(int x = 0; x < m_Buffer.Count; x++)
