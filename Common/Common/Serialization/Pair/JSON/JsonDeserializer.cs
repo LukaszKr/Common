@@ -172,7 +172,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out bool data, bool defaultValue = false)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || bool.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !bool.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -183,7 +183,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out byte data, byte defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || byte.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !byte.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -194,7 +194,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out short data, short defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || short.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !short.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -205,7 +205,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out int data, int defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || int.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !int.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -216,7 +216,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out long data, long defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || long.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !long.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -227,7 +227,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out float data, float defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || float.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !float.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
@@ -238,7 +238,7 @@ namespace Common.Serialization
 		public bool TryRead(string key, out double data, double defaultValue = 0)
 		{
 			string rawData;
-			if(!m_Parameters.TryGetValue(key, out rawData) || double.TryParse(rawData, out data))
+			if(!m_Parameters.TryGetValue(key, out rawData) || !double.TryParse(rawData, out data))
 			{
 				data = defaultValue;
 				return false;
