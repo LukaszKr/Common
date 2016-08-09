@@ -3,6 +3,7 @@
 	public interface ISerializer
 	{
 		void Clear();
+		void Save(IDataWriter writer);
 
 		#region Write
 		void Write(ISerializable serializable);

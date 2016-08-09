@@ -1,5 +1,4 @@
 ﻿using Common.Serialization;
-using System;
 
 namespace Common.Highscore
 {

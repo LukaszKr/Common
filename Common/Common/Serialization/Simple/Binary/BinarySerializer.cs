@@ -6,7 +6,7 @@ namespace Common.Serialization
 	{
 		public BinarySerializer()
 		{
-
+			throw new NotImplementedException();
 		}
 
 		public override void Clear()

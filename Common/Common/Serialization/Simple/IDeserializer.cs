@@ -3,6 +3,7 @@
 	public interface IDeserializer
     {
 		void Clear();
+		void Load(IDataReader reader);
 
 		#region Read
 		void Read<ObjectType>(ObjectType obj) where ObjectType : ISerializable;
