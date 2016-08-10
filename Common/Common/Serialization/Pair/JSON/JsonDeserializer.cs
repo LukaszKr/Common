@@ -97,7 +97,7 @@ namespace Common.Serialization
 		}
 
 		#region Read
-		public void Read<ObjectType>(string key, ObjectType obj) where ObjectType : IPairSerializable
+		public void Read(string key, IPairSerializable obj)
 		{
 			IPairDeserializer deserializer = m_Objects[key];
 			obj.Deserialize(deserializer);
@@ -150,7 +150,7 @@ namespace Common.Serialization
 		#endregion
 
 		#region TryRead
-		public bool TryRead<ObjectType>(string key, ObjectType obj) where ObjectType : IPairSerializable
+		public bool TryRead(string key, IPairSerializable obj) 
 		{
 			IPairDeserializer deserializer;
 			if(TryRead(key, out deserializer))

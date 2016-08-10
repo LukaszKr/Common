@@ -6,7 +6,7 @@
 		void Load(IDataReader reader);
 
 		#region Read
-		void Read<ObjectType>(ObjectType obj) where ObjectType : ISerializable;
+		void Read(ISerializable obj);
 		bool ReadBool();
 		byte ReadByte();
 		short ReadShort();

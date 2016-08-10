@@ -55,7 +55,7 @@ namespace Common.Serialization.Deserializer
 			throw new NotImplementedException();
 		}
 
-		public void Read<ObjectType>(ObjectType obj) where ObjectType : ISerializable
+		public void Read(ISerializable obj) 
 		{
 			obj.Deserialize(this);
 		}

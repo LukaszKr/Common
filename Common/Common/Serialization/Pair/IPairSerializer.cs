@@ -7,6 +7,7 @@
 
 		#region Write
 		void Write(string key, IPairSerializable serializable);
+		//void Write(string key, ISerializable serializable);
 		void Write(string key, bool data);
 		void Write(string key, byte data);
 		void Write(string key, short data);
