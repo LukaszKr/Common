@@ -32,6 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Geometry\Line.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Geometry\Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
