@@ -8,7 +8,6 @@
 		#region Read
 		void Read(string key, IPairSerializable obj);
 		IPairDeserializer ReadObject(string key);
-		IDeserializer ReadArray(string key);
 		bool ReadBool(string key);
 		byte ReadByte(string key);
 		short ReadShort(string key);
@@ -20,7 +19,6 @@
 
 		bool TryRead(string key, IPairSerializable obj);
 		bool TryRead(string key, out IPairDeserializer data);
-		bool TryRead(string key, out IDeserializer data);
 		bool TryRead(string key, out bool data, bool defaultValue = false);
 		bool TryRead(string key, out byte data, byte defaultValue = 0);
 		bool TryRead(string key, out short data, short defaultValue = 0);

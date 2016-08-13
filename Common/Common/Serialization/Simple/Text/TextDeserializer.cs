@@ -4,11 +4,6 @@
     {
 		private int m_Head = 0;
 
-		private int m_LastIndex;
-		private bool m_Field;
-		private bool m_IsString;
-		private string m_Chunk;
-
 		public int Head { get { return m_Head; } }
 
 		public TextDeserializer(char separator = ';', char stringMarker = '"') : base(separator, stringMarker)
@@ -19,9 +14,6 @@
 		{
 			base.Clear();
 			m_Head = 0;
-			m_LastIndex = 0;
-			m_Field = false;
-			m_IsString = false;
 		}
 
 		public void Load(IDataReader reader)
@@ -30,37 +22,34 @@
 			FromString(text);
 		}
 
-		public void FromString(string stringPart)
+		public void FromString(string str)
 		{
-			string str = m_Chunk + stringPart;
+			bool isString = false, field = false;
+			int lastIndex = 0;
 			for(int x = 0; x < str.Length; x++)
 			{
 				if(str[x] == Separator)
 				{
-					if(m_IsString)
+					if(isString)
 					{
-						m_Buffer.Add(str.Substring(m_LastIndex+1, x-m_LastIndex-1));
+						m_Buffer.Add(str.Substring(lastIndex+1, x-lastIndex-1));
 					}
 					else
 					{
-						m_Buffer.Add(str.Substring(m_LastIndex, x-m_LastIndex));
+						m_Buffer.Add(str.Substring(lastIndex, x-lastIndex));
 					}
-					m_LastIndex = x+1;
-					m_IsString = false;
+					lastIndex = x+1;
+					isString = false;
 				}
 				else if(str[x] == StringMarker)
 				{
-					m_IsString = true;
-					m_Field = !m_Field;
+					isString = true;
+					field = !field;
 				}
 			}
-			if(m_LastIndex < str.Length)
+			if(lastIndex < str.Length)
 			{
-				m_Chunk = str.Substring(m_LastIndex);
-			}
-			else
-			{
-				m_Chunk = null;
+				m_Buffer.Add(str.Substring(lastIndex));
 			}
 		}
 

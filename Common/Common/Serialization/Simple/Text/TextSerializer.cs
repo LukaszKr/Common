@@ -27,7 +27,10 @@ namespace Common.Serialization
 			for(int x = 0; x < m_Buffer.Count; x++)
 			{
 				builder.Append(m_Buffer[x]);
-				builder.Append(Separator);
+				if(x < m_Buffer.Count-1)
+				{
+					builder.Append(Separator);
+				}
 			}
 			return builder.ToString();
 		}
