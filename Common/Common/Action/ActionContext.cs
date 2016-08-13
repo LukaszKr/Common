@@ -4,10 +4,10 @@ namespace Common.Action
 {
 	public class ActionContext<DataType>
 	{
-		public static List<BaseAction<DataType>> History = new List<BaseAction<DataType>>();
+		public static List<IBaseAction<DataType>> History = new List<IBaseAction<DataType>>();
 
 		private int m_Depth;
-		private Queue<BaseAction<DataType>> m_Actions;
+		private Queue<IBaseAction<DataType>> m_Actions;
 
 		public int Depth 
 		{
@@ -22,15 +22,15 @@ namespace Common.Action
 		public ActionContext(int depth) 
 		{
 			m_Depth = depth;
-			m_Actions = new Queue<BaseAction<DataType>>();
+			m_Actions = new Queue<IBaseAction<DataType>>();
 		}
 
-		public void PushAction(BaseAction<DataType> action) 
+		public void PushAction(IBaseAction<DataType> action) 
 		{
 			m_Actions.Enqueue(action);
 		}
 
-		public BaseAction<DataType> PopAction() 
+		public IBaseAction<DataType> PopAction() 
 		{
 			if(m_Actions.Count > 0) 
 			{
@@ -41,7 +41,7 @@ namespace Common.Action
 
 		public bool Execute(DataType data)
 		{
-			BaseAction<DataType> action = PopAction();
+			IBaseAction<DataType> action = PopAction();
 			if(action != null)
 			{
 				if(action.IsValid(data))

@@ -15,7 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\ToggleAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionManager.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Action\BaseAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Action\IBaseAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\BulkCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\CommandManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Command\ICommand.cs" />

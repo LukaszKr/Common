@@ -23,7 +23,7 @@ namespace Common.Action
 			}
 		}
 
-		public void AddPendingAction(BaseAction<DataType> action)
+		public void AddPendingAction(IBaseAction<DataType> action)
 		{
 			if(m_Executing)
 			{
