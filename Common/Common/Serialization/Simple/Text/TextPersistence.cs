@@ -4,13 +4,17 @@ namespace Common.Serialization
 {
 	public abstract class TextPersistence
     {
-		public const char SEPARATOR = ';';
-		public const char QUOTATION = '"';
-
 		protected List<string> m_Buffer;
 
-		public TextPersistence()
+		public char Separator { get; private set; }
+		public char StringMarker { get; private set; }
+
+		public int Count { get { return m_Buffer.Count; } }
+
+		public TextPersistence(char separator, char stringMarker)
 		{
+			Separator = separator;
+			StringMarker = stringMarker;
 			m_Buffer = new List<string>();
 		}
 

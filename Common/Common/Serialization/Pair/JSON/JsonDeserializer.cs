@@ -7,19 +7,22 @@ namespace Common.Serialization
 	public class JsonDeserializer: JsonPersistence, IPairDeserializer
 	{
 		protected Dictionary<string, JsonDeserializer> m_Objects;
+		protected Dictionary<string, TextDeserializer> m_Arrays;
 		private Tokenizer m_Tokenizer;
 
 		public JsonDeserializer()
 		{
 			m_Objects = new Dictionary<string, JsonDeserializer>();
+			m_Arrays = new Dictionary<string, TextDeserializer>();
 			m_Tokenizer = new Tokenizer();
-			m_Tokenizer.AddSeparators(BRACKETS_OPEN, BRACKETS_CLOSE, KEY_VALUE_SEPARATOR, PAIR_SEPARATOR, QUOTATION);
+			m_Tokenizer.AddSeparators(BRACKETS_OPEN, BRACKETS_CLOSE, ARRAY_OPEN, ARRAY_CLOSE, KEY_VALUE_SEPARATOR, PAIR_SEPARATOR, QUOTATION);
 		}
 
 		public override void Clear()
 		{
 			base.Clear();
 			m_Objects.Clear();
+			m_Arrays.Clear();
 		}
 
 		public void Load(IDataReader reader)
@@ -32,10 +35,10 @@ namespace Common.Serialization
 
 		private enum ParseState
 		{
-			Object,
 			Key,
 			KeyValueSeparator,
 			Value,
+			Array,
 			PostValue
 		}
 
@@ -43,6 +46,8 @@ namespace Common.Serialization
 		{
 			string key = null;
 			ParseState state = ParseState.Key;
+			bool isString = false;
+			TextDeserializer array = null;
 			for(int tokenIndex = offset; tokenIndex < tokens.Count; tokenIndex ++)
 			{
 				Token token = tokens[tokenIndex];
@@ -74,6 +79,11 @@ namespace Common.Serialization
 							tokenIndex = deserializer.ParseObject(tokens, tokenIndex);
 							state = ParseState.PostValue;
 						}
+						else if(token.Value == ARRAY_OPEN.ToString())
+						{
+							array = new TextDeserializer(PAIR_SEPARATOR, QUOTATION);
+							state = ParseState.Array;
+						}
 						break;
 					case ParseState.PostValue:
 						if(token.IsSeparator)
@@ -88,8 +98,24 @@ namespace Common.Serialization
 							}
 						}
 						break;
-					case ParseState.Object:
-
+					case ParseState.Array:
+						if(token.IsSeparator)
+						{
+							if(!isString && token.Value == ARRAY_CLOSE.ToString())
+							{
+								m_Arrays[key] = array;
+								state = ParseState.PostValue;
+							}
+							else if(token.Value == QUOTATION.ToString())
+							{
+								isString = !isString;
+								array.FromString(token.Value);
+							}
+						}
+						else
+						{
+							array.FromString(token.Value);
+						}
 						break;
 				}
 			}
@@ -106,6 +132,11 @@ namespace Common.Serialization
 		public IPairDeserializer ReadObject(string key)
 		{
 			return m_Objects[key];
+		}
+
+		public IDeserializer ReadArray(string key)
+		{
+			return m_Arrays[key];
 		}
 
 		public bool ReadBool(string key)
@@ -165,6 +196,14 @@ namespace Common.Serialization
 		{
 			JsonDeserializer deserializer;
 			bool result = m_Objects.TryGetValue(key, out deserializer);
+			data = deserializer;
+			return result;
+		}
+
+		public bool TryRead(string key, out IDeserializer data)
+		{
+			TextDeserializer deserializer;
+			bool result = m_Arrays.TryGetValue(key, out deserializer);
 			data = deserializer;
 			return result;
 		}

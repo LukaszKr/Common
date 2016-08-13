@@ -49,9 +49,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonPersistence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\Binary\BinaryDeserializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\Binary\BinaryPersistence.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\Binary\BinarySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\IDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\ISerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\ISerializer.cs" />

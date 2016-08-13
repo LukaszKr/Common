@@ -6,7 +6,9 @@ namespace Common.Serialization
 	{
 		private int m_BufferedData = 0;
 
-		public int Count { get { return m_Buffer.Count; } }
+		public TextSerializer(char separator = ';', char stringMarker = '"') : base(separator, stringMarker)
+		{
+		}
 
 		public override void Clear()
 		{
@@ -16,13 +18,18 @@ namespace Common.Serialization
 
 		public void Save(IDataWriter writer)
 		{
+			writer.Write(ToString());
+		}
+
+		public override string ToString()
+		{
 			StringBuilder builder = new StringBuilder(m_BufferedData+m_Buffer.Count-1);
 			for(int x = 0; x < m_Buffer.Count; x++)
 			{
 				builder.Append(m_Buffer[x]);
-				builder.Append(SEPARATOR);
+				builder.Append(Separator);
 			}
-			writer.Write(builder.ToString());
+			return builder.ToString();
 		}
 
 		#region Write
@@ -32,49 +39,19 @@ namespace Common.Serialization
 			m_Buffer.Add(str);
 		}
 
-		public void Write(long data)
+		public void Write(ISerializable serializable)
 		{
-			AddToBuffer(data.ToString());
+			serializable.Serialize(this);
 		}
 
-		public void Write(double data)
+		public void Write(object data)
 		{
 			AddToBuffer(data.ToString());
 		}
 
 		public void Write(string data)
 		{
-			AddToBuffer(QUOTATION+data.ToString()+QUOTATION);
-		}
-
-		public void Write(float data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
-		public void Write(int data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
-		public void Write(short data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
-		public void Write(byte data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
-		public void Write(bool data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
-		public void Write(ISerializable serializable)
-		{
-			serializable.Serialize(this);
+			AddToBuffer(StringMarker+data.ToString()+StringMarker);
 		}
 		#endregion
 	}

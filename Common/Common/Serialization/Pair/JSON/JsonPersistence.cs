@@ -6,6 +6,8 @@ namespace Common.Serialization
     {
 		public const char BRACKETS_OPEN = '{';
 		public const char BRACKETS_CLOSE = '}';
+		public const char ARRAY_OPEN = '[';
+		public const char ARRAY_CLOSE = ']';
 		public const char KEY_VALUE_SEPARATOR = ':';
 		public const char PAIR_SEPARATOR = ',';
 		public const char QUOTATION = '"';

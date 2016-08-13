@@ -83,6 +83,12 @@ namespace Common.Serialization
 			m_Parameters[QUOTATION+key+QUOTATION] = dataStr;
 		}
 
+		private void WriteArray(string key, string data)
+		{
+			WriteKey(key, ARRAY_OPEN+data+ARRAY_CLOSE);
+		}
+
+
 		public void Write(string key, IPairSerializable serializable)
 		{
 			JsonSerializer serializer = new JsonSerializer();
@@ -90,44 +96,40 @@ namespace Common.Serialization
 			m_Objects[key] = serializer;
 		}
 
-		public void Write(string key, bool data)
+		public void Write(string key, ISerializable serializable)
+		{
+			TextSerializer serializer = new TextSerializer(PAIR_SEPARATOR, QUOTATION);
+			serializable.Serialize(serializer);
+			WriteArray(key, serializable.ToString());
+		}
+
+		public void Write(string key, object data)
 		{
 			WriteKey(key, data);
 		}
-
-		public void Write(string key, byte data)
-		{
-			WriteKey(key, data);
-		}
-
-		public void Write(string key, short data)
-		{
-			WriteKey(key, data);
-		}
-
-		public void Write(string key, int data)
-		{
-			WriteKey(key, data);
-		}
-
-		public void Write(string key, long data)
-		{
-			WriteKey(key, data);
-		}
-
-		public void Write(string key, float data)
-		{
-			WriteKey(key, data);
-		}
-
-		public void Write(string key, double data)
-		{
-			WriteKey(key, data);
-		}
-
 		public void Write(string key, string data)
 		{
 			WriteKey(key, QUOTATION+data+QUOTATION);
+		}
+
+		public void Write(string key, object[] array)
+		{
+			TextSerializer serializer = new TextSerializer(PAIR_SEPARATOR, QUOTATION);
+			for(int x = 0; x < array.Length; x++)
+			{
+				serializer.Write(array[x]);
+			}
+			WriteArray(key, serializer.ToString());
+		}
+
+		public void Write(string key, string[] array)
+		{
+			TextSerializer serializer = new TextSerializer(PAIR_SEPARATOR, QUOTATION);
+			for(int x = 0; x < array.Length; x++)
+			{
+				serializer.Write(array[x]);
+			}
+			WriteArray(key, serializer.ToString());
 		}
 		#endregion
 	}
