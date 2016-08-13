@@ -148,8 +148,8 @@ namespace Common.Serialization
 		#region TryRead
 		public bool TryRead(string key, IPairSerializable obj) 
 		{
-			IPairDeserializer deserializer;
-			if(TryRead(key, out deserializer))
+			IPairDeserializer deserializer = TryReadObject(key);
+			if(deserializer != null)
 			{
 				obj.Deserialize(deserializer);
 				return true;
@@ -157,99 +157,98 @@ namespace Common.Serialization
 			return false;
 		}
 
-		public bool TryRead(string key, out IPairDeserializer data)
+		public IPairDeserializer TryReadObject(string key)
 		{
 			JsonDeserializer deserializer;
 			bool result = m_Objects.TryGetValue(key, out deserializer);
-			data = deserializer;
-			return result;
+			return deserializer;
 		}
 
-		public bool TryRead(string key, out bool data, bool defaultValue = false)
+		public bool TryReadBool(string key, bool defaultValue = false)
 		{
 			string rawData;
+			bool data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !bool.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out byte data, byte defaultValue = 0)
+		public byte TryReadByte(string key, byte defaultValue = 0)
 		{
 			string rawData;
+			byte data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !byte.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out short data, short defaultValue = 0)
+		public short TryReadShort(string key, short defaultValue = 0)
 		{
 			string rawData;
+			short data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !short.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out int data, int defaultValue = 0)
+		public int TryReadInt(string key, int defaultValue = 0)
 		{
 			string rawData;
+			int data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !int.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out long data, long defaultValue = 0)
+		public long TryReadLong(string key, long defaultValue = 0)
 		{
 			string rawData;
+			long data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !long.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out float data, float defaultValue = 0)
+		public float TryReadFloat(string key, float defaultValue = 0)
 		{
 			string rawData;
+			float data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !float.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out double data, double defaultValue = 0)
+		public double TryReadDouble(string key, double defaultValue = 0)
 		{
 			string rawData;
+			double data;
 			if(!m_Parameters.TryGetValue(key, out rawData) || !double.TryParse(rawData, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 
-		public bool TryRead(string key, out string data, string defaultValue = null)
+		public string TryReadString(string key, string defaultValue = null)
 		{
+			string data;
 			if(!m_Parameters.TryGetValue(key, out data))
 			{
-				data = defaultValue;
-				return false;
+				return defaultValue;
 			}
-			return true;
+			return data;
 		}
 		#endregion
 	}

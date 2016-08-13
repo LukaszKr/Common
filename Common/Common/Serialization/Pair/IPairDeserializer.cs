@@ -18,15 +18,15 @@
 		string ReadString(string key);
 
 		bool TryRead(string key, IPairSerializable obj);
-		bool TryRead(string key, out IPairDeserializer data);
-		bool TryRead(string key, out bool data, bool defaultValue = false);
-		bool TryRead(string key, out byte data, byte defaultValue = 0);
-		bool TryRead(string key, out short data, short defaultValue = 0);
-		bool TryRead(string key, out int data, int defaultValue = 0);
-		bool TryRead(string key, out long data, long defaultValue = 0);
-		bool TryRead(string key, out float data, float defaultValue = 0f);
-		bool TryRead(string key, out double data, double defaultValue = 0);
-		bool TryRead(string key, out string data, string defaultValue = null);
+		IPairDeserializer TryReadObject(string key);
+		bool TryReadBool(string key, bool defaultValue = false);
+		byte TryReadByte(string key, byte defaultValue = 0);
+		short TryReadShort(string key, short defaultValue = 0);
+		int TryReadInt(string key, int defaultValue = 0);
+		long TryReadLong(string key, long defaultValue = 0);
+		float TryReadFloat(string key, float defaultValue = 0f);
+		double TryReadDouble(string key, double defaultValue = 0);
+		string TryReadString(string key, string defaultValue = null);
 		#endregion
 	}
 }
