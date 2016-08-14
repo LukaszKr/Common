@@ -76,7 +76,7 @@ namespace Common.Parsing
 							}
 							else if(token.Value == JsonConst.QUOTATION)
 							{
-								obj.WriteString(key, ParseString(tokens, ref x));
+								obj.Write(key, ParseString(tokens, ref x));
 								parseState = ObjectParseState.PostValue;
 							}
 							else
@@ -103,11 +103,11 @@ namespace Common.Parsing
 						}
 						break;
 					case ObjectParseState.ObjectValue:
-						obj.WriteObject(key, ParseObject(tokens, ref x));
+						obj.Write(key, ParseObject(tokens, ref x));
 						parseState = ObjectParseState.PostValue;
 						break;
 					case ObjectParseState.ArrayValue:
-						obj.WriteArray(key, ParseArray(tokens, ref x));
+						obj.Write(key, ParseArray(tokens, ref x));
 						parseState = ObjectParseState.PostValue;
 						break;
 					case ObjectParseState.PostValue:

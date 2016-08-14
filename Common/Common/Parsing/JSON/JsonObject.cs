@@ -67,22 +67,52 @@ namespace Common.Parsing
 			}
 		}
 
-		public void Write(string key, object param)
+		public void Write(string key, bool param)
 		{
 			m_Params[key] = param;
 		}
 
-		public void WriteString(string key, string str)
+		public void Write(string key, byte param)
 		{
-			Write(key, JsonConst.QUOTATION+str+JsonConst.QUOTATION);
+			m_Params[key] = param;
 		}
 
-		public void WriteObject(string key, JsonObject obj)
+		public void Write(string key, short param)
+		{
+			m_Params[key] = param;
+		}
+
+		public void Write(string key, int param)
+		{
+			m_Params[key] = param;
+		}
+
+		public void Write(string key, long param)
+		{
+			m_Params[key] = param;
+		}
+
+		public void Write(string key, float param)
+		{
+			m_Params[key] = param;
+		}
+
+		public void Write(string key, double param)
+		{
+			m_Params[key] = param;
+		}
+
+		public void Write(string key, string str)
+		{
+			m_Params[key] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
+		}
+
+		public void Write(string key, JsonObject obj)
 		{
 			m_Objects[key] = obj;
 		}
 
-		public void WriteArray(string key, JsonArray array)
+		public void Write(string key, JsonArray array)
 		{
 			m_Arrays[key] = array;
 		}

@@ -56,28 +56,89 @@ namespace Common.Parsing
 			}
 		}
 
-		public void Write(object obj)
+		private void TryExpand()
 		{
-			m_Data[Count++] = obj;
 			if(Count >= m_Data.Length)
 			{
 				Resize(Count*2);
 			}
 		}
 
-		public void WriteString(string str)
+		public void WriteObject(object param)
 		{
-			Write(JsonConst.QUOTATION+str+JsonConst.QUOTATION);
+			m_Data[Count++] = param;
+			TryExpand();
 		}
 
-		public void WriteArray(object[] array)
+		public void Write(bool param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(byte param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(short param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(int param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(long param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(float param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(double param)
+		{
+			m_Data[Count++] = param;
+			TryExpand();
+		}
+
+		public void Write(string str)
+		{
+			m_Data[Count++] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
+			TryExpand();
+		}
+
+		public void Write(JsonObject obj)
+		{
+			m_Data[Count++] = obj;
+			TryExpand();
+		}
+
+		public void Write(JsonArray array)
+		{
+			m_Data[Count++] = array;
+			TryExpand();
+		}
+
+		public void Write(object[] array)
 		{
 			JsonArray jsonArray = new JsonArray(array.Length);
 			for(int x = 0; x < array.Length; x++)
 			{
 				jsonArray.m_Data[x] = array[x];
 			}
-			Write(jsonArray);
+			m_Data[Count++] = jsonArray;
+			TryExpand();
 		}
 
 		#region Read
