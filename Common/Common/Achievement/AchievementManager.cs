@@ -22,7 +22,7 @@ namespace Common.Achievement
 
 		public void Serialize(IPairSerializer serializer)
 		{
-			throw new NotImplementedException();
+			
 		}
 	}
 }

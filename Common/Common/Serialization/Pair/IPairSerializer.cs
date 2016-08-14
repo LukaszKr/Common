@@ -1,4 +1,6 @@
-﻿namespace Common.Serialization
+﻿using System.Collections;
+
+namespace Common.Serialization
 {
 	public interface IPairSerializer
     {
@@ -15,6 +17,7 @@
 		void Write(string key, double data);
 		void Write(string key, string data);
 		void Write(string key, object[] array);
+		void Write(string key, IEnumerable array);
 		void Write(string key, IPairSerializable serializable);
 		#endregion
 	}

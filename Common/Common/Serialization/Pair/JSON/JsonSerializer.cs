@@ -1,4 +1,5 @@
 ﻿using Common.Parsing;
+using System.Collections;
 
 namespace Common.Serialization
 {
@@ -78,7 +79,28 @@ namespace Common.Serialization
 				}
 				else
 				{
-					jsonArray.WriteObject(array[x]);
+					jsonArray.WriteObject(value);
+				}
+			}
+			m_Object.Write(key, jsonArray);
+		}
+
+		public void Write(string key, IEnumerable array)
+		{
+			JsonArray jsonArray = new JsonArray(4);
+			foreach(object obj in array)
+			{
+				if(obj == null || obj is string)
+				{
+					jsonArray.Write(obj as string);
+				}
+				else if(obj.GetType().IsArray)
+				{
+					jsonArray.Write(obj as object[]);
+				}
+				else
+				{
+					jsonArray.WriteObject(obj);
 				}
 			}
 			m_Object.Write(key, jsonArray);
