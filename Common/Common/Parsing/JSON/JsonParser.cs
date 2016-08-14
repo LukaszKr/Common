@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Common.Parsing
 {
-    public class JsonParser
+	public class JsonParser
     {
 		private Tokenizer m_Tokenizer;
 
@@ -24,7 +23,7 @@ namespace Common.Parsing
 			m_Tokenizer.Tokenize(str);
 
 			List<Token> tokens = m_Tokenizer.Flush();
-			int offset = 0;
+			int offset = 1;
 			return ParseObject(tokens, ref offset);
 		}
 
@@ -88,17 +87,26 @@ namespace Common.Parsing
 						}
 						else
 						{
-							obj.Write(key, ParseNumerical(token));
+							if(token.Value == JsonConst.FALSE)
+							{
+								obj.Write(key, false);
+							}
+							else if(token.Value == JsonConst.TRUE)
+							{
+								obj.Write(key, true);
+							}
+							else
+							{
+								obj.Write(key, ParseNumerical(token));
+							}
 							parseState = ObjectParseState.PostValue;
 						}
 						break;
 					case ObjectParseState.ObjectValue:
-						x++;
 						obj.WriteObject(key, ParseObject(tokens, ref x));
 						parseState = ObjectParseState.PostValue;
 						break;
 					case ObjectParseState.ArrayValue:
-						x++;
 						obj.WriteArray(key, ParseArray(tokens, ref x));
 						parseState = ObjectParseState.PostValue;
 						break;
@@ -214,7 +222,7 @@ namespace Common.Parsing
 			string value = "";
 			ParseStringState parseState = ParseStringState.StartQuote;
 
-			for(int x = 0; x < tokens.Count; x++)
+			for(int x = offset; x < tokens.Count; x++)
 			{
 				Token token = tokens[x];
 				switch(parseState)

@@ -3,6 +3,7 @@
 	public interface IPairSerializer
     {
 		void Save(IDataWriter writer);
+		void Clear();
 
 		#region Write
 		void Write(string key, object data);

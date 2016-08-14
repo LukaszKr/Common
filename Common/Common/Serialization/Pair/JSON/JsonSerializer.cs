@@ -16,6 +16,11 @@ namespace Common.Serialization
 			writer.Write(m_Object.ToString());
 		}
 
+		public void Clear()
+		{
+			m_Object = new JsonObject();
+		}
+
 		#region Write
 		public void Write(string key, object data)
 		{

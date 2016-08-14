@@ -18,9 +18,15 @@ namespace Common.Serialization
 
 		public void Load(IDataReader reader)
 		{
+			m_Object = new JsonObject();
 			string text = reader.ReadString();
 			JsonParser parser = new JsonParser();
 			m_Object = parser.Parse(text);
+		}
+
+		public void Clear()
+		{
+			m_Object = null;
 		}
 
 		private enum ParseState

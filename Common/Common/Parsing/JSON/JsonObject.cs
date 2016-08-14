@@ -1,5 +1,6 @@
 ﻿#define SIMPLE_FORMAT
 
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -60,10 +61,10 @@ namespace Common.Parsing
 			if(written < toWrite)
 			{
 				builder.Append(JsonConst.SEPARATOR);
-			}
 #if SIMPLE_FORMAT
-			builder.Append("\n");
+				builder.Append("\n");
 #endif
+			}
 		}
 
 		public void Write(string key, object param)
@@ -94,27 +95,27 @@ namespace Common.Parsing
 
 		public byte ReadByte(string key)
 		{
-			return (byte)m_Params[key];
+			return (byte)ReadDouble(key);
 		}
 
 		public short ReadShort(string key)
 		{
-			return (short)m_Params[key];
+			return (short)ReadDouble(key);
 		}
 
 		public int ReadInt(string key)
 		{
-			return (int)m_Params[key];
+			return (int)ReadDouble(key);
 		}
 
 		public long ReadLong(string key)
 		{
-			return (long)m_Params[key];
+			return (long)ReadDouble(key);
 		}
 
 		public float ReadFloat(string key)
 		{
-			return (float)m_Params[key];
+			return (float)ReadDouble(key);
 		}
 
 		public double ReadDouble(string key)
@@ -152,52 +153,27 @@ namespace Common.Parsing
 
 		public byte TryReadByte(string key, byte defaultValue = 0)
 		{
-			object value;
-			if(m_Params.TryGetValue(key, out value))
-			{
-				return (byte)value;
-			}
-			return defaultValue;
+			return (byte)TryReadDouble(key, defaultValue);
 		}
 
 		public short TryReadShort(string key, short defaultValue = 0)
 		{
-			object value;
-			if(m_Params.TryGetValue(key, out value))
-			{
-				return (short)value;
-			}
-			return defaultValue;
+			return (short)TryReadDouble(key, defaultValue);
 		}
 
 		public int TryReadInt(string key, int defaultValue = 0)
 		{
-			object value;
-			if(m_Params.TryGetValue(key, out value))
-			{
-				return (int)value;
-			}
-			return defaultValue;
+			return (int)TryReadDouble(key, defaultValue);
 		}
 
 		public long TryReadLong(string key, long defaultValue = 0)
 		{
-			object value;
-			if(m_Params.TryGetValue(key, out value))
-			{
-				return (long)value;
-			}
-			return defaultValue;
+			return (long)TryReadDouble(key, defaultValue);
 		}
 
 		public float TryReadFloat(string key, float defaultValue = 0)
 		{
-			object value;
-			if(m_Params.TryGetValue(key, out value))
-			{
-				return (float)value;
-			}
-			return defaultValue;
+			return (float)TryReadDouble(key, defaultValue);
 		}
 
 		public double TryReadDouble(string key, double defaultValue = 0)
