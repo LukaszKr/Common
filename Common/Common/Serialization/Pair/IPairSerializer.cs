@@ -2,13 +2,13 @@
 {
 	public interface IPairSerializer
     {
-		void Clear();
 		void Save(IDataWriter writer);
 
 		#region Write
-		void Write(string key, IPairSerializable serializable);
 		void Write(string key, object data);
-		void Write(string key, string data);
+		void WriteObject(string key, IPairSerializable serializable);
+		void WriteArray(string key, object[] array);
+		void WriteString(string key, string data);
 		#endregion
 	}
 }

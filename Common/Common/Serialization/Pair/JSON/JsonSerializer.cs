@@ -1,102 +1,60 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using Common.Parsing;
 
 namespace Common.Serialization
 {
-	public class JsonSerializer: JsonPersistence, IPairSerializer
+	public class JsonSerializer: IPairSerializer
 	{
-		protected Dictionary<string, JsonSerializer> m_Objects;
-
-		private int m_WrittenBytes;
+		protected JsonObject m_Object;
 
 		public JsonSerializer()
 		{
-			m_Objects = new Dictionary<string, JsonSerializer>();
+			m_Object = new JsonObject();
 		}
 
-		public override void Clear()
-		{
-			base.Clear();
-			m_Objects.Clear();
-		}
-
-		#region Save
 		public void Save(IDataWriter writer)
 		{
-			StringBuilder builder = new StringBuilder(CountBytes());
-			BuildString(builder);
-			writer.Write(builder.ToString());
+			writer.Write(m_Object.ToString());
 		}
-
-		private void BuildString(StringBuilder builder)
-		{
-			builder.Append(BRACKETS_OPEN);
-			int left = 0;
-
-			left = m_Parameters.Count;
-			foreach(var pair in m_Parameters)
-			{
-				builder.Append(pair.Key);
-				builder.Append(KEY_VALUE_SEPARATOR);
-				builder.Append(pair.Value);
-				left --;
-				if(left > 0 || m_Objects.Count > 0)
-				{
-					builder.Append(PAIR_SEPARATOR);
-					builder.Append(NEW_LINE);
-				}
-			}
-
-			left = m_Objects.Count;
-			foreach(var pair in m_Objects)
-			{
-				builder.Append(QUOTATION+pair.Key+QUOTATION);
-				builder.Append(KEY_VALUE_SEPARATOR);
-				pair.Value.BuildString(builder);
-
-				left --;
-				if(left > 0)
-				{
-					builder.Append(PAIR_SEPARATOR);
-					builder.Append(NEW_LINE);
-				}
-			}
-			builder.Append(BRACKETS_CLOSE);
-		}
-
-		private int CountBytes()
-		{
-			int total = m_WrittenBytes;
-			foreach(JsonSerializer serializer in m_Objects.Values)
-			{
-				total += serializer.CountBytes();
-			}
-			return total;
-		}
-		#endregion
 
 		#region Write
-		private void WriteKey(string key, object data)
+		public void Write(string key, object data)
 		{
-			string dataStr = data.ToString();
-			m_WrittenBytes += dataStr.Length+key.Length+2;
-			m_Parameters[QUOTATION+key+QUOTATION] = dataStr;
+			m_Object.Write(key, data);
 		}
 
-		public void Write(string key, IPairSerializable serializable)
+
+		public void WriteObject(string key, IPairSerializable serializable)
 		{
 			JsonSerializer serializer = new JsonSerializer();
 			serializable.Serialize(serializer);
-			m_Objects[key] = serializer;
+			m_Object.WriteObject(key, serializer.m_Object);
 		}
 
-		public void Write(string key, object data)
+		public void WriteArray(string key, object[] array)
 		{
-			WriteKey(key, data);
+			JsonArray jsonArray = new JsonArray(array.Length);
+			for(int x = 0; x < array.Length; x++)
+			{
+				object value = array[x];
+				if(value == null || value is string)
+				{
+					jsonArray.WriteString(value as string);
+				}
+				else if(value.GetType().IsArray)
+				{
+					jsonArray.WriteArray(value as object[]);
+				}
+				else
+				{
+					jsonArray.Write(array[x]);
+				}
+			}
+			m_Object.WriteArray(key, jsonArray);
 		}
-		public void Write(string key, string data)
+
+		public void WriteString(string key, string data)
 		{
-			WriteKey(key, QUOTATION+data+QUOTATION);
+			m_Object.WriteString(key, data);
 		}
 		#endregion
 	}

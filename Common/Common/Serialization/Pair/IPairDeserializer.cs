@@ -2,12 +2,11 @@
 {
 	public interface IPairDeserializer
     {
-		void Clear();
 		void Load(IDataReader reader);
 
 		#region Read
-		void Read(string key, IPairSerializable obj);
 		IPairDeserializer ReadObject(string key);
+		void ReadObject(string key, IPairSerializable obj);
 		bool ReadBool(string key);
 		byte ReadByte(string key);
 		short ReadShort(string key);
@@ -17,8 +16,8 @@
 		double ReadDouble(string key);
 		string ReadString(string key);
 
-		bool TryRead(string key, IPairSerializable obj);
 		IPairDeserializer TryReadObject(string key);
+		bool TryReadObject(string key, IPairSerializable obj);
 		bool TryReadBool(string key, bool defaultValue = false);
 		byte TryReadByte(string key, byte defaultValue = 0);
 		short TryReadShort(string key, short defaultValue = 0);

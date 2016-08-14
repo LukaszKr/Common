@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\AchievementManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\BaseAchievement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Achievement\EAchievementType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\ProgressAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\ToggleAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
@@ -32,8 +33,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Geometry\Line.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Geometry\Point.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
@@ -41,13 +40,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\BasePlayerController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonArray.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonConst.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Token.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Tokenizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\IPairDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\IPairSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\IPairSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonDeserializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonPersistence.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Pair\JSON\JsonSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\IDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Simple\ISerializable.cs" />
@@ -59,7 +63,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)State\StateExceptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\FiniteStateMachine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\StateChangedEvent.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Parsing\Token.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Parsing\XML\" />
   </ItemGroup>
 </Project>
