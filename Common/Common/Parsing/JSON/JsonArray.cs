@@ -36,10 +36,6 @@ namespace Common.Parsing
 				builder.Append("\n");
 #endif
 			}
-
-#if SIMPLE_FORMAT
-			builder.Append("\n");
-#endif
 			builder.Append(JsonConst.ARRAY_CLOSE);
 			return builder.ToString();
 		}

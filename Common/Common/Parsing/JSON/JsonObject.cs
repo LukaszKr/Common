@@ -46,9 +46,6 @@ namespace Common.Parsing
 				WritePairs(builder, pair.Key, pair.Value, ref written, toWrite);
 			}
 
-#if SIMPLE_FORMAT
-			builder.Append("\n");
-#endif
 			builder.Append(JsonConst.BRACKETS_CLOSE);
 			return builder.ToString();
 		}
@@ -61,10 +58,10 @@ namespace Common.Parsing
 			if(written < toWrite)
 			{
 				builder.Append(JsonConst.SEPARATOR);
-#if SIMPLE_FORMAT
-				builder.Append("\n");
-#endif
 			}
+#if SIMPLE_FORMAT
+			builder.Append("\n");
+#endif
 		}
 
 		public void Write(string key, bool param)
