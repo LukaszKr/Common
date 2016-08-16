@@ -2,13 +2,13 @@
 
 namespace Common.Input
 {
-	public abstract class BasePlayerController<ContextIDType, InputType>
+	public abstract class BaseInputController<ContextIDType, InputType>
     {
 		private Dictionary<int, InputContext<InputType>> m_InputContexts;
 		private List<InputContext<InputType>> m_ActiveInputContext;
 
 
-		public BasePlayerController()
+		public BaseInputController()
 		{
 			m_InputContexts = new Dictionary<int, InputContext<InputType>>();
 			m_ActiveInputContext = new List<InputContext<InputType>>();

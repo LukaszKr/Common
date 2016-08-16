@@ -38,7 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\BasePlayerController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\BaseInputController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonConst.cs" />
