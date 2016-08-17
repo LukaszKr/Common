@@ -2,7 +2,7 @@
 
 namespace Common.Input
 {
-	public abstract class BaseInputController<ContextIDType, InputType>
+	public abstract class BaseInputController<ContextIDType, InputType>: IInputValidator<InputType>
     {
 		private Dictionary<int, InputContext<InputType>> m_InputContexts;
 		private List<InputContext<InputType>> m_ActiveInputContext;
