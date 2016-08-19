@@ -40,7 +40,10 @@ namespace Common.Event
 
 		public void UnbindAll()
 		{
-			Disable();
+			for(int x = 0; x < m_Bindings.Count; x++)
+			{
+				m_Bindings[x].Unbind();
+			}
 			m_Bindings.Clear();
 		}
 
