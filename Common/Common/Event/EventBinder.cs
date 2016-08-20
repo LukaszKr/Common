@@ -20,6 +20,11 @@ namespace Common.Event
 			m_Manager = manager;
 		}
 
+		~EventBinder()
+		{
+			UnbindAll();
+		}
+
 		public abstract bool Bind<EventType>(EventIDType eventID, Action<EventType> callback) where EventType: BaseEvent;
 
 		protected bool Bind<EventType>(int eventID, Action<EventType> callback) where EventType: BaseEvent

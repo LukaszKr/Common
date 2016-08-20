@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\BaseEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventChannel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\EventChannelGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
