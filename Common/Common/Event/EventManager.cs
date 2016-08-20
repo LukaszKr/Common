@@ -4,11 +4,12 @@ namespace Common.Event
 {
 	public class EventManager
 	{
-		private Dictionary<int, EventChannelGroup> m_Channels;
+		private Dictionary<int, object> m_Channels;
+
 
 		public EventManager()
 		{
-			m_Channels = new Dictionary<int, EventChannelGroup>();
+			m_Channels = new Dictionary<int, object>();
 		}
 
 		public void Emit<EventType>(EventType message) where EventType : BaseEvent
@@ -18,20 +19,25 @@ namespace Common.Event
 
 		public EventChannel<EventType> GetEventChannel<EventType>(int eventID, bool autoCreate = true) where EventType : BaseEvent
 		{
-			EventChannelGroup channelGroup;
-			if(!m_Channels.TryGetValue(eventID, out channelGroup))
+			EventChannel<EventType> channel;
+			object baseChannel;
+			if(!m_Channels.TryGetValue(eventID, out baseChannel))
 			{
 				if(autoCreate)
 				{
-					channelGroup = new EventChannelGroup();
-					m_Channels[eventID] = channelGroup;
+					channel = new EventChannel<EventType>();
+					m_Channels[eventID] = channel;
 				}
 				else
 				{
 					return null;
 				}
 			}
-			return channelGroup.GetEventChannel<EventType>(autoCreate);
+			else
+			{
+				channel = baseChannel as EventChannel<EventType>;
+			}
+			return channel;
 		}
 	}
 }
