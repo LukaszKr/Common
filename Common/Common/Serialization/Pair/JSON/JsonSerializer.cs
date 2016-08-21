@@ -1,5 +1,6 @@
 ﻿using Common.Parsing;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Common.Serialization
 {
@@ -63,26 +64,11 @@ namespace Common.Serialization
 			m_Object.Write(key, data);
 		}
 
-		public void Write(string key, object[] array)
+		public void Write(string key, IPairSerializable serializable)
 		{
-			JsonArray jsonArray = new JsonArray(array.Length);
-			for(int x = 0; x < array.Length; x++)
-			{
-				object value = array[x];
-				if(value == null || value is string)
-				{
-					jsonArray.Write(value as string);
-				}
-				else if(value.GetType().IsArray)
-				{
-					jsonArray.Write(value as object[]);
-				}
-				else
-				{
-					jsonArray.WriteObject(value);
-				}
-			}
-			m_Object.Write(key, jsonArray);
+			JsonSerializer serializer = new JsonSerializer();
+			serializable.Serialize(serializer);
+			m_Object.Write(key, serializer.m_Object);
 		}
 
 		public void Write(string key, IEnumerable array)
@@ -106,11 +92,16 @@ namespace Common.Serialization
 			m_Object.Write(key, jsonArray);
 		}
 
-		public void Write(string key, IPairSerializable serializable)
+		public void Write(string key, IEnumerable<IPairSerializable> array)
 		{
-			JsonSerializer serializer = new JsonSerializer();
-			serializable.Serialize(serializer);
-			m_Object.Write(key, serializer.m_Object);
+			JsonArray jsonArray = new JsonArray(4);
+			foreach(IPairSerializable obj in array)
+			{
+				JsonSerializer serializer = new JsonSerializer();
+				obj.Serialize(serializer);
+				jsonArray.Write(serializer.m_Object);
+			}
+			m_Object.Write(key, jsonArray);
 		}
 		#endregion
 	}

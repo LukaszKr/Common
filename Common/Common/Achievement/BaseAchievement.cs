@@ -9,7 +9,6 @@ namespace Common.Achievement
 		protected AchievementManager m_AchievementManager;
 
 		public abstract EAchievementType AchievementType { get; }
-
 		public BaseAchievement(AchievementManager achievementManager)
 		{
 			m_AchievementManager = achievementManager;
@@ -21,10 +20,14 @@ namespace Common.Achievement
 			Deserialize(deserializer);
 		}
 
+		public abstract void Initialize();
+
 		protected void Save()
 		{
 			m_AchievementManager.Save();
 		}
+
+		public abstract bool IsAchieved();
 
 		public virtual void Deserialize(IPairDeserializer deserializer)
 		{

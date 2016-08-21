@@ -2,7 +2,7 @@
 
 namespace Common.Achievement
 {
-	public class ProgressAchievement: BaseAchievement
+	public abstract class ProgressAchievement: BaseAchievement
 	{
 		public override EAchievementType AchievementType { get { return EAchievementType.Progress; } }
 
@@ -35,6 +35,11 @@ namespace Common.Achievement
 			base.Serialize(serializer);
 			serializer.Write(KEY_PROGRESS, Progress);
 			serializer.Write(KEY_TARGET, Target);
+		}
+
+		public override bool IsAchieved()
+		{
+			return Progress == Target;
 		}
 	}
 }

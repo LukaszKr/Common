@@ -2,7 +2,7 @@
 
 namespace Common.Achievement
 {
-	public class ToggleAchievement: BaseAchievement
+	public abstract class ToggleAchievement: BaseAchievement
     {
 		public override EAchievementType AchievementType { get { return EAchievementType.Toggle; } }
 
@@ -29,6 +29,11 @@ namespace Common.Achievement
 		{
 			base.Serialize(serializer);
 			serializer.Write(KEY_UNLOCKED, Unlocked);
+		}
+
+		public override bool IsAchieved()
+		{
+			return Unlocked;
 		}
 
 		public void Unlock()
