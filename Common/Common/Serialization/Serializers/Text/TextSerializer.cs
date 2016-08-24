@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace Common.Serialization
 {
@@ -42,19 +43,24 @@ namespace Common.Serialization
 			m_Buffer.Add(str);
 		}
 
+		public void Write(IPairSerializable serializable)
+		{
+			throw new NotSupportedException();
+		}
+
 		public void Write(ISerializable serializable)
 		{
 			serializable.Serialize(this);
 		}
 
-		public void Write(object data)
-		{
-			AddToBuffer(data.ToString());
-		}
-
 		public void Write(string data)
 		{
 			AddToBuffer(StringMarker+data.ToString()+StringMarker);
+		}
+
+		public void Write(object data)
+		{
+			AddToBuffer(data.ToString());
 		}
 		#endregion
 	}

@@ -1,10 +1,9 @@
-﻿using System;
-using Common.Serialization;
+﻿using Common.Serialization;
 using System.Collections.Generic;
 
 namespace Common.Achievement
 {
-	public class AchievementManager: IPairSerializable
+	public abstract class AchievementManager: IPairSerializable
 	{
 		public const string KEY_ACHIEVEMENTS = "achievements";
 
@@ -15,19 +14,37 @@ namespace Common.Achievement
 			m_Achievements = new List<BaseAchievement>();
 		}
 
-		public void Save()
-		{
-
-		}
-
 		public void Deserialize(IPairDeserializer deserializer)
 		{
-			throw new NotImplementedException();
+			IDeserializer arrayDeserializer = deserializer.ReadArray(KEY_ACHIEVEMENTS);
+			for(int x = 0; x < arrayDeserializer.Count; x++)
+			{
+				m_Achievements.Add(BaseAchievement.CreateAndDeserialize(this, arrayDeserializer.ReadObject()));
+			}
 		}
 
 		public void Serialize(IPairSerializer serializer)
 		{
-			serializer.Write(KEY_ACHIEVEMENTS, m_Achievements);
+			ISerializer arraySerializer = serializer.WriteArray(KEY_ACHIEVEMENTS);
+			for(int x = 0; x < m_Achievements.Count; x++)
+			{
+				arraySerializer.Write(m_Achievements[x]);
+			}
 		}
+
+		public BaseAchievement GetAchievementByID(int id)
+		{
+			for(int x = 0; x < m_Achievements.Count; x++)
+			{
+				BaseAchievement achievement = m_Achievements[x];
+				if(achievement.ID == id)
+				{
+					return achievement;
+				}
+			}
+			return null;
+		}
+
+		public abstract void OnAchievementUnlocked(BaseAchievement achievement);
 	}
 }

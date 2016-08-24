@@ -2,7 +2,7 @@
 
 namespace Common.Achievement
 {
-	public abstract class ToggleAchievement: BaseAchievement
+	public class ToggleAchievement: BaseAchievement
     {
 		public override EAchievementType AchievementType { get { return EAchievementType.Toggle; } }
 
@@ -10,7 +10,7 @@ namespace Common.Achievement
 
 		public bool Unlocked { get; private set; }
 
-		public ToggleAchievement(AchievementManager achievementManager, bool unlocked = false) : base(achievementManager)
+		public ToggleAchievement(AchievementManager achievementManager, int id, bool unlocked = false) : base(achievementManager, id)
 		{
 			Unlocked = unlocked;
 		}
@@ -39,7 +39,7 @@ namespace Common.Achievement
 		public void Unlock()
 		{
 			Unlocked = true;
-			Save();
+			m_AchievementManager.OnAchievementUnlocked(this);
 		}
     }
 }

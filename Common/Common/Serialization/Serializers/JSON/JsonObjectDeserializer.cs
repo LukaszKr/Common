@@ -2,16 +2,16 @@
 
 namespace Common.Serialization
 {
-	public class JsonDeserializer: IPairDeserializer
+	public class JsonObjectDeserializer: IPairDeserializer
 	{
 		protected JsonObject m_Object;
 
-		public JsonDeserializer()
+		public JsonObjectDeserializer()
 		{
 			m_Object = new JsonObject();
 		}
 
-		public JsonDeserializer(JsonObject obj)
+		public JsonObjectDeserializer(JsonObject obj)
 		{
 			m_Object = obj;
 		}
@@ -24,29 +24,27 @@ namespace Common.Serialization
 			m_Object = parser.Parse(text);
 		}
 
-		public void Clear()
-		{
-			m_Object = null;
-		}
-
-		private enum ParseState
-		{
-			Key,
-			KeyValueSeparator,
-			Value,
-			PostValue
-		}
-
 		#region Read
 		public IPairDeserializer ReadObject(string key)
 		{
-			return new JsonDeserializer(m_Object.ReadObject(key));
+			return new JsonObjectDeserializer(m_Object.ReadObject(key));
+		}
+
+		public IDeserializer ReadArray(string key)
+		{
+			return new JsonArrayDeserializer(m_Object.ReadArray(key));
 		}
 
 		public void ReadObject(string key, IPairSerializable obj)
 		{
 			IPairDeserializer deserializer = ReadObject(key);
 			obj.Deserialize(deserializer);
+		}
+
+		public void ReadArray(string key, ISerializable array)
+		{
+			IDeserializer deserializer = ReadArray(key);
+			array.Deserialize(deserializer);
 		}
 
 		public bool ReadBool(string key)
@@ -94,9 +92,19 @@ namespace Common.Serialization
 		public IPairDeserializer TryReadObject(string key)
 		{
 			JsonObject json = m_Object.TryReadObject(key);
-			if(json == null)
+			if(json != null)
 			{
-				return new JsonDeserializer(json);
+				return new JsonObjectDeserializer(json);
+			}
+			return null;
+		}
+
+		public IDeserializer TryReadArray(string key)
+		{
+			JsonArray array = m_Object.TryReadArray(key);
+			if(array != null)
+			{
+				return new JsonArrayDeserializer(array);
 			}
 			return null;
 		}
@@ -107,6 +115,17 @@ namespace Common.Serialization
 			if(deserializer != null)
 			{
 				obj.Deserialize(deserializer);
+				return true;
+			}
+			return false;
+		}
+
+		public bool TryReadArray(string key, ISerializable array)
+		{
+			IDeserializer deserializer = TryReadArray(key);
+			if(deserializer != null)
+			{
+				array.Deserialize(deserializer);
 				return true;
 			}
 			return false;

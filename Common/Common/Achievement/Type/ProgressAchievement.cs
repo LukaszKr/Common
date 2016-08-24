@@ -1,8 +1,9 @@
 ﻿using Common.Serialization;
+using System;
 
 namespace Common.Achievement
 {
-	public abstract class ProgressAchievement: BaseAchievement
+	public class ProgressAchievement: BaseAchievement
 	{
 		public override EAchievementType AchievementType { get { return EAchievementType.Progress; } }
 
@@ -13,7 +14,7 @@ namespace Common.Achievement
 		public int Progress { get; private set; }
 
 
-		public ProgressAchievement(AchievementManager achievementManager, int target, int progress = 0) : base(achievementManager)
+		public ProgressAchievement(AchievementManager achievementManager, int id, int target, int progress = 0) : base(achievementManager, id)
 		{
 			Target = target;
 			Progress = progress;
@@ -40,6 +41,25 @@ namespace Common.Achievement
 		public override bool IsAchieved()
 		{
 			return Progress == Target;
+		}
+
+		public void AddProgress(int progress)
+		{
+			SetProgress(Progress+progress);
+		}
+
+		public void SetProgress(int progress, bool onlyIncrease = true)
+		{
+			int newProgress = progress;
+			if(onlyIncrease)
+			{
+				newProgress = Math.Max(progress, Progress);
+			}
+			Progress = Math.Min(progress, Target);
+			if(IsAchieved())
+			{
+				m_AchievementManager.OnAchievementUnlocked(this);
+			}
 		}
 	}
 }

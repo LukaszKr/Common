@@ -9,7 +9,10 @@
 		void FromString(string str);
 
 		#region Read
-		void Read(ISerializable obj);
+		void ReadObject(IPairSerializable obj);
+		void ReadArray(ISerializable obj);
+		IPairDeserializer ReadObject();
+		IDeserializer ReadArray();
 		bool ReadBool();
 		byte ReadByte();
 		short ReadShort();
@@ -19,7 +22,10 @@
 		double ReadDouble();
 		string ReadString();
 
-		void Read(int index, ISerializable obj);
+		void ReadObject(int index, IPairSerializable obj);
+		void ReadArray(int index, ISerializable obj);
+		IPairDeserializer ReadObject(int index);
+		IDeserializer ReadArray(int index);
 		bool ReadBool(int index);
 		byte ReadByte(int index);
 		short ReadShort(int index);

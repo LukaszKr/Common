@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace Common.Serialization
+﻿namespace Common.Serialization
 {
 	public interface IPairSerializer
     {
 		void Save(IDataWriter writer);
-		void Clear();
 
 		#region Write
 		void Write(string key, bool data);
@@ -18,8 +14,9 @@ namespace Common.Serialization
 		void Write(string key, double data);
 		void Write(string key, string data);
 		void Write(string key, IPairSerializable serializable);
-		void Write(string key, IEnumerable array);
-		void Write(string key, IEnumerable<IPairSerializable> array);
+		void Write(string key, ISerializable serializable);
+		IPairSerializer WriteObject(string key);
+		ISerializer WriteArray(string key);
 		#endregion
 	}
 }

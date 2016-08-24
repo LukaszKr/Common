@@ -9,9 +9,10 @@
 		string ToString();
 
 		#region Write
+		void Write(IPairSerializable serializable);
 		void Write(ISerializable serializable);
-		void Write(object data);
 		void Write(string data);
+		void Write(object data);
 		#endregion
 	}
 }

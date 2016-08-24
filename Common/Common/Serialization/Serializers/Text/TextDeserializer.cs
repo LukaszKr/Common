@@ -1,4 +1,6 @@
-﻿namespace Common.Serialization
+﻿using System;
+
+namespace Common.Serialization
 {
 	public class TextDeserializer: TextPersistence, IDeserializer
     {
@@ -64,9 +66,24 @@
 			return m_Buffer[index];
 		}
 
-		public void Read(ISerializable obj)
+		public void ReadObject(IPairSerializable obj)
+		{
+			throw new NotSupportedException();
+		}
+
+		public void ReadArray(ISerializable obj)
 		{
 			obj.Deserialize(this);
+		}
+
+		public IPairDeserializer ReadObject()
+		{
+			throw new NotSupportedException();
+		}
+
+		public IDeserializer ReadArray()
+		{
+			throw new NotSupportedException();
 		}
 
 		public byte ReadByte()
@@ -109,12 +126,27 @@
 			return GetFromBuffer();
 		}
 
-		public void Read(int index, ISerializable obj)
+		public void ReadObject(int index, IPairSerializable obj)
+		{
+			throw new NotSupportedException();
+		}
+
+		public void ReadArray(int index, ISerializable obj)
 		{
 			int oldHead = m_Head;
 			m_Head = index;
 			obj.Deserialize(this);
 			m_Head = oldHead;
+		}
+
+		public IPairDeserializer ReadObject(int index)
+		{
+			throw new NotSupportedException();
+		}
+
+		public IDeserializer ReadArray(int index)
+		{
+			throw new NotSupportedException();
 		}
 
 		public byte ReadByte(int index)
