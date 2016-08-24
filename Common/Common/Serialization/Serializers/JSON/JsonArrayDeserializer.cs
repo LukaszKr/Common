@@ -27,7 +27,7 @@ namespace Common.Serialization
 
 		public void FromString(string str)
 		{
-			throw new NotImplementedException();
+			throw new Exception("Array cannot be a root of JSON file.");
 		}
 
 		public void Load(IDataReader reader)
