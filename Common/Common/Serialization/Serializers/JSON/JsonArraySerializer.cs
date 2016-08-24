@@ -1,5 +1,4 @@
 ﻿using Common.Parsing;
-using System;
 
 namespace Common.Serialization
 {
@@ -9,14 +8,14 @@ namespace Common.Serialization
 
 		public int Count { get { return Array.Count; } }
 
-		public void Clear()
-		{
-			throw new NotImplementedException();
-		}
-
 		public void Save(IDataWriter writer)
 		{
 			writer.Write(Array.ToString());
+		}
+
+		public void Clear()
+		{
+			Array = new JsonArray(4);
 		}
 
 		#region Write

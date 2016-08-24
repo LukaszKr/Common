@@ -3,6 +3,7 @@
 	public interface IPairDeserializer
     {
 		void Load(IDataReader reader);
+		void Clear();
 
 		#region Read
 		IPairDeserializer ReadObject(string key);

@@ -24,6 +24,11 @@ namespace Common.Serialization
 			m_Object = parser.Parse(text);
 		}
 
+		public void Clear()
+		{
+			m_Object = new JsonObject();
+		}
+
 		#region Read
 		public IPairDeserializer ReadObject(string key)
 		{

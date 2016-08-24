@@ -22,6 +22,7 @@ namespace Common.Serialization
 
 		public void Clear()
 		{
+			m_Array = new JsonArray(4);
 			m_Head = 0;
 		}
 
