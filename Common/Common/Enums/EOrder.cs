@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace ProceduralLevel.Common
 {
 	public enum EOrder
     {

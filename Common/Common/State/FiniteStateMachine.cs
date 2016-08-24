@@ -1,7 +1,7 @@
-﻿using Common.Event;
+﻿using ProceduralLevel.Common.Event;
 using System.Collections.Generic;
 
-namespace Common.State
+namespace ProceduralLevel.Common.State
 {
 	public class FiniteStateMachine<StateIDType>
 	{

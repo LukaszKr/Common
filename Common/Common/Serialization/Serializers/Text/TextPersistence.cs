@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Serialization
+namespace ProceduralLevel.Common.Serialization
 {
 	public abstract class TextPersistence
     {

@@ -1,7 +1,7 @@
-﻿using Common.Serialization;
+﻿using ProceduralLevel.Common.Serialization;
 using System.Collections.Generic;
 
-namespace Common.Achievement
+namespace ProceduralLevel.Common.Achievement
 {
 	public abstract class AchievementManager: IPairSerializable
 	{

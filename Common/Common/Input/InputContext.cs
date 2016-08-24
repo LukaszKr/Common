@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Input
+namespace ProceduralLevel.Common.Input
 {
 	public class InputContext<InputType>
 	{

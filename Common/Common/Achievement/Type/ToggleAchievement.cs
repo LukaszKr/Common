@@ -1,6 +1,6 @@
-﻿using Common.Serialization;
+﻿using ProceduralLevel.Common.Serialization;
 
-namespace Common.Achievement
+namespace ProceduralLevel.Common.Achievement
 {
 	public class ToggleAchievement: BaseAchievement
     {

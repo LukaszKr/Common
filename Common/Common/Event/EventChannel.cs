@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Common.Event
+namespace ProceduralLevel.Common.Event
 {
 	public class EventChannel<EventType>
 	{

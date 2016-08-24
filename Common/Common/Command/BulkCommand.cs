@@ -1,4 +1,4 @@
-namespace Common.Command
+namespace ProceduralLevel.Common.Command
 {
 	public class BulkCommand: ICommand
 	{

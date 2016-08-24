@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Common.Command
+namespace ProceduralLevel.Common.Command
 {
 	public class CommandManager
 	{

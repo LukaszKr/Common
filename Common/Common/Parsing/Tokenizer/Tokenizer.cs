@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Parsing
+namespace ProceduralLevel.Common.Parsing
 {
 	public class Tokenizer
     {

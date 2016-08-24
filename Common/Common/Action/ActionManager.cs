@@ -1,6 +1,6 @@
-﻿using Common.Helper;
+﻿using ProceduralLevel.Common.Helper;
 
-namespace Common.Action
+namespace ProceduralLevel.Common.Action
 {
 	public class ActionManager<DataType>
 	{

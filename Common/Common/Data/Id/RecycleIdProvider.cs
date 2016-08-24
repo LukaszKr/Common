@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Common.Data
+namespace ProceduralLevel.Common.Data
 {
 	public class RecycleIdProvider: BaseIdProvider
 	{

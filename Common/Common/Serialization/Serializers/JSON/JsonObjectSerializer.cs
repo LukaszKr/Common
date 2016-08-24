@@ -1,6 +1,6 @@
-﻿using Common.Parsing;
+﻿using ProceduralLevel.Common.Parsing;
 
-namespace Common.Serialization
+namespace ProceduralLevel.Common.Serialization
 {
 	public class JsonObjectSerializer: IPairSerializer
 	{

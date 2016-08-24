@@ -1,4 +1,4 @@
-namespace Common.Event
+namespace ProceduralLevel.Common.Event
 {
 	public interface IEventBinding
 	{

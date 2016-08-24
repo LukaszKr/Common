@@ -6,7 +6,7 @@
     <SharedGUID>53a63717-edc1-404a-9e5b-e7dc9230fdce</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Common</Import_RootNamespace>
+    <Import_RootNamespace>ProceduralLevel.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Achievement\AchievementManager.cs" />

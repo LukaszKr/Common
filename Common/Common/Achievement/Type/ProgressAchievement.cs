@@ -1,7 +1,7 @@
-﻿using Common.Serialization;
+﻿using ProceduralLevel.Common.Serialization;
 using System;
 
-namespace Common.Achievement
+namespace ProceduralLevel.Common.Achievement
 {
 	public class ProgressAchievement: BaseAchievement
 	{

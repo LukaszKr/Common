@@ -1,6 +1,6 @@
-﻿using Common.Serialization;
+﻿using ProceduralLevel.Common.Serialization;
 
-namespace Common.Highscore
+namespace ProceduralLevel.Common.Highscore
 {
 	public class HighscoreEntry: ISerializable
     {

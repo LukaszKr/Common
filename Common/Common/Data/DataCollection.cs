@@ -1,8 +1,8 @@
-using Common.Helper;
+using ProceduralLevel.Common.Helper;
 using System;
 using System.Collections.Generic;
 
-namespace Common.Data
+namespace ProceduralLevel.Common.Data
 {
 	public class DataCollection<DataType> where DataType : DataItem
 	{

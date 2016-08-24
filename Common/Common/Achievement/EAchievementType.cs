@@ -1,4 +1,4 @@
-﻿namespace Common.Achievement
+﻿namespace ProceduralLevel.Common.Achievement
 {
 	public enum EAchievementType
     {

@@ -1,4 +1,4 @@
-namespace Common.Helper
+namespace ProceduralLevel.Common.Helper
 {
 	public class ArrayList<T> where T : class 
 	{

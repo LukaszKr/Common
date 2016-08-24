@@ -1,4 +1,4 @@
-﻿namespace Common.Parsing
+﻿namespace ProceduralLevel.Common.Parsing
 {
 	public class Token
     {

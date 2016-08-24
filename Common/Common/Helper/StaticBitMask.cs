@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace Common.Helper
+namespace ProceduralLevel.Common.Helper
 {
 	public class StaticBitMask
 	{

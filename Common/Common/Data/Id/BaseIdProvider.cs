@@ -1,4 +1,4 @@
-namespace Common.Data
+namespace ProceduralLevel.Common.Data
 {
 	public abstract class BaseIdProvider
     {

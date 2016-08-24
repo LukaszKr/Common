@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.State
+namespace ProceduralLevel.Common.State
 {
 	public class IllegalTransitionException<StateIdType>: Exception
 	{

@@ -1,4 +1,4 @@
-﻿namespace Common.Action
+﻿namespace ProceduralLevel.Common.Action
 {
 	public interface IBaseAction<DataType>
 	{

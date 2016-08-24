@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Action
+namespace ProceduralLevel.Common.Action
 {
 	public class ActionContext<DataType>
 	{

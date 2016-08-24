@@ -1,4 +1,4 @@
-﻿namespace Common.State
+﻿namespace ProceduralLevel.Common.State
 {
 	public abstract class BaseState<StateIDType>
 	{

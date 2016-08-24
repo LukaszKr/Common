@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Common.Serialization
+namespace ProceduralLevel.Common.Serialization
 {
 	public class TextSerializer: TextPersistence, ISerializer
 	{

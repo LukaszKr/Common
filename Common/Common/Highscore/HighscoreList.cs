@@ -1,7 +1,7 @@
-﻿using Common.Serialization;
+﻿using ProceduralLevel.Common.Serialization;
 using System.Collections.Generic;
 
-namespace Common.Highscore
+namespace ProceduralLevel.Common.Highscore
 {
 	public class HighscoreList: ISerializable
     {

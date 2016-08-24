@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Serialization
+namespace ProceduralLevel.Common.Serialization
 {
 	public class TextDeserializer: TextPersistence, IDeserializer
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Common.Data
+namespace ProceduralLevel.Common.Data
 {
 	public class NamedDataCollection<DataType>: DataCollection<DataType> where DataType : NamedDataItem
 	{

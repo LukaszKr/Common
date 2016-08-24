@@ -3,7 +3,7 @@
 using System;
 using System.Text;
 
-namespace Common.Parsing
+namespace ProceduralLevel.Common.Parsing
 {
 	public class JsonArray
     {

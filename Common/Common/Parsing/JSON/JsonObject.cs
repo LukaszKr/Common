@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Parsing
+namespace ProceduralLevel.Common.Parsing
 {
 	public class JsonObject
     {

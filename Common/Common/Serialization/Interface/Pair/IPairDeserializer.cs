@@ -1,4 +1,4 @@
-﻿namespace Common.Serialization
+﻿namespace ProceduralLevel.Common.Serialization
 {
 	public interface IPairDeserializer
     {
