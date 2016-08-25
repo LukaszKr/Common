@@ -8,6 +8,11 @@ namespace ProceduralLevel.Common.Serialization
 
 		public int Count { get { return Array.Count; } }
 
+		public JsonArraySerializer()
+		{
+			Array = new JsonArray(4);
+		}
+
 		public void Save(IDataWriter writer)
 		{
 			writer.Write(Array.ToString());
