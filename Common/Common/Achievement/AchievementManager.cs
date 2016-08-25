@@ -45,6 +45,16 @@ namespace ProceduralLevel.Common.Achievement
 			return null;
 		}
 
+		public bool AddAchievement(BaseAchievement achievement, bool ignoreIfExists)
+		{
+			if(GetAchievementByID(achievement.ID) == null || ignoreIfExists)
+			{
+				m_Achievements.Add(achievement);
+				return true;
+			}
+			return false;
+		}
+
 		public abstract void OnAchievementUnlocked(BaseAchievement achievement);
 	}
 }

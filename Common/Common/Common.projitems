@@ -47,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Token.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Tokenizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Attribute\SerializableProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Pair\IPairDeserializer.cs" />
