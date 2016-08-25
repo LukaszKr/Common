@@ -1,6 +1,4 @@
-﻿#define SIMPLE_FORMAT
-
-using System;
+﻿using System;
 using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
