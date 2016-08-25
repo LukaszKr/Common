@@ -14,6 +14,12 @@ namespace ProceduralLevel.Common.Achievement
 			m_Achievements = new List<BaseAchievement>();
 		}
 
+		public AchievementManager(IPairDeserializer deserializer)
+		{
+			m_Achievements = new List<BaseAchievement>();
+			Deserialize(deserializer);
+		}
+
 		public void Deserialize(IPairDeserializer deserializer)
 		{
 			IDeserializer arrayDeserializer = deserializer.ReadArray(KEY_ACHIEVEMENTS);
