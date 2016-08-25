@@ -143,27 +143,27 @@ namespace ProceduralLevel.Common.Parsing
 
 		public byte ReadByte(int index)
 		{
-			return (byte)m_Data[index];
+			return (byte)ReadDouble(index);
 		}
 
 		public short ReadShort(int index)
 		{
-			return (short)m_Data[index];
+			return (short)ReadDouble(index);
 		}
 
 		public int ReadInt(int index)
 		{
-			return (int)m_Data[index];
+			return (int)ReadDouble(index);
 		}
 
 		public long ReadLong(int index)
 		{
-			return (long)m_Data[index];
+			return (long)ReadDouble(index);
 		}
 
 		public float ReadFloat(int index)
 		{
-			return (float)m_Data[index];
+			return (float)ReadDouble(index);
 		}
 
 		public double ReadDouble(int index)
