@@ -7,6 +7,11 @@ namespace ProceduralLevel.Common.Event
 	{
 		protected List<Action<EventType>> m_Listeners = new List<Action<EventType>>();
 
+		public override string ToString()
+		{
+			return string.Format("[EventChannel, Type: {0}, ListenerCount: {1}]", typeof(EventType).ToString(), m_Listeners.Count);
+		}
+
 		public void Invoke(EventType message)
 		{
 			for(int x = m_Listeners.Count-1; x >= 0; x--)
