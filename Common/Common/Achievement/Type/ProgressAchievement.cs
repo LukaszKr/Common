@@ -3,24 +3,21 @@ using System;
 
 namespace ProceduralLevel.Common.Achievement
 {
-	public class ProgressAchievement: BaseAchievement
+	public abstract class ProgressAchievement: BaseAchievement
 	{
-		public override EAchievementType AchievementType { get { return EAchievementType.Progress; } }
-
 		private const string KEY_PROGRESS = "progress";
 		private const string KEY_TARGET = "target";
 
 		public int Target { get; private set; }
 		public int Progress { get; private set; }
 
-
-		public ProgressAchievement(AchievementManager achievementManager, int id, int target, int progress = 0) : base(achievementManager, id)
+		public ProgressAchievement(int id, int target, int progress = 0) : base(id)
 		{
 			Target = target;
 			Progress = progress;
 		}
 
-		public ProgressAchievement(AchievementManager achievementManager, IPairDeserializer deserializer) : base(achievementManager, deserializer)
+		public ProgressAchievement(IPairDeserializer deserializer) : base(deserializer)
 		{
 		}
 
@@ -58,7 +55,7 @@ namespace ProceduralLevel.Common.Achievement
 			Progress = Math.Min(progress, Target);
 			if(IsAchieved())
 			{
-				m_AchievementManager.OnAchievementUnlocked(this);
+				OnAchieved();
 			}
 		}
 	}

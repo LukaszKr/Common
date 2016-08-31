@@ -2,20 +2,18 @@
 
 namespace ProceduralLevel.Common.Achievement
 {
-	public class ToggleAchievement: BaseAchievement
+	public abstract class ToggleAchievement: BaseAchievement
     {
-		public override EAchievementType AchievementType { get { return EAchievementType.Toggle; } }
-
 		public const string KEY_UNLOCKED = "unlocked";
 
 		public bool Unlocked { get; private set; }
 
-		public ToggleAchievement(AchievementManager achievementManager, int id, bool unlocked = false) : base(achievementManager, id)
+		public ToggleAchievement(int id, bool unlocked = false) : base(id)
 		{
 			Unlocked = unlocked;
 		}
 
-		public ToggleAchievement(AchievementManager achievementManager, IPairDeserializer deserializer) : base(achievementManager, deserializer)
+		public ToggleAchievement(IPairDeserializer deserializer) : base(deserializer)
 		{
 		}
 
@@ -39,7 +37,7 @@ namespace ProceduralLevel.Common.Achievement
 		public void Unlock()
 		{
 			Unlocked = true;
-			m_AchievementManager.OnAchievementUnlocked(this);
+			OnAchieved();
 		}
     }
 }
