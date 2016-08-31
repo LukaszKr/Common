@@ -7,11 +7,12 @@ namespace ProceduralLevel.Common.Event
 	{
 		private EventManager m_Manager;
 		private List<IEventBinding> m_Bindings;
-		private bool m_IsDisabled;
+		
+		public bool IsDisabled { get; private set; }
 
-		public bool IsDisabled
+		public override string ToString()
 		{
-			get { return m_IsDisabled; }
+			return string.Format("[EventBinder, EventIDType: {0}, Disabled: {1}", typeof(EventIDType).Name, IsDisabled);
 		}
 
 		public EventBinder(EventManager manager)
@@ -54,7 +55,7 @@ namespace ProceduralLevel.Common.Event
 
 		public void Disable()
 		{
-			m_IsDisabled = true;
+			IsDisabled = true;
 			for(int x = 0; x < m_Bindings.Count; x++)
 			{
 				m_Bindings[x].Unbind();
@@ -63,7 +64,7 @@ namespace ProceduralLevel.Common.Event
 
 		public void Enable()
 		{
-			m_IsDisabled = false;
+			IsDisabled = false;
 			for(int x = 0; x < m_Bindings.Count; x++)
 			{
 				m_Bindings[x].Bind();

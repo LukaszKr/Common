@@ -9,7 +9,7 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[EventChannel, Type: {0}, ListenerCount: {1}]", typeof(EventType).ToString(), m_Listeners.Count);
+			return string.Format("[EventChannel, EventType: {0}, ListenerCount: {1}]", typeof(EventType).Name, m_Listeners.Count);
 		}
 
 		public void Invoke(EventType message)
