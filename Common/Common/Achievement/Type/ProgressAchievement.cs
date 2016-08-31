@@ -52,11 +52,18 @@ namespace ProceduralLevel.Common.Achievement
 			{
 				newProgress = Math.Max(progress, Progress);
 			}
+			int oldProgress = Progress;
 			Progress = Math.Min(progress, Target);
 			if(IsAchieved())
 			{
 				OnAchieved();
 			}
+			else
+			{
+				OnProgress(oldProgress, Progress);
+			}
 		}
+
+		protected abstract void OnProgress(int oldValue, int newValue);
 	}
 }
