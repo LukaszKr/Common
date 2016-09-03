@@ -9,9 +9,6 @@
     <Import_RootNamespace>ProceduralLevel.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Achievement\Type\BaseAchievement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Achievement\Type\ProgressAchievement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Achievement\Type\ToggleAchievement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\IBaseAction.cs" />
