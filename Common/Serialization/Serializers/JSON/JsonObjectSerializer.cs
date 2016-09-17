@@ -1,4 +1,6 @@
-﻿using ProceduralLevel.Common.Parsing;
+﻿using System;
+using System.Collections.Generic;
+using ProceduralLevel.Common.Parsing;
 
 namespace ProceduralLevel.Common.Serialization
 {
@@ -19,6 +21,11 @@ namespace ProceduralLevel.Common.Serialization
 		public void Clear()
 		{
 			Object = new JsonObject();
+		}
+
+		public override string ToString()
+		{
+			return Object.ToString();
 		}
 
 		#region Write
@@ -76,6 +83,24 @@ namespace ProceduralLevel.Common.Serialization
 			Object.Write(key, serializer.Array);
 		}
 
+		public void Write(string key, IEnumerable<IPairSerializable> serializables)
+		{
+			ISerializer array = WriteArray(key);
+			foreach(IPairSerializable serializable in serializables)
+			{
+				array.Write(serializable);
+			}
+		}
+
+		public void Write(string key, IEnumerable<ISerializable> serializables)
+		{
+			ISerializer array = WriteArray(key);
+			foreach(ISerializable serializable in serializables)
+			{
+				array.Write(serializable);
+			}
+		}
+
 		public IPairSerializer WriteObject(string key)
 		{
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
@@ -89,7 +114,6 @@ namespace ProceduralLevel.Common.Serialization
 			Object.Write(key, serializer.Array);
 			return serializer;
 		}
-
 		#endregion
 	}
 }

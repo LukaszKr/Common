@@ -23,6 +23,11 @@ namespace ProceduralLevel.Common.Serialization
 			Array = new JsonArray(4);
 		}
 
+		public override string ToString()
+		{
+			return Array.ToString();
+		}
+
 		#region Write
 		public void Write(IPairSerializable serializable)
 		{

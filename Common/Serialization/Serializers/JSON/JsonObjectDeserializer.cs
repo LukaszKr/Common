@@ -29,6 +29,11 @@ namespace ProceduralLevel.Common.Serialization
 			m_Object = new JsonObject();
 		}
 
+		public override string ToString()
+		{
+			return m_Object.ToString();
+		}
+
 		#region Read
 		public IPairDeserializer ReadObject(string key)
 		{

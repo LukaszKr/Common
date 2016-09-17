@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.Common.Serialization
+﻿using System.Collections.Generic;
+
+namespace ProceduralLevel.Common.Serialization
 {
 	public interface IPairSerializer
     {
@@ -16,6 +18,8 @@
 		void Write(string key, string data);
 		void Write(string key, IPairSerializable serializable);
 		void Write(string key, ISerializable serializable);
+		void Write(string key, IEnumerable<IPairSerializable> serializables);
+		void Write(string key, IEnumerable<ISerializable> serializables);
 		IPairSerializer WriteObject(string key);
 		ISerializer WriteArray(string key);
 		#endregion

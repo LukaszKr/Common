@@ -26,6 +26,11 @@ namespace ProceduralLevel.Common.Serialization
 			m_Head = 0;
 		}
 
+		public override string ToString()
+		{
+			return m_Array.ToString();
+		}
+
 		public void FromString(string str)
 		{
 			throw new Exception("Array cannot be a root of JSON file.");
