@@ -7,15 +7,23 @@ namespace CommonUnitTest.Parsing.JSON
     [TestClass]
     public class JsonParserTest
     {
+        private string m_RawJson;
         private JsonObject m_Object;
 
         [TestInitialize()]
         public void Initialize()
         {
             JsonParser parser = new JsonParser();
-            string json = File.ReadAllText("testData/json/typeParsing.json");
+            m_RawJson = File.ReadAllText("testData/json/example.json");
 
-            m_Object = parser.Parse(json);
+            m_Object = parser.Parse(m_RawJson);
+        }
+
+        [TestMethod]
+        public void ToStringTest()
+        {
+            JsonParser parser = new JsonParser();
+            JsonObject obj = parser.Parse(m_Object.ToString());
         }
 
         [TestMethod]
@@ -31,8 +39,10 @@ namespace CommonUnitTest.Parsing.JSON
         public void NestedObjectTest()
         {
             JsonObject nested = m_Object.ReadObject("nested");
-            Assert.IsNotNull(nested);
             Assert.AreEqual("world", nested.ReadString("hello"));
+
+            nested = nested.ReadObject("nested");
+            Assert.AreEqual("world2", nested.ReadString("hello"));
         }
 
         [TestMethod]

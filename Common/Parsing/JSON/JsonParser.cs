@@ -88,18 +88,14 @@ namespace ProceduralLevel.Common.Parsing
 						}
 						else
 						{
-							if(token.Value == JsonConst.FALSE)
-							{
-								obj.Write(key, false);
-							}
-							else if(token.Value == JsonConst.TRUE)
-							{
-								obj.Write(key, true);
-							}
-							else
-							{
-								obj.Write(key, ParseNumerical(token));
-							}
+                            if(char.IsNumber(token.Value[0]))
+                            {
+                                obj.Write(key, ParseNumerical(token));
+                            }
+                            else
+                            {
+                                obj.Write(key, ParseBoolean(token));
+                            }
 							parseState = ObjectParseState.PostValue;
 						}
 						break;

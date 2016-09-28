@@ -3,7 +3,12 @@
   "integer": 1,
   "float": 2.5,
   "string": "str",
-  "nested": { "hello": "world" },
+  "nested": {
+    "hello": "world",
+    "nested": {
+      "hello": "world2"
+    }
+  },
   "array": [ 1, 2, 3 ],
   "strArray": [ "a", "b", "c" ],
   "mixedArray": [ true, "a", 1 ]

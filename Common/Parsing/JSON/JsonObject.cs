@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
-	public class JsonObject
+    public class JsonObject
     {
 		private const string PAIR_FORMAT = "{0}{1}{0}{2}{3}";
 
@@ -49,8 +50,17 @@ namespace ProceduralLevel.Common.Parsing
 
 		private void WritePairs(StringBuilder builder, string key, object value, ref int written, int toWrite)
 		{
+            string strValue;
+            if(value is double)
+            {
+                strValue = ((double)value).ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                strValue = value.ToString();
+            }
 			builder.AppendFormat(PAIR_FORMAT,
-				JsonConst.QUOTATION, key, JsonConst.KEY_VALUE_SEPARATOR, value.ToString());
+				JsonConst.QUOTATION, key, JsonConst.KEY_VALUE_SEPARATOR, strValue);
 			written++;
 			if(written < toWrite)
 			{
