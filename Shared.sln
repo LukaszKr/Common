@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityCommon", "UnityCommon\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCommon", "NetCommon\NetCommon.csproj", "{D74FC02C-4801-4AC7-BC06-F86BEC2DAF34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUnitTest", "CommonUnitTest\CommonUnitTest.csproj", "{4E537D75-FDAB-4243-B17B-74BD2343967A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Common\Common.projitems*{455713d3-7fe6-4847-a3bc-c044daa06f79}*SharedItemsImports = 4
@@ -28,6 +30,10 @@ Global
 		{D74FC02C-4801-4AC7-BC06-F86BEC2DAF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D74FC02C-4801-4AC7-BC06-F86BEC2DAF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D74FC02C-4801-4AC7-BC06-F86BEC2DAF34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

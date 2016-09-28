@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace ProceduralLevel.Common.Parsing
 {
@@ -153,8 +154,15 @@ namespace ProceduralLevel.Common.Parsing
 					case ArrayParseState.Value:
 						if(!token.IsSeparator)
 						{
-							array.Write(ParseNumerical(token));
-							parseState = ArrayParseState.PostValue;
+                            if(char.IsNumber(token.Value[0]))
+                            {
+                                array.Write(ParseNumerical(token));
+                            }
+                            else
+                            {
+                                array.Write(ParseBoolean(token));
+                            }
+                            parseState = ArrayParseState.PostValue;
 						}
 						else
 						{
@@ -199,10 +207,21 @@ namespace ProceduralLevel.Common.Parsing
 			throw new Exception("Unexpected end of array.");
 		}
 
+        private bool ParseBoolean(Token token)
+        {
+            bool value;
+            if(!bool.TryParse(token.Value, out value))
+            {
+                throw new Exception(string.Format("Expected True|False but found {0}", 
+                    token.Value));
+            }
+            return value;
+        }
+
 		private double ParseNumerical(Token token)
 		{
 			double value;
-			if(!double.TryParse(token.Value, out value))
+			if(!double.TryParse(token.Value, NumberStyles.Any , CultureInfo.InvariantCulture, out value))
 			{
 				throw new Exception(string.Format("Expected numerical value but found {0}",
 					token.Value));

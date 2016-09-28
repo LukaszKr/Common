@@ -1,0 +1,10 @@
+﻿{
+  "bool": true,
+  "integer": 1,
+  "float": 2.5,
+  "string": "str",
+  "nested": { "hello": "world" },
+  "array": [ 1, 2, 3 ],
+  "strArray": [ "a", "b", "c" ],
+  "mixedArray": [ true, "a", 1 ]
+}
