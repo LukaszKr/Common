@@ -5,9 +5,11 @@ using System.IO;
 namespace CommonUnitTest.Parsing.JSON
 {
     [TestClass]
-    public class JsonParserTest
+    public class JsonTest
     {
         private string m_RawJson;
+        private string m_Simple1;
+        private string m_Simple2;
         private JsonObject m_Object;
 
         [TestInitialize()]
@@ -15,6 +17,8 @@ namespace CommonUnitTest.Parsing.JSON
         {
             JsonParser parser = new JsonParser();
             m_RawJson = File.ReadAllText("testData/json/example.json");
+            m_Simple1 = File.ReadAllText("testData/json/simple1.json");
+            m_Simple2 = File.ReadAllText("testData/json/simple2.json");
 
             m_Object = parser.Parse(m_RawJson);
         }
@@ -24,6 +28,16 @@ namespace CommonUnitTest.Parsing.JSON
         {
             JsonParser parser = new JsonParser();
             JsonObject obj = parser.Parse(m_Object.ToString());
+
+            obj = new JsonObject();
+            Assert.AreEqual("{}", obj.ToString());
+
+            obj.Write("ttrue", true);
+            Assert.AreEqual(m_Simple1, obj.ToString());
+
+            obj = new JsonObject();
+            obj.Write("nested", new JsonObject());
+            Assert.AreEqual(m_Simple2, obj.ToString());
         }
 
         [TestMethod]

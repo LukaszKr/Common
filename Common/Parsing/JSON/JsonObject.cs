@@ -55,6 +55,10 @@ namespace ProceduralLevel.Common.Parsing
             {
                 strValue = ((double)value).ToString(CultureInfo.InvariantCulture);
             }
+            else if(value is bool)
+            {
+                strValue = ((bool)value).ToString().ToLower();
+            }
             else
             {
                 strValue = value.ToString();

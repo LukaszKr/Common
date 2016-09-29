@@ -50,8 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Parsing\JSON\JsonObjectTest.cs" />
-    <Compile Include="Parsing\JSON\JsonParserTest.cs" />
+    <Compile Include="Parsing\JSON\JsonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="testData\json\example.json" />
+    <None Include="testData\json\simple1.json" />
+    <None Include="testData\json\simple2.json" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
