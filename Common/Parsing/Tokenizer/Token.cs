@@ -13,7 +13,7 @@
 
 		public override string ToString()
 		{
-			return base.ToString() + string.Format("[{0}, Separator: {1}]", Value, IsSeparator);
+			return string.Format("[Token][{0}, Separator: {1}]", Value, IsSeparator);
 		}
 	}
 }

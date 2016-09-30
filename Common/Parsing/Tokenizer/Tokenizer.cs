@@ -59,7 +59,7 @@ namespace ProceduralLevel.Common.Parsing
 				for(int sepIndex = 0; sepIndex < m_Separators.Count; sepIndex++)
 				{
 					string separator = m_Separators[sepIndex];
-					if(text.Substring(index, separator.Length) == separator)
+					if(index+separator.Length <= text.Length && text.Substring(index, separator.Length) == separator)
 					{
 						string value = text.Substring(current, index-current);
 						if(m_AutoTrim)

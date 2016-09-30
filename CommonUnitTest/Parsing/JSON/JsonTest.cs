@@ -28,6 +28,7 @@ namespace CommonUnitTest.Parsing.JSON
         {
             JsonParser parser = new JsonParser();
             JsonObject obj = parser.Parse(m_Object.ToString());
+            Assert.AreEqual(true, m_Object.Equals(obj));
 
             obj = new JsonObject();
             Assert.AreEqual("{}", obj.ToString());
@@ -38,6 +39,7 @@ namespace CommonUnitTest.Parsing.JSON
             obj = new JsonObject();
             obj.Write("nested", new JsonObject());
             Assert.AreEqual(m_Simple2, obj.ToString());
+
         }
 
         [TestMethod]

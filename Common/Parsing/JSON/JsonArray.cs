@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
-	public class JsonArray
+	public class JsonArray: IEquatable<JsonArray>
     {
 		private object[] m_Data;
 
@@ -14,6 +14,22 @@ namespace ProceduralLevel.Common.Parsing
 			m_Data = new object[initialLength];
 			Count = 0;
 		}
+
+        public bool Equals(JsonArray array)
+        {
+            if(array.Count != Count)
+            {
+                return false;
+            }
+            for(int x = 0; x < Count; x++)
+            {
+                if(!array.m_Data[x].Equals(m_Data[x]))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
 		public override string ToString()
 		{

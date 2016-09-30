@@ -36,6 +36,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Input\BaseInputController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\IInputValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSV.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSVConst.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSVRow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSVParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonArray.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonConst.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonObject.cs" />

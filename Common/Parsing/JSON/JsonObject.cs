@@ -1,25 +1,65 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
-    public class JsonObject
+    public class JsonObject: IEquatable<JsonObject>
     {
 		private const string PAIR_FORMAT = "{0}{1}{0}{2}{3}";
 
-		private Dictionary<string, object> m_Params;
-		private Dictionary<string, JsonObject> m_Objects;
-		private Dictionary<string, JsonArray> m_Arrays;
+		public Dictionary<string, object> Params { get; private set; }
+		public Dictionary<string, JsonObject> Objects { get; private set; }
+		public Dictionary<string, JsonArray> Arrays { get; private set; }
 
 		public JsonObject()
 		{
-			m_Params = new Dictionary<string, object>();
-			m_Objects = new Dictionary<string, JsonObject>();
-			m_Arrays = new Dictionary<string, JsonArray>();
+			Params = new Dictionary<string, object>();
+			Objects = new Dictionary<string, JsonObject>();
+			Arrays = new Dictionary<string, JsonArray>();
 		}
 
-		public override string ToString()
+        public bool Equals(JsonObject obj)
+        {
+            if(Params.Count != obj.Params.Count
+                || Objects.Count != obj.Objects.Count
+                || Arrays.Count != obj.Arrays.Count)
+            {
+                return false;
+            }
+
+            object compared;
+            foreach(var pair in Params)
+            {
+                if(!obj.Params.TryGetValue(pair.Key, out compared) || !compared.Equals(pair.Value))
+                {
+                    return false;
+                }
+            }
+
+            JsonObject jsonCompared;
+            foreach(var pair in Objects)
+            {
+                if(!obj.Objects.TryGetValue(pair.Key, out jsonCompared) || !jsonCompared.Equals(pair.Value))
+                {
+                    return false;
+                }
+            }
+
+            JsonArray arrayCompared;
+            foreach(var pair in Arrays)
+            {
+                if(!obj.Arrays.TryGetValue(pair.Key, out arrayCompared) || !arrayCompared.Equals(pair.Value))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override string ToString()
 		{
 			StringBuilder builder = new StringBuilder();
 			builder.Append(JsonConst.BRACKETS_OPEN);
@@ -27,19 +67,19 @@ namespace ProceduralLevel.Common.Parsing
 			builder.Append("\n");
 #endif
 
-			int toWrite = m_Params.Count+m_Objects.Count+m_Arrays.Count;
+			int toWrite = Params.Count+Objects.Count+Arrays.Count;
 			int written = 0;
-			foreach(var pair in m_Params)
+			foreach(var pair in Params)
 			{
 				WritePairs(builder, pair.Key, pair.Value, ref written, toWrite);
 			}
 
-			foreach(var pair in m_Objects)
+			foreach(var pair in Objects)
 			{
 				WritePairs(builder, pair.Key, pair.Value, ref written, toWrite);
 			}
 
-			foreach(var pair in m_Arrays)
+			foreach(var pair in Arrays)
 			{
 				WritePairs(builder, pair.Key, pair.Value, ref written, toWrite);
 			}
@@ -77,58 +117,58 @@ namespace ProceduralLevel.Common.Parsing
 
 		public void Write(string key, bool param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, byte param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, short param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, int param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, long param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, float param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, double param)
 		{
-			m_Params[key] = param;
+			Params[key] = param;
 		}
 
 		public void Write(string key, string str)
 		{
-			m_Params[key] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
+			Params[key] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
 		}
 
 		public void Write(string key, JsonObject obj)
 		{
-			m_Objects[key] = obj;
+			Objects[key] = obj;
 		}
 
 		public void Write(string key, JsonArray array)
 		{
-			m_Arrays[key] = array;
+			Arrays[key] = array;
 		}
 
 		#region Read
 		public bool ReadBool(string key)
 		{
-			return (bool)m_Params[key];
+			return (bool)Params[key];
 		}
 
 		public byte ReadByte(string key)
@@ -158,23 +198,23 @@ namespace ProceduralLevel.Common.Parsing
 
 		public double ReadDouble(string key)
 		{
-			return (double)m_Params[key];
+			return (double)Params[key];
 		}
 
 		public string ReadString(string key)
 		{
-			string str = (string)m_Params[key];
+			string str = (string)Params[key];
 			return str.Substring(1, str.Length-2);
 		}
 
 		public JsonObject ReadObject(string key)
 		{
-			return m_Objects[key];
+			return Objects[key];
 		}
 
 		public JsonArray ReadArray(string key)
 		{
-			return m_Arrays[key];
+			return Arrays[key];
 		}
 		#endregion
 
@@ -182,7 +222,7 @@ namespace ProceduralLevel.Common.Parsing
 		public bool TryReadBool(string key, bool defaultValue = false)
 		{
 			object value;
-			if(m_Params.TryGetValue(key, out value))
+			if(Params.TryGetValue(key, out value))
 			{
 				return (bool)value;
 			}
@@ -217,7 +257,7 @@ namespace ProceduralLevel.Common.Parsing
 		public double TryReadDouble(string key, double defaultValue = 0)
 		{
 			object value;
-			if(m_Params.TryGetValue(key, out value))
+			if(Params.TryGetValue(key, out value))
 			{
 				return (double)value;
 			}
@@ -227,7 +267,7 @@ namespace ProceduralLevel.Common.Parsing
 		public string TryReadString(string key, string defaultValue = "")
 		{
 			object value;
-			if(m_Params.TryGetValue(key, out value))
+			if(Params.TryGetValue(key, out value))
 			{
 				string str = (string)value;
 				return str.Substring(1, str.Length-2);
@@ -238,14 +278,14 @@ namespace ProceduralLevel.Common.Parsing
 		public JsonObject TryReadObject(string key)
 		{
 			JsonObject obj;
-			m_Objects.TryGetValue(key, out obj);
+			Objects.TryGetValue(key, out obj);
 			return obj;
 		}
 
 		public JsonArray TryReadArray(string key)
 		{
 			JsonArray array;
-			m_Arrays.TryGetValue(key, out array);
+			Arrays.TryGetValue(key, out array);
 			return array;
 		}
 		#endregion

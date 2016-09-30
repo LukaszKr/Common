@@ -6,7 +6,7 @@
     <ProjectGuid>{4E537D75-FDAB-4243-B17B-74BD2343967A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CommonUnitTest</RootNamespace>
+    <RootNamespace>ProceduralLevel.CommonUnitTest</RootNamespace>
     <AssemblyName>CommonUnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -50,7 +50,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Parsing\JSON\JsonTest.cs" />
+    <Compile Include="Parsing\CSV\CSVTest.cs" />
+    <Compile Include="Parsing\Json\JsonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +61,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="testData\csv\example.csv" />
     <None Include="testData\json\example.json" />
     <None Include="testData\json\simple1.json" />
     <None Include="testData\json\simple2.json" />
