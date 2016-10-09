@@ -4,8 +4,6 @@ namespace ProceduralLevel.Common.Action
 {
 	public class ActionContext<DataType>
 	{
-		public static List<IBaseAction<DataType>> History = new List<IBaseAction<DataType>>();
-
 		private int m_Depth;
 		private Queue<IBaseAction<DataType>> m_Actions;
 
@@ -39,15 +37,15 @@ namespace ProceduralLevel.Common.Action
 			return null;
 		}
 
-		public bool Execute(DataType data)
+		public bool Execute(DataType data, int tick)
 		{
 			IBaseAction<DataType> action = PopAction();
 			if(action != null)
 			{
 				if(action.IsValid(data))
 				{
-					History.Add(action);
-					action.Apply(data);
+                    action.ExecutionTick = tick;
+                    action.Apply(data);
 				}
 				return true;
 			}
