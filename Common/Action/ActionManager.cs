@@ -12,13 +12,10 @@ namespace ProceduralLevel.Common.Action
 		private int m_CurrentContext = 0;
 		private bool m_Executing;
 
-        public int Tick { get; private set; }
-
 		public bool Paused { get { return m_Paused; } }
 
 		public ActionManager(DataType data)
 		{
-            Tick = 0;
 			m_Data = data;
 			for(int x = 0; x < INITIAL_CONTEXT_DEPTH; x++)
 			{
@@ -52,8 +49,7 @@ namespace ProceduralLevel.Common.Action
 
 		public void Update()
 		{
-            Tick ++;
-            m_Executing = true;
+			m_Executing = true;
 			while(!Paused)
 			{
 				ActionContext<DataType> currentContext = GetContext(m_CurrentContext);
@@ -66,7 +62,7 @@ namespace ProceduralLevel.Common.Action
 				{	
 					break;
 				}
-				if(currentContext.Execute(m_Data, Tick))
+				if(currentContext.Execute(m_Data))
 				{
 					m_CurrentContext++;
 				}
