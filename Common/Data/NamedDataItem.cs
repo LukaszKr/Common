@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Data
 {
-	public class NamedDataItem: DataItem
+	public class NamedDataItem: IDataItem
 	{
 		protected string m_Name;
 

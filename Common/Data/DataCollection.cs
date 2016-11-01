@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Data
 {
-	public class DataCollection<DataType> where DataType : DataItem
+	public class DataCollection<DataType> where DataType : IDataItem
 	{
 		protected ArrayList<DataType> m_Items = new ArrayList<DataType>();
 		private BaseIdProvider m_IdProvider;
