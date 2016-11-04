@@ -150,7 +150,7 @@ namespace ProceduralLevel.Common.Parsing
 					case ArrayParseState.Value:
 						if(!token.IsSeparator)
 						{
-                            if(char.IsNumber(token.Value[0]))
+                            if(char.IsNumber(token.Value[0]) || token.Value[0] == '-')
                             {
                                 array.Write(ParseNumerical(token));
                             }

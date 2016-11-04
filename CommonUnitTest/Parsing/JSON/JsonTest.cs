@@ -65,11 +65,12 @@ namespace CommonUnitTest.Parsing.JSON
         public void NestedArrayTest()
         {
             JsonArray array = m_Object.ReadArray("array");
-            Assert.AreEqual(3, array.Count);
-            for(int x = 0; x < array.Count; x++)
+            Assert.AreEqual(4, array.Count);
+            for(int x = 0; x < 3; x++)
             {
                 Assert.AreEqual(x+1, array.ReadInt(x));
             }
+            Assert.AreEqual(-1, array.ReadInt(3));
 
             array = m_Object.ReadArray("strArray");
             Assert.AreEqual(3, array.Count);
