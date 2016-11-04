@@ -1,6 +1,7 @@
 ﻿{
   "bool": true,
   "integer": 1,
+  "negative": -1,
   "float": 2.5,
   "string": "str",
   "nested": {

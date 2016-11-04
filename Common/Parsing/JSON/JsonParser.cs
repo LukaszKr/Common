@@ -88,7 +88,7 @@ namespace ProceduralLevel.Common.Parsing
 						}
 						else
 						{
-                            if(char.IsNumber(token.Value[0]))
+                            if(char.IsNumber(token.Value[0]) || token.Value[0] == '-')
                             {
                                 obj.Write(key, ParseNumerical(token));
                             }
