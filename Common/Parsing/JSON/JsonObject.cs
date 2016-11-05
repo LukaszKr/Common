@@ -207,11 +207,6 @@ namespace ProceduralLevel.Common.Parsing
 			return str.Substring(1, str.Length-2);
 		}
 
-        public EnumType ReadEnum<EnumType>(string key)
-        {
-            return (EnumType)Params[key];
-        }
-
 		public JsonObject ReadObject(string key)
 		{
 			return Objects[key];
@@ -279,16 +274,6 @@ namespace ProceduralLevel.Common.Parsing
 			}
 			return defaultValue;
 		}
-
-        public EnumType TryReadEnum<EnumType>(string key, EnumType defaultValue = default(EnumType))
-        {
-            object value;
-            if(Params.TryGetValue(key, out value))
-            {
-                return (EnumType)value;
-            }
-            return defaultValue;
-        }
 
 		public JsonObject TryReadObject(string key)
 		{

@@ -96,11 +96,6 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			return m_Object.ReadString(key);
 		}
-
-        public EnumType ReadEnum<EnumType>(string key)
-        {
-            return m_Object.ReadEnum<EnumType>(key);
-        }
 		#endregion
 
 		#region TryRead
@@ -154,42 +149,44 @@ namespace ProceduralLevel.Common.Serialization
 		public byte TryReadByte(string key, byte defaultValue = 0)
 		{
 			return m_Object.TryReadByte(key, defaultValue);
+
 		}
 
 		public short TryReadShort(string key, short defaultValue = 0)
 		{
 			return m_Object.TryReadShort(key, defaultValue);
+
 		}
 
 		public int TryReadInt(string key, int defaultValue = 0)
 		{
 			return m_Object.TryReadInt(key, defaultValue);
+
 		}
 
 		public long TryReadLong(string key, long defaultValue = 0)
 		{
 			return m_Object.TryReadLong(key, defaultValue);
+
 		}
 
 		public float TryReadFloat(string key, float defaultValue = 0)
 		{
 			return m_Object.TryReadFloat(key, defaultValue);
+
 		}
 
 		public double TryReadDouble(string key, double defaultValue = 0)
 		{
 			return m_Object.TryReadDouble(key, defaultValue);
+
 		}
 
 		public string TryReadString(string key, string defaultValue = null)
 		{
 			return m_Object.TryReadString(key, defaultValue);
-		}
 
-        public EnumType TryReadEnum<EnumType>(string key, EnumType defaultValue = default(EnumType))
-        {
-            return m_Object.TryReadEnum<EnumType>(key, defaultValue);
-        }
+		}
 		#endregion
 	}
 }

@@ -103,11 +103,6 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Array.ReadString(m_Head++);
 		}
 
-        public EnumType ReadEnum<EnumType>()
-        {
-            return m_Array.ReadEnum<EnumType>(m_Head++);
-        }
-
 		public void ReadObject(int index, IPairSerializable obj)
 		{
 			obj.Deserialize(ReadObject(index));
@@ -167,10 +162,5 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			return m_Array.ReadString(index);
 		}
-
-        public EnumType ReadEnum<EnumType>(int index)
-        {
-            return m_Array.ReadEnum<EnumType>(index);
-        }
-    }
+	}
 }

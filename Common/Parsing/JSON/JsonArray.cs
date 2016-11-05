@@ -193,11 +193,6 @@ namespace ProceduralLevel.Common.Parsing
 			return str.Substring(1, str.Length-2);
 		}
 
-        public EnumType ReadEnum<EnumType>(int index)
-        {
-            return (EnumType)m_Data[index];
-        }
-
 		public JsonObject ReadObject(int index)
 		{
 			return (JsonObject)m_Data[index];

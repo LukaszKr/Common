@@ -21,7 +21,6 @@
 		float ReadFloat();
 		double ReadDouble();
 		string ReadString();
-        EnumType ReadEnum<EnumType>();
 
 		void ReadObject(int index, IPairSerializable obj);
 		void ReadArray(int index, ISerializable obj);
@@ -35,7 +34,6 @@
 		float ReadFloat(int index);
 		double ReadDouble(int index);
 		string ReadString(int index);
-        EnumType ReadEnum<EnumType>(int index);
-        #endregion
-    }
+		#endregion
+	}
 }
