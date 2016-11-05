@@ -18,8 +18,9 @@
 		float ReadFloat(string key);
 		double ReadDouble(string key);
 		string ReadString(string key);
+        EnumType ReadEnum<EnumType>(string key);
 
-		IPairDeserializer TryReadObject(string key);
+        IPairDeserializer TryReadObject(string key);
 		IDeserializer TryReadArray(string key);
 		bool TryReadObject(string key, IPairSerializable obj);
 		bool TryReadArray(string key, ISerializable obj);
@@ -31,6 +32,7 @@
 		float TryReadFloat(string key, float defaultValue = 0f);
 		double TryReadDouble(string key, double defaultValue = 0);
 		string TryReadString(string key, string defaultValue = null);
-		#endregion
-	}
+        EnumType TryReadEnum<EnumType>(string key, EnumType defaultValue = default(EnumType));
+        #endregion
+    }
 }

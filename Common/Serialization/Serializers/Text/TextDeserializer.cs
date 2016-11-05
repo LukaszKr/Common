@@ -126,6 +126,11 @@ namespace ProceduralLevel.Common.Serialization
 			return GetFromBuffer();
 		}
 
+        public EnumType ReadEnum<EnumType>()
+        {
+            return (EnumType)(object)ReadInt();
+        }
+
 		public void ReadObject(int index, IPairSerializable obj)
 		{
 			throw new NotSupportedException();
@@ -188,6 +193,11 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			return GetFromBuffer(index);
 		}
+
+        public EnumType ReadEnum<EnumType>(int index)
+        {
+            return (EnumType)(object)ReadInt(index);
+        }
 		#endregion
 	}
 }
