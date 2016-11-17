@@ -10,7 +10,7 @@ namespace ProceduralLevel.Common.Parsing
 		private bool m_AutoTrim;
 		private string m_LastString = null;
 
-		public Tokenizer(bool autoTrim = true)
+		public Tokenizer(bool autoTrim = false)
 		{
 			m_Tokens = new List<Token>();
 			m_AutoTrim = autoTrim;

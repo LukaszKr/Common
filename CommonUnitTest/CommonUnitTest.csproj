@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Parsing\CSV\CSVTest.cs" />
     <Compile Include="Parsing\Json\JsonTest.cs" />
+    <Compile Include="Parsing\Tokenizer\TokenizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="testData\csv\example.csv" />
+    <None Include="testData\csv\space.csv" />
     <None Include="testData\json\example.json" />
     <None Include="testData\json\simple1.json" />
     <None Include="testData\json\simple2.json" />

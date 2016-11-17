@@ -28,6 +28,21 @@ namespace CommonUnitTest.Parsing
             }
         }
         
+
+        /// <summary>
+        /// When value is something like "a, b" space in middle would get removed.
+        /// </summary>
+        [TestMethod]
+        public void SpacesTest()
+        {
+            CSVParser parser = new CSVParser();
+            string example = File.ReadAllText("testData/csv/space.csv");
+            CSV csv = parser.Parse(example);
+            Assert.AreEqual(1, csv.Count);
+            Assert.AreEqual(1, csv.Header.Length);
+            Assert.AreEqual("a, b", csv[0][0]);
+        }
+
         [TestMethod]
         public void RowsTest()
         {
