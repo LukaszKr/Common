@@ -15,6 +15,12 @@
 			JsonConst.QUOTATION
 		};
 
+		private string[] m_Value = new string[]
+		{
+			JsonConst.QUOTATION,
+			JsonConst.SEPARATOR
+		};
+
 		protected override string[] GetDefaultSeparators()
 		{
 			return m_Separators;
@@ -24,6 +30,8 @@
 		{
 			switch(token.Value)
 			{
+				case JsonConst.KEY_VALUE_SEPARATOR:
+					return m_Value;
 				case JsonConst.QUOTATION:
 					return m_Quoted;
 				default:
