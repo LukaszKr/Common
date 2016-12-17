@@ -9,5 +9,6 @@
 		public const string KEY_VALUE_SEPARATOR = ":";
 		public const string SEPARATOR = ",";
 		public const string QUOTATION = "\"";
-    }
+		public const string ESCAPED_QUOTATION = "\\\"";
+	}
 }

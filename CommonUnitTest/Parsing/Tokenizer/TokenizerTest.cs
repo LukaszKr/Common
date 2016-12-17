@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CommonUnitTest.Parsing.JSON
 {
-    [TestClass]
+	[TestClass]
     public class TokenizerTest
     {
         [TestInitialize()]
@@ -16,8 +16,7 @@ namespace CommonUnitTest.Parsing.JSON
         [TestMethod()]
         public void SimpleCase()
         {
-            Tokenizer tokenizer = new Tokenizer();
-            tokenizer.AddSeparators(",", " ");
+            Tokenizer tokenizer = new SimpleTokenizer(",", " ");
             tokenizer.Tokenize("a, b");
             List<Token> tokens = tokenizer.Flush();
             AssertToken(tokens[0], false, "a");

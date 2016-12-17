@@ -2,9 +2,9 @@
 
 namespace ProceduralLevel.Common.Parsing
 {
-	public class Tokenizer
+	public abstract class Tokenizer
     {
-		private List<string> m_Separators = new List<string>();
+		private string[] m_Separators = null;
 		private List<Token> m_Tokens;
 
 		private bool m_AutoTrim;
@@ -16,30 +16,10 @@ namespace ProceduralLevel.Common.Parsing
 			m_AutoTrim = autoTrim;
 		}
 
-		public void AddSeparator(string separator)
+		protected abstract string[] GetDefaultSeparators();
+		protected virtual string[] GetSeparators(Token token)
 		{
-			m_Separators.Add(separator);
-		}
-
-		public void AddSeparator(char separator)
-		{
-			m_Separators.Add(separator.ToString());
-		}
-
-		public void AddSeparators(params string[] separators)
-		{
-			for(int x = 0; x < separators.Length; x++)
-			{
-				m_Separators.Add(separators[x]);
-			}
-		}
-
-		public void AddSeparators(params char[] separators)
-		{
-			for(int x = 0; x < separators.Length; x++)
-			{
-				m_Separators.Add(separators[x].ToString());
-			}
+			return GetDefaultSeparators();
 		}
 
 		public void Tokenize(string str)
@@ -52,11 +32,12 @@ namespace ProceduralLevel.Common.Parsing
 			}
 			else
 			{
+				m_Separators = GetDefaultSeparators();
 				text = str;
 			}
 			for(int index = 0; index < text.Length; index++)
 			{
-				for(int sepIndex = 0; sepIndex < m_Separators.Count; sepIndex++)
+				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
 				{
 					string separator = m_Separators[sepIndex];
 					if(index+separator.Length <= text.Length && text.Substring(index, separator.Length) == separator)
@@ -67,7 +48,9 @@ namespace ProceduralLevel.Common.Parsing
 							value = value.Trim();
 						}
 						PushToken(new Token(value, false));
-						PushToken(new Token(separator, true));
+						Token separatorToken = new Token(separator, true);
+						PushToken(separatorToken);
+						m_Separators = GetSeparators(separatorToken);
 						index += separator.Length;
 						current = index;
 						index--;

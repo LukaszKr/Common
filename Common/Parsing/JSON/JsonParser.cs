@@ -10,13 +10,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		public JsonParser()
 		{
-			m_Tokenizer = new Tokenizer();
-			m_Tokenizer.AddSeparators(
-				JsonConst.ARRAY_CLOSE, JsonConst.ARRAY_OPEN,
-				JsonConst.BRACKETS_CLOSE, JsonConst.BRACKETS_OPEN,
-				JsonConst.KEY_VALUE_SEPARATOR, JsonConst.SEPARATOR,
-				JsonConst.QUOTATION
-			);
+			m_Tokenizer = new JSONTokenizer();
 		}
 
 		public JsonObject Parse(string str)

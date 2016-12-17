@@ -10,8 +10,7 @@ namespace ProceduralLevel.Common.Parsing
 
         public CSVParser(string separator = CSVConst.COLUMN_SEPARATOR)
         {
-            m_Tokenizer = new Tokenizer();
-            m_Tokenizer.AddSeparators(CSVConst.QUOTATION, CSVConst.NEW_LINE, separator);
+            m_Tokenizer = new CSVTokenizer(separator);
             m_Separator = separator;
         }
 

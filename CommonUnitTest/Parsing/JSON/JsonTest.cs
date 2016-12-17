@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CommonUnitTest.Parsing.JSON
 {
-    [TestClass]
+	[TestClass]
     public class JsonTest
     {
         private string m_RawJson;
