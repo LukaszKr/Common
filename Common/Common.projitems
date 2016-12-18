@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Id\SimpleIdProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Enums\EDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\EOrder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\BaseEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
@@ -35,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Writer\DummyLogWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Writer\ILogWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\AParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSVConst.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\CSV\CSVParser.cs" />

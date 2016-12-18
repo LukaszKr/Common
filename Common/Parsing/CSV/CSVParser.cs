@@ -3,14 +3,13 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Parsing
 {
-    public class CSVParser
+    public class CSVParser: AParser<CSV>
     {
-        private Tokenizer m_Tokenizer;
         private string m_Separator;
 
         public CSVParser(string separator = CSVConst.COLUMN_SEPARATOR)
+			:base(new CSVTokenizer(separator))
         {
-            m_Tokenizer = new CSVTokenizer(separator);
             m_Separator = separator;
         }
 
@@ -23,24 +22,16 @@ namespace ProceduralLevel.Common.Parsing
             CloseQuote
         }
 
-        public CSV Parse(string str)
-        {
-            m_Tokenizer.Tokenize(str);
-
-            List<Token> tokens = m_Tokenizer.Flush();
-            return Parse(tokens);
-        }
-
-        public CSV Parse(List<Token> tokens)
+		protected override CSV Parse()
         {
             ParseState parseState = ParseState.ValueStart;
             CSV csv = new CSV(m_Separator);
             string value = "";
             List<string> values = new List<string>();
 
-            for(int x = 0; x < tokens.Count; x++)
+            while(HasTokens())
             {
-                Token token = tokens[x];
+                Token token = ConsumeToken();
                 switch(parseState)
                 {
                     case ParseState.ValueStart:

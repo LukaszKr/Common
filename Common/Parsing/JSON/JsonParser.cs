@@ -1,45 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 
 namespace ProceduralLevel.Common.Parsing
 {
-	public class JsonParser
+	public class JsonParser: AParser<JsonObject>
     {
-		private Tokenizer m_Tokenizer;
 
 		public JsonParser()
+			:base(new JSONTokenizer())
 		{
-			m_Tokenizer = new JSONTokenizer();
-		}
-
-		public JsonObject Parse(string str)
-		{
-			m_Tokenizer.Tokenize(str);
-
-			List<Token> tokens = m_Tokenizer.Flush();
-			int offset = 0;
-			return ParseObject(tokens, ref offset);
 		}
 
 		private enum ParseObjectState
 		{
 			String = 0,
 			KeySeparator = 1,
-			Value = 2,
 			Separator = 3
 		}
 
-		private JsonObject ParseObject(List<Token> tokens, ref int offset)
+		protected override JsonObject Parse()
 		{
-			offset++;
+			ConsumeToken();
+			return ParseObject();
+		}
+
+		private JsonObject ParseObject()
+		{
 			string key = "";
 
 			ParseObjectState state = ParseObjectState.String;
 			JsonObject obj = new JsonObject();
-			for(int x = offset; x < tokens.Count; x++)
+			while(HasTokens())
 			{
-				Token token = tokens[x];
+				Token token = ConsumeToken();
 				string tokenValue = token.Value.Trim();
 				switch(state)
 				{
@@ -50,12 +43,11 @@ namespace ProceduralLevel.Common.Parsing
 							{
 								if(token.Value == JsonConst.QUOTATION)
 								{
-									key = ParseString(tokens, ref x);
+									key = ParseString();
 									state = ParseObjectState.KeySeparator;
 								}
 								else if(token.Value == JsonConst.BRACKETS_CLOSE)
 								{
-									offset = x;
 									return obj;
 								}
 								else
@@ -71,7 +63,9 @@ namespace ProceduralLevel.Common.Parsing
 						{
 							if(token.IsSeparator && token.Value == JsonConst.KEY_VALUE_SEPARATOR)
 							{
-								state = ParseObjectState.Value;
+								object value = ParseValue();
+								obj.WriteObject(key, value);
+								state = ParseObjectState.Separator;
 							}
 							else
 							{
@@ -80,11 +74,6 @@ namespace ProceduralLevel.Common.Parsing
 							}
 						}
 						break;
-					case ParseObjectState.Value:
-						object value = ParseValue(tokens, ref x);
-						obj.WriteObject(key, value);
-						state = ParseObjectState.Separator;
-						break;
 					case ParseObjectState.Separator:
 						if(tokenValue.Length > 0)
 						{
@@ -92,7 +81,6 @@ namespace ProceduralLevel.Common.Parsing
 							{
 								if(token.Value == JsonConst.BRACKETS_CLOSE)
 								{
-									offset = x;
 									return obj;
 								}
 								else if(token.Value == JsonConst.SEPARATOR)
@@ -102,7 +90,7 @@ namespace ProceduralLevel.Common.Parsing
 								else
 								{
 									throw new Exception(string.Format("While parsing object, found '{0}' but expected '{1}' or '{2}'",
-										token.Value, JsonConst.QUOTATION, JsonConst.BRACKETS_CLOSE));
+										token.Value, JsonConst.SEPARATOR, JsonConst.BRACKETS_CLOSE));
 								}
 							}
 							else
@@ -117,29 +105,27 @@ namespace ProceduralLevel.Common.Parsing
 			return obj;
 		}
 
-		private JsonArray ParseArray(List<Token> tokens, ref int offset)
+		private JsonArray ParseArray()
 		{
 			bool isValue = true;
-			offset++;
 			JsonArray arr = new JsonArray(1);
-			for(int x = offset; x < tokens.Count; x++)
+			while(HasTokens())
 			{
-				Token token = tokens[x];
 				if(isValue)
 				{
-					object value = ParseValue(tokens, ref x);
+					object value = ParseValue();
 					arr.WriteObject(value);
 					isValue = false;
 				}
 				else
 				{
+					Token token = ConsumeToken();
 					string tokenValue = token.Value.Trim();
 					if(tokenValue.Length > 0)
 					{
 						isValue = true;
 						if(token.Value == JsonConst.ARRAY_CLOSE)
 						{
-							offset = x;
 							return arr;
 						}
 						else if(token.Value != JsonConst.SEPARATOR && token.Value != JsonConst.ARRAY_CLOSE)
@@ -151,31 +137,29 @@ namespace ProceduralLevel.Common.Parsing
 				}
 
 			}
-			offset = tokens.Count;
 			return arr;
 		}
 
 
-		private object ParseValue(List<Token> tokens, ref int offset)
+		private object ParseValue()
 		{
-			for(int x = offset; x < tokens.Count; x++)
+			while(HasTokens())
 			{
-				Token token = tokens[x];
+				Token token = ConsumeToken();
 				string trimmed = token.Value.Trim();
 				if(trimmed.Length > 0)
 				{
-					offset = x;
 					if(token.Value == JsonConst.QUOTATION)
 					{
-						return ParseString(tokens, ref offset);
+						return ParseString();
 					}
 					else if(token.Value == JsonConst.ARRAY_OPEN)
 					{
-						return ParseArray(tokens, ref offset);
+						return ParseArray();
 					}
 					else if(token.Value == JsonConst.BRACKETS_OPEN)
 					{
-						return ParseObject(tokens, ref offset);
+						return ParseObject();
 					}
 					else if(char.IsNumber(trimmed[0]) || trimmed[0] == '-')
 					{
@@ -200,18 +184,16 @@ namespace ProceduralLevel.Common.Parsing
 					}
 				}
 			}
-			offset = tokens.Count;
 			return null;
 		}
 
-		private string ParseString(List<Token> tokens, ref int offset)
+		private string ParseString()
 		{
-			offset++;
 			bool quoted = true;
 			string result = "";
-			for(int x = offset; x < tokens.Count; x++)
+			while(HasTokens())
 			{
-				Token token = tokens[x];
+				Token token = ConsumeToken();
 				if(quoted)
 				{
 					if(!token.IsSeparator)
@@ -226,7 +208,6 @@ namespace ProceduralLevel.Common.Parsing
 					}
 					else
 					{
-						offset = x;
 						return "";
 					}
 				}
@@ -237,11 +218,9 @@ namespace ProceduralLevel.Common.Parsing
 						throw new Exception(string.Format("While parsing string, found '{0}' instead of closing quote: '{1}'", 
 							token.Value, JsonConst.QUOTATION));
 					}
-					offset = x;
 					return result;
 				}
 			}
-			offset = tokens.Count;
 			return "";
 		}
 	}
