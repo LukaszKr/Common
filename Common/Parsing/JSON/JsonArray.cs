@@ -212,6 +212,11 @@ namespace ProceduralLevel.Common.Parsing
 		{
 			return (JsonArray)m_Data[index];
 		}
+
+		public object Read(int index)
+		{
+			return m_Data[index];
+		}
 		#endregion
 	}
 }

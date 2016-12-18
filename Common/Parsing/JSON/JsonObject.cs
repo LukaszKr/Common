@@ -312,6 +312,26 @@ namespace ProceduralLevel.Common.Parsing
 			Arrays.TryGetValue(key, out array);
 			return array;
 		}
+
+		public object TryRead(string key)
+		{
+			object result;
+			if(Params.TryGetValue(key, out result))
+			{
+				return result;
+			}
+			JsonObject obj;
+			if(Objects.TryGetValue(key, out obj))
+			{
+				return obj;
+			}
+			JsonArray arr;
+			if(Arrays.TryGetValue(key, out arr))
+			{
+				return arr;
+			}
+			return null;
+		}
 		#endregion
 	}
 }
