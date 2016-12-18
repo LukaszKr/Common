@@ -21,6 +21,7 @@ namespace ProceduralLevel.Common.Serialization
 		void Write(string key, IEnumerable<IPairSerializable> serializables);
 		void Write(string key, IEnumerable<ISerializable> serializables);
 		IPairSerializer WriteObject(string key);
+		void Write(object kEY_NAME);
 		ISerializer WriteArray(string key);
 		#endregion
 	}

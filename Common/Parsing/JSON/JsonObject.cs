@@ -227,8 +227,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		public string ReadString(string key)
 		{
-			string str = (string)Params[key];
-			return str;
+			return (string)Params[key];
 		}
 
 		public JsonObject ReadObject(string key)
