@@ -50,6 +50,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JsonParser.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\JSON\JSONTokenizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\ETokenType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\SimpleTokenizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Token.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Tokenizer.cs" />

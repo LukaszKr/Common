@@ -7,6 +7,7 @@ namespace ProceduralLevel.Common.Parsing
 {
     public class JsonObject: IEquatable<JsonObject>
     {
+		private const string STRING_FORMAT = "{0}{1}{0}";
 		private const string PAIR_FORMAT = "{0}{1}{0}{2}{3}";
 
 		public Dictionary<string, object> Params { get; private set; }
@@ -99,6 +100,10 @@ namespace ProceduralLevel.Common.Parsing
             {
                 strValue = ((bool)value).ToString().ToLower();
             }
+			else if(value is string)
+			{
+				strValue = string.Format(STRING_FORMAT, JsonConst.QUOTATION, value.ToString());
+			}
             else
             {
                 strValue = value.ToString();
@@ -165,6 +170,25 @@ namespace ProceduralLevel.Common.Parsing
 			Arrays[key] = array;
 		}
 
+		public void WriteObject(string key, object obj)
+		{
+			JsonObject jsonObj = obj as JsonObject;
+			if(jsonObj != null)
+			{
+				Write(key, jsonObj);
+				return;
+			}
+
+			JsonArray jsonArr = obj as JsonArray;
+			if(jsonArr != null)
+			{
+				Write(key, jsonArr);
+				return;
+			}
+
+			Params[key] = obj;
+		}
+
 		#region Read
 		public bool ReadBool(string key)
 		{
@@ -204,7 +228,7 @@ namespace ProceduralLevel.Common.Parsing
 		public string ReadString(string key)
 		{
 			string str = (string)Params[key];
-			return str.Substring(1, str.Length-2);
+			return str;
 		}
 
 		public JsonObject ReadObject(string key)

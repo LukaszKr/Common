@@ -47,8 +47,8 @@ namespace ProceduralLevel.Common.Parsing
 						{
 							value = value.Trim();
 						}
-						PushToken(new Token(value, false));
-						Token separatorToken = new Token(separator, true);
+						PushToken(new Token(value, ETokenType.Value));
+						Token separatorToken = new Token(separator, ETokenType.Separator);
 						PushToken(separatorToken);
 						m_Separators = GetSeparators(separatorToken);
 						index += separator.Length;
@@ -64,7 +64,7 @@ namespace ProceduralLevel.Common.Parsing
 		public List<Token> Flush()
 		{
 			List<Token> tokens = m_Tokens;
-			PushToken(new Token(m_LastString, false));
+			PushToken(new Token(m_LastString, ETokenType.Value));
 			m_Tokens = new List<Token>();
 			return tokens;
 		}

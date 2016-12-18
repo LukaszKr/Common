@@ -18,252 +18,231 @@ namespace ProceduralLevel.Common.Parsing
 			m_Tokenizer.Tokenize(str);
 
 			List<Token> tokens = m_Tokenizer.Flush();
-			int offset = 1;
+			int offset = 0;
 			return ParseObject(tokens, ref offset);
 		}
 
-		private enum ObjectParseState
+		private enum ParseObjectState
 		{
-			Key,
-			KeyValueSeparator,
-			Value,
-			ObjectValue,
-			ArrayValue,
-			PostValue
+			String = 0,
+			KeySeparator = 1,
+			Value = 2,
+			Separator = 3
 		}
 
 		private JsonObject ParseObject(List<Token> tokens, ref int offset)
 		{
-			JsonObject obj = new JsonObject();
-			ObjectParseState parseState = ObjectParseState.Key;
-			string key = null;
+			offset++;
+			string key = "";
 
+			ParseObjectState state = ParseObjectState.String;
+			JsonObject obj = new JsonObject();
 			for(int x = offset; x < tokens.Count; x++)
 			{
 				Token token = tokens[x];
-				switch(parseState)
+				string tokenValue = token.Value.Trim();
+				switch(state)
 				{
-					case ObjectParseState.Key:
-						key = ParseString(tokens, ref x);
-						parseState = ObjectParseState.KeyValueSeparator;
-						break;
-					case ObjectParseState.KeyValueSeparator:
-						if(token.IsSeparator && token.Value == JsonConst.KEY_VALUE_SEPARATOR)
+					case ParseObjectState.String:
+						if(token.Value.Length > 0)
 						{
-							parseState = ObjectParseState.Value;
-						}
-						else
-						{
-							throw new Exception(string.Format("Expected '{0}' but found {1} when parsing pair separator.", 
-								JsonConst.KEY_VALUE_SEPARATOR, token.Value));
-						}
-						break;
-					case ObjectParseState.Value:
-						if(token.IsSeparator)
-						{
-							if(token.Value == JsonConst.BRACKETS_OPEN)
+							if(token.IsSeparator)
 							{
-								parseState = ObjectParseState.ObjectValue;
+								if(token.Value == JsonConst.QUOTATION)
+								{
+									key = ParseString(tokens, ref x);
+									state = ParseObjectState.KeySeparator;
+								}
+								else if(token.Value == JsonConst.BRACKETS_CLOSE)
+								{
+									offset = x;
+									return obj;
+								}
+								else
+								{
+									throw new Exception(string.Format("While parsing object, found '{0}' but expected '{1}' or '{2}'",
+										token.Value, JsonConst.QUOTATION, JsonConst.BRACKETS_CLOSE));
+								}
 							}
-							else if(token.Value == JsonConst.ARRAY_OPEN)
+						}
+						break;
+					case ParseObjectState.KeySeparator:
+						if(tokenValue.Length > 0)
+						{
+							if(token.IsSeparator && token.Value == JsonConst.KEY_VALUE_SEPARATOR)
 							{
-								parseState = ObjectParseState.ArrayValue;
-							}
-							else if(token.Value == JsonConst.QUOTATION)
-							{
-								obj.Write(key, ParseString(tokens, ref x));
-								parseState = ObjectParseState.PostValue;
+								state = ParseObjectState.Value;
 							}
 							else
 							{
-								throw new Exception(string.Format("Expected object value and '{0}' or '{1}' as separator but found {2}",
-									JsonConst.BRACKETS_OPEN, JsonConst.ARRAY_OPEN, token.Value));
+								throw new Exception(string.Format("While parsing key-value separator, found '{0}' but expected '{1}'",
+									token.Value, JsonConst.KEY_VALUE_SEPARATOR));
 							}
 						}
-						else
-						{
-                            if(char.IsNumber(token.Value[0]) || token.Value[0] == '-')
-                            {
-                                obj.Write(key, ParseNumerical(token));
-                            }
-                            else
-                            {
-                                obj.Write(key, ParseBoolean(token));
-                            }
-							parseState = ObjectParseState.PostValue;
-						}
 						break;
-					case ObjectParseState.ObjectValue:
-						obj.Write(key, ParseObject(tokens, ref x));
-						parseState = ObjectParseState.PostValue;
+					case ParseObjectState.Value:
+						object value = ParseValue(tokens, ref x);
+						obj.WriteObject(key, value);
+						state = ParseObjectState.Separator;
 						break;
-					case ObjectParseState.ArrayValue:
-						obj.Write(key, ParseArray(tokens, ref x));
-						parseState = ObjectParseState.PostValue;
-						break;
-					case ObjectParseState.PostValue:
-						if(token.IsSeparator && token.Value == JsonConst.BRACKETS_CLOSE)
+					case ParseObjectState.Separator:
+						if(tokenValue.Length > 0)
 						{
-							offset = x;
-							return obj;
+							if(token.IsSeparator)
+							{
+								if(token.Value == JsonConst.BRACKETS_CLOSE)
+								{
+									offset = x;
+									return obj;
+								}
+								else if(token.Value == JsonConst.SEPARATOR)
+								{
+									state = ParseObjectState.String;
+								}
+								else
+								{
+									throw new Exception(string.Format("While parsing object, found '{0}' but expected '{1}' or '{2}'",
+										token.Value, JsonConst.QUOTATION, JsonConst.BRACKETS_CLOSE));
+								}
+							}
+							else
+							{
+								throw new Exception(string.Format("While parsing object, found '{0}' but expected '{1}' or '{2}'",
+									token.Value, JsonConst.SEPARATOR, JsonConst.BRACKETS_CLOSE));
+							}
 						}
-						else if(token.IsSeparator && token.Value == JsonConst.SEPARATOR)
-						{
-							parseState = ObjectParseState.Key;
-						}
-						else
-						{
-							throw new Exception(string.Format("Expected '{0}' or '{1}' after pair value, but found {1}",
-								JsonConst.SEPARATOR, JsonConst.BRACKETS_CLOSE, token.Value));
-						}
-						key = null;
 						break;
 				}
 			}
-
-			throw new Exception("Unexpected end of object.");
-		}
-
-		private enum ArrayParseState
-		{
-			Value,
-			PostValue
+			return obj;
 		}
 
 		private JsonArray ParseArray(List<Token> tokens, ref int offset)
 		{
-			JsonArray array = new JsonArray(4);
-			ArrayParseState parseState = ArrayParseState.Value;
-
+			bool isValue = true;
+			offset++;
+			JsonArray arr = new JsonArray(1);
 			for(int x = offset; x < tokens.Count; x++)
 			{
 				Token token = tokens[x];
-
-				switch(parseState)
+				if(isValue)
 				{
-					case ArrayParseState.Value:
-						if(!token.IsSeparator)
-						{
-                            if(char.IsNumber(token.Value[0]) || token.Value[0] == '-')
-                            {
-                                array.Write(ParseNumerical(token));
-                            }
-                            else
-                            {
-                                array.Write(ParseBoolean(token));
-                            }
-                            parseState = ArrayParseState.PostValue;
-						}
-						else
-						{
-							if(token.Value == JsonConst.BRACKETS_OPEN)
-							{
-								x++;
-								array.Write(ParseObject(tokens, ref x));
-								parseState = ArrayParseState.PostValue;
-							}
-							else if(token.Value == JsonConst.ARRAY_OPEN)
-							{
-								x++;
-								array.Write(ParseArray(tokens, ref x));
-								parseState = ArrayParseState.PostValue;
-							}
-							else if(token.Value == JsonConst.QUOTATION)
-							{
-								array.Write(ParseString(tokens, ref x));
-								parseState = ArrayParseState.PostValue;
-							}
-						}
-						break;
-					case ArrayParseState.PostValue:
-						if(token.IsSeparator && token.Value == JsonConst.SEPARATOR)
-						{
-							parseState = ArrayParseState.Value;
-						}
-						else if(token.IsSeparator && token.Value == JsonConst.ARRAY_CLOSE)
+					object value = ParseValue(tokens, ref x);
+					arr.WriteObject(value);
+					isValue = false;
+				}
+				else
+				{
+					string tokenValue = token.Value.Trim();
+					if(tokenValue.Length > 0)
+					{
+						isValue = true;
+						if(token.Value == JsonConst.ARRAY_CLOSE)
 						{
 							offset = x;
-							return array;
+							return arr;
+						}
+						else if(token.Value != JsonConst.SEPARATOR && token.Value != JsonConst.ARRAY_CLOSE)
+						{
+							throw new Exception(string.Format("While parsing array value separator found '{0}' but expected '{1}' or '{2}'",
+								token.Value, JsonConst.SEPARATOR, JsonConst.ARRAY_CLOSE));
+						}
+					}
+				}
+
+			}
+			offset = tokens.Count;
+			return arr;
+		}
+
+
+		private object ParseValue(List<Token> tokens, ref int offset)
+		{
+			for(int x = offset; x < tokens.Count; x++)
+			{
+				Token token = tokens[x];
+				string trimmed = token.Value.Trim();
+				if(trimmed.Length > 0)
+				{
+					offset = x;
+					if(token.Value == JsonConst.QUOTATION)
+					{
+						return ParseString(tokens, ref offset);
+					}
+					else if(token.Value == JsonConst.ARRAY_OPEN)
+					{
+						return ParseArray(tokens, ref offset);
+					}
+					else if(token.Value == JsonConst.BRACKETS_OPEN)
+					{
+						return ParseObject(tokens, ref offset);
+					}
+					else if(char.IsNumber(trimmed[0]) || trimmed[0] == '-')
+					{
+						double result = double.Parse(trimmed, CultureInfo.InvariantCulture);
+						return result;
+					}
+					else if(token.Value == "null")
+					{
+						return null;
+					}
+					else
+					{
+						bool value;
+						if(bool.TryParse(token.Value, out value))
+						{
+							return value;
 						}
 						else
 						{
-							throw new Exception(string.Format("Expected '{0}' or '{1}' when parsing array separator but found {2}",
-								JsonConst.SEPARATOR, JsonConst.ARRAY_CLOSE, token.Value));
+							return null;
 						}
-						break;
+					}
 				}
 			}
-
-			throw new Exception("Unexpected end of array.");
-		}
-
-        private bool ParseBoolean(Token token)
-        {
-            bool value;
-            if(!bool.TryParse(token.Value, out value))
-            {
-                throw new Exception(string.Format("Expected True|False but found {0}", 
-                    token.Value));
-            }
-            return value;
-        }
-
-		private double ParseNumerical(Token token)
-		{
-			double value;
-			if(!double.TryParse(token.Value, NumberStyles.Any , CultureInfo.InvariantCulture, out value))
-			{
-				throw new Exception(string.Format("Expected numerical value but found {0}",
-					token.Value));
-			}
-			return value;
-		}
-
-		private enum ParseStringState
-		{
-			StartQuote,
-			Value,
-			EndQuote
+			offset = tokens.Count;
+			return null;
 		}
 
 		private string ParseString(List<Token> tokens, ref int offset)
 		{
-			string value = "";
-			ParseStringState parseState = ParseStringState.StartQuote;
-
+			offset++;
+			bool quoted = true;
+			string result = "";
 			for(int x = offset; x < tokens.Count; x++)
 			{
 				Token token = tokens[x];
-				switch(parseState)
+				if(quoted)
 				{
-					case ParseStringState.StartQuote:
-						if(!token.IsSeparator || token.Value != JsonConst.QUOTATION)
-						{
-							throw new Exception(string.Format("Expected '{0}' but found '{1}'",
-								JsonConst.QUOTATION, token.Value));
-						}
-						parseState = ParseStringState.Value;
-						break;
-					case ParseStringState.Value:
-						if(token.IsSeparator)
-						{
-							throw new Exception("Found separator while expecting value.");
-						}
-						value = token.Value;
-						parseState = ParseStringState.EndQuote;
-						break;
-					case ParseStringState.EndQuote:
-						if(!token.IsSeparator || token.Value != JsonConst.QUOTATION)
-						{
-							throw new Exception(string.Format("Expected '{0}' but found '{1}'",
-								JsonConst.QUOTATION, token.Value));
-						}
+					if(!token.IsSeparator)
+					{
+						result += token.Value;
+						quoted = false;
+					}
+					else if(token.Value != JsonConst.QUOTATION)
+					{
+						throw new Exception(string.Format("While parsing string, found '{0}' instead of closing quote: '{1}'",
+							token.Value, JsonConst.QUOTATION));
+					}
+					else
+					{
 						offset = x;
-						return value;
+						return "";
+					}
+				}
+				else
+				{
+					if(!token.IsSeparator || token.Value != JsonConst.QUOTATION)
+					{
+						throw new Exception(string.Format("While parsing string, found '{0}' instead of closing quote: '{1}'", 
+							token.Value, JsonConst.QUOTATION));
+					}
+					offset = x;
+					return result;
 				}
 			}
-			
-			throw new Exception("Unexpected end while parsing string.");
+			offset = tokens.Count;
+			return "";
 		}
-    }
+	}
 }

@@ -5,6 +5,8 @@ namespace ProceduralLevel.Common.Parsing
 {
 	public class JsonArray: IEquatable<JsonArray>
     {
+		private const string STRING_FORMAT = "{0}{1}{0}";
+
 		private object[] m_Data;
 
 		public int Count { get; private set; }
@@ -41,7 +43,15 @@ namespace ProceduralLevel.Common.Parsing
 
 			for(int x = 0; x < Count; x++)
 			{
-				builder.Append(m_Data[x].ToString());
+				object data = m_Data[x];
+				if(data is string)
+				{
+					builder.Append(string.Format(STRING_FORMAT, JsonConst.QUOTATION, m_Data[x]));
+				}
+				else
+				{
+					builder.Append(m_Data[x].ToString());
+				}
 				if(x < Count-1)
 				{
 					builder.Append(JsonConst.SEPARATOR);
@@ -190,7 +200,7 @@ namespace ProceduralLevel.Common.Parsing
 		public string ReadString(int index)
 		{
 			string str = (string)m_Data[index];
-			return str.Substring(1, str.Length-2);
+			return str;
 		}
 
 		public JsonObject ReadObject(int index)

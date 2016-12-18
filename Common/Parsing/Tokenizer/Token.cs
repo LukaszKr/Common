@@ -2,18 +2,20 @@
 {
 	public class Token
     {
-		public bool IsSeparator { get; private set; }
-		public string Value { get; private set; }
+		public readonly ETokenType TokenType;
+		public readonly string Value;
 
-		public Token(string value, bool isSeparator)
+		public bool IsSeparator { get { return TokenType == ETokenType.Separator; } }
+
+		public Token(string value, ETokenType tokenType)
 		{
 			Value = value;
-			IsSeparator = isSeparator;
+			TokenType = tokenType;
 		}
 
 		public override string ToString()
 		{
-			return string.Format("[Token][{0}, Separator: {1}]", Value, IsSeparator);
+			return string.Format("[Token][{0}, Type: {1}]", Value, TokenType);
 		}
 	}
 }
