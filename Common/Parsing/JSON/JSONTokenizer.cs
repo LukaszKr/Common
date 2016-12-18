@@ -30,8 +30,8 @@
 		{
 			switch(token.Value)
 			{
-				//case JsonConst.KEY_VALUE_SEPARATOR:
-				//	return m_Value;
+				case JsonConst.KEY_VALUE_SEPARATOR:
+					return m_Value;
 				//case JsonConst.QUOTATION:
 				//	return m_Quoted;
 				default:

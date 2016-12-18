@@ -31,11 +31,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Highscore\HighscoreList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\BaseInputController.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\IInputValidator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Input\InputContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\GlobalLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Writer\DummyLogWriter.cs" />
@@ -56,7 +51,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Tokenizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataWriter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Pair\IPairDeserializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Pair\IPairSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Pair\IPairSerializer.cs" />
