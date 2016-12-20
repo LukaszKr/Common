@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CommonUnitTest.Parsing
 {
-    [TestClass]
+	[TestClass]
     public class CSVTest
     {
         private CSV m_Example;
@@ -15,7 +15,8 @@ namespace CommonUnitTest.Parsing
             CSVParser parser = new CSVParser();
 
             string example = File.ReadAllText("testData/csv/example.csv");
-            m_Example = parser.Parse(example);
+			parser.Parse(example);
+			m_Example = parser.Flush();
         }
 
         [TestMethod]
@@ -37,8 +38,9 @@ namespace CommonUnitTest.Parsing
         {
             CSVParser parser = new CSVParser();
             string example = File.ReadAllText("testData/csv/space.csv");
-            CSV csv = parser.Parse(example);
-            Assert.AreEqual(1, csv.Count);
+            parser.Parse(example);
+			CSV csv = parser.Flush();
+			Assert.AreEqual(1, csv.Count);
             Assert.AreEqual(1, csv.Header.Length);
             Assert.AreEqual("a, b", csv[0][0]);
         }
@@ -68,7 +70,8 @@ namespace CommonUnitTest.Parsing
         public void ToStringTest()
         {
             CSVParser parser = new CSVParser();
-            CSV example = parser.Parse(m_Example.ToString());
+			parser.Parse(m_Example.ToString());
+			CSV example = parser.Flush();
             Assert.AreEqual(true, m_Example.Equals(example));
         }
     }

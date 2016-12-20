@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Parsing
 {
-    public abstract class AParser<DataType>
+	public abstract class AParser<DataType>
     {
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
@@ -31,12 +29,19 @@ namespace ProceduralLevel.Common.Parsing
 			return (m_Next < m_Tokens.Count);
 		}
 
-		public DataType Parse(string str)
+		public void Parse(string str)
 		{
 			m_Tokenizer.Tokenize(str);
 			m_Next = 0;
+		}
+
+		public DataType Flush()
+		{
 			m_Tokens = m_Tokenizer.Flush();
-			return Parse();
+			DataType parsed = Parse();
+			m_Next = 0;
+			m_Tokens = null;
+			return parsed;
 		}
 
 		protected abstract DataType Parse();

@@ -19,15 +19,16 @@ namespace CommonUnitTest.Parsing.JSON
             m_RawJson = File.ReadAllText("testData/json/example.json");
             m_Simple1 = File.ReadAllText("testData/json/simple1.json");
             m_Simple2 = File.ReadAllText("testData/json/simple2.json");
-
-            m_Object = parser.Parse(m_RawJson);
+			parser.Parse(m_RawJson);
+			m_Object = parser.Flush();
         }
 
         [TestMethod]
         public void ToStringTest()
         {
             JsonParser parser = new JsonParser();
-            JsonObject obj = parser.Parse(m_Object.ToString());
+			parser.Parse(m_Object.ToString());
+			JsonObject obj = parser.Flush();
             Assert.AreEqual(true, m_Object.Equals(obj));
 
             obj = new JsonObject();

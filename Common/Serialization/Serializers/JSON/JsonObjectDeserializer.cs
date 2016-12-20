@@ -21,7 +21,8 @@ namespace ProceduralLevel.Common.Serialization
 			m_Object = new JsonObject();
 			string text = reader.ReadString();
 			JsonParser parser = new JsonParser();
-			m_Object = parser.Parse(text);
+			parser.Parse(text);
+			m_Object = parser.Flush();
 		}
 
 		public void Clear()
