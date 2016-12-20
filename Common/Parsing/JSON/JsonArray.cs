@@ -134,7 +134,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		public void Write(string str)
 		{
-			m_Data[Count++] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
+			m_Data[Count++] = str;
 			TryExpand();
 		}
 

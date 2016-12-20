@@ -157,7 +157,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		public void Write(string key, string str)
 		{
-			Params[key] = JsonConst.QUOTATION+str+JsonConst.QUOTATION;
+			Params[key] = str;
 		}
 
 		public void Write(string key, JsonObject obj)
