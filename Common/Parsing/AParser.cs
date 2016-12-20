@@ -39,11 +39,16 @@ namespace ProceduralLevel.Common.Parsing
 		{
 			m_Tokens = m_Tokenizer.Flush();
 			DataType parsed = Parse();
-			m_Next = 0;
-			m_Tokens = null;
+			Reset();
 			return parsed;
 		}
 
 		protected abstract DataType Parse();
+
+		protected virtual void Reset()
+		{
+			m_Next = 0;
+			m_Tokens = null;
+		}
     }
 }
