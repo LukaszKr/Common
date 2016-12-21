@@ -218,7 +218,7 @@ namespace ProceduralLevel.Common.Parsing
 						throw new Exception(string.Format("While parsing string, found '{0}' instead of closing quote: '{1}'", 
 							token.Value, JsonConst.QUOTATION));
 					}
-					return result;
+					return JsonConst.UnescapeString(result);
 				}
 			}
 			return "";

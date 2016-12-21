@@ -46,7 +46,7 @@ namespace ProceduralLevel.Common.Parsing
 				object data = m_Data[x];
 				if(data is string)
 				{
-					builder.Append(string.Format(STRING_FORMAT, JsonConst.QUOTATION, m_Data[x]));
+					builder.Append(string.Format(STRING_FORMAT, JsonConst.QUOTATION, JsonConst.EscapeString(m_Data[x].ToString())));
 				}
 				else
 				{

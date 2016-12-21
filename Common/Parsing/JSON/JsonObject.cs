@@ -102,7 +102,7 @@ namespace ProceduralLevel.Common.Parsing
             }
 			else if(value is string)
 			{
-				strValue = string.Format(STRING_FORMAT, JsonConst.QUOTATION, value.ToString());
+				strValue = string.Format(STRING_FORMAT, JsonConst.QUOTATION, JsonConst.EscapeString(value.ToString()));
 			}
             else
             {
