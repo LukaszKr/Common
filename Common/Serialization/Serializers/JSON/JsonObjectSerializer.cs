@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Parsing;
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class JsonObjectSerializer: IPairSerializer
+	public class JsonObjectSerializer: IObjectSerializer
 	{
 		public JsonObject Object { get; private set; }
 
@@ -69,46 +69,46 @@ namespace ProceduralLevel.Common.Serialization
 			Object.Write(key, data);
 		}
 
-		public void Write(string key, IPairSerializable serializable)
+		public void Write(string key, IObjectSerializable serializable)
 		{
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
 			serializable.Serialize(serializer);
 			Object.Write(key, serializer.Object);
 		}
 
-		public void Write(string key, ISerializable serializable)
+		public void Write(string key, IArraySerializable serializable)
 		{
 			JsonArraySerializer serializer = new JsonArraySerializer();
 			serializable.Serialize(serializer);
 			Object.Write(key, serializer.Array);
 		}
 
-		public void Write(string key, IEnumerable<IPairSerializable> serializables)
+		public void Write(string key, IEnumerable<IObjectSerializable> serializables)
 		{
-			ISerializer array = WriteArray(key);
-			foreach(IPairSerializable serializable in serializables)
+			IArraySerializer array = WriteArray(key);
+			foreach(IObjectSerializable serializable in serializables)
 			{
 				array.Write(serializable);
 			}
 		}
 
-		public void Write(string key, IEnumerable<ISerializable> serializables)
+		public void Write(string key, IEnumerable<IArraySerializable> serializables)
 		{
-			ISerializer array = WriteArray(key);
-			foreach(ISerializable serializable in serializables)
+			IArraySerializer array = WriteArray(key);
+			foreach(IArraySerializable serializable in serializables)
 			{
 				array.Write(serializable);
 			}
 		}
 
-		public IPairSerializer WriteObject(string key)
+		public IObjectSerializer WriteObject(string key)
 		{
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
 			Object.Write(key, serializer.Object);
 			return serializer;
 		}
 
-		public ISerializer WriteArray(string key)
+		public IArraySerializer WriteArray(string key)
 		{
 			JsonArraySerializer serializer = new JsonArraySerializer();
 			Object.Write(key, serializer.Array);

@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class JsonArraySerializer: ISerializer
+	public class JsonArraySerializer: IArraySerializer
 	{
 		public JsonArray Array { get; private set; }
 
@@ -29,14 +29,14 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		#region Write
-		public void Write(IPairSerializable serializable)
+		public void Write(IObjectSerializable serializable)
 		{
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
 			serializable.Serialize(serializer);
 			Array.Write(serializer.Object);
 		}
 
-		public void Write(ISerializable serializable)
+		public void Write(IArraySerializable serializable)
 		{
 			JsonArraySerializer serializer = new JsonArraySerializer();
 			serializable.Serialize(serializer);

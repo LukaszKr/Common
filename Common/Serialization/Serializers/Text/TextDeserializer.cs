@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class TextDeserializer: TextPersistence, IDeserializer
+	public class TextDeserializer: TextPersistence, IArrayDeserializer
     {
 		private int m_Head = 0;
 
@@ -66,22 +66,22 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Buffer[index];
 		}
 
-		public void ReadObject(IPairSerializable obj)
+		public void ReadObject(IObjectSerializable obj)
 		{
 			throw new NotSupportedException();
 		}
 
-		public void ReadArray(ISerializable obj)
+		public void ReadArray(IArraySerializable obj)
 		{
 			obj.Deserialize(this);
 		}
 
-		public IPairDeserializer ReadObject()
+		public IObjectDeserializer ReadObject()
 		{
 			throw new NotSupportedException();
 		}
 
-		public IDeserializer ReadArray()
+		public IArrayDeserializer ReadArray()
 		{
 			throw new NotSupportedException();
 		}
@@ -126,12 +126,12 @@ namespace ProceduralLevel.Common.Serialization
 			return GetFromBuffer();
 		}
 
-		public void ReadObject(int index, IPairSerializable obj)
+		public void ReadObject(int index, IObjectSerializable obj)
 		{
 			throw new NotSupportedException();
 		}
 
-		public void ReadArray(int index, ISerializable obj)
+		public void ReadArray(int index, IArraySerializable obj)
 		{
 			int oldHead = m_Head;
 			m_Head = index;
@@ -139,12 +139,12 @@ namespace ProceduralLevel.Common.Serialization
 			m_Head = oldHead;
 		}
 
-		public IPairDeserializer ReadObject(int index)
+		public IObjectDeserializer ReadObject(int index)
 		{
 			throw new NotSupportedException();
 		}
 
-		public IDeserializer ReadArray(int index)
+		public IArrayDeserializer ReadArray(int index)
 		{
 			throw new NotSupportedException();
 		}

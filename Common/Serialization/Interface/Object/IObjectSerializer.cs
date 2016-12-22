@@ -2,8 +2,8 @@
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public interface IPairSerializer
-    {
+	public interface IObjectSerializer
+	{
 		void Save(IDataWriter writer);
 		void Clear();
 
@@ -16,12 +16,12 @@ namespace ProceduralLevel.Common.Serialization
 		void Write(string key, float data);
 		void Write(string key, double data);
 		void Write(string key, string data);
-		void Write(string key, IPairSerializable serializable);
-		void Write(string key, ISerializable serializable);
-		void Write(string key, IEnumerable<IPairSerializable> serializables);
-		void Write(string key, IEnumerable<ISerializable> serializables);
-		IPairSerializer WriteObject(string key);
-		ISerializer WriteArray(string key);
+		void Write(string key, IObjectSerializable serializable);
+		void Write(string key, IArraySerializable serializable);
+		void Write(string key, IEnumerable<IObjectSerializable> serializables);
+		void Write(string key, IEnumerable<IArraySerializable> serializables);
+		IObjectSerializer WriteObject(string key);
+		IArraySerializer WriteArray(string key);
 		#endregion
 	}
 }

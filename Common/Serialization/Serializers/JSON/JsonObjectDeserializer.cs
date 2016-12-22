@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class JsonObjectDeserializer: IPairDeserializer
+	public class JsonObjectDeserializer: IObjectDeserializer
 	{
 		protected JsonObject m_Object;
 
@@ -36,25 +36,25 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		#region Read
-		public IPairDeserializer ReadObject(string key)
+		public IObjectDeserializer ReadObject(string key)
 		{
 			return new JsonObjectDeserializer(m_Object.ReadObject(key));
 		}
 
-		public IDeserializer ReadArray(string key)
+		public IArrayDeserializer ReadArray(string key)
 		{
 			return new JsonArrayDeserializer(m_Object.ReadArray(key));
 		}
 
-		public void ReadObject(string key, IPairSerializable obj)
+		public void ReadObject(string key, IObjectSerializable obj)
 		{
-			IPairDeserializer deserializer = ReadObject(key);
+			IObjectDeserializer deserializer = ReadObject(key);
 			obj.Deserialize(deserializer);
 		}
 
-		public void ReadArray(string key, ISerializable array)
+		public void ReadArray(string key, IArraySerializable array)
 		{
-			IDeserializer deserializer = ReadArray(key);
+			IArrayDeserializer deserializer = ReadArray(key);
 			array.Deserialize(deserializer);
 		}
 
@@ -100,7 +100,7 @@ namespace ProceduralLevel.Common.Serialization
 		#endregion
 
 		#region TryRead
-		public IPairDeserializer TryReadObject(string key)
+		public IObjectDeserializer TryReadObject(string key)
 		{
 			JsonObject json = m_Object.TryReadObject(key);
 			if(json != null)
@@ -110,7 +110,7 @@ namespace ProceduralLevel.Common.Serialization
 			return null;
 		}
 
-		public IDeserializer TryReadArray(string key)
+		public IArrayDeserializer TryReadArray(string key)
 		{
 			JsonArray array = m_Object.TryReadArray(key);
 			if(array != null)
@@ -120,9 +120,9 @@ namespace ProceduralLevel.Common.Serialization
 			return null;
 		}
 
-		public bool TryReadObject(string key, IPairSerializable obj) 
+		public bool TryReadObject(string key, IObjectSerializable obj) 
 		{
-			IPairDeserializer deserializer = TryReadObject(key);
+			IObjectDeserializer deserializer = TryReadObject(key);
 			if(deserializer != null)
 			{
 				obj.Deserialize(deserializer);
@@ -131,9 +131,9 @@ namespace ProceduralLevel.Common.Serialization
 			return false;
 		}
 
-		public bool TryReadArray(string key, ISerializable array)
+		public bool TryReadArray(string key, IArraySerializable array)
 		{
-			IDeserializer deserializer = TryReadArray(key);
+			IArrayDeserializer deserializer = TryReadArray(key);
 			if(deserializer != null)
 			{
 				array.Deserialize(deserializer);

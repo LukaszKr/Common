@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Serialization
 {
-	public interface ISerializer
+	public interface IArraySerializer
 	{
 		int Count { get; }
 
@@ -9,8 +9,8 @@
 		string ToString();
 
 		#region Write
-		void Write(IPairSerializable serializable);
-		void Write(ISerializable serializable);
+		void Write(IObjectSerializable serializable);
+		void Write(IArraySerializable serializable);
 		void Write(string data);
 		void Write(object data);
 		#endregion

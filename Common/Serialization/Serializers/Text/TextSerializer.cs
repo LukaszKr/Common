@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class TextSerializer: TextPersistence, ISerializer
+	public class TextSerializer: TextPersistence, IArraySerializer
 	{
 		private int m_BufferedData = 0;
 
@@ -43,12 +43,12 @@ namespace ProceduralLevel.Common.Serialization
 			m_Buffer.Add(str);
 		}
 
-		public void Write(IPairSerializable serializable)
+		public void Write(IObjectSerializable serializable)
 		{
 			throw new NotSupportedException();
 		}
 
-		public void Write(ISerializable serializable)
+		public void Write(IArraySerializable serializable)
 		{
 			serializable.Serialize(this);
 		}

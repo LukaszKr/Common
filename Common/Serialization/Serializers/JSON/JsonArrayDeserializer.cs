@@ -3,7 +3,7 @@ using System;
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class JsonArrayDeserializer: IDeserializer
+	public class JsonArrayDeserializer: IArrayDeserializer
 	{
 		private JsonArray m_Array;
 		private int m_Head = 0;
@@ -43,22 +43,22 @@ namespace ProceduralLevel.Common.Serialization
 			throw new NotImplementedException();
 		}
 
-		public void ReadObject(IPairSerializable obj)
+		public void ReadObject(IObjectSerializable obj)
 		{
 			ReadObject(m_Head++, obj);
 		}
 
-		public void ReadArray(ISerializable obj)
+		public void ReadArray(IArraySerializable obj)
 		{
 			ReadArray(m_Head++, obj);
 		}
 
-		public IPairDeserializer ReadObject()
+		public IObjectDeserializer ReadObject()
 		{
 			return ReadObject(m_Head++);
 		}
 
-		public IDeserializer ReadArray()
+		public IArrayDeserializer ReadArray()
 		{
 			return ReadArray(m_Head++);
 		}
@@ -103,22 +103,22 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Array.ReadString(m_Head++);
 		}
 
-		public void ReadObject(int index, IPairSerializable obj)
+		public void ReadObject(int index, IObjectSerializable obj)
 		{
 			obj.Deserialize(ReadObject(index));
 		}
 
-		public void ReadArray(int index, ISerializable obj)
+		public void ReadArray(int index, IArraySerializable obj)
 		{
 			obj.Deserialize(ReadArray(index));
 		}
 
-		public IPairDeserializer ReadObject(int index)
+		public IObjectDeserializer ReadObject(int index)
 		{
 			return new JsonObjectDeserializer(m_Array.ReadObject(index));
 		}
 
-		public IDeserializer ReadArray(int index)
+		public IArrayDeserializer ReadArray(int index)
 		{
 			return new JsonArrayDeserializer(m_Array.ReadArray(index));
 		}
