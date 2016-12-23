@@ -292,8 +292,7 @@ namespace ProceduralLevel.Common.Parsing
 			object value;
 			if(Params.TryGetValue(key, out value))
 			{
-				string str = (string)value;
-				return str.Substring(1, str.Length-2);
+				return (string)value;
 			}
 			return defaultValue;
 		}
