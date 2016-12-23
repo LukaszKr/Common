@@ -15,11 +15,11 @@ namespace ProceduralLevel.Common.Parsing
 
 		private static char[] m_ToEscape = new char[]
 		{
-			'"', '\\', '/', '\b', '\f', '\n', '\r', '\t'
+			'"', '\\', '\b', '\f', '\n', '\r', '\t'
 		};
 		private static string[] m_Escaped = new string[]
 		{
-			"\\\"", "\\\\", "\\/", "\\b", "\\f", "\\n", "\\r", "\\t"
+			"\\\"", "\\\\", "\\b", "\\f", "\\n", "\\r", "\\t"
 		};
 
 		public static string EscapeString(string str)
