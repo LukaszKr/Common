@@ -20,8 +20,15 @@ namespace ProceduralLevel.Common.Parsing
 
 		protected override JsonObject Parse()
 		{
-			ConsumeToken();
-			return ParseObject();
+			if(HasTokens())
+			{
+				ConsumeToken();
+				return ParseObject();
+			}
+			else
+			{
+				return new JsonObject();
+			}
 		}
 
 		private JsonObject ParseObject()
