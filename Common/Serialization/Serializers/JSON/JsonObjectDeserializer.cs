@@ -16,13 +16,18 @@ namespace ProceduralLevel.Common.Serialization
 			m_Object = obj;
 		}
 
+		public void Load(string rawJson)
+		{
+			JsonParser parser = new JsonParser();
+			parser.Parse(rawJson);
+			m_Object = parser.Flush();
+		}
+
 		public void Load(IDataReader reader)
 		{
 			m_Object = new JsonObject();
 			string text = reader.ReadString();
-			JsonParser parser = new JsonParser();
-			parser.Parse(text);
-			m_Object = parser.Flush();
+			Load(text);
 		}
 
 		public void Clear()

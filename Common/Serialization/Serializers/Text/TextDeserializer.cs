@@ -21,10 +21,10 @@ namespace ProceduralLevel.Common.Serialization
 		public void Load(IDataReader reader)
 		{
 			string text = reader.ReadString();
-			FromString(text);
+			Load(text);
 		}
 
-		public void FromString(string str)
+		public void Load(string str)
 		{
 			bool isString = false, field = false;
 			int lastIndex = 0;

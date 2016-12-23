@@ -2,6 +2,7 @@
 {
 	public interface IObjectDeserializer
     {
+		void Load(string rawData);
 		void Load(IDataReader reader);
 		void Clear();
 

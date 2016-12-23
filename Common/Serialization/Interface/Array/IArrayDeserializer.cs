@@ -6,7 +6,7 @@
 
 		void Clear();
 		void Load(IDataReader reader);
-		void FromString(string str);
+		void Load(string rawData);
 
 		#region Read
 		void ReadObject(IObjectSerializable obj);

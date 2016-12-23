@@ -31,16 +31,14 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Array.ToString();
 		}
 
-		public void FromString(string str)
+		public void Load(string rawData)
 		{
 			throw new Exception("Array cannot be a root of JSON file.");
 		}
 
 		public void Load(IDataReader reader)
 		{
-			JsonParser parser =  new JsonParser();
-			string text = reader.ReadString();
-			throw new NotImplementedException();
+			throw new Exception("Array cannot be a root of JSON file.");
 		}
 
 		public void ReadObject(IObjectSerializable obj)
