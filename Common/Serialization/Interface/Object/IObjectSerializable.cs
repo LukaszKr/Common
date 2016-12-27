@@ -3,6 +3,6 @@
 	public interface IObjectSerializable
     {
 		void Serialize(IObjectSerializer serializer);
-		void Deserialize(IObjectDeserializer deserializer);
+		void Deserialize(IObjectSerializer serializer);
     }
 }

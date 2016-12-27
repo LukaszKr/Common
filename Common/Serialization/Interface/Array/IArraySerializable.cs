@@ -3,6 +3,6 @@
 	public interface IArraySerializable
     {
 		void Serialize(IArraySerializer serializer);
-		void Deserialize(IArrayDeserializer deserializer);
+		void Deserialize(IArraySerializer serializer);
     }
 }
