@@ -57,7 +57,7 @@ namespace ProceduralLevel.Common.Parsing
 						break;
 					}
 				}
-				m_LastString = str.Substring(current);
+				m_LastString = text.Substring(current);
 			}
 		}
 
