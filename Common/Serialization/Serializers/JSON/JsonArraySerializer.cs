@@ -3,21 +3,39 @@ using System;
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public class JsonArrayDeserializer: IArrayDeserializer
+	public class JsonArraySerializer: IArraySerializer
 	{
 		private JsonArray m_Array;
 		private int m_Head = 0;
 
+
+		public JsonArray Array { get { return m_Array; } }
+
 		public int Count { get { return m_Array.Count; } }
 
-		public JsonArrayDeserializer()
+		public JsonArraySerializer()
 		{
 			m_Array = new JsonArray(4);
 		}
 
-		public JsonArrayDeserializer(JsonArray array)
+		public JsonArraySerializer(JsonArray array)
 		{
 			m_Array = array;
+		}
+
+		public void Load(string rawData)
+		{
+			throw new Exception("Array cannot be a root of JSON file.");
+		}
+
+		public void Load(IDataReader reader)
+		{
+			throw new Exception("Array cannot be a root of JSON file.");
+		}
+
+		public void Save(IDataWriter writer)
+		{
+			writer.Write(Array.ToString());
 		}
 
 		public void Clear()
@@ -31,16 +49,33 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Array.ToString();
 		}
 
-		public void Load(string rawData)
+		#region Write
+		public void Write(IObjectSerializable serializable)
 		{
-			throw new Exception("Array cannot be a root of JSON file.");
+			JsonObjectSerializer serializer = new JsonObjectSerializer();
+			serializable.Serialize(serializer);
+			m_Array.Write(serializer.Object);
 		}
 
-		public void Load(IDataReader reader)
+		public void Write(IArraySerializable serializable)
 		{
-			throw new Exception("Array cannot be a root of JSON file.");
+			JsonArraySerializer serializer = new JsonArraySerializer();
+			serializable.Serialize(serializer);
+			m_Array.Write(serializer.Array);
 		}
 
+		public void Write(string data)
+		{
+			m_Array.Write(data);
+		}
+
+		public void Write(object data)
+		{
+			m_Array.WriteObject(data);
+		}
+		#endregion
+
+		#region Read
 		public void ReadObject(IObjectSerializable obj)
 		{
 			ReadObject(m_Head++, obj);
@@ -51,12 +86,12 @@ namespace ProceduralLevel.Common.Serialization
 			ReadArray(m_Head++, obj);
 		}
 
-		public IObjectDeserializer ReadObject()
+		public IObjectSerializer ReadObject()
 		{
 			return ReadObject(m_Head++);
 		}
 
-		public IArrayDeserializer ReadArray()
+		public IArraySerializer ReadArray()
 		{
 			return ReadArray(m_Head++);
 		}
@@ -111,14 +146,14 @@ namespace ProceduralLevel.Common.Serialization
 			obj.Deserialize(ReadArray(index));
 		}
 
-		public IObjectDeserializer ReadObject(int index)
+		public IObjectSerializer ReadObject(int index)
 		{
-			return new JsonObjectDeserializer(m_Array.ReadObject(index));
+			return new JsonObjectSerializer(m_Array.ReadObject(index));
 		}
 
-		public IArrayDeserializer ReadArray(int index)
+		public IArraySerializer ReadArray(int index)
 		{
-			return new JsonArrayDeserializer(m_Array.ReadArray(index));
+			return new JsonArraySerializer(m_Array.ReadArray(index));
 		}
 
 		public bool ReadBool(int index)
@@ -160,5 +195,6 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			return m_Array.ReadString(index);
 		}
+		#endregion
 	}
 }

@@ -1,18 +1,27 @@
 ﻿namespace ProceduralLevel.Common.Serialization
 {
-	public interface IArrayDeserializer
-    {
+	public interface IArraySerializer
+	{
 		int Count { get; }
 
 		void Clear();
 		void Load(IDataReader reader);
 		void Load(string rawData);
+		void Save(IDataWriter writer);
+		string ToString();
+
+		#region Write
+		void Write(IObjectSerializable serializable);
+		void Write(IArraySerializable serializable);
+		void Write(string data);
+		void Write(object data);
+		#endregion
 
 		#region Read
 		void ReadObject(IObjectSerializable obj);
 		void ReadArray(IArraySerializable obj);
-		IObjectDeserializer ReadObject();
-		IArrayDeserializer ReadArray();
+		IObjectSerializer ReadObject();
+		IArraySerializer ReadArray();
 		bool ReadBool();
 		byte ReadByte();
 		short ReadShort();
@@ -24,8 +33,8 @@
 
 		void ReadObject(int index, IObjectSerializable obj);
 		void ReadArray(int index, IArraySerializable obj);
-		IObjectDeserializer ReadObject(int index);
-		IArrayDeserializer ReadArray(int index);
+		IObjectSerializer ReadObject(int index);
+		IArraySerializer ReadArray(int index);
 		bool ReadBool(int index);
 		byte ReadByte(int index);
 		short ReadShort(int index);
