@@ -56,17 +56,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnityCommon\UnityCommon.csproj">
-      <Project>{455713d3-7fe6-4847-a3bc-c044daa06f79}</Project>
-      <Name>UnityCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="testData\csv\example.csv" />
     <None Include="testData\csv\space.csv" />
     <None Include="testData\json\example.json" />
     <None Include="testData\json\simple1.json" />
     <None Include="testData\json\simple2.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UnityCommon\UnityCommon.csproj">
+      <Project>{455713d3-7fe6-4847-a3bc-c044daa06f79}</Project>
+      <Name>UnityCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

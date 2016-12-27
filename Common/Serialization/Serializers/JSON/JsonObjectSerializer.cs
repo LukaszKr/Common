@@ -120,6 +120,11 @@ namespace ProceduralLevel.Common.Serialization
 			}
 		}
 
+		public void WriteObject(string key, object data)
+		{
+			m_Object.WriteObject(key, data);
+		}
+
 		public IObjectSerializer WriteObject(string key)
 		{
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
