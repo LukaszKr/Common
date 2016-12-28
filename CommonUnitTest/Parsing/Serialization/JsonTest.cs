@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 using ProceduralLevel.Common.Parsing;
+using System.IO;
 
-namespace CommonUnitTest.Parsing.JSON
+namespace ProceduralLevel.CommonUnitTest.Parsing
 {
 	[TestClass]
 	public class JsonTest

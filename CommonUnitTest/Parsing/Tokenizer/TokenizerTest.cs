@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Parsing;
 using System.Collections.Generic;
 
-namespace CommonUnitTest.Parsing.JSON
+namespace ProceduralLevel.CommonUnitTest.Parsing
 {
 	[TestClass]
     public class TokenizerTest

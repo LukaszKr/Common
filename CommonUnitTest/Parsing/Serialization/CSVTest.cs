@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Parsing;
 using System.IO;
 
-namespace CommonUnitTest.Parsing
+namespace ProceduralLevel.CommonUnitTest.Parsing
 {
 	[TestClass]
     public class CSVTest

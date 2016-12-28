@@ -50,8 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Parsing\CSV\CSVTest.cs" />
-    <Compile Include="Parsing\Json\JsonTest.cs" />
+    <Compile Include="Parsing\Serialization\CSVTest.cs" />
+    <Compile Include="Parsing\Serialization\GenericSerializationTest.cs" />
+    <Compile Include="Parsing\Serialization\JsonTest.cs" />
     <Compile Include="Parsing\Tokenizer\TokenizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -57,6 +57,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Array\IArraySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Object\IObjectSerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Object\IObjectSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\ObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonArraySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Text\TextPersistence.cs" />
