@@ -120,7 +120,7 @@ namespace ProceduralLevel.Common.Serialization
 			}
 		}
 
-		public void WriteObject(string key, object data)
+		public void Write(string key, object data)
 		{
 			m_Object.WriteObject(key, data);
 		}
@@ -292,6 +292,11 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			return m_Object.TryReadString(key, defaultValue);
 
+		}
+
+		public object TryRead(string key, object defaultValue = null)
+		{
+			return m_Object.TryRead(key);
 		}
 		#endregion
 	}

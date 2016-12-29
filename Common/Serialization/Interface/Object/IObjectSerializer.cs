@@ -22,7 +22,7 @@ namespace ProceduralLevel.Common.Serialization
 		void Write(string key, IArraySerializable serializable);
 		void Write(string key, IEnumerable<IObjectSerializable> serializables);
 		void Write(string key, IEnumerable<IArraySerializable> serializables);
-		void WriteObject(string key, object data);
+		void Write(string key, object data);
 		IObjectSerializer WriteObject(string key);
 		IArraySerializer WriteArray(string key);
 		#endregion
@@ -53,6 +53,7 @@ namespace ProceduralLevel.Common.Serialization
 		float TryReadFloat(string key, float defaultValue = 0f);
 		double TryReadDouble(string key, double defaultValue = 0);
 		string TryReadString(string key, string defaultValue = null);
+		object TryRead(string key, object defaultValue = null);
 		#endregion
 	}
 }

@@ -15,6 +15,8 @@
 		void Write(IArraySerializable serializable);
 		void Write(string data);
 		void Write(object data);
+		IObjectSerializer WriteObject();
+		IArraySerializer WriteArray();
 		#endregion
 
 		#region Read

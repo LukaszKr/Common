@@ -103,6 +103,16 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			AddToBuffer(data.ToString());
 		}
+
+		public IObjectSerializer WriteObject()
+		{
+			throw new NotSupportedException();
+		}
+
+		public IArraySerializer WriteArray()
+		{
+			return this;
+		}
 		#endregion
 
 		#region Read

@@ -73,6 +73,20 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			m_Array.WriteObject(data);
 		}
+
+		public IObjectSerializer WriteObject()
+		{
+			JsonObjectSerializer serializer = new JsonObjectSerializer();
+			m_Array.Write(serializer.Object);
+			return serializer;
+		}
+
+		public IArraySerializer WriteArray()
+		{
+			JsonArraySerializer serializer = new JsonArraySerializer();
+			m_Array.Write(serializer.Array);
+			return serializer;
+		}
 		#endregion
 
 		#region Read

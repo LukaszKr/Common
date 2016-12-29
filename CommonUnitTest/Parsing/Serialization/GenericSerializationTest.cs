@@ -23,7 +23,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		{
 			SimpleClass test = new SimpleClass();
 			JsonObjectSerializer serializer = new JsonObjectSerializer();
-			ObjectSerializer.Serialize(test, serializer);
+			Serializer.Serialize(test, serializer);
 			Assert.AreEqual(3, serializer.Object.ReadInt("ID"));
 			Assert.AreEqual("test", serializer.Object.ReadString("Name"));
 		}
