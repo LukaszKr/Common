@@ -15,10 +15,19 @@ namespace ProceduralLevel.Common.Serialization
 			}
 			
 			object collection = Activator.CreateInstance(fieldType);
-			MethodInfo add = fieldType.GetMethod("Add");
+			MethodInfo add;
+			Type elementType;
+#if NET_CORE
+			TypeInfo info = fieldType.GetTypeInfo();
+			add = info.GetMethod("Add");
+			elementType = info.GetGenericArguments()[0];
+#else
+			add = fieldType.GetMethod("Add");
+			elementType = fieldType.GetGenericArguments()[0];
+#endif
 			int length = subArray.Count;
 			object[] invokeParams = new object[1];
-			Type elementType = fieldType.GetGenericArguments()[0];
+			
 			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
 
 
@@ -34,7 +43,12 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			IArraySerializer subArray = GetArraySerializer(fieldInfo.Name, serializer, arraySerializer);
 
-			Type elementType = value.GetType().GetGenericArguments()[0];
+			Type elementType;
+#if NET_CORE
+			elementType = value.GetType().GetTypeInfo().GetGenericArguments()[0];
+#else
+			elementType = value.GetType().GetGenericArguments()[0];
+#endif
 			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
 
 			ICollection collection = value as ICollection;
@@ -46,7 +60,11 @@ namespace ProceduralLevel.Common.Serialization
 
 		protected override bool CheckType(Type fieldType, bool isClass)
 		{
+#if NET_CORE
+			return typeof(ICollection).GetTypeInfo().IsAssignableFrom(fieldType);
+#else
 			return typeof(ICollection).IsAssignableFrom(fieldType);
+#endif
 		}
 	}
 }

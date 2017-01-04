@@ -10,5 +10,8 @@
   },
   "configurations": {
     "Prototype": {}
+  },
+  "buildOptions": {
+    "define": [ "NET_CORE" ]
   }
 }
