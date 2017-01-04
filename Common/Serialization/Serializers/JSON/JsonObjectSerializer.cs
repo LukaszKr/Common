@@ -47,6 +47,11 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Object.ToString();
 		}
 
+		public string[] Keys()
+		{
+			return m_Object.Keys();
+		}
+
 		#region Write
 		public void Write(string key, bool data)
 		{
@@ -123,6 +128,17 @@ namespace ProceduralLevel.Common.Serialization
 		public void Write(string key, object data)
 		{
 			m_Object.WriteObject(key, data);
+		}
+
+		public void Write(string key, IObjectSerializer obj)
+		{
+			JsonObjectSerializer serializer = new JsonObjectSerializer();
+			m_Object.Write(key, serializer.Object);
+			string[] keys = obj.Keys();
+			for(int x = 0; x < keys.Length; x++)
+			{
+				m_Object.WriteObject(key, obj.TryRead(keys[x]));
+			}
 		}
 
 		public IObjectSerializer WriteObject(string key)

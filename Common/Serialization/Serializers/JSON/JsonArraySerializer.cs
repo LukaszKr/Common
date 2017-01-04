@@ -150,6 +150,10 @@ namespace ProceduralLevel.Common.Serialization
 			return m_Array.ReadString(m_Head++);
 		}
 
+		public object Read()
+		{
+			return m_Array.Read(m_Head++);
+		}
 		public void ReadObject(int index, IObjectSerializable obj)
 		{
 			obj.Deserialize(ReadObject(index));
@@ -208,6 +212,11 @@ namespace ProceduralLevel.Common.Serialization
 		public string ReadString(int index)
 		{
 			return m_Array.ReadString(index);
+		}
+
+		public object Read(int index)
+		{
+			return m_Array.Read(index);
 		}
 		#endregion
 	}

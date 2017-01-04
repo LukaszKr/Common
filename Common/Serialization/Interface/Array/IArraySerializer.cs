@@ -32,6 +32,7 @@
 		float ReadFloat();
 		double ReadDouble();
 		string ReadString();
+		object Read();
 
 		void ReadObject(int index, IObjectSerializable obj);
 		void ReadArray(int index, IArraySerializable obj);
@@ -45,6 +46,7 @@
 		float ReadFloat(int index);
 		double ReadDouble(int index);
 		string ReadString(int index);
+		object Read(int index);
 		#endregion
 	}
 }

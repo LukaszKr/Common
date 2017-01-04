@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
-    public class JsonObject: IEquatable<JsonObject>
+	public class JsonObject: IEquatable<JsonObject>
     {
 		private const string STRING_FORMAT = "{0}{1}{0}";
 		private const string PAIR_FORMAT = "{0}{1}{0}{2}{3}";
@@ -19,6 +19,29 @@ namespace ProceduralLevel.Common.Parsing
 			Params = new Dictionary<string, object>();
 			Objects = new Dictionary<string, JsonObject>();
 			Arrays = new Dictionary<string, JsonArray>();
+		}
+
+		public string[] Keys()
+		{
+			int count = Params.Keys.Count + Objects.Keys.Count + Arrays.Keys.Count;
+			string[] keys = new string[count];
+			int offset = 0;
+			foreach(string key in Params.Keys)
+			{
+				keys[offset] = key;
+				offset++;
+			}
+			foreach(string key in Objects.Keys)
+			{
+				keys[offset] = key;
+				offset++;
+			}
+			foreach(string key in Arrays.Keys)
+			{
+				keys[offset] = key;
+				offset++;
+			}
+			return keys;
 		}
 
         public bool Equals(JsonObject obj)
@@ -172,6 +195,12 @@ namespace ProceduralLevel.Common.Parsing
 
 		public void WriteObject(string key, object obj)
 		{
+			if(obj == null)
+			{
+				Params[key] = null;
+				return;
+			}
+
 			JsonObject jsonObj = obj as JsonObject;
 			if(jsonObj != null)
 			{
@@ -197,22 +226,22 @@ namespace ProceduralLevel.Common.Parsing
 
 		public byte ReadByte(string key)
 		{
-			return (byte)ReadDouble(key);
+			return Convert.ToByte(Params[key]);
 		}
 
 		public short ReadShort(string key)
 		{
-			return (short)ReadDouble(key);
+			return Convert.ToInt16(Params[key]);
 		}
 
 		public int ReadInt(string key)
 		{
-			return (int)ReadDouble(key);
+			return Convert.ToInt32(Params[key]);
 		}
 
 		public long ReadLong(string key)
 		{
-			return (long)ReadDouble(key);
+			return Convert.ToInt64(Params[key]);
 		}
 
 		public float ReadFloat(string key)

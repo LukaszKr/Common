@@ -10,8 +10,12 @@ namespace ProceduralLevel.Common.Serialization
 			return (DataType)Deserialize(typeof(DataType), serializer);
 		}
 
-		private static object Deserialize(Type type, IObjectSerializer serializer)
+		public static object Deserialize(Type type, IObjectSerializer serializer)
 		{
+			if(serializer == null)
+			{
+				return null;
+			}
 			object obj = Activator.CreateInstance(type);
 			FieldInfo[] fields = GetSerializableFields(type);
 			int length = fields.Length;
@@ -26,65 +30,10 @@ namespace ProceduralLevel.Common.Serialization
 		private static void DeserializeField(object obj, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			Type fieldType = field.FieldType;
-			if(fieldType.IsArray)
+			TypeSerializer typeSerializer = GetTypeSerializer(fieldType);
+			if(typeSerializer != null)
 			{
-				IArraySerializer subArray = GetArrayDeserializer(field, serializer, arraySerializer);
-				if(subArray == null)
-				{
-					return;
-				}
-				int length = subArray.Count;
-				Type elementType = fieldType.GetElementType();
-				Array array = Array.CreateInstance(elementType, length);
-				for(int x = 0; x < length; x++)
-				{
-					//array.SetValue(, x);
-				}
-				field.SetValue(obj, array);
-			}
-			else
-			{
-				field.SetValue(obj, FetchData(fieldType, field.Name, serializer, null));
-			}
-		}
-
-		private static object FetchData(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
-		{
-			if(arraySerializer != null)
-			{
-				return null;
-			}
-			else if(fieldType.IsClass && fieldType != typeof(string))
-			{
-				return Deserialize(fieldType, serializer.TryReadObject(fieldName));
-			}
-			else
-			{
-				return serializer.TryRead(fieldName);
-			}
-		}
-
-		private static IObjectSerializer GetObjectDeserializer(FieldInfo field, IObjectSerializer obj, IArraySerializer arr)
-		{
-			if(obj != null)
-			{
-				return obj.TryReadObject(field.Name);
-			}
-			else
-			{
-				return arr.ReadObject();
-			}
-		}
-
-		private static IArraySerializer GetArrayDeserializer(FieldInfo field, IObjectSerializer obj, IArraySerializer arr)
-		{
-			if(obj != null)
-			{
-				return obj.TryReadArray(field.Name);
-			}
-			else
-			{
-				return arr.ReadArray();
+				field.SetValue(obj, typeSerializer.Deserialize(field, serializer, arraySerializer));
 			}
 		}
 	}

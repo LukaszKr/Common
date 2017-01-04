@@ -4,6 +4,8 @@ namespace ProceduralLevel.Common.Serialization
 {
 	public interface IObjectSerializer
 	{
+		string[] Keys();
+
 		void Load(string rawData);
 		void Load(IDataReader reader);
 		void Save(IDataWriter writer);
@@ -23,6 +25,7 @@ namespace ProceduralLevel.Common.Serialization
 		void Write(string key, IEnumerable<IObjectSerializable> serializables);
 		void Write(string key, IEnumerable<IArraySerializable> serializables);
 		void Write(string key, object data);
+		void Write(string key, IObjectSerializer serializer);
 		IObjectSerializer WriteObject(string key);
 		IArraySerializer WriteArray(string key);
 		#endregion

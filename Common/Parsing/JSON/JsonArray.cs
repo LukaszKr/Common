@@ -169,22 +169,22 @@ namespace ProceduralLevel.Common.Parsing
 
 		public byte ReadByte(int index)
 		{
-			return (byte)ReadDouble(index);
+			return Convert.ToByte(m_Data[index]);
 		}
 
 		public short ReadShort(int index)
 		{
-			return (short)ReadDouble(index);
+			return Convert.ToInt16(m_Data[index]);
 		}
 
 		public int ReadInt(int index)
 		{
-			return (int)ReadDouble(index);
+			return Convert.ToInt32(m_Data[index]);
 		}
 
 		public long ReadLong(int index)
 		{
-			return (long)ReadDouble(index);
+			return Convert.ToInt64(m_Data[index]);
 		}
 
 		public float ReadFloat(int index)

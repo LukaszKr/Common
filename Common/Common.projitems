@@ -56,6 +56,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Deserialize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Serialize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\ArraySerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\ClassSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\PrimitiveSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Array\IArraySerializable.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Array\IArraySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Object\IObjectSerializable.cs" />

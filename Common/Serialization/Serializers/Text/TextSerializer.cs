@@ -186,6 +186,11 @@ namespace ProceduralLevel.Common.Serialization
 			return GetFromBuffer();
 		}
 
+		public object Read()
+		{
+			return GetFromBuffer();
+		}
+
 		public void ReadObject(int index, IObjectSerializable obj)
 		{
 			throw new NotSupportedException();
@@ -245,6 +250,11 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		public string ReadString(int index)
+		{
+			return GetFromBuffer(index);
+		}
+
+		public object Read(int index)
 		{
 			return GetFromBuffer(index);
 		}
