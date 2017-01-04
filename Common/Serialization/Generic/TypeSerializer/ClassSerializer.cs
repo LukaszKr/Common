@@ -6,15 +6,15 @@ namespace ProceduralLevel.Common.Serialization.Serializers
 {
 	public class ClassSerializer: TypeSerializer
 	{
-		public override object Deserialize(FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			if(serializer != null)
 			{
-				return Serializer.Deserialize(fieldInfo.FieldType, serializer.TryReadObject(fieldInfo.Name));
+				return Serializer.Deserialize(fieldType, serializer.TryReadObject(fieldName));
 			}
 			else
 			{
-				return Serializer.Deserialize(fieldInfo.FieldType.GetElementType(), arraySerializer.ReadObject());
+				return Serializer.Deserialize(fieldType, arraySerializer.ReadObject());
 			}
 		}
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Common.Serialization;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.CommonUnitTest.Parsing
 {
@@ -11,6 +12,8 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public NestedSimpleClass NullNested = null;
 		public int[] SimpleArray = new int[] { 1, 2, 3 };
 		public NestedSimpleClass[] NestedSimple = new NestedSimpleClass[] { new NestedSimpleClass(), new NestedSimpleClass() };
+		public List<int> ListTest = new List<int>() { 1, 2 }; 
+		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
 	}
 
 	public class NestedSimpleClass
@@ -55,6 +58,10 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Assert.AreEqual(2, array.Count);
 			AssertNestedSimple(array.ReadObject(0));
 			AssertNestedSimple(array.ReadObject(1));
+
+			IArraySerializer list = serializer.TryReadArray("NestedListTest");
+			Assert.AreNotEqual(null, list);
+			AssertNestedSimple(list.ReadObject(0));
 		}
 
 		[TestMethod]

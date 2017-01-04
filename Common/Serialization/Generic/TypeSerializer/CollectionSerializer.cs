@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Reflection;
 
-namespace ProceduralLevel.Common.Serialization.Serializers
+namespace ProceduralLevel.Common.Serialization
 {
-	public class ArraySerializer: TypeSerializer
+	class CollectionSerializer: TypeSerializer
 	{
 		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
@@ -12,36 +13,40 @@ namespace ProceduralLevel.Common.Serialization.Serializers
 			{
 				return null;
 			}
-
+			
+			object collection = Activator.CreateInstance(fieldType);
+			MethodInfo add = fieldType.GetMethod("Add");
 			int length = subArray.Count;
-			Type elementType = fieldType.GetElementType();
+			object[] invokeParams = new object[1];
+			Type elementType = fieldType.GetGenericArguments()[0];
 			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
 
-			Array array = Array.CreateInstance(elementType, length);
+
 			for(int x = 0; x < length; x++)
 			{
-				array.SetValue(typeSerializer.Deserialize(elementType, fieldName, null, subArray), x);
+				invokeParams[0] = typeSerializer.Deserialize(elementType, fieldName, null, subArray);
+				add.Invoke(collection, invokeParams);
 			}
-			return array;
+			return collection;
 		}
 
 		public override void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
-			Array array = value as Array;
 			IArraySerializer subArray = GetArraySerializer(fieldInfo.Name, serializer, arraySerializer);
-			Type elementType = fieldInfo.FieldType.GetElementType();
+
+			Type elementType = value.GetType().GetGenericArguments()[0];
 			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
 
-			int arrayLength = array.Length;
-			for(int y = 0; y < arrayLength; y++)
+			ICollection collection = value as ICollection;
+			foreach(object obj in collection)
 			{
-				typeSerializer.Serialize(array.GetValue(y), fieldInfo, null, subArray);
+				typeSerializer.Serialize(obj, fieldInfo, null, subArray);
 			}
 		}
 
 		protected override bool CheckType(Type fieldType, bool isClass)
 		{
-			return (fieldType.IsArray);
+			return typeof(ICollection).IsAssignableFrom(fieldType);
 		}
 	}
 }

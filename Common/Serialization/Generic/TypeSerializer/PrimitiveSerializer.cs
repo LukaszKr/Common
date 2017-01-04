@@ -5,11 +5,11 @@ namespace ProceduralLevel.Common.Serialization.Serializers
 {
 	public class PrimitiveSerializer: TypeSerializer
 	{
-		public override object Deserialize(FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			if(serializer != null)
 			{
-				return serializer.TryRead(fieldInfo.Name);
+				return serializer.TryRead(fieldName);
 			}
 			else
 			{

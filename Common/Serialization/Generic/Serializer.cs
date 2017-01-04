@@ -11,8 +11,9 @@ namespace ProceduralLevel.Common.Serialization
 
 		static Serializer()
 		{
-			Serializers.Add(new ArraySerializer());
 			Serializers.Add(new PrimitiveSerializer());
+			Serializers.Add(new ArraySerializer());
+			Serializers.Add(new CollectionSerializer());
 			Serializers.Add(new ClassSerializer());
 		}
 

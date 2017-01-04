@@ -33,7 +33,7 @@ namespace ProceduralLevel.Common.Serialization
 			TypeSerializer typeSerializer = GetTypeSerializer(fieldType);
 			if(typeSerializer != null)
 			{
-				field.SetValue(obj, typeSerializer.Deserialize(field, serializer, arraySerializer));
+				field.SetValue(obj, typeSerializer.Deserialize(fieldType, field.Name, serializer, arraySerializer));
 			}
 		}
 	}
