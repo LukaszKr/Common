@@ -1,8 +1,8 @@
 namespace ProceduralLevel.Common.Command
 {
-	public interface ICommand
+	public interface ICommand<DataType>
 	{
-		void Do();
-		void Undo();
+		void Do(DataType data);
+		void Undo(DataType data);
 	}
 }
