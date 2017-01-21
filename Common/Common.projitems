@@ -17,9 +17,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Command\ICommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DataCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\IDataItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\BaseIdProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\RecycleIdProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\SimpleIdProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\BaseIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\RecycleIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\SimpleIDProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\EDirection.cs" />

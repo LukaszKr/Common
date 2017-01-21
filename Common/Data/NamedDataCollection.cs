@@ -5,7 +5,7 @@ namespace ProceduralLevel.Common.Data
 {
 	public class NamedDataCollection<DataType>: DataCollection<DataType> where DataType : NamedDataItem
 	{
-		public NamedDataCollection(BaseIdProvider idProvider) : base(idProvider)
+		public NamedDataCollection(BaseIDProvider idProvider) : base(idProvider)
 		{
 
 		}

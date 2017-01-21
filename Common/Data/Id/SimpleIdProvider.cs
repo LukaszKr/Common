@@ -1,12 +1,12 @@
 namespace ProceduralLevel.Common.Data
 {
-	public class SimpleIdProvider: BaseIdProvider
+	public class SimpleIDProvider: BaseIDProvider
 	{
-		private int m_NextId;
+		private int m_NextID;
 
-		public override int GetId()
+		public override int GetID()
 		{
-			return ++m_NextId;
+			return ++m_NextID;
 		}
 	}
 }

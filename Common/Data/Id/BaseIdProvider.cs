@@ -1,8 +1,8 @@
 namespace ProceduralLevel.Common.Data
 {
-	public abstract class BaseIdProvider
+	public abstract class BaseIDProvider
     {
-		public abstract int GetId();
-		public virtual void ReleaseId(int id) { }
+		public abstract int GetID();
+		public virtual void ReleaseID(int ID) { }
     }
 }

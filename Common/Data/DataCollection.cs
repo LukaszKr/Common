@@ -7,7 +7,7 @@ namespace ProceduralLevel.Common.Data
 	public class DataCollection<DataType> where DataType : class, IDataItem
 	{
 		protected ArrayList<DataType> m_Items = new ArrayList<DataType>();
-		private BaseIdProvider m_IdProvider;
+		private BaseIDProvider m_IDProvider;
 
 		public delegate bool ParameterCompareFunc<T>(DataType type, T value);
 
@@ -21,15 +21,15 @@ namespace ProceduralLevel.Common.Data
 			get { return m_Items; }
 		}
 
-		public DataCollection(BaseIdProvider idProvider = null)
+		public DataCollection(BaseIDProvider idProvider = null)
 		{
 			if(idProvider == null)
 			{
-				m_IdProvider = new SimpleIdProvider();
+				m_IDProvider = new SimpleIDProvider();
 			}
 			else
 			{
-				m_IdProvider = idProvider;
+				m_IDProvider = idProvider;
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace ProceduralLevel.Common.Data
 			{
 				throw new Exception("Item is already in other DataCollection");
 			}
-			dataItem.ID = m_IdProvider.GetId();
+			dataItem.ID = m_IDProvider.GetID();
 			m_Items.Add(dataItem);
 			return true;
 		}
@@ -127,7 +127,7 @@ namespace ProceduralLevel.Common.Data
 			{
 				if(compareFunc(m_Items[x], value))
 				{
-					m_IdProvider.ReleaseId(m_Items[x].ID);
+					m_IDProvider.ReleaseID(m_Items[x].ID);
 					m_Items[x].ID = 0;
 					m_Items.RemoveAt(x);
 					return true;
