@@ -35,7 +35,7 @@ namespace ProceduralLevel.Common.Serialization
 				FieldInfo field = privateFields[x];
 				SerializableFieldAttribute attribute = null;
 #if NET_CORE
-				attribute = field.GetCustomAttribute<SerializableAttribute>();
+				attribute = field.GetCustomAttribute<SerializableFieldAttribute>();
 #else
 				SerializableFieldAttribute[] attributes = (SerializableFieldAttribute[])field.GetCustomAttributes(typeof(SerializableFieldAttribute), true);
 				if(attributes.Length > 0)
