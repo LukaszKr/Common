@@ -15,6 +15,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public List<int> ListTest = new List<int>() { 1, 2 }; 
 		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
 		public Test T = new Test();
+		public int[] EmptyArray = new int[] { };
 
 		[SerializableField]
 		private string m_Private = "Private Field";
@@ -73,6 +74,8 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Assert.AreEqual(1, array.ReadInt(0));
 			Assert.AreEqual(2, array.ReadInt(1));
 			Assert.AreEqual(3, array.ReadInt(2));
+
+			Assert.AreEqual(0, test.EmptyArray.Length);
 
 			Assert.AreEqual("Private Field", test.Private);
 
