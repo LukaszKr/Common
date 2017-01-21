@@ -14,6 +14,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public NestedSimpleClass[] NestedSimple = new NestedSimpleClass[] { new NestedSimpleClass(), new NestedSimpleClass() };
 		public List<int> ListTest = new List<int>() { 1, 2 }; 
 		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
+		public Test T = new Test();
 	}
 
 	public class NestedSimpleClass
@@ -21,6 +22,21 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public int Yay = 1;
 		public string Hello = "world";
 		public string[] Arr = new string[] { "a", "b" };
+	}
+
+	public class Test: IObjectSerializable
+	{
+		public int Value = 1;
+
+		public void Deserialize(IObjectSerializer serializer)
+		{
+			Value = serializer.ReadInt("Value")+1;
+		}
+
+		public void Serialize(IObjectSerializer serializer)
+		{
+			serializer.Write("Value", Value);
+		}
 	}
 
 	[TestClass]
@@ -76,7 +92,10 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 
 			Assert.AreEqual(3, test.ID);
 			Assert.AreEqual("test", test.Name);
-			AssertNestedSimple(test.Nested);			
+			AssertNestedSimple(test.Nested);
+
+			Assert.AreNotEqual(null, test.T);
+			Assert.AreEqual(test.T.Value, 2);
 		}
 
 		private void AssertNestedSimple(IObjectSerializer nested)

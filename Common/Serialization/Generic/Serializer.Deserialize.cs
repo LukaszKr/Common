@@ -17,12 +17,20 @@ namespace ProceduralLevel.Common.Serialization
 				return null;
 			}
 			object obj = Activator.CreateInstance(type);
-			FieldInfo[] fields = GetSerializableFields(type);
-			int length = fields.Length;
-			for(int x = 0; x < length; x++)
+			IObjectSerializable serializable = obj as IObjectSerializable;
+			if(serializable != null)
 			{
-				FieldInfo field = fields[x];
-				DeserializeField(obj, field, serializer, null);
+				serializable.Deserialize(serializer);
+			}
+			else
+			{
+				FieldInfo[] fields = GetSerializableFields(type);
+				int length = fields.Length;
+				for(int x = 0; x < length; x++)
+				{
+					FieldInfo field = fields[x];
+					DeserializeField(obj, field, serializer, null);
+				}
 			}
 			return obj;
 		}
