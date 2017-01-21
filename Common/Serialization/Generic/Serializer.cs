@@ -1,4 +1,5 @@
-﻿using ProceduralLevel.Common.Serialization.Serializers;
+﻿using ProceduralLevel.Common.Helper;
+using ProceduralLevel.Common.Serialization.Serializers;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -19,11 +20,54 @@ namespace ProceduralLevel.Common.Serialization
 
 		private static FieldInfo[] GetSerializableFields(Type type)
 		{
+			FieldInfo[] fields;
+			FieldInfo[] privateFields;
 #if NET_CORE
-			return type.GetTypeInfo().GetFields(BindingFlags.Public | BindingFlags.Instance);
+			fields = type.GetTypeInfo().GetFields(BindingFlags.Public | BindingFlags.Instance);
+			privateFields = type.GetTypeInfo().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
 #else
-			return type.GetFields(BindingFlags.Public | BindingFlags.Instance);
+			fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
+			privateFields = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
 #endif
+			int count = 0;
+			for(int x = 0; x < privateFields.Length; x++)
+			{
+				FieldInfo field = fields[x];
+				SerializableAttribute attribute = null;
+#if NET_CORE
+				attribute = field.GetCustomAttribute<SerializableAttribute>();
+#else
+				SerializableAttribute[] attributes = (SerializableAttribute[])field.GetCustomAttributes(typeof(SerializableAttribute), true);
+				if(attributes.Length > 0)
+				{
+					attribute = attributes[0];
+				}
+#endif
+				if(attribute != null)
+				{
+					count ++;
+				}
+				else
+				{
+					privateFields[x] = null;
+				}
+			}
+			if(count > 0)
+			{
+				int index = fields.Length;
+				fields = fields.Resize(fields.Length+count);
+				for(int x = 0; x < privateFields.Length; x++)
+				{
+					FieldInfo field = privateFields[x];
+					if(field != null)
+					{
+						fields[index] = field;
+						index ++;
+					}
+				}
+			}
+
+			return fields;
 		}
 	}
 }

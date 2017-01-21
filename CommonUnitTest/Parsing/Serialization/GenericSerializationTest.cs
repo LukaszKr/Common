@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Common.Serialization;
+using ProceduralLevel.External.Common.Serialization.Attributes;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.CommonUnitTest.Parsing
@@ -15,6 +16,11 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public List<int> ListTest = new List<int>() { 1, 2 }; 
 		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
 		public Test T = new Test();
+
+		[Serializable]
+		private string m_Private = "Private Field";
+
+		public string Private { get { return m_Private; } }
 	}
 
 	public class NestedSimpleClass
@@ -68,6 +74,8 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Assert.AreEqual(1, array.ReadInt(0));
 			Assert.AreEqual(2, array.ReadInt(1));
 			Assert.AreEqual(3, array.ReadInt(2));
+
+			Assert.AreEqual("Private Field", test.Private);
 
 			array = serializer.TryReadArray("NestedSimple");
 			Assert.AreNotEqual(null, array);

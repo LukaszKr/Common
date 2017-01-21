@@ -54,6 +54,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Parsing\Tokenizer\Tokenizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataWriter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Attribute\SerializableAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Deserialize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Serialize.cs" />
