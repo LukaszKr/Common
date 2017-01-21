@@ -33,11 +33,11 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < privateFields.Length; x++)
 			{
 				FieldInfo field = privateFields[x];
-				SerializableAttribute attribute = null;
+				SerializableFieldAttribute attribute = null;
 #if NET_CORE
 				attribute = field.GetCustomAttribute<SerializableAttribute>();
 #else
-				SerializableAttribute[] attributes = (SerializableAttribute[])field.GetCustomAttributes(typeof(SerializableAttribute), true);
+				SerializableFieldAttribute[] attributes = (SerializableFieldAttribute[])field.GetCustomAttributes(typeof(SerializableFieldAttribute), true);
 				if(attributes.Length > 0)
 				{
 					attribute = attributes[0];

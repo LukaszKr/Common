@@ -3,7 +3,7 @@
 namespace ProceduralLevel.Common.Serialization
 {
 	[AttributeUsage(AttributeTargets.Field)]
-    public class SerializableField: Attribute
+    public class SerializableFieldAttribute: Attribute
     {
     }
 }
