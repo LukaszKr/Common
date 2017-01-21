@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\Ext\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\StaticBitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\GlobalLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />

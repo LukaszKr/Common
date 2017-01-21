@@ -126,12 +126,7 @@ namespace ProceduralLevel.Common.Helper
 
 		private void Resize(int newSize)
 		{
-			T[] newData = new T[newSize];
-			for(int x = 0; x < m_Head; x++)
-			{
-				newData[x] = m_Data[x];
-			}
-			m_Data = newData;
+			m_Data = m_Data.Resize(newSize);
 		}
 	}
 }
