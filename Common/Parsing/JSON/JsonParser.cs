@@ -120,6 +120,12 @@ namespace ProceduralLevel.Common.Parsing
 			{
 				if(isValue)
 				{
+					Token peek = PeekToken();
+					if(peek.Value == JsonConst.ARRAY_CLOSE)
+					{
+						ConsumeToken();
+						return arr;
+					}
 					object value = ParseValue();
 					arr.WriteObject(value);
 					isValue = false;

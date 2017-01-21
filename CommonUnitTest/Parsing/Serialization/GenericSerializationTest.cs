@@ -16,7 +16,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
 		public Test T = new Test();
 
-		[SerializableFieldAttribute]
+		[SerializableField]
 		private string m_Private = "Private Field";
 
 		public string Private { get { return m_Private; } }
