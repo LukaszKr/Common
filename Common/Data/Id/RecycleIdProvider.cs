@@ -20,6 +20,7 @@ namespace ProceduralLevel.Common.Data
 				{
 					m_NextID++;
 				}
+				m_UsedIds.Add(m_NextID);
 				return m_NextID;
 			}
 		}
