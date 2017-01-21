@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Common.Serialization;
-using ProceduralLevel.External.Common.Serialization.Attributes;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.CommonUnitTest.Parsing
@@ -17,7 +16,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public List<NestedSimpleClass> NestedListTest = new List<NestedSimpleClass>() { new NestedSimpleClass() };
 		public Test T = new Test();
 
-		[Serializable]
+		[SerializableField]
 		private string m_Private = "Private Field";
 
 		public string Private { get { return m_Private; } }
