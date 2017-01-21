@@ -32,7 +32,7 @@ namespace ProceduralLevel.Common.Serialization
 			int count = 0;
 			for(int x = 0; x < privateFields.Length; x++)
 			{
-				FieldInfo field = fields[x];
+				FieldInfo field = privateFields[x];
 				SerializableAttribute attribute = null;
 #if NET_CORE
 				attribute = field.GetCustomAttribute<SerializableAttribute>();
