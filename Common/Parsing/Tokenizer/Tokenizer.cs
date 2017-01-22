@@ -57,8 +57,9 @@ namespace ProceduralLevel.Common.Parsing
 						break;
 					}
 				}
-				m_LastString = text.Substring(current);
 			}
+
+			m_LastString = text.Substring(current);
 		}
 
 		public List<Token> Flush()
