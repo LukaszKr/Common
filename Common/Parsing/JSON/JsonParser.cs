@@ -176,8 +176,7 @@ namespace ProceduralLevel.Common.Parsing
 					}
 					else if(char.IsNumber(trimmed[0]) || trimmed[0] == '-')
 					{
-						double result = double.Parse(trimmed, CultureInfo.InvariantCulture);
-						return result;
+						return double.Parse(trimmed, CultureInfo.InvariantCulture);
 					}
 					else if(token.Value == "null")
 					{
