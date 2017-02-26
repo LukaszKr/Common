@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-
-namespace ProceduralLevel.Common.Parsing.Template
+﻿namespace ProceduralLevel.Common.Parsing.Template
 {
 	public class GetterEvaluator: AEvaluator
 	{
@@ -13,7 +9,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Param = param;
 		}
 
-		public override object Evaluate(object data)
+		public override object Evaluate(Manager manager, object data)
 		{
 			object result;
 			if(Param != null && Param.Length > 0)
@@ -24,7 +20,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 				}
 				else
 				{
-					result = GetValue(Param, data);
+					result = GetValue(manager, Param, data);
 				}
 			}
 			else

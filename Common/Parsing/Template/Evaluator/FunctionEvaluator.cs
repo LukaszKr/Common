@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ProceduralLevel.Common.Parsing.Template
@@ -17,14 +18,24 @@ namespace ProceduralLevel.Common.Parsing.Template
 			}
 		}
 
-		public void addEvaluator(AEvaluator evaluator)
+		public void AddEvaluator(AEvaluator evaluator)
 		{
 			m_Args.Add(evaluator);
 		}
 
-		public override object Evaluate(object data)
+		public override object Evaluate(Manager manager, object data)
 		{
-			return ""; //TODO
+			Delegate func = Name.Evaluate(manager, data) as Delegate;
+			if(func == null)
+			{
+				return string.Format("Method is missing.");
+			}
+			object[] args = new object[m_Args.Count];
+			for(int x = 0; x < args.Length; x++)
+			{
+				args[x] = m_Args[x].Evaluate(manager, data);
+			}
+			return func.DynamicInvoke(args);
 		}
 
 		public override string ToString()

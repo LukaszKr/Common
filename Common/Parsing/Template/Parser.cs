@@ -185,7 +185,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 
 			for(int x = count; x < m_Stack.Count; x++)
 			{
-				func.addEvaluator(m_Stack[x]);
+				func.AddEvaluator(m_Stack[x]);
 			}
 
 			while(m_Stack.Count > count)

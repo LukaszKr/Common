@@ -35,7 +35,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Template template = Manager.GetTemplate("test");
 
 			m_Data["text"] = "123";
-			string compiled = template.Compile(m_Data);
+			string compiled = template.Compile(Manager, m_Data);
 			Assert.AreEqual("<b>123</b>", compiled);
 		}
 
@@ -45,7 +45,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Manager.Parse("{{#singleTest}}{{'hello \"stranger\"!'}}");
 			Template template = Manager.GetTemplate("singleTest");
 
-			string compiled = template.Compile(m_Data);
+			string compiled = template.Compile(Manager, m_Data);
 			Assert.AreEqual("hello \"stranger\"!", compiled);
 		}
 
@@ -55,7 +55,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Manager.Parse("{{#data}}{{this}}");
 			Template template = Manager.GetTemplate("data");
 
-			string compiled = template.Compile("hello world");
+			string compiled = template.Compile(Manager, "hello world");
 			Assert.AreEqual("hello world", compiled);
 		}
 
@@ -65,7 +65,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			Manager.Parse("{{#nested}} {{A.B}}");
 			Template template = Manager.GetTemplate("nested");
 
-			string compiled = template.Compile(new DataClass());
+			string compiled = template.Compile(Manager, new DataClass());
 			Assert.AreEqual("hello!", compiled);
 		}
 
@@ -77,8 +77,18 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			int[] arr = new int[] { 1, 2, 3 };
 			m_Data["arr"] = arr;
 
-			string compiled = template.Compile(m_Data);
+			string compiled = template.Compile(Manager, m_Data);
 			Assert.AreEqual(compiled, "2");
+		}
+
+		[TestMethod]
+		public void Template_NestedTemplateCompilation()
+		{
+			Manager.Parse("{{#data}}{{this}} {{#nestedTemplate}} {{compile(\"data\", this)}}");
+			Template template = Manager.GetTemplate("nestedTemplate");
+
+			string compiled = template.Compile(Manager, "hello world");
+			Assert.AreEqual(compiled, "hello world");
 		}
 		#endregion
 	}

@@ -19,7 +19,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			m_Evaluators.Add(evaluator);
 		}
 
-		public string Compile(object data)
+		public string Compile(Manager manager, object data)
 		{
 			if(data == null)
 			{
@@ -32,23 +32,23 @@ namespace ProceduralLevel.Common.Parsing.Template
 				Array arr = (Array)data;
 				for(int x = 0; x < arr.Length; x++)
 				{
-					compiled += CompileObject(arr.GetValue(x));
+					compiled += CompileObject(manager, arr.GetValue(x));
 				}
 				return compiled;
 			}
 			else
 			{
-				return CompileObject(data);
+				return CompileObject(manager, data);
 			}
 		}
 
-		private string CompileObject(object data)
+		private string CompileObject(Manager manager, object data)
 		{
 			string compiled = "";
 			for(int x = 0; x <  m_Evaluators.Count; x++)
 			{
 				AEvaluator evaluator = m_Evaluators[x];
-				compiled += evaluator.Evaluate(data).ToString();
+				compiled += evaluator.Evaluate(manager, data).ToString();
 			}
 			return compiled.Trim();
 		}

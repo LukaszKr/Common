@@ -13,16 +13,14 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Type = type;
 		}
 
-		public abstract object Evaluate(object data);
+		public abstract object Evaluate(Manager mananger, object data);
 
 
-		protected object GetValue(string key, object data)
+		protected object GetValue(Manager manager, string key, object data)
 		{
-			Dictionary<string, object> dict = data as Dictionary<string, object>;
-			if(dict != null)
+			if(data is Dictionary<string, object> dict)
 			{
-				object tmp;
-				dict.TryGetValue(key, out tmp);
+				dict.TryGetValue(key, out object tmp);
 				return tmp;
 			}
 			else
@@ -32,7 +30,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 				isArray = data.GetType().GetTypeInfo().IsArray;
 #else
 				isArray = data.GetType().IsArray;
-				#endif
+#endif
 				if(!isArray)
 				{
 					FieldInfo field;
@@ -45,6 +43,10 @@ namespace ProceduralLevel.Common.Parsing.Template
 					{
 						return field.GetValue(data);
 					}
+					else
+					{
+						return manager.GetMethod(key);
+					}
 				}
 				else
 				{
@@ -52,7 +54,6 @@ namespace ProceduralLevel.Common.Parsing.Template
 					return arr.GetValue(Convert.ToInt32(key));
 				}
 			}
-			return "";
 		}
     }
 }

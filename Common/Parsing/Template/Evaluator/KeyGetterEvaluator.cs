@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace ProceduralLevel.Common.Parsing.Template
 {
@@ -17,21 +15,21 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Dot = dot;
 		}
 
-		public override object Evaluate(object data)
+		public override object Evaluate(Manager manager, object data)
 		{
-			object context = Key.Evaluate(data);
+			object context = Key.Evaluate(manager, data);
 			if(context == null)
 			{
-				throw new Exception(string.Format("{0} is null in context: {1}", Key.ToString(), (context != null? context.ToString(): "NULL")));
+				throw new Exception(string.Format("{0} is null in context: {1}", Key.ToString(), (context?.ToString())));
 			}
-			object result = Value.Evaluate((Dot? context: data));
+			object result = Value.Evaluate(manager, (Dot? context: data));
 			if(Dot)
 			{
 				return result;
 			}
 			else
 			{
-				return GetValue(result.ToString(), context);
+				return GetValue(manager, result.ToString(), context);
 			}
 		}
 

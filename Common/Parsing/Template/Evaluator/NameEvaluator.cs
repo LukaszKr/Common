@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ProceduralLevel.Common.Parsing.Template
+﻿namespace ProceduralLevel.Common.Parsing.Template
 {
 	public class NameEvaluator: AEvaluator
 	{
@@ -11,7 +9,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Name = name;
 		}
 
-		public override object Evaluate(object data)
+		public override object Evaluate(Manager manager, object data)
 		{
 			return Name;
 		}
