@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Parsing
 {
@@ -40,7 +41,7 @@ namespace ProceduralLevel.Common.Parsing
 				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
 				{
 					string separator = m_Separators[sepIndex];
-					if(index+separator.Length <= text.Length && text.Substring(index, separator.Length) == separator)
+					if(index+separator.Length <= text.Length && StartsWith(text, separator, index))
 					{
 						string value = text.Substring(current, index-current);
 						if(m_AutoTrim)
@@ -82,5 +83,22 @@ namespace ProceduralLevel.Common.Parsing
 				m_Tokens.Add(token);
 			}
 		}
-    }
+
+		private bool StartsWith(string str, string with, int offset)
+		{
+			int length = offset+Math.Min(str.Length-offset, with.Length);
+			if(length < with.Length)
+			{
+				return false;
+			}
+			for(int x = 0; x < length; x++)
+			{
+				if(str[x+offset] != with[x])
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+	}
 }
