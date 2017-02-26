@@ -68,6 +68,17 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			string compiled = template.Compile(new DataClass(), null);
 			Assert.AreEqual("hello!", compiled);
 		}
+
+		[TestMethod]
+		public void Template_ArrayAccessByNumber()
+		{
+			Manager.Parse("{{#nums}} {{arr[1]}}");
+			Template template = Manager.GetTemplate("nums");
+			int[] arr = new int[] { 1, 2, 3 };
+
+			string compiled = template.Compile(arr, null);
+			Assert.AreEqual(compiled, "2");
+		}
 		#endregion
 	}
 }
