@@ -20,7 +20,6 @@ namespace ProceduralLevel.Common.Serialization
 		public abstract void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer);
 		public abstract object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer);
 
-
 		protected static IObjectSerializer GetObjectSerializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
 		{
 			if(obj != null)

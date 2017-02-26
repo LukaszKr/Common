@@ -5,7 +5,6 @@ namespace ProceduralLevel.Common.Serialization
 {
 	public static partial class Serializer
     {
-
 		public static void Serialize(object obj, IObjectSerializer serializer)
 		{
 			if(obj == null)
@@ -22,7 +21,6 @@ namespace ProceduralLevel.Common.Serialization
 				SerializeField(field.GetValue(obj), field, serializer, null);
 			}
 		}
-
 
 		private static void SerializeField(object value, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{

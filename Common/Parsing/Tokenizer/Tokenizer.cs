@@ -41,7 +41,7 @@ namespace ProceduralLevel.Common.Parsing
 				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
 				{
 					string separator = m_Separators[sepIndex];
-					if(index+separator.Length <= text.Length && StartsWith(text, separator, index))
+					if(index+separator.Length <= text.Length && text.Substring(index, separator.Length) == separator)
 					{
 						string value = text.Substring(current, index-current);
 						if(m_AutoTrim)
