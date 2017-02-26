@@ -90,6 +90,16 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			string compiled = template.Compile(Manager, "hello world");
 			Assert.AreEqual(compiled, "hello world");
 		}
+
+		[TestMethod]
+		public void Template_MethodOnObject()
+		{
+			Manager.Parse("{{#methodOnObject}} {{this.ToString()}}");
+			Template template = Manager.GetTemplate("methodOnObject");
+
+			string compiled = template.Compile(Manager, "test");
+			Assert.AreEqual("test", compiled);
+		}
 		#endregion
 	}
 }

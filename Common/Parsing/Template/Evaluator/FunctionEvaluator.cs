@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace ProceduralLevel.Common.Parsing.Template
@@ -25,17 +26,26 @@ namespace ProceduralLevel.Common.Parsing.Template
 
 		public override object Evaluate(Manager manager, object data)
 		{
-			Delegate func = Name.Evaluate(manager, data) as Delegate;
-			if(func == null)
+			object result = Name.Evaluate(manager, data);
+			Delegate func = result as Delegate;
+			MethodInfo method =  result as MethodInfo;
+			if(func == null && method == null)
 			{
-				return string.Format("Method is missing.");
+				return string.Format("METHOD_MISSING({0})", Name.ToString());
 			}
 			object[] args = new object[m_Args.Count];
 			for(int x = 0; x < args.Length; x++)
 			{
 				args[x] = m_Args[x].Evaluate(manager, data);
 			}
-			return func.DynamicInvoke(args);
+			if(func != null)
+			{
+				return func.DynamicInvoke(args);
+			}
+			else
+			{
+				return method.Invoke(data, args);
+			}
 		}
 
 		public override string ToString()

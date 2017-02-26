@@ -25,19 +25,20 @@ namespace ProceduralLevel.Common.Parsing.Template
 			}
 			else
 			{
+				Type type = data.GetType();
 				bool isArray;
 #if NET_CORE
-				isArray = data.GetType().GetTypeInfo().IsArray;
+				isArray = type.GetTypeInfo().IsArray;
 #else
-				isArray = data.GetType().IsArray;
+				isArray = type.IsArray;
 #endif
 				if(!isArray)
 				{
 					FieldInfo field;
 #if NET_CORE
-						field = data.GetType().GetTypeInfo().GetField(key);
+						field = type.GetTypeInfo().GetField(key);
 #else
-					field = data.GetType().GetField(key);
+					field = type.GetField(key);
 #endif
 					if(field != null)
 					{
@@ -45,6 +46,31 @@ namespace ProceduralLevel.Common.Parsing.Template
 					}
 					else
 					{
+						MethodInfo[] methods;
+#if NET_CORE
+						methods = type.GetTypeInfo().GetMethods();
+#else
+						methods = type.GetMethods();
+#endif
+						MethodInfo method = null;
+						for(int x = 0; x < methods.Length; x++)
+						{
+							MethodInfo maybe = methods[x];
+							if(maybe.Name == key)
+							{
+								method = maybe;
+								break;
+							}
+						}
+
+						if(method != null)
+						{
+							#if NET_CORE
+							return method;
+#else
+							return method;
+#endif
+						}
 						return manager.GetMethod(key);
 					}
 				}
