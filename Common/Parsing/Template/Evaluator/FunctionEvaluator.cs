@@ -22,7 +22,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			m_Args.Add(evaluator);
 		}
 
-		public override object Evaluate(object data, Dictionary<string, object> scope)
+		public override object Evaluate(object data)
 		{
 			return ""; //TODO
 		}

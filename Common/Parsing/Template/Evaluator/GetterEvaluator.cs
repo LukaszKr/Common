@@ -13,7 +13,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Param = param;
 		}
 
-		public override object Evaluate(object data, Dictionary<string, object> scope)
+		public override object Evaluate(object data)
 		{
 			object result;
 			if(Param != null && Param.Length > 0)
@@ -24,29 +24,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 				}
 				else
 				{
-					Dictionary<string, object> dict = data as Dictionary<string, object>;
-					if(dict != null)
-					{
-						dict.TryGetValue(Param, out result);
-					}
-					else
-					{
-						Type type = data.GetType();
-						FieldInfo field;
-#if NET_CORE
-						field = type.GetTypeInfo().GetField(Param);
-#else
-						field = type.GetField(Param);
-#endif
-						if(field != null)
-						{
-							result = field.GetValue(data);
-						}
-						else
-						{
-							scope.TryGetValue(Param, out result);
-						}
-					}
+					result = GetValue(Param, data);
 				}
 			}
 			else

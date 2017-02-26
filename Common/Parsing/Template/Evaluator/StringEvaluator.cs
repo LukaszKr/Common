@@ -11,7 +11,7 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Str = str;
 		}
 
-		public override object Evaluate(object data, Dictionary<string, object> scope)
+		public override object Evaluate(object data)
 		{
 			return Str;
 		}

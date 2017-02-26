@@ -17,41 +17,21 @@ namespace ProceduralLevel.Common.Parsing.Template
 			Dot = dot;
 		}
 
-		public override object Evaluate(object data, Dictionary<string, object> scope)
+		public override object Evaluate(object data)
 		{
-			object context = Key.Evaluate(data, scope);
+			object context = Key.Evaluate(data);
 			if(context == null)
 			{
 				throw new Exception(string.Format("{0} is null in context: {1}", Key.ToString(), (context != null? context.ToString(): "NULL")));
 			}
-			object result = Value.Evaluate((Dot? context: data), scope);
+			object result = Value.Evaluate((Dot? context: data));
 			if(Dot)
 			{
 				return result;
 			}
 			else
 			{
-				Dictionary<string, object> dict = context as Dictionary<string, object>;
-				if(dict != null)
-				{
-					object tmp;
-					dict.TryGetValue(result.ToString(), out tmp);
-					return tmp;
-				}
-				else
-				{
-					FieldInfo field;
-#if NET_CORE
-						field = context.GetType().GetTypeInfo().GetField(result.ToString());
-#else
-					field = context.GetType().GetField(result.ToString());
-#endif
-					if(field != null)
-					{
-						return field.GetValue(context);
-					}
-				}
-				return "";
+				return GetValue(result.ToString(), context);
 			}
 		}
 

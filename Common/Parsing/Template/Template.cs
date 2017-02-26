@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Parsing.Template
 {
@@ -18,41 +19,36 @@ namespace ProceduralLevel.Common.Parsing.Template
 			m_Evaluators.Add(evaluator);
 		}
 
-		public string Compile(object data, Dictionary<string, object> scope = null)
+		public string Compile(object data)
 		{
 			if(data == null)
 			{
 				return "";
 			}
 
-			if(scope == null)
-			{
-				scope = new Dictionary<string, object>();
-			}
-
 			if(data.GetType().IsArray)
 			{
 				string compiled = "";
-				object[] arr = (object[])data;
+				Array arr = (Array)data;
 				for(int x = 0; x < arr.Length; x++)
 				{
-					compiled += CompileObject(arr[x], scope);
+					compiled += CompileObject(arr.GetValue(x));
 				}
 				return compiled;
 			}
 			else
 			{
-				return CompileObject(data, scope);
+				return CompileObject(data);
 			}
 		}
 
-		private string CompileObject(object data, Dictionary<string, object> scope)
+		private string CompileObject(object data)
 		{
 			string compiled = "";
 			for(int x = 0; x <  m_Evaluators.Count; x++)
 			{
 				AEvaluator evaluator = m_Evaluators[x];
-				compiled += evaluator.Evaluate(data, scope).ToString();
+				compiled += evaluator.Evaluate(data).ToString();
 			}
 			return compiled.Trim();
 		}
