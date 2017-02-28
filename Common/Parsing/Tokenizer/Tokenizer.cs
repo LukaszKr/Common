@@ -68,6 +68,7 @@ namespace ProceduralLevel.Common.Parsing
 			List<Token> tokens = m_Tokens;
 			PushToken(new Token(m_LastString, ETokenType.Value));
 			m_Tokens = new List<Token>();
+			m_LastString = null;
 			return tokens;
 		}
 
