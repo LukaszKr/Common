@@ -52,11 +52,11 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		[TestMethod]
 		public void Template_ThisAccessor()
 		{
-			Manager.Parse("{{#data}}{{this}}");
+			Manager.Parse("{{#data}}!{{this}}!");
 			Template template = Manager.GetTemplate("data");
 
 			string compiled = template.Compile(Manager, "hello world");
-			Assert.AreEqual("hello world", compiled);
+			Assert.AreEqual("!hello world!", compiled);
 		}
 
 		[TestMethod]
@@ -78,17 +78,17 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			m_Data["arr"] = arr;
 
 			string compiled = template.Compile(Manager, m_Data);
-			Assert.AreEqual(compiled, "2");
+			Assert.AreEqual("2", compiled);
 		}
 
 		[TestMethod]
 		public void Template_NestedTemplateCompilation()
 		{
-			Manager.Parse("{{#data}}{{this}} {{#nestedTemplate}} {{compile(\"data\", this)}}");
+			Manager.Parse("{{#data}}{{this}} {{#nestedTemplate}} {{compile(\"data\", this)}}!");
 			Template template = Manager.GetTemplate("nestedTemplate");
 
-			string compiled = template.Compile(Manager, "hello world");
-			Assert.AreEqual(compiled, "hello world");
+			string compiled = template.Compile(Manager, new string[] { "hello", "world" });
+			Assert.AreEqual("hello!world!", compiled);
 		}
 
 		[TestMethod]
