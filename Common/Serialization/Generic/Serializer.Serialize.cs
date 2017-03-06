@@ -13,12 +13,15 @@ namespace ProceduralLevel.Common.Serialization
 			}
 
 			FieldInfo[] fields = GetSerializableFields(obj.GetType());
-			int length = fields.Length;
-
-			for(int x = 0; x < length; x++)
+			if(fields != null)
 			{
-				FieldInfo field = fields[x];
-				SerializeField(field.GetValue(obj), field, serializer, null);
+				int length = fields.Length;
+
+				for(int x = 0; x < length; x++)
+				{
+					FieldInfo field = fields[x];
+					SerializeField(field.GetValue(obj), field, serializer, null);
+				}
 			}
 		}
 
