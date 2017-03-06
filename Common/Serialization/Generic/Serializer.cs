@@ -47,7 +47,7 @@ namespace ProceduralLevel.Common.Serialization
 			{
 				FieldInfo field = privateFields[x];
 
-				if(HasAttribute<SerializableFieldAttribute>(field))
+				if(HasAttribute<SerializedFieldAttribute>(field))
 				{
 					privateCount++;
 				}

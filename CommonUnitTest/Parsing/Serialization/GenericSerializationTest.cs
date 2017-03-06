@@ -17,7 +17,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		public Test T = new Test();
 		public int[] EmptyArray = new int[] { };
 
-		[SerializableField]
+		[SerializedField]
 		private string m_Private = "Private Field";
 
 		public string Private { get { return m_Private; } }
