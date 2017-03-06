@@ -5,19 +5,22 @@ namespace ProceduralLevel.Common.Serialization
 {
 	public static partial class Serializer
 	{
-		public static DataType Deserialize<DataType>(IObjectSerializer serializer) where DataType : class
+		public static DataType Deserialize<DataType>(IObjectSerializer serializer, DataType instance = null) where DataType : class
 		{
-			return (DataType)Deserialize(typeof(DataType), serializer);
+			return (DataType)Deserialize(typeof(DataType), serializer, instance);
 		}
 
-		public static object Deserialize(Type type, IObjectSerializer serializer)
+		public static object Deserialize(Type type, IObjectSerializer serializer, object instance = null)
 		{
 			if(serializer == null)
 			{
 				return null;
 			}
-			object obj = Activator.CreateInstance(type);
-			IObjectSerializable serializable = obj as IObjectSerializable;
+			if(instance == null)
+			{
+				instance = Activator.CreateInstance(type);
+			}
+			IObjectSerializable serializable = instance as IObjectSerializable;
 			if(serializable != null)
 			{
 				serializable.Deserialize(serializer);
@@ -29,10 +32,10 @@ namespace ProceduralLevel.Common.Serialization
 				for(int x = 0; x < length; x++)
 				{
 					FieldInfo field = fields[x];
-					DeserializeField(obj, field, serializer, null);
+					DeserializeField(instance, field, serializer, null);
 				}
 			}
-			return obj;
+			return instance;
 		}
 
 		private static void DeserializeField(object obj, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)

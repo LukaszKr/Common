@@ -58,8 +58,9 @@ namespace ProceduralLevel.Common.Serialization
 			}
 			if(count+privateCount > 0)
 			{
-				int index = fields.Length;
-				FieldInfo[] result = fields.Resize(count+privateCount);
+				FieldInfo[] result = new FieldInfo[count+privateCount];
+
+				int index = 0;
 				for(int x = 0; x < fields.Length; x++)
 				{
 					FieldInfo field = fields[x];
