@@ -34,7 +34,7 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < fields.Length; x++)
 			{
 				FieldInfo field = fields[x];
-				if(!HasAttribute<NonSerializableFieldAttribute>(field))
+				if(!HasAttribute<NonSerializedFieldAttribute>(field))
 				{
 					count ++;
 				}

@@ -3,7 +3,7 @@
 namespace ProceduralLevel.Common.Serialization
 {
 	[AttributeUsage(AttributeTargets.Field)]
-	public class NonSerializableFieldAttribute: Attribute
+	public class NonSerializedFieldAttribute: Attribute
 	{
 	}
 }
