@@ -6,22 +6,24 @@ namespace ProceduralLevel.Common.Serialization.Serializers
 {
 	public class ClassSerializer: TypeSerializer
 	{
-		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override bool SerializesClass { get { return true; } }
+
+		public override object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			if(serializer != null)
 			{
-				return Serializer.Deserialize(fieldType, serializer.TryReadObject(fieldName));
+				return processor.DeserializeObject(fieldType, serializer.TryReadObject(fieldName));
 			}
 			else
 			{
-				return Serializer.Deserialize(fieldType, arraySerializer.ReadObject());
+				return processor.DeserializeObject(fieldType, arraySerializer.ReadObject());
 			}
 		}
 
-		public override void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			IObjectSerializer subSerializer = GetObjectSerializer(fieldInfo.Name, serializer, arraySerializer);
-			Serializer.Serialize(value, subSerializer);
+			processor.SerializeObject(value, subSerializer);
 		}
 
 		protected override bool CheckType(Type fieldType, bool isClass)

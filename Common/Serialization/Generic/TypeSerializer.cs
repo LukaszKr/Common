@@ -5,6 +5,8 @@ namespace ProceduralLevel.Common.Serialization
 {
 	public abstract class TypeSerializer
     {
+		public abstract bool SerializesClass { get; }
+
 		public bool CheckType(Type fieldType)
 		{
 			bool isClass;
@@ -17,8 +19,8 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		protected abstract bool CheckType(Type fieldType, bool isClass);
-		public abstract void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer);
-		public abstract object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer);
+		public abstract void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer);
+		public abstract object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer);
 
 		protected static IObjectSerializer GetObjectSerializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
 		{

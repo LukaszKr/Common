@@ -68,9 +68,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Data\IDataWriter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Attribute\NonSerializedField.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Attribute\SerializedField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\ReferenceSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Reference\ObjectMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Reference\Reference.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\ASerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Deserialize.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\Serializer.Serialize.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\ArraySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\ClassSerializer.cs" />

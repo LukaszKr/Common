@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Reflection;
 
-namespace ProceduralLevel.Common.Serialization.Serializers
+namespace ProceduralLevel.Common.Serialization
 {
 	public class PrimitiveSerializer: TypeSerializer
 	{
-		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override bool SerializesClass { get { return false; } }
+
+		public override object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			if(serializer != null)
 			{
@@ -17,7 +19,7 @@ namespace ProceduralLevel.Common.Serialization.Serializers
 			}
 		}
 
-		public override void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			if(serializer != null)
 			{

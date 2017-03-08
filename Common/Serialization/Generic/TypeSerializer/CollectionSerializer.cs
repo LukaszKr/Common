@@ -6,7 +6,9 @@ namespace ProceduralLevel.Common.Serialization
 {
 	class CollectionSerializer: TypeSerializer
 	{
-		public override object Deserialize(Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override bool SerializesClass { get { return true; } }
+
+		public override object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			IArraySerializer subArray = GetArrayDeserializer(fieldName, serializer, arraySerializer);
 			if(subArray == null)
@@ -28,18 +30,18 @@ namespace ProceduralLevel.Common.Serialization
 			int length = subArray.Count;
 			object[] invokeParams = new object[1];
 			
-			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
+			TypeSerializer typeSerializer = ASerializer.GetTypeSerializer(elementType);
 
 
 			for(int x = 0; x < length; x++)
 			{
-				invokeParams[0] = typeSerializer.Deserialize(elementType, fieldName, null, subArray);
+				invokeParams[0] = typeSerializer.Deserialize(processor, elementType, fieldName, null, subArray);
 				add.Invoke(collection, invokeParams);
 			}
 			return collection;
 		}
 
-		public override void Serialize(object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
 			IArraySerializer subArray = GetArraySerializer(fieldInfo.Name, serializer, arraySerializer);
 
@@ -49,12 +51,12 @@ namespace ProceduralLevel.Common.Serialization
 #else
 			elementType = value.GetType().GetGenericArguments()[0];
 #endif
-			TypeSerializer typeSerializer = Serializer.GetTypeSerializer(elementType);
+			TypeSerializer typeSerializer = ASerializer.GetTypeSerializer(elementType);
 
 			ICollection collection = value as ICollection;
 			foreach(object obj in collection)
 			{
-				typeSerializer.Serialize(obj, fieldInfo, null, subArray);
+				typeSerializer.Serialize(processor, obj, fieldInfo, null, subArray);
 			}
 		}
 

@@ -1,96 +1,99 @@
-﻿using ProceduralLevel.Common.Helper;
-using ProceduralLevel.Common.Serialization.Serializers;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
 
 namespace ProceduralLevel.Common.Serialization
 {
-	public static partial class Serializer
+	public class Serializer: ASerializer
     {
-		public static List<TypeSerializer> Serializers = new List<TypeSerializer>();
+		protected Serializer() { }
 
-		static Serializer()
+		#region Serialization
+		public static void Serialize(object obj, IObjectSerializer serializer)
 		{
-			Serializers.Add(new PrimitiveSerializer());
-			Serializers.Add(new ArraySerializer());
-			Serializers.Add(new CollectionSerializer());
-			Serializers.Add(new ClassSerializer());
+			Serializer processor = new Serializer();
+			processor.SerializeObject(obj, serializer);
 		}
 
-		private static FieldInfo[] GetSerializableFields(Type type)
+		public override void SerializeObject(object obj, IObjectSerializer serializer)
 		{
-			FieldInfo[] fields;
-			FieldInfo[] privateFields;
-#if NET_CORE
-			fields = type.GetTypeInfo().GetFields(BindingFlags.Public | BindingFlags.Instance);
-			privateFields = type.GetTypeInfo().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-#else
-			fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
-			privateFields = type.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
-#endif
-			int count = 0;
-			int privateCount = 0;
-			for(int x = 0; x < fields.Length; x++)
+			if(obj == null)
 			{
-				FieldInfo field = fields[x];
-				if(!HasAttribute<NonSerializedFieldAttribute>(field))
-				{
-					count ++;
-				}
-				else
-				{
-					fields[x] = null;
-				}
+				return;
 			}
-			for(int x = 0; x < privateFields.Length; x++)
-			{
-				FieldInfo field = privateFields[x];
 
-				if(HasAttribute<SerializedFieldAttribute>(field))
-				{
-					privateCount++;
-				}
-				else
-				{
-					privateFields[x] = null;
-				}
-			}
-			if(count+privateCount > 0)
+			FieldInfo[] fields = GetSerializableFields(obj.GetType());
+			if(fields != null)
 			{
-				FieldInfo[] result = new FieldInfo[count+privateCount];
-
-				int index = 0;
 				for(int x = 0; x < fields.Length; x++)
 				{
 					FieldInfo field = fields[x];
-					if(field != null)
-					{
-						result[index] = field;
-						index ++;
-					}
+					SerializeField(field.GetValue(obj), field, serializer, null);
 				}
-				for(int x = 0; x < privateFields.Length; x++)
-				{
-					FieldInfo field = privateFields[x];
-					if(field != null)
-					{
-						result[index] = field;
-						index ++;
-					}
-				}
-				return result;
 			}
-			return null;
 		}
 
-		private static bool HasAttribute<Type>(FieldInfo field) where Type: Attribute
+		protected void SerializeField(object value, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
 		{
-#if NET_CORE
-				return (field.GetCustomAttribute<Type>() != null);
-#else
-			return (field.GetCustomAttributes(typeof(Type), true).Length > 0);
-#endif
+			if(value == null)
+			{
+				return;
+			}
+			Type fieldType = field.FieldType;
+			TypeSerializer typeSerializer = GetTypeSerializer(fieldType);
+			if(typeSerializer != null)
+			{
+				typeSerializer.Serialize(this, value, field, serializer, arraySerializer);
+			}
 		}
+		#endregion
+
+		#region Deserialization
+		public static DataType Deserialize<DataType>(IObjectSerializer serializer, DataType instance = null) where DataType: class
+		{
+			return (DataType)Deserialize(typeof(DataType), serializer, instance);
+		}
+
+		public static object Deserialize(Type type, IObjectSerializer serializer, object instance = null)
+		{
+			Serializer processor = new Serializer();
+			return processor.DeserializeObject(type, serializer, instance);
+		}
+
+		public override object DeserializeObject(Type type, IObjectSerializer serializer, object instance = null)
+		{
+			if(serializer == null)
+			{
+				return null;
+			}
+			if(instance == null)
+			{
+				instance = Activator.CreateInstance(type);
+			}
+			if(instance is IObjectSerializable serializable)
+			{
+				serializable.Deserialize(serializer);
+			}
+			else
+			{
+				FieldInfo[] fields = GetSerializableFields(type);
+				for(int x = 0; x < fields.Length; x++)
+				{
+					FieldInfo field = fields[x];
+					DeserializeField(instance, field, serializer, null);
+				}
+			}
+			return instance;
+		}
+
+		private void DeserializeField(object obj, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		{
+			Type fieldType = field.FieldType;
+			TypeSerializer typeSerializer = GetTypeSerializer(fieldType);
+			if(typeSerializer != null)
+			{
+				field.SetValue(obj, Convert.ChangeType(typeSerializer.Deserialize(this, fieldType, field.Name, serializer, arraySerializer), fieldType));
+			}
+		}
+		#endregion
 	}
 }
