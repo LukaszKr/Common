@@ -22,6 +22,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Id\SimpleIDProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\NamedDataItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Tree\ITreeNode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Tree\TreeNodeExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\EDirection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Enums\EOrder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\BaseEvent.cs" />
