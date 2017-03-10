@@ -154,6 +154,24 @@ namespace ProceduralLevel.Common.Serialization
 			m_Object.Write(key, serializer.Array);
 			return serializer;
 		}
+
+		public IArraySerializer WriteArray(string key, object[] data)
+		{
+			JsonArraySerializer serializer = new JsonArraySerializer();
+			m_Object.Write(key, serializer.Array);
+			serializer.WriteArray(data);
+			return serializer;
+		}
+
+		public IArraySerializer WriteArray(string key, IEnumerable<object> data)
+		{
+			IArraySerializer array = WriteArray(key);
+			foreach(object obj in data)
+			{
+				array.Write(obj);
+			}
+			return array;
+		}
 		#endregion
 
 		#region Read

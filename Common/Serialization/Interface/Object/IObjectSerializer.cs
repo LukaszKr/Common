@@ -28,6 +28,8 @@ namespace ProceduralLevel.Common.Serialization
 		void Write(string key, IObjectSerializer serializer);
 		IObjectSerializer WriteObject(string key);
 		IArraySerializer WriteArray(string key);
+		IArraySerializer WriteArray(string key, object[] data);
+		IArraySerializer WriteArray(string key, IEnumerable<object> data);
 		#endregion
 
 		#region Read

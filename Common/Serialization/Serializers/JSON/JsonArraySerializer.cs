@@ -1,5 +1,7 @@
 ﻿using ProceduralLevel.Common.Parsing;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Serialization
 {
@@ -86,6 +88,24 @@ namespace ProceduralLevel.Common.Serialization
 			JsonArraySerializer serializer = new JsonArraySerializer();
 			m_Array.Write(serializer.Array);
 			return serializer;
+		}
+
+		public IArraySerializer WriteArray(object[] data)
+		{
+			JsonArraySerializer serializer = new JsonArraySerializer();
+			m_Array.Write(serializer.Array);
+			serializer.WriteArray(data);
+			return serializer;
+		}
+
+		public IArraySerializer WriteArray(IEnumerable<object> data)
+		{
+			IArraySerializer array = WriteArray();
+			foreach(object obj in data)
+			{
+				array.Write(obj);
+			}
+			return array;
 		}
 		#endregion
 

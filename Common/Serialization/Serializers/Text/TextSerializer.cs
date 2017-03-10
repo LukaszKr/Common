@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ProceduralLevel.Common.Serialization
@@ -111,6 +112,24 @@ namespace ProceduralLevel.Common.Serialization
 
 		public IArraySerializer WriteArray()
 		{
+			return this;
+		}
+
+		public IArraySerializer WriteArray(object[] data)
+		{
+			for(int x = 0; x < data.Length; x++)
+			{
+				AddToBuffer(data[x].ToString());
+			}
+			return this;
+		}
+
+		public IArraySerializer WriteArray(IEnumerable<object> data)
+		{
+			foreach(object obj in data)
+			{
+				Write(obj);
+			}
 			return this;
 		}
 		#endregion
