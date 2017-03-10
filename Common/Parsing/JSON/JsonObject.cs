@@ -9,6 +9,7 @@ namespace ProceduralLevel.Common.Parsing
     {
 		private const string STRING_FORMAT = "{0}{1}{0}";
 		private const string PAIR_FORMAT = "{0}{1}{0}{2}{3}";
+		private const string NULL_VALUE = "null";
 
 		public Dictionary<string, object> Params { get; private set; }
 		public Dictionary<string, JsonObject> Objects { get; private set; }
@@ -129,8 +130,15 @@ namespace ProceduralLevel.Common.Parsing
 			}
             else
             {
-                strValue = value.ToString();
-            }
+				if(value != null)
+				{
+					strValue = value.ToString();
+				}
+				else
+				{
+					strValue = NULL_VALUE;
+				}
+			}
 			builder.AppendFormat(PAIR_FORMAT,
 				JsonConst.QUOTATION, key, JsonConst.KEY_VALUE_SEPARATOR, strValue);
 			written++;

@@ -115,13 +115,12 @@ namespace ProceduralLevel.Common.Serialization
 			return this;
 		}
 
-		public IArraySerializer WriteArray(object[] data)
+		public void WriteArray(object[] data)
 		{
 			for(int x = 0; x < data.Length; x++)
 			{
 				AddToBuffer(data[x].ToString());
 			}
-			return this;
 		}
 		#endregion
 

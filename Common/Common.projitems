@@ -80,10 +80,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\ClassSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\CollectionSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Generic\TypeSerializer\PrimitiveSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Array\IArraySerializable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Array\IArraySerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Object\IObjectSerializable.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Interface\Object\IObjectSerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Interface\Array\IArraySerializable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Interface\Array\IArraySerializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Interface\Object\IObjectSerializable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Interface\Object\IObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonArraySerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\Text\TextPersistence.cs" />

@@ -90,12 +90,27 @@ namespace ProceduralLevel.Common.Serialization
 			return serializer;
 		}
 
-		public IArraySerializer WriteArray(object[] data)
+		public void WriteArray(object[] data)
 		{
-			JsonArraySerializer serializer = new JsonArraySerializer();
-			m_Array.Write(serializer.Array);
-			serializer.WriteArray(data);
-			return serializer;
+			for(int x = 0; x < data.Length; x++)
+			{
+				object item = data[x];
+				IArraySerializable arrItem = item as IArraySerializable;
+				if(arrItem != null)
+				{
+					Write(arrItem);
+					continue;
+				}
+
+				IObjectSerializable objItem = item as IObjectSerializable;
+				if(objItem != null)
+				{
+					Write(objItem);
+					continue;
+				}
+
+				Write(item);
+			}
 		}
 		#endregion
 
