@@ -97,16 +97,6 @@ namespace ProceduralLevel.Common.Serialization
 			serializer.WriteArray(data);
 			return serializer;
 		}
-
-		public IArraySerializer WriteArray(IEnumerable<object> data)
-		{
-			IArraySerializer array = WriteArray();
-			foreach(object obj in data)
-			{
-				array.Write(obj);
-			}
-			return array;
-		}
 		#endregion
 
 		#region Read

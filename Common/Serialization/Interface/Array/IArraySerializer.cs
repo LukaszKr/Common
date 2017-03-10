@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ProceduralLevel.Common.Serialization
+﻿namespace ProceduralLevel.Common.Serialization
 {
 	public interface IArraySerializer
 	{
@@ -20,7 +18,6 @@ namespace ProceduralLevel.Common.Serialization
 		IObjectSerializer WriteObject();
 		IArraySerializer WriteArray();
 		IArraySerializer WriteArray(object[] data);
-		IArraySerializer WriteArray(IEnumerable<object> data);
 		#endregion
 
 		#region Read

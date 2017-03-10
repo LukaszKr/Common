@@ -123,15 +123,6 @@ namespace ProceduralLevel.Common.Serialization
 			}
 			return this;
 		}
-
-		public IArraySerializer WriteArray(IEnumerable<object> data)
-		{
-			foreach(object obj in data)
-			{
-				Write(obj);
-			}
-			return this;
-		}
 		#endregion
 
 		#region Read
