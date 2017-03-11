@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Parsing.Template
@@ -38,7 +39,20 @@ namespace ProceduralLevel.Common.Parsing.Template
 			}
 			else
 			{
-				return CompileObject(manager, data);
+				IEnumerable enumerable = data as IEnumerable;
+				if(enumerable != null)
+				{
+					string compiled = "";
+					foreach(object obj in enumerable)
+					{
+						compiled += CompileObject(manager, obj);
+					}
+					return compiled;
+				}
+				else
+				{
+					return CompileObject(manager, data);
+				}
 			}
 		}
 
