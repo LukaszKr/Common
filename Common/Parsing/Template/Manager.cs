@@ -33,6 +33,11 @@ namespace ProceduralLevel.Common.Parsing.Template
 			return "";
 		}
 
+		public void ClearTemplates()
+		{
+			m_Templates.Clear();
+		}
+
 		public Template[] Parse(string str)
 		{
 			m_Parser.Parse(str);
