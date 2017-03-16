@@ -33,10 +33,12 @@ namespace ProceduralLevel.Common.Parsing.Template
 			return "";
 		}
 
-		public void Parse(string str)
+		public Template[] Parse(string str)
 		{
 			m_Parser.Parse(str);
-			Add(m_Parser.Flush());
+			Template[] templates = m_Parser.Flush();
+			Add(templates);
+			return templates;
 		}
 
 		public void Add(params Template[] templates)
@@ -45,8 +47,11 @@ namespace ProceduralLevel.Common.Parsing.Template
 			{
 				Template template = templates[x];
 				m_Templates[template.Name] = template;
+				OnAdd(template);
 			};
 		}
+
+		protected virtual void OnAdd(Template template) { }
 
 		public Template GetTemplate(string name)
 		{
