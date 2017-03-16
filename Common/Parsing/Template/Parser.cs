@@ -10,6 +10,12 @@ namespace ProceduralLevel.Common.Parsing.Template
 		{
 		}
 
+		protected override void Reset()
+		{
+			base.Reset();
+			m_Stack.Clear();
+		}
+
 		protected override Template[] Parse()
 		{
 			List<Template> templates = new List<Template>();
