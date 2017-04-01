@@ -2,12 +2,9 @@
 
 namespace ProceduralLevel.Common.Data
 {
-	//this is in extension to prevent code-repeating that would happen if itwas an interface
+	//this is in extension to prevent code-repeating that would happen if it was just an interface
 	public static class TreeNodeExt
 	{
-		private const string UNDO_MESSAGE_FORMAT = "Change parent of '{0}' from '{1}' to '{2}'";
-		private const string NULL_PARENT = "NONE";
-
 		public static bool SetParent<NodeType>(this NodeType node, NodeType parent) where NodeType : class, ITreeNode<NodeType>
 		{
 			if(!node.CanBeDirectChildOf(parent))

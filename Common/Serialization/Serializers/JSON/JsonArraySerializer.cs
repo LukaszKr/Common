@@ -30,16 +30,6 @@ namespace ProceduralLevel.Common.Serialization
 			throw new Exception("Array cannot be a root of JSON file.");
 		}
 
-		public void Load(IDataReader reader)
-		{
-			throw new Exception("Array cannot be a root of JSON file.");
-		}
-
-		public void Save(IDataWriter writer)
-		{
-			writer.Write(Array.ToString());
-		}
-
 		public void Clear()
 		{
 			m_Array = new JsonArray(4);
@@ -95,15 +85,13 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < data.Length; x++)
 			{
 				object item = data[x];
-				IArraySerializable arrItem = item as IArraySerializable;
-				if(arrItem != null)
+				if(item is IArraySerializable arrItem)
 				{
 					Write(arrItem);
 					continue;
 				}
 
-				IObjectSerializable objItem = item as IObjectSerializable;
-				if(objItem != null)
+				if(item is IObjectSerializable objItem)
 				{
 					Write(objItem);
 					continue;

@@ -41,7 +41,7 @@ namespace ProceduralLevel.Common.Parsing
 				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
 				{
 					string separator = m_Separators[sepIndex];
-					if(index+separator.Length <= text.Length && text.Substring(index, separator.Length) == separator)
+					if(CompareToSeparator(text, separator, index))
 					{
 						string value = text.Substring(current, index-current);
 						if(m_AutoTrim)
@@ -61,6 +61,27 @@ namespace ProceduralLevel.Common.Parsing
 			}
 
 			m_LastString = text.Substring(current);
+		}
+
+		private bool CompareToSeparator(string text, string separator, int index)
+		{
+			int textLen = text.Length;
+			int sepLen = separator.Length;
+
+			if(index+sepLen > textLen)
+			{
+				return false;
+			}
+
+			for(int x = 0; x < sepLen; x++)
+			{
+				if(text[x+index] != separator[x])
+				{
+					return false;
+				}
+			}
+			return true;
+
 		}
 
 		public List<Token> Flush()

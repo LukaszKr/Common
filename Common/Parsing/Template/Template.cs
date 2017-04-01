@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Common.Parsing.Template
 {
@@ -29,25 +30,25 @@ namespace ProceduralLevel.Common.Parsing.Template
 
 			if(data.GetType().IsArray)
 			{
-				string compiled = "";
 				Array arr = (Array)data;
+				StringBuilder compiled = new StringBuilder(arr.Length);
 				for(int x = 0; x < arr.Length; x++)
 				{
-					compiled += CompileObject(manager, arr.GetValue(x));
+					compiled.Append(CompileObject(manager, arr.GetValue(x)));
 				}
-				return compiled;
+				return compiled.ToString();
 			}
 			else
 			{
 				IEnumerable enumerable = data as IEnumerable;
 				if(enumerable != null)
 				{
-					string compiled = "";
+					StringBuilder compiled = new StringBuilder();
 					foreach(object obj in enumerable)
 					{
-						compiled += CompileObject(manager, obj);
+						compiled.Append(CompileObject(manager, obj));
 					}
-					return compiled;
+					return compiled.ToString();
 				}
 				else
 				{

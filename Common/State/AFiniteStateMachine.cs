@@ -1,9 +1,8 @@
-﻿using ProceduralLevel.Common.Event;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.State
 {
-	public class FiniteStateMachine<StateIDType>
+	public abstract class AFiniteStateMachine<StateIDType>
 	{
 		private bool m_UseBlacklist;
 
@@ -12,14 +11,12 @@ namespace ProceduralLevel.Common.State
 		private Dictionary<StateIDType, BaseState<StateIDType>> m_States = new Dictionary<StateIDType, BaseState<StateIDType>>();
 		private Dictionary<StateIDType, List<StateIDType>> m_Transitions = new Dictionary<StateIDType, List<StateIDType>>();
 
-		public EventChannel<StateChangedEvent<StateIDType>> StateChanged = new EventChannel<StateChangedEvent<StateIDType>>();
-
 		public BaseState<StateIDType> CurrentState
 		{
 			get { return m_CurrentState; }
 		}
 
-		public FiniteStateMachine(bool useBlacklist)
+		public AFiniteStateMachine(bool useBlacklist)
 		{
 			m_UseBlacklist = useBlacklist;
 		}
@@ -66,7 +63,7 @@ namespace ProceduralLevel.Common.State
 			}
 			BaseState<StateIDType> oldState = m_CurrentState;
 			m_CurrentState = newState;
-			StateChanged.Invoke(new StateChangedEvent<StateIDType>(oldState, newState));
+			OnStateChanged(oldState, newState);
 			if(!silient)
 			{
 				m_CurrentState.Enter();
@@ -87,6 +84,8 @@ namespace ProceduralLevel.Common.State
 			m_States.TryGetValue(stateId, out state);
 			return state as StateType;
 		}
+
+		protected abstract void OnStateChanged(BaseState<StateIDType> oldState, BaseState<StateIDType> newState);
 		#endregion
 
 		#region Transitions

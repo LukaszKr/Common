@@ -5,9 +5,7 @@
 		int Count { get; }
 
 		void Clear();
-		void Load(IDataReader reader);
 		void Load(string rawData);
-		void Save(IDataWriter writer);
 		string ToString();
 
 		#region Write

@@ -7,8 +7,6 @@ namespace ProceduralLevel.Common.Serialization
 		string[] Keys();
 
 		void Load(string rawData);
-		void Load(IDataReader reader);
-		void Save(IDataWriter writer);
 		void Clear();
 
 		#region Write

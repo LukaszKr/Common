@@ -25,18 +25,6 @@ namespace ProceduralLevel.Common.Serialization
 			m_Object = parser.Flush();
 		}
 
-		public void Load(IDataReader reader)
-		{
-			m_Object = new JsonObject();
-			string text = reader.ReadString();
-			Load(text);
-		}
-
-		public void Save(IDataWriter writer)
-		{
-			writer.Write(m_Object.ToString());
-		}
-
 		public void Clear()
 		{
 			m_Object = new JsonObject();

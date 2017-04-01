@@ -2,9 +2,9 @@
 {
 	public abstract class BaseState<StateIDType>
 	{
-		private FiniteStateMachine<StateIDType> m_SubStateMachine;
+		private AFiniteStateMachine<StateIDType> m_SubStateMachine;
 
-		public FiniteStateMachine<StateIDType> SubStateMachine
+		public AFiniteStateMachine<StateIDType> SubStateMachine
 		{
 			get { return m_SubStateMachine; }
 		}
@@ -14,7 +14,7 @@
 			get;
 		}
 
-		public BaseState(FiniteStateMachine<StateIDType> subStateMachine = null)
+		public BaseState(AFiniteStateMachine<StateIDType> subStateMachine = null)
 		{
 			m_SubStateMachine = subStateMachine;
 		}
