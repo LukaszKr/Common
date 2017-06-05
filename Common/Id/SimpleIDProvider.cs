@@ -1,6 +1,6 @@
 using ProceduralLevel.Common.Serialization;
 
-namespace ProceduralLevel.Common.Data
+namespace ProceduralLevel.Common.Id
 {
 	public class SimpleIDProvider: BaseIDProvider
 	{

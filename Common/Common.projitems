@@ -12,20 +12,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\IBaseAction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\DataCollection.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\IDataItem.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\BaseIDProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\RecycleIDProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Id\SimpleIDProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Tree\ITreeNode.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Tree\TreeNodeExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Id\BaseIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Id\RecycleIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Id\SimpleIDProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\BaseEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventChannel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper\ArrayList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\ChaoticList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\DynamicBitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\Ext\ArrayExt.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
@@ -78,6 +74,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\BaseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\AFiniteStateMachine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)State\StateExceptions.cs" />
   </ItemGroup>
 </Project>

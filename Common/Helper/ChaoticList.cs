@@ -1,6 +1,6 @@
 namespace ProceduralLevel.Common.Helper
 {
-	public class ArrayList<T> where T : class 
+	public class ChaoticList<T> where T : class 
 	{
 		private const int SHRINK_LIMIT = 4;
 		private const int SHRINK_FACTOR = 2;
@@ -30,7 +30,7 @@ namespace ProceduralLevel.Common.Helper
 			get { return m_Data.Length; }
 		}
 
-		public ArrayList(int initialSize = 32)
+		public ChaoticList(int initialSize = 32)
 		{
 			m_Data = new T[initialSize];
 			m_InitialSize = initialSize;
