@@ -62,7 +62,6 @@
     <Compile Include="Parsing\Serialization\CSVTest.cs" />
     <Compile Include="Parsing\Serialization\GenericSerializationTest.cs" />
     <Compile Include="Parsing\Serialization\JsonTest.cs" />
-    <Compile Include="Parsing\Template\TemplateTest.cs" />
     <Compile Include="Parsing\Tokenizer\TokenizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
