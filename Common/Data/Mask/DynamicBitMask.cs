@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Helper
+﻿namespace ProceduralLevel.Common.Data
 {
 	public class DynamicBitMask: BitMask
 	{

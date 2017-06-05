@@ -12,19 +12,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\ActionManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Action\IBaseAction.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Id\BaseIDProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Id\RecycleIDProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Id\SimpleIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ID\BaseIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ID\RecycleIDProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ID\SimpleIDProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\BaseEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventChannel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\IEventBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper\ChaoticList.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper\DynamicBitMask.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper\Ext\ArrayExt.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helper\BitMask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ChaoticList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Mask\DynamicBitMask.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ext\ArrayExt.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Mask\BitMask.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\GlobalLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logger\Writer\DummyLogWriter.cs" />
@@ -74,5 +74,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Serialization\Serializers\JSON\JsonObjectSerializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\BaseState.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)State\AFiniteStateMachine.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Data\ID\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Data\Mask\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Ext\" />
   </ItemGroup>
 </Project>

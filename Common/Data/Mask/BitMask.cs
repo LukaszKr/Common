@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace ProceduralLevel.Common.Helper
+namespace ProceduralLevel.Common.Data
 {
 	public class BitMask
 	{

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Helper
+﻿namespace ProceduralLevel.Common.Ext
 {
 	public static class ArrayExt
     {

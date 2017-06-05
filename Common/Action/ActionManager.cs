@@ -1,4 +1,4 @@
-﻿using ProceduralLevel.Common.Helper;
+﻿using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Action
 {
@@ -6,7 +6,7 @@ namespace ProceduralLevel.Common.Action
 	{
 		public const int INITIAL_CONTEXT_DEPTH = 8;
 
-		private ChaoticList<ActionContext<DataType>> m_Contexts = new ChaoticList<ActionContext<DataType>>(INITIAL_CONTEXT_DEPTH);
+		private List<ActionContext<DataType>> m_Contexts = new List<ActionContext<DataType>>(INITIAL_CONTEXT_DEPTH);
 		private DataType m_Data;
 		private bool m_Paused;
 		private int m_CurrentContext = 0;

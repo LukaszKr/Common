@@ -4,8 +4,6 @@ namespace ProceduralLevel.Common.Action
 {
 	public class ActionContext<DataType>
 	{
-		public static List<IBaseAction<DataType>> History = new List<IBaseAction<DataType>>();
-
 		private int m_Depth;
 		private Queue<IBaseAction<DataType>> m_Actions;
 
@@ -46,7 +44,6 @@ namespace ProceduralLevel.Common.Action
 			{
 				if(action.IsValid(data))
 				{
-					History.Add(action);
 					action.Apply(data);
 				}
 				return true;

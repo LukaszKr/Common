@@ -2,7 +2,7 @@ using ProceduralLevel.Common.Serialization;
 using System;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Id
+namespace ProceduralLevel.Common.Data
 {
 	public class RecycleIDProvider: BaseIDProvider
 	{

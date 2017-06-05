@@ -1,4 +1,6 @@
-namespace ProceduralLevel.Common.Helper
+using ProceduralLevel.Common.Ext;
+
+namespace ProceduralLevel.Common.Data
 {
 	public class ChaoticList<T> where T : class 
 	{
