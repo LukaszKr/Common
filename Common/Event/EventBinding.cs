@@ -2,12 +2,12 @@
 
 namespace ProceduralLevel.Common.Event
 {
-	public class EventBinding<EventType>: IEventBinding
+	public class EventBinding<T1>: IEventBinding
 	{
-		private EventChannel<EventType> m_Target;
-		private Action<EventType> m_Callback;
+		private Event<T1> m_Target;
+		private Action<T1> m_Callback;
 
-		public EventBinding(EventChannel<EventType> target, Action<EventType> callback)
+		public EventBinding(Event<T1> target, Action<T1> callback)
 		{
 			m_Target = target;
 			m_Callback = callback;

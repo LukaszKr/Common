@@ -5,7 +5,6 @@ namespace ProceduralLevel.Common.Event
 {
 	public abstract class EventBinder<EventIDType>
 	{
-		private EventManager m_Manager;
 		private List<IEventBinding> m_Bindings;
 		
 		public bool IsDisabled { get; private set; }
@@ -15,10 +14,9 @@ namespace ProceduralLevel.Common.Event
 			return string.Format("[EventBinder, EventIDType: {0}, Disabled: {1}", typeof(EventIDType).Name, IsDisabled);
 		}
 
-		public EventBinder(EventManager manager)
+		public EventBinder()
 		{
 			m_Bindings = new List<IEventBinding>();
-			m_Manager = manager;
 		}
 
 		~EventBinder()
@@ -26,22 +24,18 @@ namespace ProceduralLevel.Common.Event
 			UnbindAll();
 		}
 
-		public abstract bool Bind<EventType>(EventIDType eventID, Action<EventType> callback) where EventType: BaseEvent;
-
-		protected bool Bind<EventType>(int eventID, Action<EventType> callback) where EventType: BaseEvent
+		public void Bind<T1>(Event<T1> evt, Action<T1> callback)
 		{
-			return Bind(m_Manager.GetEventChannel<EventType>(eventID), callback);
+			AddBinding(new EventBinding<T1>(evt, callback));
 		}
 
-		public bool Bind<EventType>(EventChannel<EventType> target, Action<EventType> callback)
+		private void AddBinding(IEventBinding binding)
 		{
-			EventBinding<EventType> pair = new EventBinding<EventType>(target, callback);
-			m_Bindings.Add(pair);
 			if(!IsDisabled)
 			{
-				pair.Bind();
+				binding.Bind();
 			}
-			return true;
+			m_Bindings.Add(binding);
 		}
 
 		public void UnbindAll()
@@ -55,19 +49,25 @@ namespace ProceduralLevel.Common.Event
 
 		public void Disable()
 		{
-			IsDisabled = true;
-			for(int x = 0; x < m_Bindings.Count; x++)
+			if(!IsDisabled)
 			{
-				m_Bindings[x].Unbind();
+				IsDisabled = true;
+				for(int x = 0; x < m_Bindings.Count; x++)
+				{
+					m_Bindings[x].Unbind();
+				}
 			}
 		}
 
 		public void Enable()
 		{
-			IsDisabled = false;
-			for(int x = 0; x < m_Bindings.Count; x++)
+			if(IsDisabled)
 			{
-				m_Bindings[x].Bind();
+				IsDisabled = false;
+				for(int x = 0; x < m_Bindings.Count; x++)
+				{
+					m_Bindings[x].Bind();
+				}
 			}
 		}
 	}
