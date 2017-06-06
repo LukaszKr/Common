@@ -4,6 +4,8 @@ namespace Common.Logger
 {
 	public class Logger
     {
+		private const string NULL_SOURCE = "NULL";
+
 		public ILogWriter Writer { get; private set; }
 
 		public Logger(ILogWriter writer = null)
@@ -36,7 +38,7 @@ namespace Common.Logger
 
 		private void WriteLine(object source, string message)
 		{
-			Writer.WriteLine(string.Format("[{0}]{1}", source.GetType().Name, message));
+			Writer.WriteLine(string.Format("[{0}]{1}", (source != null? source.GetType().Name: NULL_SOURCE), message));
 		}
     }
 }
