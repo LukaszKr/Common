@@ -73,9 +73,9 @@
     <None Include="testData\json\simple2.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnityCommon\UnityCommon.csproj">
-      <Project>{455713d3-7fe6-4847-a3bc-c044daa06f79}</Project>
-      <Name>UnityCommon</Name>
+    <ProjectReference Include="..\NetCommon\NetCommon.csproj">
+      <Project>{97059A61-27CF-427E-944A-B1355E509061}</Project>
+      <Name>NetCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
