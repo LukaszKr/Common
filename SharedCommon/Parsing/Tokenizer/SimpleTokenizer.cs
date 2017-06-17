@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Parsing
 {
-	public class SimpleTokenizer: Tokenizer
+	public class SimpleTokenizer: ATokenizer
     {
 		private string[] m_Separators;
 

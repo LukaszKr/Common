@@ -7,9 +7,9 @@ namespace ProceduralLevel.Common.Parsing
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
 
-		protected Tokenizer m_Tokenizer;
+		protected ATokenizer m_Tokenizer;
 
-		public AParser(Tokenizer tokenizer)
+		public AParser(ATokenizer tokenizer)
 		{
 			m_Tokenizer = tokenizer;
 		}

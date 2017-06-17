@@ -16,7 +16,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
         [TestMethod()]
         public void SimpleCase()
         {
-            Tokenizer tokenizer = new SimpleTokenizer(",", " ");
+            ATokenizer tokenizer = new SimpleTokenizer(",", " ");
             tokenizer.Tokenize("a, b");
             List<Token> tokens = tokenizer.Flush();
             AssertToken(tokens[0], false, "a");

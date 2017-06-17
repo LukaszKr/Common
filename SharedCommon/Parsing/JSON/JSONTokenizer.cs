@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Parsing
 {
-	public class JSONTokenizer: Tokenizer
+	public class JSONTokenizer: ATokenizer
 	{
 		private static string[] m_Separators = new string[]
 		{
