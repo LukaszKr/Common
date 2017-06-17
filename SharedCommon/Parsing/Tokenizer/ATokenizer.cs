@@ -88,9 +88,14 @@ namespace ProceduralLevel.Common.Parsing
 		{
 			List<Token> tokens = m_Tokens;
 			PushToken(new Token(m_LastString, ETokenType.Value));
-			m_Tokens = new List<Token>();
-			m_LastString = null;
+			Reset();
 			return tokens;
+		}
+
+		protected virtual void Reset()
+		{
+			m_Tokens.Clear();
+			m_LastString = null;
 		}
 
 		public List<Token> Peek()
