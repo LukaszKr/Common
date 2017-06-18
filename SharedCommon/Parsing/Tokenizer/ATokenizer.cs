@@ -94,7 +94,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		protected virtual void Reset()
 		{
-			m_Tokens.Clear();
+			m_Tokens = new List<Token>();
 			m_LastString = null;
 		}
 
