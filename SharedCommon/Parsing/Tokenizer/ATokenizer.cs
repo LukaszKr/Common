@@ -10,6 +10,7 @@ namespace ProceduralLevel.Common.Parsing
 
 		private bool m_AutoTrim;
 		private string m_LastString = null;
+		private int m_CursorPosition = 0;
 
 		public ATokenizer(bool autoTrim = false)
 		{
@@ -36,6 +37,9 @@ namespace ProceduralLevel.Common.Parsing
 				m_Separators = GetDefaultSeparators();
 				text = str;
 			}
+
+			int oldPosition = m_CursorPosition;
+
 			for(int index = 0; index < text.Length; index++)
 			{
 				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
@@ -48,12 +52,13 @@ namespace ProceduralLevel.Common.Parsing
 						{
 							value = value.Trim();
 						}
-						PushToken(new Token(value, ETokenType.Value));
-						Token separatorToken = new Token(separator, ETokenType.Separator);
+						PushToken(new Token(value, ETokenType.Value, oldPosition + current));
+						Token separatorToken = new Token(separator, ETokenType.Separator, oldPosition + index);
 						PushToken(separatorToken);
 						m_Separators = GetSeparators(separatorToken);
 						index += separator.Length;
 						current = index;
+						m_CursorPosition = oldPosition + index;
 						index--;
 						break;
 					}
@@ -87,7 +92,7 @@ namespace ProceduralLevel.Common.Parsing
 		public List<Token> Flush()
 		{
 			List<Token> tokens = m_Tokens;
-			PushToken(new Token(m_LastString, ETokenType.Value));
+			PushToken(new Token(m_LastString, ETokenType.Value, m_CursorPosition));
 			Reset();
 			return tokens;
 		}
@@ -96,6 +101,7 @@ namespace ProceduralLevel.Common.Parsing
 		{
 			m_Tokens = new List<Token>();
 			m_LastString = null;
+			m_CursorPosition = 0;
 		}
 
 		public List<Token> Peek()
