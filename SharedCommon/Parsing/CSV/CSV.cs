@@ -29,7 +29,7 @@ namespace ProceduralLevel.Common.Parsing
 			for(int x = 0; x < Header.Length; x++)
 			{
 				string value = Header[x];
-				if(name == value)
+				if(name.Equals(value, StringComparison.OrdinalIgnoreCase))
 				{
 					return x;
 				}
@@ -59,7 +59,7 @@ namespace ProceduralLevel.Common.Parsing
 			for(int x = 0; x < m_Rows.Count; x++)
 			{
 				CSVRow row = m_Rows[x];
-				if(row[column] == value)
+				if(row[column].Equals(value, StringComparison.OrdinalIgnoreCase))
 				{
 					return x;
 				}
