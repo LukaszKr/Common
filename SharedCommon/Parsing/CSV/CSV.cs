@@ -6,9 +6,11 @@ namespace ProceduralLevel.Common.Parsing
 {
     public class CSV: IEquatable<CSV>
     {
-        public readonly char Separator;
 
-        public CSVRow Header { get; private set; }
+        public readonly char Separator;
+		public StringComparison Comparision;
+
+		public CSVRow Header { get; private set; }
 
         private List<CSVRow> m_Rows;
         public int Count { get { return m_Rows.Count; } }
@@ -17,24 +19,41 @@ namespace ProceduralLevel.Common.Parsing
             get { return m_Rows[x]; }
         }
 
-        public CSV(char separator = CSVConst.COLUMN_SEPARATOR)
+
+        public CSV(char separator = CSVConst.COLUMN_SEPARATOR, StringComparison comparision = StringComparison.OrdinalIgnoreCase)
         {
             Separator = separator;
             m_Rows = new List<CSVRow>();
 			Header = new CSVRow(0);
-        }
+			Comparision = comparision;
 
-		public int FindHeader(string name, StringComparison comparision = StringComparison.OrdinalIgnoreCase)
+		}
+
+		public int FindHeader(string name)
 		{
 			for(int x = 0; x < Header.Length; x++)
 			{
 				string value = Header[x];
-				if(name.Equals(value, comparision))
+				if(name.Equals(value, Comparision))
 				{
 					return x;
 				}
 			}
 			return -1;
+		}
+
+		public void TryAddHeaders(params string[] headers)
+		{
+			List<string> newHeaders = new List<string>();
+			for(int x = 0; x < headers.Length; x++)
+			{
+				string header = headers[x];
+				if(FindHeader(header) == -1)
+				{
+					newHeaders.Add(header);
+				}
+			}
+			AddHeaders(newHeaders.ToArray());
 		}
 
 		public bool AddHeaders(params string[] names)
@@ -54,12 +73,12 @@ namespace ProceduralLevel.Common.Parsing
 			return true;
 		}
 
-		public int FindRowIndex(int column, string value, StringComparison comparision = StringComparison.OrdinalIgnoreCase)
+		public int FindRowIndex(int column, string value)
 		{
 			for(int x = 0; x < m_Rows.Count; x++)
 			{
 				CSVRow row = m_Rows[x];
-				if(row[column].Equals(value, comparision))
+				if(row[column].Equals(value, Comparision))
 				{
 					return x;
 				}
