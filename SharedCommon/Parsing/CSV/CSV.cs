@@ -24,12 +24,12 @@ namespace ProceduralLevel.Common.Parsing
 			Header = new CSVRow(0);
         }
 
-		public int FindHeader(string name)
+		public int FindHeader(string name, StringComparison comparision = StringComparison.OrdinalIgnoreCase)
 		{
 			for(int x = 0; x < Header.Length; x++)
 			{
 				string value = Header[x];
-				if(name.Equals(value, StringComparison.OrdinalIgnoreCase))
+				if(name.Equals(value, comparision))
 				{
 					return x;
 				}
@@ -54,12 +54,12 @@ namespace ProceduralLevel.Common.Parsing
 			return true;
 		}
 
-		public int FindRowIndex(int column, string value)
+		public int FindRowIndex(int column, string value, StringComparison comparision = StringComparison.OrdinalIgnoreCase)
 		{
 			for(int x = 0; x < m_Rows.Count; x++)
 			{
 				CSVRow row = m_Rows[x];
-				if(row[column].Equals(value, StringComparison.OrdinalIgnoreCase))
+				if(row[column].Equals(value, comparision))
 				{
 					return x;
 				}
