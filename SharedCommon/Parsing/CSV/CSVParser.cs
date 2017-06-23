@@ -5,10 +5,10 @@ namespace ProceduralLevel.Common.Parsing
 {
     public class CSVParser: AParser<CSV>
     {
-        private string m_Separator;
+        private char m_Separator;
 
-        public CSVParser(string separator = CSVConst.COLUMN_SEPARATOR)
-			:base(new CSVTokenizer(separator))
+        public CSVParser(char separator = CSVConst.COLUMN_SEPARATOR)
+			:base(new CSVTokenizer(separator.ToString()))
         {
             m_Separator = separator;
         }
@@ -42,7 +42,7 @@ namespace ProceduralLevel.Common.Parsing
                             {
                                 parseState = ParseState.OpenQuote;
                             }
-                            else if(token.Value == m_Separator)
+                            else if(token.Value[0] == m_Separator)
                             {
                                 parseState = ParseState.CloseQuote;
                                 goto case ParseState.CloseQuote;
@@ -62,7 +62,7 @@ namespace ProceduralLevel.Common.Parsing
                     case ParseState.Value:
                         if(token.IsSeparator)
                         {
-                            if(token.Value == m_Separator)
+                            if(token.Value[0] == m_Separator)
                             {
                                 values.Add(value.Trim());
                                 parseState = ParseState.ValueStart;
@@ -128,7 +128,7 @@ namespace ProceduralLevel.Common.Parsing
                                 values.Add(value.Trim());
                                 parseState = ParseState.ValueStart;
                             }
-                            if(token.Value != m_Separator && parseState == ParseState.CloseQuote)
+                            if(token.Value[0] != m_Separator && parseState == ParseState.CloseQuote)
                             {
                                 throw new Exception(string.Format("Expected seperator: {0} but found {1}",
                                     m_Separator, token.Value));

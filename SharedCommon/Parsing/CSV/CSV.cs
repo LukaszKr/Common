@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
     public class CSV: IEquatable<CSV>
     {
-        public string Separator { get; private set; }
+        public readonly char Separator;
 
         public CSVRow Header { get; private set; }
 
@@ -16,7 +17,7 @@ namespace ProceduralLevel.Common.Parsing
             get { return m_Rows[x]; }
         }
 
-        public CSV(string separator)
+        public CSV(char separator = CSVConst.COLUMN_SEPARATOR)
         {
             Separator = separator;
             m_Rows = new List<CSVRow>();
@@ -61,12 +62,14 @@ namespace ProceduralLevel.Common.Parsing
 
         public override string ToString()
         {
-            string result = Header.ToString(Separator);
+			StringBuilder sb = new StringBuilder();
+            Header.ToString(sb, Separator);
             for(int x = 0; x < Count; x++)
             {
-                result += "\r\n"+m_Rows[x].ToString(Separator);
+				sb.Append(CSVConst.NEW_LINE);
+				m_Rows[x].ToString(sb, Separator);
             }
-            return result;
+            return sb.ToString();
         }
     }
 }

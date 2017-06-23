@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Common.Parsing
 {
@@ -76,25 +77,30 @@ namespace ProceduralLevel.Common.Parsing
             return true;
         }
 
-        public string ToString(string separator)
+		public string ToString(char separator)
+		{
+			StringBuilder sb = new StringBuilder();
+			ToString(sb, separator);
+			return sb.ToString();
+		}
+
+        public void ToString(StringBuilder sb, char separator)
         {
-            string result = "";
             for(int x = 0; x < m_Data.Length; x++)
             {
                 if(string.IsNullOrEmpty(m_Data[x]))
                 {
-                    result += m_Data[x];
+                    sb.Append(m_Data[x]);
                 }
                 else
                 {
-                    result += string.Format("\"{0}\"", m_Data[x]);
+					sb.AppendFormat("\"{0}\"", m_Data[x]);
                 }
                 if(x < m_Data.Length-1)
                 {
-                    result += separator;
+					sb.Append(separator);
                 }
             }
-            return result;
         }
     }
 }
