@@ -21,9 +21,63 @@ namespace ProceduralLevel.Common.Parsing
         {
             Separator = separator;
             m_Rows = new List<CSVRow>();
+			Header = new CSVRow(0);
         }
 
-        public bool Equals(CSV csv)
+		public int FindHeader(string name)
+		{
+			for(int x = 0; x < Header.Length; x++)
+			{
+				string value = Header[x];
+				if(name == value)
+				{
+					return x;
+				}
+			}
+			return -1;
+		}
+
+		public bool AddHeaders(params string[] names)
+		{
+			int oldSize = Header.Length;
+			int newSize = Header.Length+names.Length;
+
+			Header.Resize(newSize);
+			for(int x = oldSize; x < newSize; x++)
+			{
+				Header[x] = names[x-oldSize];
+			}
+			for(int x = 0; x < m_Rows.Count; x++)
+			{
+				m_Rows[x].Resize(newSize);
+			}
+			return true;
+		}
+
+		public int FindRowIndex(int column, string value)
+		{
+			for(int x = 0; x < m_Rows.Count; x++)
+			{
+				CSVRow row = m_Rows[x];
+				if(row[column] == value)
+				{
+					return x;
+				}
+			}
+			return -1;
+		}
+
+		public CSVRow FindRow(int column, string value)
+		{
+			int index = FindRowIndex(column, value);
+			if(index >= 0)
+			{
+				return m_Rows[index];
+			}
+			return null;
+		}
+
+		public bool Equals(CSV csv)
         {
             if(Count != csv.Count)
             {
@@ -46,18 +100,11 @@ namespace ProceduralLevel.Common.Parsing
 
         public void Add(CSVRow row)
         {
-            if(Header == null)
+            if(row.Length != Header.Length)
             {
-                Header = row;
+                row.Resize(Header.Length);
             }
-            else
-            {
-                if(row.Length != Header.Length)
-                {
-                    row.Resize(Header.Length);
-                }
-                m_Rows.Add(row);
-            }
+			m_Rows.Add(row);
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProceduralLevel.Common.Ext;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,14 +7,14 @@ namespace ProceduralLevel.Common.Parsing
 {
     public class CSVRow: IEquatable<CSVRow>
     {
-        public string[] m_Data;
+        private string[] m_Data;
 
         public int Length { get { return m_Data.Length; } }
 
         public string this[int x]
         {
             get { return m_Data[x]; }
-            private set { m_Data[x] = value; }
+            set { m_Data[x] = value; }
         }
 
         public CSVRow(int length)
@@ -56,25 +57,14 @@ namespace ProceduralLevel.Common.Parsing
             return true;
         }
 
-        public bool Resize(int newLength)
+        public void Resize(int newLength)
         {
-            if(newLength == Length)
-            {
-                return false;
-            }
-            string[] oldData = m_Data;
-            m_Data = new string[newLength];
-            int minLength = Math.Min(newLength, oldData.Length);
-            
-            for(int x = 0; x < minLength; x++)
-            {
-                m_Data[x] = oldData[x];
-            }
+			int minLength = Math.Min(newLength, m_Data.Length);
+			m_Data = m_Data.Resize(newLength);
             for(int x = minLength; x < m_Data.Length; x++)
             {
                 m_Data[x] = "";
             }
-            return true;
         }
 
 		public string ToString(char separator)
