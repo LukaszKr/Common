@@ -213,7 +213,7 @@ namespace ProceduralLevel.Common.Parsing
 						result += token.Value;
 						quoted = false;
 					}
-					else if(token.Value != JsonConst.QUOTATION)
+					else if(token.Value != JsonConst.QUOTATION && token.Value != JsonConst.ESCAPED_QUOTATION)
 					{
 						throw new Exception(string.Format("While parsing string, found '{0}' instead of closing quote: '{1}'",
 							token.Value, JsonConst.QUOTATION));

@@ -5,17 +5,20 @@ namespace ProceduralLevel.Common.Parsing
 {
 	public abstract class ATokenizer
     {
-		private string[] m_Separators = null;
+		private string[] m_ActiveSeparators = null;
 		private List<Token> m_Tokens;
 
 		private bool m_AutoTrim;
 		private string m_LastString = null;
 		private int m_CursorPosition = 0;
+		private bool m_Escaped;
+		private string m_EscapeSeparator;
 
-		public ATokenizer(bool autoTrim = false)
+		public ATokenizer(bool autoTrim = false, string escapeSeparator = null)
 		{
 			m_Tokens = new List<Token>();
 			m_AutoTrim = autoTrim;
+			m_EscapeSeparator = escapeSeparator;
 		}
 
 		protected abstract string[] GetDefaultSeparators();
@@ -34,38 +37,63 @@ namespace ProceduralLevel.Common.Parsing
 			}
 			else
 			{
-				m_Separators = GetDefaultSeparators();
+				m_ActiveSeparators = GetDefaultSeparators();
 				text = str;
 			}
 
 			int oldPosition = m_CursorPosition;
+			int valueOffset = 0;
+			m_LastString = string.Empty;
+
 
 			for(int index = 0; index < text.Length; index++)
 			{
-				for(int sepIndex = 0; sepIndex < m_Separators.Length; sepIndex++)
+				if(m_Escaped)
 				{
-					string separator = m_Separators[sepIndex];
+					m_Escaped = false;
+					continue;
+				}
+				for(int sepIndex = 0; sepIndex < m_ActiveSeparators.Length; sepIndex++)
+				{
+					string separator = m_ActiveSeparators[sepIndex];
 					if(CompareToSeparator(text, separator, index))
 					{
-						string value = text.Substring(current, index-current);
+						m_Escaped = IsEscapeSeparator(text, index);
+						int leng = index-current;
+						if(leng != 0)
+						{
+							m_LastString += text.Substring(current, leng);
+							current += leng-1+(m_Escaped? separator.Length: 0);
+						}
+						if(m_Escaped)
+						{
+							index += separator.Length-1;
+							current += separator.Length;
+							break;
+						}
+
 						if(m_AutoTrim)
 						{
-							value = value.Trim();
+							m_LastString = m_LastString.Trim();
 						}
-						PushToken(new Token(value, ETokenType.Value, oldPosition + current));
+						PushToken(new Token(m_LastString, ETokenType.Value, valueOffset));
+
 						Token separatorToken = new Token(separator, ETokenType.Separator, oldPosition + index);
 						PushToken(separatorToken);
-						m_Separators = GetSeparators(separatorToken);
+						m_ActiveSeparators = GetSeparators(separatorToken);
+
 						index += separator.Length;
 						current = index;
+						valueOffset = index;
 						m_CursorPosition = oldPosition + index;
 						index--;
+						m_LastString = string.Empty;
 						break;
 					}
 				}
 			}
 
-			m_LastString = text.Substring(current);
+			m_LastString += text.Substring(current);
 		}
 
 		private bool CompareToSeparator(string text, string separator, int index)
@@ -102,6 +130,7 @@ namespace ProceduralLevel.Common.Parsing
 			m_Tokens = new List<Token>();
 			m_LastString = null;
 			m_CursorPosition = 0;
+			m_Escaped = false;
 		}
 
 		public List<Token> Peek()
@@ -132,6 +161,11 @@ namespace ProceduralLevel.Common.Parsing
 				}
 			}
 			return true;
+		}
+
+		protected bool IsEscapeSeparator(string value, int index)
+		{
+			return m_EscapeSeparator != null && CompareToSeparator(value, m_EscapeSeparator, index);
 		}
 	}
 }
