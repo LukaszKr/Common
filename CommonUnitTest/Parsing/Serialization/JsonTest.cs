@@ -30,7 +30,8 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 			JsonObject obj = new JsonObject();
 			obj.Write("test", value);
 			JsonParser parser = new JsonParser();
-			parser.Parse(obj.ToString());
+			string str = obj.ToString();
+			parser.Parse(str);
 			obj = parser.Flush();
 			Assert.AreEqual(value, obj.ReadString("test"));
 		}

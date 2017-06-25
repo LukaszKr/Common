@@ -11,7 +11,7 @@ namespace ProceduralLevel.Common.Parsing
 		public const string KEY_VALUE_SEPARATOR = ":";
 		public const string SEPARATOR = ",";
 		public const string QUOTATION = "\"";
-		public const string ESCAPED_QUOTATION = "\\\"";
+		public const string ESCAPE = "\\";
 
 		private static char[] m_ToEscape = new char[]
 		{
