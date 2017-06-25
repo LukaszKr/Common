@@ -6,8 +6,9 @@ namespace ProceduralLevel.Common.Parsing
     public class CSVParser: AParser<CSV>
     {
         private char m_Separator;
+		private bool m_HasHeader;
 
-        public CSVParser(char separator = CSVConst.COLUMN_SEPARATOR)
+		public CSVParser(char separator = CSVConst.COLUMN_SEPARATOR)
 			:base(new CSVTokenizer(separator.ToString()))
         {
             m_Separator = separator;
@@ -21,6 +22,13 @@ namespace ProceduralLevel.Common.Parsing
             OpenQuote,
             CloseQuote
         }
+
+		protected override void Reset()
+		{
+			base.Reset();
+
+			m_HasHeader = false;
+		}
 
 		protected override CSV Parse()
         {
@@ -156,9 +164,17 @@ namespace ProceduralLevel.Common.Parsing
 
         private void AddEntry(CSV csv, List<string> values)
         {
-            CSVRow row = new CSVRow(values);
-            csv.Add(row);
-            values.Clear();
+			if(m_HasHeader)
+			{
+				CSVRow row = new CSVRow(values);
+				csv.Add(row);
+			}
+			else
+			{
+				m_HasHeader = true;
+				csv.AddHeaders(values.ToArray());
+			}
+			values.Clear();
         }
 
         private CSVRow ParseRow(CSVRow row = null)

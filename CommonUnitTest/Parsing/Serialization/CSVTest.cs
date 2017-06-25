@@ -22,7 +22,7 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
         [TestMethod]
         public void HeaderTest()
         {
-            Assert.AreEqual(4, m_Example.Header.Length);
+			Assert.AreEqual(4, m_Example.Header.Length);
             for(int x = 0; x < 4; x++)
             {
                 Assert.AreEqual("col"+(x+1), m_Example.Header[x]);

@@ -24,6 +24,18 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
 		}
 
 		[TestMethod]
+		public void EscapedStringTest()
+		{
+			string value = "\"value\"";
+			JsonObject obj = new JsonObject();
+			obj.Write("test", value);
+			JsonParser parser = new JsonParser();
+			parser.Parse(obj.ToString());
+			obj = parser.Flush();
+			Assert.AreEqual(value, obj.ReadString("test"));
+		}
+
+		[TestMethod]
 		public void ToStringTest()
 		{
 			JsonParser parser = new JsonParser();

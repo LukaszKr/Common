@@ -20,15 +20,13 @@ namespace ProceduralLevel.Common.Ext
 
 		public static int MinValue<EnumType>()
 		{
-			int minValue, maxValue;
-			ValueRange<EnumType>(out minValue, out maxValue);
+			ValueRange<EnumType>(out int minValue, out int maxValue);
 			return minValue;
 		}
 
 		public static int MaxValue<EnumType>()
 		{
-			int minValue, maxValue;
-			ValueRange<EnumType>(out minValue, out maxValue);
+			ValueRange<EnumType>(out int minValue, out int maxValue);
 			return maxValue;
 		}
 	}
