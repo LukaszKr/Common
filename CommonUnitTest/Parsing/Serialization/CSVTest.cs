@@ -29,6 +29,14 @@ namespace ProceduralLevel.CommonUnitTest.Parsing
             }
         }
         
+		[TestMethod]
+		public void SimpleCSV()
+		{
+			CSVParser parser = new CSVParser();
+			string sample = File.ReadAllText("testData/csv/live.csv");
+			parser.Parse(sample);
+			CSV csv = parser.Flush();
+		}
 
         /// <summary>
         /// When value is something like "a, b" space in middle would get removed.

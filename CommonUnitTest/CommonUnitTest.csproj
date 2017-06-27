@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="testData\csv\example.csv" />
+    <None Include="testData\csv\live.csv" />
     <None Include="testData\csv\space.csv" />
     <None Include="testData\json\example.json" />
     <None Include="testData\json\simple1.json" />

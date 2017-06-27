@@ -142,11 +142,6 @@ namespace ProceduralLevel.Common.Parsing
                                     m_Separator, token.Value));
                             }
                         }
-                        else
-                        {
-                            throw new Exception(string.Format("Expected seperator: {0} but found {1}",
-                                m_Separator, token.Value));
-                        }
                         break;
                 }
             }
