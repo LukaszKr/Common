@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Tokenize;
 
-namespace ParsingTest
+namespace Test.Tokenize
 {
 	public static class TestHelper
 	{
