@@ -2,7 +2,7 @@
 {
 	public class JSONTokenizer: ATokenizer
 	{
-		private static string[] m_Separators = new string[]
+		private static char[] m_Separators = new char[]
 		{
 			JsonConst.ARRAY_CLOSE, JsonConst.ARRAY_OPEN,
 			JsonConst.BRACKETS_CLOSE, JsonConst.BRACKETS_OPEN,
@@ -10,12 +10,12 @@
 			JsonConst.QUOTATION, JsonConst.ESCAPE
 		};
 
-		private static string[] m_Quoted = new string[]
+		private static char[] m_Quoted = new char[]
 		{
 			JsonConst.QUOTATION
 		};
 
-		private static string[] m_Value = new string[]
+		private static char[] m_Value = new char[]
 		{
 			JsonConst.QUOTATION,
 			JsonConst.SEPARATOR
@@ -26,12 +26,12 @@
 
 		}
 
-		protected override string[] GetDefaultSeparators()
+		protected override char[] GetDefaultSeparators()
 		{
 			return m_Separators;
 		}
 
-		protected override string[] GetSeparators(Token token)
+		protected override char[] GetSeparators(Token token)
 		{
 			switch(token.Value)
 			{

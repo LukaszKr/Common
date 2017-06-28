@@ -2,14 +2,14 @@
 {
 	public class CSVTokenizer: ATokenizer
 	{
-		private string[] m_Separators;
+		private char[] m_Separators;
 
-		public CSVTokenizer(string separator)
+		public CSVTokenizer(char separator)
 		{
-			m_Separators = new string[] { CSVConst.QUOTATION, CSVConst.NEW_LINE, separator };
+			m_Separators = new char[] { CSVConst.QUOTATION, CSVConst.NEW_LINE, separator };
 		}
 
-		protected override string[] GetDefaultSeparators()
+		protected override char[] GetDefaultSeparators()
 		{
 			return m_Separators;
 		}

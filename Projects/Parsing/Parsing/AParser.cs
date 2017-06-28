@@ -29,10 +29,11 @@ namespace ProceduralLevel.Parsing
 			return (m_Next < m_Tokens.Count);
 		}
 
-		public void Parse(string str)
+		public AParser<DataType> Parse(string str)
 		{
 			m_Tokenizer.Tokenize(str);
 			m_Next = 0;
+			return this;
 		}
 
 		public DataType Flush()

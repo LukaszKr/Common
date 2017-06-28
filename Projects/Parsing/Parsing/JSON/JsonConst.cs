@@ -4,14 +4,14 @@ namespace ProceduralLevel.Parsing
 {
 	public static class JsonConst
     {
-		public const string ARRAY_OPEN = "[";
-		public const string ARRAY_CLOSE = "]";
-		public const string BRACKETS_OPEN = "{";
-		public const string BRACKETS_CLOSE = "}";
-		public const string KEY_VALUE_SEPARATOR = ":";
-		public const string SEPARATOR = ",";
-		public const string QUOTATION = "\"";
-		public const string ESCAPE = "\\";
+		public const char ARRAY_OPEN = '[';
+		public const char ARRAY_CLOSE = ']';
+		public const char BRACKETS_OPEN = '{';
+		public const char BRACKETS_CLOSE = '}';
+		public const char KEY_VALUE_SEPARATOR = ':';
+		public const char SEPARATOR = ',';
+		public const char QUOTATION = '\"';
+		public const char ESCAPE = '\\';
 
 		private static char[] m_ToEscape = new char[]
 		{

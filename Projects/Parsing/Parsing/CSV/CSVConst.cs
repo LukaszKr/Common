@@ -1,9 +1,10 @@
 ﻿namespace ProceduralLevel.Parsing
 {
-    public static class CSVConst
+	public static class CSVConst
     {
-        public const string QUOTATION = "\"";
-        public const char COLUMN_SEPARATOR = ',';
-        public const string NEW_LINE = "\n";
-    }
+        public const char QUOTATION = '\"';
+		public const char COLUMN_SEPARATOR = ',';
+        public const char NEW_LINE = '\n';
+
+	}
 }
