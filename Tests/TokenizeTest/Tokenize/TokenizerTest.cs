@@ -20,6 +20,19 @@ namespace Test.Tokenize
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello, world!").Flush();
 
+			AssertHelloWorld(tokens);
+		}
+
+		[TestMethod]
+		public void MultiPartTokenize()
+		{
+			List<Token> tokens = m_Tokenizer.Tokenize("hello, ").Tokenize("world").Tokenize("!").Flush();
+			AssertHelloWorld(tokens);
+		}
+
+
+		private void AssertHelloWorld(List<Token> tokens)
+		{
 			Assert.AreEqual(5, tokens.Count);
 			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello", 0, 0);
 			TestHelper.AssertToken(tokens[1], ETokenType.Separator, ",", 0, 5);

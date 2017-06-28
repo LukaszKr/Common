@@ -16,20 +16,23 @@ namespace Test.Tokenize.Escape
 		}
 
 		[TestMethod]
-		public void SimpleEscae()
+		public void SimpleEscape()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello\\, world\\!").Flush();
 
 			Assert.AreEqual(3, tokens.Count);
-			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello,");
-			TestHelper.AssertToken(tokens[1], ETokenType.Separator, " ");
-			TestHelper.AssertToken(tokens[2], ETokenType.Value, "world!");
+			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello,", 0, 0);
+			TestHelper.AssertToken(tokens[1], ETokenType.Separator, " ", 0, 6);
+			TestHelper.AssertToken(tokens[2], ETokenType.Value, "world!", 0, 7);
 		}
 
 		[TestMethod]
 		public void EscapeCharAtTheEnd()
 		{
-
+			List<Token> tokens = m_Tokenizer.Tokenize("hello\\").Flush();
+			
+			Assert.AreEqual(1, tokens.Count);
+			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
 	}
 }
