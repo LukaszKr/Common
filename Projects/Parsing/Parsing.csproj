@@ -1,61 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{455713D3-7FE6-4847-A3BC-C044DAA06F79}</ProjectGuid>
+    <ProjectGuid>{7C0E0171-109B-46FC-BFFA-FCB2B5F87019}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <RootNamespace>ProceduralLevel.Common</RootNamespace>
+    <AssemblyName>Parsing</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\build\Unity_debug\</OutputPath>
+    <OutputPath>..\..\build\Debug\Unity\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\build\Unity\</OutputPath>
+    <OutputPath>..\..\build\Release\Unity\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Prototype|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Prototype\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsing\AParser.cs" />
+    <Compile Include="Parsing\CSV\CSV.cs" />
+    <Compile Include="Parsing\CSV\CSVConst.cs" />
+    <Compile Include="Parsing\CSV\CSVParser.cs" />
+    <Compile Include="Parsing\CSV\CSVRow.cs" />
+    <Compile Include="Parsing\CSV\CSVTokenizer.cs" />
+    <Compile Include="Parsing\JSON\JsonArray.cs" />
+    <Compile Include="Parsing\JSON\JsonConst.cs" />
+    <Compile Include="Parsing\JSON\JsonObject.cs" />
+    <Compile Include="Parsing\JSON\JsonParser.cs" />
+    <Compile Include="Parsing\JSON\JSONTokenizer.cs" />
+    <Compile Include="Parsing\Tokenizer\ATokenizer.cs" />
+    <Compile Include="Parsing\Tokenizer\Error\ParsingException.cs" />
+    <Compile Include="Parsing\Tokenizer\ETokenType.cs" />
+    <Compile Include="Parsing\Tokenizer\SimpleTokenizer.cs" />
+    <Compile Include="Parsing\Tokenizer\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="..\SharedCommon\SharedCommon.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\Base\Base.csproj">
+      <Project>{6077872a-59cd-44c5-8ba9-1a3bd8388c6a}</Project>
+      <Name>Base</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

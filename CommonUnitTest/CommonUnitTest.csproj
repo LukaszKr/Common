@@ -73,12 +73,6 @@
     <None Include="testData\json\simple1.json" />
     <None Include="testData\json\simple2.json" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NetCommon\NetCommon.csproj">
-      <Project>{97059A61-27CF-427E-944A-B1355E509061}</Project>
-      <Name>NetCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
