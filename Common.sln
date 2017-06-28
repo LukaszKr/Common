@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUnitTest", "CommonUnitTest\CommonUnitTest.csproj", "{4E537D75-FDAB-4243-B17B-74BD2343967A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Base", "Projects\Base\Base.csproj", "{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Projects\Common\Common.csproj", "{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parsing", "Projects\Parsing\Parsing.csproj", "{7C0E0171-109B-46FC-BFFA-FCB2B5F87019}"
 EndProject

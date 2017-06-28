@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProceduralLevel.Common</RootNamespace>
-    <AssemblyName>Base</AssemblyName>
+    <AssemblyName>Common</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
@@ -35,21 +35,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Action\ActionContext.cs" />
-    <Compile Include="Base\Action\ActionManager.cs" />
-    <Compile Include="Base\Action\IBaseAction.cs" />
-    <Compile Include="Base\Data\ChaoticList.cs" />
-    <Compile Include="Base\Data\Mask\BitMask.cs" />
-    <Compile Include="Base\Data\Mask\DynamicBitMask.cs" />
-    <Compile Include="Base\Event\Event.cs" />
-    <Compile Include="Base\Event\EventBinder.cs" />
-    <Compile Include="Base\Event\EventBinding.cs" />
-    <Compile Include="Base\Event\IEventBinding.cs" />
-    <Compile Include="Base\Ext\ArrayExt.cs" />
-    <Compile Include="Base\Ext\DirectoryInfoExt.cs" />
-    <Compile Include="Base\Ext\EnumExt.cs" />
-    <Compile Include="Base\State\AFiniteStateMachine.cs" />
-    <Compile Include="Base\State\BaseState.cs" />
+    <Compile Include="Common\Action\ActionContext.cs" />
+    <Compile Include="Common\Action\ActionManager.cs" />
+    <Compile Include="Common\Action\ICommonAction.cs" />
+    <Compile Include="Common\Data\ChaoticList.cs" />
+    <Compile Include="Common\Data\Mask\BitMask.cs" />
+    <Compile Include="Common\Data\Mask\DynamicBitMask.cs" />
+    <Compile Include="Common\Event\Event.cs" />
+    <Compile Include="Common\Event\EventBinder.cs" />
+    <Compile Include="Common\Event\EventBinding.cs" />
+    <Compile Include="Common\Event\IEventBinding.cs" />
+    <Compile Include="Common\Ext\ArrayExt.cs" />
+    <Compile Include="Common\Ext\DirectoryInfoExt.cs" />
+    <Compile Include="Common\Ext\EnumExt.cs" />
+    <Compile Include="Common\State\AFiniteStateMachine.cs" />
+    <Compile Include="Common\State\BaseState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
