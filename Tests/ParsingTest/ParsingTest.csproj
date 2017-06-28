@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestHelper.cs" />
     <Compile Include="TokenizerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projects\Parsing\Parsing.csproj">
-      <Project>{7c0e0171-109b-46fc-bffa-fcb2b5f87019}</Project>
-      <Name>Parsing</Name>
+    <ProjectReference Include="..\..\Projects\Tokenize\Tokenize.csproj">
+      <Project>{FB003E6C-3D58-41A9-8209-13B9944E5164}</Project>
+      <Name>Tokenize</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

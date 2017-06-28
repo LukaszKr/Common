@@ -11,7 +11,6 @@ namespace ProceduralLevel.Tokenize
 		{
 			ID = id;
 			Token = token;
-			Line = line;
 		}
 	}
 }

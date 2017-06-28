@@ -36,16 +36,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tokenize\ATokenizer.cs" />
-    <Compile Include="Tokenize\Error\ParsingException.cs" />
+    <Compile Include="Tokenize\ParsingException.cs" />
     <Compile Include="Tokenize\ETokenType.cs" />
     <Compile Include="Tokenize\SimpleTokenizer.cs" />
     <Compile Include="Tokenize\Token.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{969021e9-3082-4d72-b454-2c2bd65aea5b}</Project>
-      <Name>Serialization</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,22 +4,16 @@
     {
 		private char[] m_Separators;
 
-		public SimpleTokenizer(char escapeSeparator, params char[] separators): base(false, escapeSeparator)
+		public SimpleTokenizer(params char[] separators): base()
 		{
-			bool hasEscape = (escapeSeparator != default(char));
-			int offset = (hasEscape? 1: 0);
-			m_Separators = new char[separators.Length+offset];
+			m_Separators = new char[separators.Length];
 			for(int x = 0; x < separators.Length; x++)
 			{
 				m_Separators[x] = separators[x];
 			}
-			if(hasEscape)
-			{
-				m_Separators[separators.Length] = escapeSeparator;
-			}
 		}
 
-		protected override char[] GetDefaultSeparators()
+		protected override char[] GetSeparators()
 		{
 			return m_Separators;
 		}

@@ -45,8 +45,11 @@ namespace ProceduralLevel.Tokenize
 		public List<Token> Flush()
 		{
 			List<Token> tokens = m_Tokens;
-			string remaining = m_RawBuffer.ToString(m_Cursor, m_RawBuffer.Length-m_Cursor);
-			PushToken(new Token(remaining, ETokenType.Value, m_Line, m_Column));
+			string remaining = ReadFromBuffer(m_RawBuffer.Length);
+			if(remaining.Length > 0)
+			{
+				m_Tokens.Add(new Token(remaining, ETokenType.Value, m_Line, m_Column));
+			}
 			Clear();
 			return tokens;
 		}
@@ -63,9 +66,8 @@ namespace ProceduralLevel.Tokenize
 			return GetSeparators();
 		}
 
-		public void Tokenize(string str)
+		public ATokenizer Tokenize(string str)
 		{
-			m_RawBuffer.Append(str);
 			if(m_RawBuffer.Length == 0)
 			{
 				m_ActiveSeparators = GetSeparators();
@@ -100,23 +102,28 @@ namespace ProceduralLevel.Tokenize
 
 				if(IsSeparator(chr))
 				{
-
 					m_ValueBuffer.Append(ReadFromBuffer(index));
-					string value = m_ValueBuffer.ToString();
-					m_ValueBuffer.Length = 0;
-					if(m_AutoTrim)
+					if(m_ValueBuffer.Length > 0)
 					{
-						value = value.Trim();
+						string value = m_ValueBuffer.ToString();
+						m_ValueBuffer.Length = 0;
+						if(m_AutoTrim)
+						{
+							value = value.Trim();
+						}
+						m_Tokens.Add(new Token(value, ETokenType.Value, m_Line, m_Column));
+						m_Column += value.Length;
 					}
-					PushToken(new Token(value, ETokenType.Value, m_Line, m_Column));
-					m_Column += value.Length;
 					Token separator = new Token(chr.ToString(), ETokenType.Separator, m_Line, m_Column);
+					m_Tokens.Add(separator);
 					m_Column ++;
 					m_ActiveSeparators = GetSeparators(separator);
 
-					m_Cursor = index;
+					m_Cursor = index+1;
 				}
 			}
+
+			return this;
 		}
 
 		private bool IsSeparator(char chr)
@@ -133,15 +140,12 @@ namespace ProceduralLevel.Tokenize
 
 		private string ReadFromBuffer(int index)
 		{
-			return m_RawBuffer.ToString(m_Cursor, index);
-		}
-
-		private void PushToken(Token token, bool ignoreEmpty = true)
-		{
-			if(!ignoreEmpty || !string.IsNullOrEmpty(token.Value))
+			int length = index-m_Cursor;
+			if(length > 0)
 			{
-				m_Tokens.Add(token);
+				return m_RawBuffer.ToString(m_Cursor, length);
 			}
+			return string.Empty;
 		}
 	}
 }
