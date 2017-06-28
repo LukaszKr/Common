@@ -45,7 +45,7 @@ namespace ProceduralLevel.Tokenize
 		public List<Token> Flush()
 		{
 			List<Token> tokens = m_Tokens;
-			string remaining = ReadFromBuffer(m_RawBuffer.Length);
+			string remaining = m_ValueBuffer.ToString()+ReadFromBuffer(m_RawBuffer.Length);
 			if(remaining.Length > 0)
 			{
 				m_Tokens.Add(new Token(remaining, ETokenType.Value, m_Line, m_Column));
@@ -81,16 +81,18 @@ namespace ProceduralLevel.Tokenize
 
 			for(int index = 0; index < m_RawBuffer.Length; index++)
 			{
+				char chr = m_RawBuffer[index];
+
 				if(m_Escaped)
 				{
+					m_ValueBuffer.Append(chr);
 					m_Escaped = false;
 					continue;
 				}
-				char chr = m_RawBuffer[index];
 				if(chr == ESCAPE_CHAR)
 				{
 					m_ValueBuffer.Append(ReadFromBuffer(index));
-					m_Cursor = index+1;
+					m_Cursor = index+2;
 					m_Escaped = true;
 					continue;
 				}
