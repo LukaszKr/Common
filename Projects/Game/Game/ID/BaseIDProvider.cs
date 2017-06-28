@@ -1,6 +1,6 @@
-using ProceduralLevel.Common.Serialization;
+using ProceduralLevel.Serialization;
 
-namespace ProceduralLevel.Common.Data
+namespace ProceduralLevel.Game.ID
 {
 	public abstract class BaseIDProvider: IObjectSerializable
     {

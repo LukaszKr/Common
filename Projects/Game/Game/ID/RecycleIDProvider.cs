@@ -1,8 +1,8 @@
-using ProceduralLevel.Common.Serialization;
+using ProceduralLevel.Serialization;
 using System;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Data
+namespace ProceduralLevel.Game.ID
 {
 	public class RecycleIDProvider: BaseIDProvider
 	{

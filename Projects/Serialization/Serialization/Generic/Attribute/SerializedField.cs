@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	[AttributeUsage(AttributeTargets.Field)]
     public class SerializedFieldAttribute: Attribute

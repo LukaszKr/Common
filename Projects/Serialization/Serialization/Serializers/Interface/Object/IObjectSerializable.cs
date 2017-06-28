@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Serialization
+﻿namespace ProceduralLevel.Serialization
 {
 	public interface IObjectSerializable
     {

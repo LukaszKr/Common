@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Common.Parsing
+namespace ProceduralLevel.Parsing
 {
     public class CSV: IEquatable<CSV>
     {

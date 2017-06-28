@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Reflection;
 
-namespace ProceduralLevel.Common.Serialization.Serializers
+namespace ProceduralLevel.Serialization
 {
 	public class ClassSerializer: TypeSerializer
 	{

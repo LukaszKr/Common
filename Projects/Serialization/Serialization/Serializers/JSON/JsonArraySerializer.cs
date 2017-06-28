@@ -1,9 +1,7 @@
-﻿using ProceduralLevel.Common.Parsing;
+﻿using ProceduralLevel.Parsing;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	public class JsonArraySerializer: IArraySerializer
 	{

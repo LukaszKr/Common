@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	public interface IObjectSerializer
 	{

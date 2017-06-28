@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using ProceduralLevel.Common.Parsing;
+﻿using ProceduralLevel.Parsing;
+using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	public class JsonObjectSerializer: IObjectSerializer
 	{

@@ -23,7 +23,7 @@ namespace ProceduralLevel.Common.Action
 			}
 		}
 
-		public void AddPendingAction(IBaseAction<DataType> action)
+		public void AddPendingAction(IAction<DataType> action)
 		{
 			if(m_Executing)
 			{

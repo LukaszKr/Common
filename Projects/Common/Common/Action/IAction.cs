@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Action
 {
-	public interface IBaseAction<DataType>
+	public interface IAction<DataType>
 	{
 		void Apply(DataType data);
 		bool IsValid(DataType data);

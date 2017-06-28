@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Parsing
+﻿namespace ProceduralLevel.Parsing
 {
 	public class CSVTokenizer: ATokenizer
 	{

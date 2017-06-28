@@ -1,9 +1,8 @@
-﻿using ProceduralLevel.Common.Serialization.Serializers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	public abstract class ASerializer
     {

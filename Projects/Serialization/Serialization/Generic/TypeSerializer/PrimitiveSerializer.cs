@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace ProceduralLevel.Common.Serialization
+namespace ProceduralLevel.Serialization
 {
 	public class PrimitiveSerializer: TypeSerializer
 	{

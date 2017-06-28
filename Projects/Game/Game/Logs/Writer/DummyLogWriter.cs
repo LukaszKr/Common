@@ -1,4 +1,4 @@
-﻿namespace Common.Logger
+﻿namespace ProceduralLevel.Game.Logs
 {
 	public class DummyLogWriter: ILogWriter
 	{

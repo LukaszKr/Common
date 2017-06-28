@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ProceduralLevel.Common.Parsing
+namespace ProceduralLevel.Parsing
 {
 	public static class JsonConst
     {

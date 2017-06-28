@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Parsing
+namespace ProceduralLevel.Common.Parsing
 {
     public class CSVParser: AParser<CSV>
     {

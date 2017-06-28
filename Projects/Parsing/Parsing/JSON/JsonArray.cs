@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace ProceduralLevel.Common.Parsing
+namespace ProceduralLevel.Parsing
 {
 	public class JsonArray: IEquatable<JsonArray>
     {

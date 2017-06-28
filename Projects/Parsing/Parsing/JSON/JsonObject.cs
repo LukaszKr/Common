@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace ProceduralLevel.Common.Parsing
+namespace ProceduralLevel.Parsing
 {
 	public class JsonObject: IEquatable<JsonObject>
     {

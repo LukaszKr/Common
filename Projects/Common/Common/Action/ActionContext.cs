@@ -5,7 +5,7 @@ namespace ProceduralLevel.Common.Action
 	public class ActionContext<DataType>
 	{
 		private int m_Depth;
-		private Queue<IBaseAction<DataType>> m_Actions;
+		private Queue<IAction<DataType>> m_Actions;
 
 		public int Depth 
 		{
@@ -20,15 +20,15 @@ namespace ProceduralLevel.Common.Action
 		public ActionContext(int depth) 
 		{
 			m_Depth = depth;
-			m_Actions = new Queue<IBaseAction<DataType>>();
+			m_Actions = new Queue<IAction<DataType>>();
 		}
 
-		public void PushAction(IBaseAction<DataType> action) 
+		public void PushAction(IAction<DataType> action) 
 		{
 			m_Actions.Enqueue(action);
 		}
 
-		public IBaseAction<DataType> PopAction() 
+		public IAction<DataType> PopAction() 
 		{
 			if(m_Actions.Count > 0) 
 			{
@@ -39,7 +39,7 @@ namespace ProceduralLevel.Common.Action
 
 		public bool Execute(DataType data)
 		{
-			IBaseAction<DataType> action = PopAction();
+			IAction<DataType> action = PopAction();
 			if(action != null)
 			{
 				if(action.IsValid(data))

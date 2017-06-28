@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace ProceduralLevel.Common.Parsing
+namespace ProceduralLevel.Parsing
 {
 	public class JsonParser: AParser<JsonObject>
     {

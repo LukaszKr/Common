@@ -34,13 +34,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ID\BaseIDProvider.cs" />
-    <Compile Include="Data\ID\RecycleIDProvider.cs" />
-    <Compile Include="Data\ID\SimpleIDProvider.cs" />
-    <Compile Include="Logger\GlobalLogger.cs" />
-    <Compile Include="Logger\Logger.cs" />
-    <Compile Include="Logger\Writer\DummyLogWriter.cs" />
-    <Compile Include="Logger\Writer\ILogWriter.cs" />
+    <Compile Include="Game\ID\BaseIDProvider.cs" />
+    <Compile Include="Game\ID\RecycleIDProvider.cs" />
+    <Compile Include="Game\ID\SimpleIDProvider.cs" />
+    <Compile Include="Game\Logs\GlobalLogger.cs" />
+    <Compile Include="Game\Logs\Logger.cs" />
+    <Compile Include="Game\Logs\Writer\DummyLogWriter.cs" />
+    <Compile Include="Game\Logs\Writer\ILogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

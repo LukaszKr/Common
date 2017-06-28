@@ -1,6 +1,6 @@
 ﻿//using System;
 
-//namespace ProceduralLevel.Common.Parsing
+//namespace ProceduralLevel.Parsing
 //{
 //	public class ParsingException<IDType>: Exception
 //    {
