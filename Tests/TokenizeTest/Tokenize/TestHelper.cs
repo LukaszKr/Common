@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Tokenize;
+using System.Collections.Generic;
 
 namespace Test.Tokenize
 {
@@ -16,6 +17,24 @@ namespace Test.Tokenize
 			if(column >= 0)
 			{
 				Assert.AreEqual(column, token.Column);
+			}
+		}
+
+		public static void AssertTokenValues(List<Token> tokens, params string[] values)
+		{
+			for(int x = 0; x < tokens.Count; x++)
+			{
+				Token token = tokens[x];
+				Assert.AreEqual(values[x], token.Value);
+			}
+		}
+
+		public static void AssertTokenTypes(List<Token> tokens, params ETokenType[] types)
+		{
+			for(int x = 0; x < tokens.Count; x++)
+			{
+				Token token = tokens[x];
+				Assert.AreEqual(types[x], token.Type);
 			}
 		}
 	}

@@ -34,5 +34,23 @@ namespace Test.Tokenize.Escape
 			Assert.AreEqual(1, tokens.Count);
 			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
+
+		[TestMethod]
+		public void EscapeCharAtBeggining()
+		{
+			List<Token> tokens = m_Tokenizer.Tokenize("\\hello").Flush();
+
+			Assert.AreEqual(1, tokens.Count);
+			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
+		}
+
+		[TestMethod]
+		public void EscapeAnEscape()
+		{
+			List<Token> tokens = m_Tokenizer.Tokenize("\\\\").Flush();
+
+			Assert.AreEqual(1, tokens.Count);
+			TestHelper.AssertToken(tokens[0], ETokenType.Value, "\\");
+		}
 	}
 }
