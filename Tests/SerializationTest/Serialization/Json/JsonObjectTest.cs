@@ -2,7 +2,7 @@
 using ProceduralLevel.Serialization;
 using ProceduralLevel.Serialization.Json;
 
-namespace Test.Serialization.Json
+namespace Test.Serialization.Json.Object
 {
 	[TestClass]
 	public class JsonObjectTest: AObjectTest<JsonObject>

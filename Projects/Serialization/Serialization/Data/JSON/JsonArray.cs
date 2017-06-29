@@ -53,7 +53,12 @@ namespace ProceduralLevel.Serialization.Json
 			return value.Data;
 		}
 
-		public string ToString(bool formatted)
+		public override string ToString()
+		{
+			return ToString(false);
+		}
+
+		public override string ToString(bool formatted)
 		{
 			StringBuilder sb = new StringBuilder();
 			ToString(sb, formatted);

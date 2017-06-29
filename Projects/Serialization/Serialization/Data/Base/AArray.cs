@@ -28,5 +28,7 @@ namespace ProceduralLevel.Serialization
 		public abstract AArray ReadArray();
 		public abstract AObject ReadObject(int index);
 		public abstract AArray ReadArray(int index);
+
+		public abstract string ToString(bool formatted);
 	}
 }

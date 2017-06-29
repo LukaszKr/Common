@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\AArrayTest.cs" />
     <Compile Include="Serialization\AObjectTest.cs" />
+    <Compile Include="Serialization\Json\JsonArrayTest.cs" />
     <Compile Include="Serialization\Json\JsonObjectTest.cs" />
   </ItemGroup>
   <ItemGroup>

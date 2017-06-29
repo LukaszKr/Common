@@ -42,7 +42,6 @@ namespace Test.Serialization
 			
 			m_Object.Write("i", 123);
 			Assert.AreEqual("{\"i\":123}", m_Object.ToString(false));
-
 		}
 	}
 }
