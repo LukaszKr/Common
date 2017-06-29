@@ -1,0 +1,39 @@
+﻿<#@ include file="./../Types.tt" #>
+namespace ProceduralLevel.Serialization.Json
+{
+    public partial class JsonArray
+    {
+		#region Write
+<# for(int x = 0; x < lTypes.Length; x++) { #>
+		public override AArraySerializer Write(<#= lTypes[x] #> data)
+		{
+<# if(lTypes[x] == "string") { #>
+			StringValue value = new StringValue(data);
+<# } else { #>
+			NumberValue value = new NumberValue(data.ToString());
+<# } #>
+			m_Values.Add(value);
+			return this;
+		}
+
+<# } #>
+		#endregion
+
+		#region Read
+<# for(int x = 0; x < lTypes.Length; x++) { #>
+		public override <#= lTypes[x] #> Read<#= uTypes[x] #>(int index)
+		{
+<# if(lTypes[x] == "string") { #>
+			StringValue value = m_Values[index] as StringValue;
+			return value.Data;
+<# } else { #>
+			NumberValue value = m_Values[index] as NumberValue;
+			<#= lTypes[x] #> data = <#= lTypes[x] #>.Parse(value.Data);
+			return data;
+<# } #>
+		}
+
+<# } #>
+		#endregion
+    }
+}

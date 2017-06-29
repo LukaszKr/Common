@@ -56,12 +56,12 @@ namespace ProceduralLevel.Game.ID
 		#region Serialization
 		private const string KEY_NEXT_ID = "nextID";
 
-		public override void Serialize(IObjectSerializer serializer)
+		public override void Serialize(AObject serializer)
 		{
 			serializer.Write(KEY_NEXT_ID, m_NextID);
 		}
 
-		public override void Deserialize(IObjectSerializer serializer)
+		public override void Deserialize(AObject serializer)
 		{
 			m_NextID = serializer.ReadInt(KEY_NEXT_ID);
 		}

@@ -18,10 +18,10 @@ namespace ProceduralLevel.Serialization
 
 		protected ASerializer() { }
 
-		public abstract void SerializeObject(object obj, IObjectSerializer serializer);
-		public abstract object DeserializeObject(Type type, IObjectSerializer serializer, object instance = null);
+		public abstract void SerializeObject(object obj, AObject serializer);
+		public abstract object DeserializeObject(Type type, AObject serializer, object instance = null);
 
-		public DataType DeserializeObject<DataType>(IObjectSerializer serializer, DataType instance = null) where DataType: class
+		public DataType DeserializeObject<DataType>(AObject serializer, DataType instance = null) where DataType: class
 		{
 			return (DataType)DeserializeObject(typeof(DataType), serializer, instance);
 		}

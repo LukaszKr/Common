@@ -19,10 +19,10 @@ namespace ProceduralLevel.Serialization
 		}
 
 		protected abstract bool CheckType(Type fieldType, bool isClass);
-		public abstract void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer);
-		public abstract object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer);
+		public abstract void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, AObject serializer, AArray arraySerializer);
+		public abstract object Deserialize(ASerializer processor, Type fieldType, string fieldName, AObject serializer, AArray arraySerializer);
 
-		protected static IObjectSerializer GetObjectSerializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
+		protected static AObject GetObjectSerializer(string fieldName, AObject obj, AArray arr)
 		{
 			if(obj != null)
 			{
@@ -34,7 +34,7 @@ namespace ProceduralLevel.Serialization
 			}
 		}
 
-		protected static IArraySerializer GetArraySerializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
+		protected static AArray GetArraySerializer(string fieldName, AObject obj, AArray arr)
 		{
 			if(obj != null)
 			{
@@ -46,11 +46,11 @@ namespace ProceduralLevel.Serialization
 			}
 		}
 
-		protected static IObjectSerializer GetObjectDeserializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
+		protected static AObject GetObjectDeserializer(string fieldName, AObject obj, AArray arr)
 		{
 			if(obj != null)
 			{
-				return obj.TryReadObject(fieldName);
+				return obj.ReadObject(fieldName);
 			}
 			else
 			{
@@ -58,11 +58,11 @@ namespace ProceduralLevel.Serialization
 			}
 		}
 
-		protected static IArraySerializer GetArrayDeserializer(string fieldName, IObjectSerializer obj, IArraySerializer arr)
+		protected static AArray GetArrayDeserializer(string fieldName, AObject obj, AArray arr)
 		{
 			if(obj != null)
 			{
-				return obj.TryReadArray(fieldName);
+				return obj.ReadArray(fieldName);
 			}
 			else
 			{

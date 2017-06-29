@@ -8,7 +8,7 @@ namespace ProceduralLevel.Game.ID
 		public abstract void ReserveID(int ID);
 		public virtual void ReleaseID(int ID) { }
 
-		public abstract void Serialize(IObjectSerializer serializer);
-		public abstract void Deserialize(IObjectSerializer serializer);
+		public abstract void Serialize(AObject serializer);
+		public abstract void Deserialize(AObject serializer);
 	}
 }

@@ -1,0 +1,36 @@
+﻿<#@ include file="./../Types.tt" #>
+namespace ProceduralLevel.Serialization
+{
+    public partial class AObject
+    {
+		#region Write
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public abstract AObject Write(string key, <#= lTypes[x] #> data);
+<# } #>
+		#endregion
+
+		#region Read
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public abstract <#= lTypes[x] #> Read<#= uTypes[x] #>(string key);
+<# } #>
+		#endregion
+
+		#region TryRead
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public <#= lTypes[x] #> TryRead<#= uTypes[x] #>(string key, <#= lTypes[x] #> defaultValue = default(<#= lTypes[x] #>))
+		{
+			try
+			{
+				<#= lTypes[x] #> value = Read<#= uTypes[x] #>(key);
+				return value;
+			} catch {}
+			return defaultValue;
+		}
+
+<# } #>
+		#endregion
+    }
+}

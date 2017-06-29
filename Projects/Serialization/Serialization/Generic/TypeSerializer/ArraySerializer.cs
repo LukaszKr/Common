@@ -7,9 +7,9 @@ namespace ProceduralLevel.Serialization
 	{
 		public override bool SerializesClass { get {  return true; } }
 
-		public override object Deserialize(ASerializer processor, Type fieldType, string fieldName, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override object Deserialize(ASerializer processor, Type fieldType, string fieldName, AObject serializer, AArray arraySerializer)
 		{
-			IArraySerializer subArray = GetArrayDeserializer(fieldName, serializer, arraySerializer);
+			AArray subArray = GetArrayDeserializer(fieldName, serializer, arraySerializer);
 			if(subArray == null)
 			{
 				return null;
@@ -27,10 +27,10 @@ namespace ProceduralLevel.Serialization
 			return array;
 		}
 
-		public override void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		public override void Serialize(ASerializer processor, object value, FieldInfo fieldInfo, AObject serializer, AArray arraySerializer)
 		{
 			Array array = value as Array;
-			IArraySerializer subArray = GetArraySerializer(fieldInfo.Name, serializer, arraySerializer);
+			AArray subArray = GetArraySerializer(fieldInfo.Name, serializer, arraySerializer);
 			Type elementType = fieldInfo.FieldType.GetElementType();
 			TypeSerializer typeSerializer = ASerializer.GetTypeSerializer(elementType);
 

@@ -2,7 +2,7 @@
 {
 	public interface IArraySerializable
     {
-		void Serialize(IArraySerializer serializer);
-		void Deserialize(IArraySerializer serializer);
+		void Serialize(AArray serializer);
+		void Deserialize(AArray serializer);
     }
 }

@@ -15,6 +15,7 @@ namespace ProceduralLevel.Common.Data
 		public T this[int i] 
 		{
             get { return m_Data[i]; }
+			set { m_Data[i] = value; }
         }
 
 		public int Count 

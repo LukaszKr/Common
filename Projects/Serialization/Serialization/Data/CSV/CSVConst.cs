@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Parsing
+﻿namespace ProceduralLevel.Serialization.CSV
 {
 	public static class CSVConst
     {

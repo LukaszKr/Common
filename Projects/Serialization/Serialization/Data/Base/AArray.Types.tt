@@ -1,0 +1,32 @@
+﻿<#@ include file="./../Types.tt" #>
+namespace ProceduralLevel.Serialization
+{
+    public partial class AArray
+    {
+		#region Write
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public abstract AArray Write(<#= lTypes[x] #> data);
+<# } #>
+		#endregion
+
+		#region Read
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public <#= lTypes[x] #> Read<#= uTypes[x] #>()
+		{
+			<#= lTypes[x] #> value = Read<#= uTypes[x] #>(m_Index++);
+			return value;
+		}
+
+<# } #>
+		#endregion
+
+		#region Read Indexed
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public abstract <#= lTypes[x] #> Read<#= uTypes[x] #>(int index);
+<# } #>
+		#endregion
+    }
+}

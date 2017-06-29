@@ -1,0 +1,10 @@
+﻿<# 
+	string[] uTypes = new string[] { 
+		"Bool", "Char",
+		"Short", "UShort", "Int", "UInt", "Long", "ULong",
+		"Float", "Double", "String" }; 
+	string[] lTypes = new string[] { 
+		"bool", "char",
+		"short", "ushort", "int", "uint", "long", "ulong", 
+		"float", "double", "string" };
+#>

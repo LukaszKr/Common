@@ -36,27 +36,69 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\Generic\ASerializer.cs" />
-    <Compile Include="Serialization\Generic\Attribute\NonSerializedField.cs" />
-    <Compile Include="Serialization\Generic\Attribute\SerializedField.cs" />
-    <Compile Include="Serialization\Generic\Serializer.cs" />
-    <Compile Include="Serialization\Generic\TypeSerializer.cs" />
-    <Compile Include="Serialization\Generic\TypeSerializer\ArraySerializer.cs" />
-    <Compile Include="Serialization\Generic\TypeSerializer\ClassSerializer.cs" />
-    <Compile Include="Serialization\Generic\TypeSerializer\CollectionSerializer.cs" />
-    <Compile Include="Serialization\Generic\TypeSerializer\PrimitiveSerializer.cs" />
-    <Compile Include="Serialization\Serializers\Interface\Array\IArraySerializable.cs" />
-    <Compile Include="Serialization\Serializers\Interface\Array\IArraySerializer.cs" />
-    <Compile Include="Serialization\Serializers\Interface\Object\IObjectSerializable.cs" />
-    <Compile Include="Serialization\Serializers\Interface\Object\IObjectSerializer.cs" />
-    <Compile Include="Serialization\Serializers\JSON\JsonArraySerializer.cs" />
-    <Compile Include="Serialization\Serializers\JSON\JsonObjectSerializer.cs" />
+    <Compile Include="Serialization\Data\CSV\CSVConst.cs" />
+    <Compile Include="Serialization\Data\Base\AArray.Types.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AArray.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Data\JSON\JsonArray.Types.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JsonArray.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Data\JSON\JsonConst.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\AValue.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\EValueType.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\ArrayValue.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\NumberValue.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\ObjectValue.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\StringValue.cs" />
+    <Compile Include="Serialization\Data\JSON\Value\Value.cs" />
+    <Compile Include="Serialization\Data\JSON\JsonObject.Types.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JsonObject.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Serializable\IArraySerializable.cs" />
+    <Compile Include="Serialization\Data\Base\AArray.cs" />
+    <Compile Include="Serialization\Data\Base\AObject.Types.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AObject.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Serialization\Serializable\IObjectSerializable.cs" />
+    <Compile Include="Serialization\Data\Base\AObject.cs" />
+    <Compile Include="Serialization\Data\JSON\JsonArray.cs" />
+    <Compile Include="Serialization\Data\JSON\JsonObject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Parsing\Parsing.csproj">
-      <Project>{7c0e0171-109b-46fc-bffa-fcb2b5f87019}</Project>
-      <Name>Parsing</Name>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}</Project>
+      <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Serialization\Data\Base\AArray.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AArray.Types.cs</LastGenOutput>
+    </Content>
+    <Content Include="Serialization\Data\Base\AObject.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AObject.Types.cs</LastGenOutput>
+    </Content>
+    <Content Include="Serialization\Data\JSON\JsonArray.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>JsonArray.Types.cs</LastGenOutput>
+    </Content>
+    <Content Include="Serialization\Data\JSON\JsonObject.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>JsonObject.Types.cs</LastGenOutput>
+    </Content>
+    <Content Include="Serialization\Data\Types.tt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

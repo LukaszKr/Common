@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.Parsing
+﻿using ProceduralLevel.Serialization;
+
+namespace ProceduralLevel.Parsing
 {
 	public class JSONTokenizer: ATokenizer
 	{

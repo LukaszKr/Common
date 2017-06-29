@@ -35,14 +35,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parsing\AParser.cs" />
-    <Compile Include="Parsing\CSV\CSV.cs" />
-    <Compile Include="Parsing\CSV\CSVConst.cs" />
     <Compile Include="Parsing\CSV\CSVParser.cs" />
-    <Compile Include="Parsing\CSV\CSVRow.cs" />
     <Compile Include="Parsing\CSV\CSVTokenizer.cs" />
-    <Compile Include="Parsing\JSON\JsonArray.cs" />
-    <Compile Include="Parsing\JSON\JsonConst.cs" />
-    <Compile Include="Parsing\JSON\JsonObject.cs" />
     <Compile Include="Parsing\JSON\JsonParser.cs" />
     <Compile Include="Parsing\JSON\JSONTokenizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,9 +46,10 @@
       <Project>{6077872a-59cd-44c5-8ba9-1a3bd8388c6a}</Project>
       <Name>Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Parsing\CSV\ve-21FF.tmp" />
+    <ProjectReference Include="..\Serialization\Serialization.csproj">
+      <Project>{969021E9-3082-4D72-B454-2C2BD65AEA5B}</Project>
+      <Name>Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

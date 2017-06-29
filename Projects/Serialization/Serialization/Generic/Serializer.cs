@@ -8,13 +8,13 @@ namespace ProceduralLevel.Serialization
 		protected Serializer() { }
 
 		#region Serialization
-		public static void Serialize(object obj, IObjectSerializer serializer)
+		public static void Serialize(object obj, AObject serializer)
 		{
 			Serializer processor = new Serializer();
 			processor.SerializeObject(obj, serializer);
 		}
 
-		public override void SerializeObject(object obj, IObjectSerializer serializer)
+		public override void SerializeObject(object obj, AObject serializer)
 		{
 			if(obj == null)
 			{
@@ -32,7 +32,7 @@ namespace ProceduralLevel.Serialization
 			}
 		}
 
-		protected void SerializeField(object value, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		protected void SerializeField(object value, FieldInfo field, AObject serializer, AArray arraySerializer)
 		{
 			if(value == null)
 			{
@@ -48,18 +48,18 @@ namespace ProceduralLevel.Serialization
 		#endregion
 
 		#region Deserialization
-		public static DataType Deserialize<DataType>(IObjectSerializer serializer, DataType instance = null) where DataType: class
+		public static DataType Deserialize<DataType>(AObject serializer, DataType instance = null) where DataType: class
 		{
 			return (DataType)Deserialize(typeof(DataType), serializer, instance);
 		}
 
-		public static object Deserialize(Type type, IObjectSerializer serializer, object instance = null)
+		public static object Deserialize(Type type, AObject serializer, object instance = null)
 		{
 			Serializer processor = new Serializer();
 			return processor.DeserializeObject(type, serializer, instance);
 		}
 
-		public override object DeserializeObject(Type type, IObjectSerializer serializer, object instance = null)
+		public override object DeserializeObject(Type type, AObject serializer, object instance = null)
 		{
 			if(serializer == null)
 			{
@@ -85,7 +85,7 @@ namespace ProceduralLevel.Serialization
 			return instance;
 		}
 
-		private void DeserializeField(object obj, FieldInfo field, IObjectSerializer serializer, IArraySerializer arraySerializer)
+		private void DeserializeField(object obj, FieldInfo field, AObject serializer, AArray arraySerializer)
 		{
 			Type fieldType = field.FieldType;
 			TypeSerializer typeSerializer = GetTypeSerializer(fieldType);
