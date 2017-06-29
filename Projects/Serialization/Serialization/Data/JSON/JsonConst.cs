@@ -10,7 +10,7 @@ namespace ProceduralLevel.Serialization
 		public const char BRACKETS_CLOSE = '}';
 		public const char KEY_VALUE_SEPARATOR = ':';
 		public const char SEPARATOR = ',';
-		public const char QUOTATION = '\"';
+		public const char QUOTE = '\"';
 		public const char ESCAPE = '\\';
 
 		private static char[] m_ToEscape = new char[]

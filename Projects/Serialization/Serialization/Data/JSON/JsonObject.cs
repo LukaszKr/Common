@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Serialization.Json
 {
@@ -60,5 +61,32 @@ namespace ProceduralLevel.Serialization.Json
 			return value.Data;
 		}
 		#endregion
+
+		public string ToString(bool formatted)
+		{
+			StringBuilder sb = new StringBuilder();
+			ToString(sb, formatted);
+			return sb.ToString();
+		}
+
+		public void ToString(StringBuilder sb, bool formatted)
+		{
+			bool first = true;
+			sb.Append("{");
+			foreach(KeyValuePair<string, AValue> pair in m_Keys)
+			{
+				if(!first)
+				{
+					sb.Append(JsonConst.SEPARATOR);
+				}
+				pair.Value.ToString(sb, pair.Key, formatted);
+				if(formatted)
+				{
+					sb.AppendLine();
+				}
+				first = false;
+			}
+			sb.Append("}");
+		}
 	}
 }

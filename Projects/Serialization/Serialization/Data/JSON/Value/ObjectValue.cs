@@ -1,10 +1,17 @@
-﻿namespace ProceduralLevel.Serialization.Json
+﻿using System.Text;
+
+namespace ProceduralLevel.Serialization.Json
 {
-	public class ObjectValue: Value<JsonObject>
+	public class ObjectValue: AValue<JsonObject>
 	{
-		public ObjectValue(JsonObject value) 
-			: base(EValueType.Object, value)
+		public ObjectValue(JsonObject data) 
+			: base(EValueType.Object, data)
 		{
+		}
+
+		public override void ToString(StringBuilder sb, bool formatted)
+		{
+			Data.ToString(sb, formatted);
 		}
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Serialization.Json
 {
@@ -50,6 +51,32 @@ namespace ProceduralLevel.Serialization.Json
 		{
 			ArrayValue value = m_Values[index] as ArrayValue;
 			return value.Data;
+		}
+
+		public string ToString(bool formatted)
+		{
+			StringBuilder sb = new StringBuilder();
+			ToString(sb, formatted);
+			return sb.ToString();
+		}
+
+		public void ToString(StringBuilder sb, bool formatted)
+		{
+			sb.Append("[");
+			for(int x = 0; x < m_Values.Count; x++)
+			{
+				AValue value = m_Values[x];
+				if(x > 0)
+				{
+					sb.Append(JsonConst.SEPARATOR);
+				}
+				value.ToString(sb, formatted);
+				if(formatted)
+				{
+					sb.AppendLine();
+				}
+			}
+			sb.Append("]");
 		}
 	}
 }

@@ -54,7 +54,6 @@
     <Compile Include="Serialization\Data\JSON\Value\NumberValue.cs" />
     <Compile Include="Serialization\Data\JSON\Value\ObjectValue.cs" />
     <Compile Include="Serialization\Data\JSON\Value\StringValue.cs" />
-    <Compile Include="Serialization\Data\JSON\Value\Value.cs" />
     <Compile Include="Serialization\Data\JSON\JsonObject.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
