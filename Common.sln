@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tokenize", "Projects\Tokeni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenizeTest", "Tests\TokenizeTest\TokenizeTest.csproj", "{8B8A7132-620F-4954-8E55-0E3456BD2268}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializationTest", "Tests\SerializationTest\SerializationTest.csproj", "{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,12 @@ Global
 		{8B8A7132-620F-4954-8E55-0E3456BD2268}.Prototype|Any CPU.Build.0 = Release|Any CPU
 		{8B8A7132-620F-4954-8E55-0E3456BD2268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B8A7132-620F-4954-8E55-0E3456BD2268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Prototype|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Prototype|Any CPU.Build.0 = Release|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +99,6 @@ Global
 		{75C6D769-5F99-404B-A58F-990CB7C6BF23} = {D5A6C8FB-B3C6-4CFA-A568-CBD21643BC1E}
 		{FB003E6C-3D58-41A9-8209-13B9944E5164} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 		{8B8A7132-620F-4954-8E55-0E3456BD2268} = {D5A6C8FB-B3C6-4CFA-A568-CBD21643BC1E}
+		{8A1646B5-7F60-4BB8-ABAD-F152464E4E4B} = {D5A6C8FB-B3C6-4CFA-A568-CBD21643BC1E}
 	EndGlobalSection
 EndGlobal

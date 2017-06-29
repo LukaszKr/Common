@@ -62,7 +62,12 @@ namespace ProceduralLevel.Serialization.Json
 		}
 		#endregion
 
-		public string ToString(bool formatted)
+		public override string ToString()
+		{
+			return ToString(false);
+		}
+
+		public override string ToString(bool formatted)
 		{
 			StringBuilder sb = new StringBuilder();
 			ToString(sb, formatted);

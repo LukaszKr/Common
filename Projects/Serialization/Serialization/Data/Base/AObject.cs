@@ -14,5 +14,7 @@
 		public abstract AArray WriteArray(string key);
 		public abstract AObject ReadObject(string key);
 		public abstract AArray ReadArray(string key);
+
+		public abstract string ToString(bool formatted);
 	}
 }
