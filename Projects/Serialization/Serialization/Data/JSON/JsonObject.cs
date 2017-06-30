@@ -77,7 +77,7 @@ namespace ProceduralLevel.Serialization.Json
 		public void ToString(StringBuilder sb, bool formatted)
 		{
 			bool first = true;
-			sb.Append("{");
+			sb.Append(JsonConst.BRACES_OPEN);
 			foreach(KeyValuePair<string, AValue> pair in m_Keys)
 			{
 				if(!first)
@@ -91,7 +91,7 @@ namespace ProceduralLevel.Serialization.Json
 				}
 				first = false;
 			}
-			sb.Append("}");
+			sb.Append(JsonConst.BRACES_CLOSE);
 		}
 	}
 }

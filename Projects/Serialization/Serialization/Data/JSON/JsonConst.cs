@@ -6,12 +6,11 @@ namespace ProceduralLevel.Serialization
     {
 		public const char ARRAY_OPEN = '[';
 		public const char ARRAY_CLOSE = ']';
-		public const char BRACKETS_OPEN = '{';
-		public const char BRACKETS_CLOSE = '}';
-		public const char KEY_VALUE_SEPARATOR = ':';
+		public const char BRACES_OPEN = '{';
+		public const char BRACES_CLOSE = '}';
+		public const char ASSIGN = ':';
 		public const char SEPARATOR = ',';
 		public const char QUOTE = '\"';
-		public const char ESCAPE = '\\';
 
 		private static char[] m_ToEscape = new char[]
 		{

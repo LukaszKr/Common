@@ -67,7 +67,7 @@ namespace ProceduralLevel.Serialization.Json
 
 		public void ToString(StringBuilder sb, bool formatted)
 		{
-			sb.Append("[");
+			sb.Append(JsonConst.ARRAY_OPEN);
 			for(int x = 0; x < m_Values.Count; x++)
 			{
 				AValue value = m_Values[x];
@@ -81,7 +81,7 @@ namespace ProceduralLevel.Serialization.Json
 					sb.AppendLine();
 				}
 			}
-			sb.Append("]");
+			sb.Append(JsonConst.ARRAY_CLOSE);
 		}
 	}
 }

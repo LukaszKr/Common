@@ -13,7 +13,7 @@ namespace ProceduralLevel.Serialization.Json
 
 		public void ToString(StringBuilder sb, string key, bool formatted)
 		{
-			sb.Append(JsonConst.QUOTE).Append(key).Append(JsonConst.QUOTE).Append(JsonConst.KEY_VALUE_SEPARATOR);
+			sb.Append(JsonConst.QUOTE).Append(key).Append(JsonConst.QUOTE).Append(JsonConst.ASSIGN);
 			if(formatted)
 			{
 				sb.Append(" ");
