@@ -27,5 +27,16 @@ namespace Test.Serialization.CSV
 			entry[1] = "123";
 			Assert.AreEqual("\"hello\",\"123\"", m_CSV.ToString());
 		}
+
+		[TestMethod]
+		public void AddColumn()
+		{
+			m_CSV.AddHeader("test");
+			Assert.AreEqual(1, m_CSV.Header.Size);
+			m_CSV.AddHeader("test");
+			Assert.AreEqual(1, m_CSV.Header.Size);
+			m_CSV.AddHeaders("test", "test2");
+			TestHelper.AssertCSVEntry(m_CSV.Header, "test" ,"test2");
+		}
 	}
 }

@@ -112,7 +112,7 @@ namespace ProceduralLevel.Serialization.CSV
 			for(int x = 0; x < names.Length; x++)
 			{
 				string name = names[x];
-				if(Header.IndexOf(name) >= 0)
+				if(Header.IndexOf(name) == -1)
 				{
 					validNames.Add(name);
 				}
