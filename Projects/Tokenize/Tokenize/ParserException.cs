@@ -2,15 +2,20 @@
 
 namespace ProceduralLevel.Tokenize
 {
-	public class ParserException<IDType>: Exception
+	public class ParserException<ErrorIDType>: Exception
 	{
-		public readonly IDType ID;
+		public readonly ErrorIDType ErrorCode;
 		public readonly Token Token;
 
-		public ParserException(IDType id, Token token)
+		public ParserException(ErrorIDType errorCode, Token token)
 		{
-			ID = id;
+			ErrorCode = errorCode;
 			Token = token;
+		}
+
+		public override string ToString()
+		{
+			return string.Format("[Code: {0}, Token: {1}]", ErrorCode.ToString(), Token.ToString());
 		}
 	}
 }
