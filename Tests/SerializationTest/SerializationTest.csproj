@@ -51,8 +51,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\AArrayTest.cs" />
     <Compile Include="Serialization\AObjectTest.cs" />
-    <Compile Include="Serialization\Json\JsonArrayTest.cs" />
-    <Compile Include="Serialization\Json\JsonObjectTest.cs" />
+    <Compile Include="Serialization\CSV\CSVEntryTest.cs" />
+    <Compile Include="Serialization\CSV\CSVEscapeTest.cs" />
+    <Compile Include="Serialization\CSV\CSVObjectTest.cs" />
+    <Compile Include="Serialization\JSON\JsonArrayTest.cs" />
+    <Compile Include="Serialization\JSON\JsonObjectTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

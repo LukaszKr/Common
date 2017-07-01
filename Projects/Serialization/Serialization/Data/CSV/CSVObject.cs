@@ -81,6 +81,7 @@ namespace ProceduralLevel.Serialization.CSV
 		#region Columns
 		public void Resize(int newSize)
 		{
+			Width = newSize;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -147,7 +148,10 @@ namespace ProceduralLevel.Serialization.CSV
 			{
 				CSVEntry entry = m_Data[x];
 				entry.ToString(sb);
-				sb.Append(CSVConst.NEW_LINE); 
+				if(x < m_Data.Count-1)
+				{
+					sb.Append(CSVConst.NEW_LINE);
+				}
 			}
 		}
 	}
