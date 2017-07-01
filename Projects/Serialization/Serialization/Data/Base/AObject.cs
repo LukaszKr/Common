@@ -15,6 +15,28 @@
 		public abstract AObject ReadObject(string key);
 		public abstract AArray ReadArray(string key);
 
+		public AObject TryReadObject(string key)
+		{
+			try
+			{
+				AObject value = ReadObject(key);
+				return value;
+			}
+			catch { }
+			return null;
+		}
+
+		public AArray TryReadArray(string key)
+		{
+			try
+			{
+				AArray value = ReadArray(key);
+				return value;
+			}
+			catch { }
+			return null;
+		}
+
 		public abstract string ToString(bool formatted);
 	}
 }
