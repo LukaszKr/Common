@@ -13,14 +13,14 @@ namespace ProceduralLevel.Serialization.CSV
 			get { return m_Data[index]; }
 		}
 
-		public CSVEntry Header { get { return (Count > 0? this[0]: null); } }
-		public int Width { get; private set; }
+		public CSVEntry Header { get; private set; }
+		public int Width { get { return Header.Size; } }
 		public int Count { get { return m_Data.Count; } }
 
 		public CSVObject(int width = 0)
 		{
 			m_Data = new List<CSVEntry>();
-			Width = width;
+			Header = new CSVEntry(width);
 		}
 
 		public void Add(CSVEntry entry)
@@ -82,7 +82,7 @@ namespace ProceduralLevel.Serialization.CSV
 		#region Columns
 		public void Resize(int newSize)
 		{
-			Width = newSize;
+			Header.Resize(newSize);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -92,40 +92,30 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void AddColumn(string name)
 		{
-			Width++;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
 				entry.Resize(Width);
 			}
-			if(Count > 0)
-			{
-				Header[Width-1] = name;
-			}
+			Header[Width-1] = name;
 		}
 
 		public void AddColumns(params string[] names)
 		{
 			int oldWidth = Width;
-			Width += names.Length;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
 				entry.Resize(Width);
 			}
-			if(Count > 0)
+			for(int x = 0; x < names.Length; x++)
 			{
-				CSVEntry header = Header;
-				for(int x = 0; x < names.Length; x++)
-				{
-					header[x+oldWidth] = names[x];
-				}
+				Header[x+oldWidth] = names[x];
 			}
 		}
 
 		public void RemoveColumn(int index)
 		{
-			Width--;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -135,7 +125,6 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void RemoveColumns(params int[] indexes)
 		{
-			Width -= indexes.Length;
 			//TODO: optimize it to do it as a single operation
 			for(int x = 0; x < indexes.Length; x++)
 			{
@@ -149,7 +138,6 @@ namespace ProceduralLevel.Serialization.CSV
 			{
 				return;
 			}
-			Width++;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -168,14 +156,12 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void ToString(StringBuilder sb)
 		{
+			Header.ToString(sb);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
+				sb.Append(CSVConst.NEW_LINE);
 				CSVEntry entry = m_Data[x];
 				entry.ToString(sb);
-				if(x < m_Data.Count-1)
-				{
-					sb.Append(CSVConst.NEW_LINE);
-				}
 			}
 		}
 	}

@@ -21,6 +21,15 @@ namespace ProceduralLevel.Serialization.CSV
 			Resize(size);
 		}
 
+		public CSVEntry(params string[] values)
+		{
+			m_Data = new List<string>(values.Length);
+			for(int x = 0; x < values.Length; x++)
+			{
+				m_Data.Add(values[x]);
+			}
+		}
+
 		public CSVEntry(List<string> columns)
 		{
 			m_Data = new List<string>(columns);
@@ -46,6 +55,15 @@ namespace ProceduralLevel.Serialization.CSV
 			for(int x = m_Data.Count; x < newSize; x++)
 			{
 				m_Data.Add(string.Empty);
+			}
+		}
+
+		public void Copy(CSVEntry entry)
+		{
+			Resize(entry.Size);
+			for(int x = 0; x < Size; x++)
+			{
+				this[x] = entry[x];
 			}
 		}
 

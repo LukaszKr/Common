@@ -20,10 +20,9 @@ namespace Test.Serialization.CSV
 			Assert.AreEqual("", m_CSV.ToString());
 			
 			m_CSV.Resize(2);
-			CSVEntry entry = new CSVEntry(2);
-			m_CSV.Add(entry);
 			Assert.AreEqual(CSVConst.SEPARATOR.ToString(), m_CSV.ToString());
 
+			CSVEntry entry = m_CSV.Header;
 			entry[0] = "hello";
 			entry[1] = "123";
 			Assert.AreEqual("\"hello\",\"123\"", m_CSV.ToString());

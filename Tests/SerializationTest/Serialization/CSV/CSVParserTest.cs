@@ -26,7 +26,7 @@ namespace Test.Serialization.CSV.Parser
 		{
 			CSVObject csv = m_Parser.Parse("123,\"hello\"").Flush();
 			Assert.AreEqual(2, csv.Width);
-			CSVEntry entry = csv[0];
+			CSVEntry entry = csv.Header;
 			TestHelper.AssertCSVEntry(entry, "123", "hello");
 		}
 
@@ -35,7 +35,7 @@ namespace Test.Serialization.CSV.Parser
 		{
 			CSVObject csv = m_Parser.Parse("\"\"hello\"\"").Flush();
 			Assert.AreEqual(1, csv.Width);
-			CSVEntry entry = csv[0];
+			CSVEntry entry = csv.Header;
 			TestHelper.AssertCSVEntry(entry, "\"hello\"");
 		}
 	}

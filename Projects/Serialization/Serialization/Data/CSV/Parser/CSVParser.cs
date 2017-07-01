@@ -20,8 +20,12 @@ namespace ProceduralLevel.Serialization.CSV
 					if(csv == null)
 					{
 						csv = new CSVObject(entry.Size);
+						csv.Header.Copy(entry);
 					}
-					csv.Add(entry);
+					else
+					{
+						csv.Add(entry);
+					}
 				}
 			}
 
