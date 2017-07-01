@@ -36,6 +36,13 @@ namespace ProceduralLevel.Tokenize
 			return this;
 		}
 
+		public AParser<DataType> ParseLine(string str)
+		{
+			m_Tokenizer.Tokenize(str+ATokenizer.NEW_LINE);
+			m_Next = 0;
+			return this;
+		}
+
 		public DataType Flush()
 		{
 			m_Tokens = m_Tokenizer.Flush();

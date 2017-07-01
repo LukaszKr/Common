@@ -38,5 +38,19 @@ namespace Test.Serialization.CSV.Parser
 			CSVEntry entry = csv.Header;
 			TestHelper.AssertCSVEntry(entry, "\"hello\"");
 		}
+
+		[TestMethod]
+		public void MultipleColumns()
+		{
+			CSVObject csv = m_Parser.Parse("hello,world").Flush();
+			TestHelper.AssertCSVEntry(csv.Header, "hello", "world");
+		}
+
+		[TestMethod]
+		public void MultipleQuotedColumns()
+		{
+			CSVObject csv = m_Parser.Parse("\"hello\",\"world\"").Flush();
+			TestHelper.AssertCSVEntry(csv.Header, "hello", "world");
+		}
 	}
 }
