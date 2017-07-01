@@ -2,22 +2,22 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class NumberValue: AValue<string>
+	public class NullValue: AValue
 	{
-		public NumberValue(string data) 
-			: base(EValueType.Number, data)
+		public const string NULL = "null";
+
+		public NullValue() : base(EValueType.Null)
 		{
 		}
 
 		public override bool Equals(object obj)
 		{
-			NumberValue other = obj as NumberValue;
+			NullValue other = obj as NullValue;
 			if(other == null)
 			{
 				return false;
 			}
-
-			return Data.Equals(other.Data);
+			return true;
 		}
 
 		public override int GetHashCode()
@@ -27,7 +27,7 @@ namespace ProceduralLevel.Serialization.Json
 
 		public override void ToString(StringBuilder sb, bool formatted)
 		{
-			sb.Append(Data);
+			sb.Append(NULL);
 		}
 	}
 }

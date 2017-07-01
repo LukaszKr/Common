@@ -5,7 +5,7 @@
 		#region Write
 		public override AArray Write(bool data)
 		{
-			NumberValue value = new NumberValue(data.ToString());
+			BoolValue value = new BoolValue(data);
 			m_Values.Add(value);
 			return this;
 		}
@@ -85,9 +85,8 @@
 		#region Read
 		public override bool ReadBool(int index)
 		{
-			NumberValue value = m_Values[index] as NumberValue;
-			bool data = bool.Parse(value.Data);
-			return data;
+			BoolValue value = m_Values[index] as BoolValue;
+			return value.Data;
 		}
 
 		public override char ReadChar(int index)

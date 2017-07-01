@@ -9,10 +9,51 @@ namespace ProceduralLevel.Serialization.Json
 
 		public override int Count { get { return m_Values.Count; } }
 
+		public AValue this[int index]
+		{
+			get { return m_Values[index]; }
+			set { m_Values[index] = value; }
+		}
+
 		public override void Clear()
 		{
 			base.Clear();
 			m_Values.Clear();
+		}
+
+		#region Equals
+		public override bool Equals(object obj)
+		{
+			JsonArray other = obj as JsonArray;
+			if(other == null)
+			{
+				return false;
+			}
+
+			if(Count != other.Count)
+			{
+				return false;
+			}
+
+			for(int x = 0; x < m_Values.Count; x++)
+			{
+				if(!other[x].Equals(m_Values[x]))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+		#endregion
+
+		public void Write(AValue data)
+		{
+			m_Values.Add(data);
 		}
 
 		public override AObject WriteObject()

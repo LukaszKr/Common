@@ -9,10 +9,46 @@ namespace ProceduralLevel.Serialization.Json
 
 		public override int Count { get { return m_Keys.Count; } }
 
+		public AValue this[string key]
+		{
+			get { return m_Keys[key]; }
+			set { m_Keys[key] = value; }
+		}
+
 		public override void Clear()
 		{
 			m_Keys.Clear();
 		}
+		
+		#region Equals
+		public override bool Equals(object obj)
+		{
+			JsonObject other = obj as JsonObject;
+			if(other == null)
+			{
+				return false;
+			}
+
+			if(Count != other.Count)
+			{
+				return false;
+			}
+
+			foreach(var pair in m_Keys)
+			{
+				if(!other[pair.Key].Equals(m_Keys[pair.Key]))
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+		#endregion
 
 		public override string[] Keys()
 		{
@@ -33,6 +69,11 @@ namespace ProceduralLevel.Serialization.Json
 
 
 		#region Read && Write
+		public void Write(string key, AValue value)
+		{
+			m_Keys[key] = value;
+		}
+
 		public override AObject WriteObject(string key)
 		{
 			JsonObject obj = new JsonObject();

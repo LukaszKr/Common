@@ -5,10 +5,12 @@ namespace ProceduralLevel.Serialization.Json
     {
 		#region Write
 <# for(int x = 0; x < lTypes.Length; x++) { #>
-		public override AArraySerializer Write(<#= lTypes[x] #> data)
+		public override AArray Write(<#= lTypes[x] #> data)
 		{
 <# if(lTypes[x] == "string") { #>
 			StringValue value = new StringValue(data);
+<# } else if(lTypes[x] == "bool") { #>
+			BoolValue value = new BoolValue(data);
 <# } else { #>
 			NumberValue value = new NumberValue(data.ToString());
 <# } #>
@@ -25,6 +27,9 @@ namespace ProceduralLevel.Serialization.Json
 		{
 <# if(lTypes[x] == "string") { #>
 			StringValue value = m_Values[index] as StringValue;
+			return value.Data;
+<# } else if(lTypes[x] == "bool") { #>
+			BoolValue value = m_Values[index] as BoolValue;
 			return value.Data;
 <# } else { #>
 			NumberValue value = m_Values[index] as NumberValue;

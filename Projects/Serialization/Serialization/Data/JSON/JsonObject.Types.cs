@@ -5,7 +5,7 @@
 		#region Write
 		public override AObject Write(string key, bool data)
 		{
-			NumberValue value = new NumberValue(data.ToString());
+			BoolValue value = new BoolValue(data);
 			m_Keys.Add(key, value);
 			return this;
 		}
@@ -85,9 +85,8 @@
 		#region Read
 		public override bool ReadBool(string key)
 		{
-			NumberValue value = m_Keys[key] as NumberValue;
-			bool data = bool.Parse(value.Data);
-			return data;
+			BoolValue value = m_Keys[key] as BoolValue;
+			return value.Data;
 		}
 
 		public override char ReadChar(string key)

@@ -7,6 +7,10 @@ namespace ProceduralLevel.Tokenize
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
 
+		#if DEBUG
+		protected string m_ConsumedSoFar = "";
+		#endif
+
 		protected ATokenizer m_Tokenizer;
 
 		public AParser(ATokenizer tokenizer)
@@ -16,7 +20,11 @@ namespace ProceduralLevel.Tokenize
 
 		protected Token ConsumeToken()
 		{
-			return m_Tokens[m_Next++];
+			Token token = m_Tokens[m_Next++];
+			#if DEBUG
+			m_ConsumedSoFar += token.Value;
+			#endif
+			return token;
 		}
 
 		protected Token PeekToken()
@@ -27,6 +35,20 @@ namespace ProceduralLevel.Tokenize
 		protected bool HasTokens()
 		{
 			return (m_Next < m_Tokens.Count);
+		}
+
+		protected void SkipToNextNonEmpty()
+		{
+			Token token = null;
+			while(true)
+			{
+				token = PeekToken();
+				if(token.IsSeparator || !string.IsNullOrEmpty(token.Value))
+				{
+					return;
+				}
+				ConsumeToken();
+			}
 		}
 
 		public AParser<DataType> Parse(string str)
@@ -57,6 +79,9 @@ namespace ProceduralLevel.Tokenize
 		{
 			m_Next = 0;
 			m_Tokens = null;
+			#if DEBUG
+			m_ConsumedSoFar = "";
+			#endif
 		}
     }
 }

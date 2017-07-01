@@ -21,6 +21,13 @@ namespace ProceduralLevel.Serialization.Json
 			ToString(sb, formatted);
 		}
 
+		public override string ToString()
+		{
+			StringBuilder sb = new StringBuilder();
+			ToString(sb, true);
+			return sb.ToString();
+		}
+
 		public abstract void ToString(StringBuilder sb, bool formatted);
 	}
 

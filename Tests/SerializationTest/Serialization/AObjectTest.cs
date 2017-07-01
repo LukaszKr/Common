@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProceduralLevel.Serialization;
+using System;
 
 namespace Test.Serialization
 {
@@ -42,6 +43,32 @@ namespace Test.Serialization
 			
 			m_Object.Write("i", 123);
 			Assert.AreEqual("{\"i\":123}", m_Object.ToString(false));
+		}
+
+		[TestMethod]
+		public void Equals()
+		{
+			bool bVal = true;
+			int iVal = 123;
+			string sVal = "hello";
+
+			Action<AObject> prepare = (obj) =>
+			{
+				obj.Write("b", bVal);
+				obj.Write("i", iVal);
+				obj.Write("s", sVal);
+				AArray arr = obj.WriteArray("a");
+				arr.Write(bVal).Write(iVal).Write(sVal);
+				AObject sub = obj.WriteObject("o");
+				sub.Write("b", bVal);
+			};
+
+			AObject other = CreateObject();
+			prepare(other);
+			prepare(m_Object);
+
+			Assert.AreEqual(true, m_Object.Equals(other));
+			Assert.AreEqual(true, other.Equals(m_Object));
 		}
 	}
 }

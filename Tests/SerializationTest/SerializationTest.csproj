@@ -57,6 +57,7 @@
     <Compile Include="Serialization\CSV\CSVParserTest.cs" />
     <Compile Include="Serialization\JSON\JsonArrayTest.cs" />
     <Compile Include="Serialization\JSON\JsonObjectTest.cs" />
+    <Compile Include="Serialization\JSON\JsonParserTest.cs" />
     <Compile Include="Serialization\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>

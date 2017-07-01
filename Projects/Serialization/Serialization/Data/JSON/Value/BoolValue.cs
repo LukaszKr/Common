@@ -2,16 +2,15 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class NumberValue: AValue<string>
+	public class BoolValue: AValue<bool>
 	{
-		public NumberValue(string data) 
-			: base(EValueType.Number, data)
+		public BoolValue(bool data) : base(EValueType.Bool, data)
 		{
 		}
 
 		public override bool Equals(object obj)
 		{
-			NumberValue other = obj as NumberValue;
+			BoolValue other = obj as BoolValue;
 			if(other == null)
 			{
 				return false;
@@ -27,7 +26,7 @@ namespace ProceduralLevel.Serialization.Json
 
 		public override void ToString(StringBuilder sb, bool formatted)
 		{
-			sb.Append(Data);
+			sb.Append(Data.ToString());
 		}
 	}
 }

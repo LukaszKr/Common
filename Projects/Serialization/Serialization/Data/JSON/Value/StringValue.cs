@@ -9,9 +9,25 @@ namespace ProceduralLevel.Serialization.Json
 		{
 		}
 
+		public override bool Equals(object obj)
+		{
+			StringValue other = obj as StringValue;
+			if(other == null)
+			{
+				return false;
+			}
+
+			return Data.Equals(other.Data);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+
 		public override void ToString(StringBuilder sb, bool formatted)
 		{
-			sb.Append(JsonConst.QUOTE).Append(Data).Append(JsonConst.QUOTE);
+			sb.Append(JsonConst.QUOTE).Append(JsonConst.EscapeString(Data)).Append(JsonConst.QUOTE);
 		}
 	}
 }
