@@ -21,6 +21,11 @@ namespace ProceduralLevel.Serialization.CSV
 			Resize(size);
 		}
 
+		public CSVEntry(List<string> columns)
+		{
+			m_Data = new List<string>(columns);
+		}
+
 		public void RemoveColumn(int index)
 		{
 			m_Data.RemoveAt(index);
@@ -60,7 +65,10 @@ namespace ProceduralLevel.Serialization.CSV
 				{
 					sb.Append(CSVConst.QUOTATION).Append(value).Append(CSVConst.QUOTATION);
 				}
-				sb.Append(CSVConst.SEPARATOR);
+				if(x < m_Data.Count-1)
+				{
+					sb.Append(CSVConst.SEPARATOR);
+				}
 			}
 		}
 	}

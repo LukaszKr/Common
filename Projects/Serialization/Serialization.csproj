@@ -45,6 +45,10 @@
     <Compile Include="Serialization\Data\CSV\CSVEntry.cs" />
     <Compile Include="Serialization\Data\CSV\CSVObject.cs" />
     <Compile Include="Serialization\Data\CSV\CSVTable.cs" />
+    <Compile Include="Serialization\Data\CSV\Parser\CSVParserException.cs" />
+    <Compile Include="Serialization\Data\CSV\Parser\CSVParser.cs" />
+    <Compile Include="Serialization\Data\CSV\Parser\CSVTokenizer.cs" />
+    <Compile Include="Serialization\Data\CSV\Parser\ECSVParserError.cs" />
     <Compile Include="Serialization\Data\JSON\JsonArray.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,6 +82,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tokenize\Tokenize.csproj">
+      <Project>{FB003E6C-3D58-41A9-8209-13B9944E5164}</Project>
+      <Name>Tokenize</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

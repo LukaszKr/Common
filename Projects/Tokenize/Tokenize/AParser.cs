@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProceduralLevel.Parsing
+namespace ProceduralLevel.Tokenize
 {
 	public abstract class AParser<DataType>
     {

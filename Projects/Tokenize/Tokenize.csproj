@@ -35,8 +35,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tokenize\AParser.cs" />
     <Compile Include="Tokenize\ATokenizer.cs" />
-    <Compile Include="Tokenize\ParsingException.cs" />
+    <Compile Include="Tokenize\ParserException.cs" />
     <Compile Include="Tokenize\ETokenType.cs" />
     <Compile Include="Tokenize\SimpleTokenizer.cs" />
     <Compile Include="Tokenize\Token.cs" />
