@@ -57,7 +57,6 @@ namespace Test.Serialization.Json.Parser
 			WriteNestedArray(raw);
 			AObject nested = WriteNestedObject(raw);
 			WriteNestedObject(nested);
-			WritePrimitives(nested);
 
 			ParseAndAssert(raw);
 		}
