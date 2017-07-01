@@ -63,7 +63,7 @@ namespace ProceduralLevel.Serialization.CSV
 				string value = m_Data[x];
 				if(!string.IsNullOrEmpty(value))
 				{
-					sb.Append(CSVConst.QUOTATION).Append(value).Append(CSVConst.QUOTATION);
+					sb.Append(CSVConst.QUOTATION).Append(CSVConst.EscapeString(value)).Append(CSVConst.QUOTATION);
 				}
 				if(x < m_Data.Count-1)
 				{

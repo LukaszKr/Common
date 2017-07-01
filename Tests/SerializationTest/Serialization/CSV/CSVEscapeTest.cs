@@ -28,6 +28,9 @@ namespace Test.Serialization.CSV
 		{
 			string str = "\"hello\";world";
 			Assert.AreEqual(str, CSVConst.UnEscapeString(str));
+
+			str = "\"hello\"";
+			Assert.AreEqual("\"hello\"", CSVConst.UnEscapeString(str));
 		}
 	}
 }

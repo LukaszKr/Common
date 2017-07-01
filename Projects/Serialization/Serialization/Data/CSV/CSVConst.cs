@@ -54,6 +54,10 @@ namespace ProceduralLevel.Serialization.CSV
 					sb.Append(chr);
 				}
 			}
+			if(wasEscaped)
+			{
+				sb.Append(QUOTATION);
+			}
 			return sb.ToString();
 		}
 	}

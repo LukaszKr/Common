@@ -54,8 +54,10 @@
     <Compile Include="Serialization\CSV\CSVEntryTest.cs" />
     <Compile Include="Serialization\CSV\CSVEscapeTest.cs" />
     <Compile Include="Serialization\CSV\CSVObjectTest.cs" />
+    <Compile Include="Serialization\CSV\CSVParserTest.cs" />
     <Compile Include="Serialization\JSON\JsonArrayTest.cs" />
     <Compile Include="Serialization\JSON\JsonObjectTest.cs" />
+    <Compile Include="Serialization\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -64,6 +66,10 @@
     <ProjectReference Include="..\..\Projects\Serialization\Serialization.csproj">
       <Project>{969021E9-3082-4D72-B454-2C2BD65AEA5B}</Project>
       <Name>Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Projects\Tokenize\Tokenize.csproj">
+      <Project>{FB003E6C-3D58-41A9-8209-13B9944E5164}</Project>
+      <Name>Tokenize</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -11,12 +11,16 @@ namespace ProceduralLevel.Serialization.CSV
 
 		protected override CSVObject Parse()
 		{
-			CSVObject csv = new CSVObject();
+			CSVObject csv = null;
 			while(HasTokens())
 			{
 				CSVEntry entry = ParseEntry();
 				if(entry != null)
 				{
+					if(csv == null)
+					{
+						csv = new CSVObject(entry.Size);
+					}
 					csv.Add(entry);
 				}
 			}
@@ -28,31 +32,39 @@ namespace ProceduralLevel.Serialization.CSV
 		{
 			List<string> values = new List<string>();
 			bool isQuoted = false;
+			bool hasQuotedValue = false;
 			string value = "";
 
 			while(HasTokens())
 			{
-				Token token = PeekToken();
+				Token token = ConsumeToken();
 				switch(token.Value[0])
 				{
 					case CSVConst.SEPARATOR:
 						if(isQuoted)
 						{
 							value += token.Value;
+							hasQuotedValue = true;
 						}
 						else
 						{
-							values.Add(value);
+							values.Add(CSVConst.UnEscapeString(value));
 							value = "";
 						}
 						break;
 					case CSVConst.QUOTATION:
+						if(!hasQuotedValue && isQuoted)
+						{
+							value += token.Value;
+							hasQuotedValue = false;
+						}
 						isQuoted = !isQuoted;
 						break;
 					case CSVConst.NEW_LINE:
 						if(isQuoted)
 						{
 							value += token.Value;
+							hasQuotedValue = true;
 						}
 						else
 						{
@@ -61,11 +73,15 @@ namespace ProceduralLevel.Serialization.CSV
 						break;
 					default:
 						value += token.Value;
+						if(isQuoted)
+						{
+							hasQuotedValue = true;
+						}
 						break;
 				}
 			}
 
-			values.Add(value);
+			values.Add(CSVConst.UnEscapeString(value));
 			return new CSVEntry(values);
 		}
 	}
