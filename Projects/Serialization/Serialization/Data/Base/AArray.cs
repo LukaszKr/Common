@@ -29,6 +29,18 @@ namespace ProceduralLevel.Serialization
 		public abstract AObject ReadObject(int index);
 		public abstract AArray ReadArray(int index);
 
+		public void Write(IObjectSerializable data)
+		{
+			AObject obj = WriteObject();
+			data.Serialize(obj);
+		}
+
+		public void Write(IArraySerializable data)
+		{
+			AArray arr = WriteArray();
+			data.Serialize(arr);
+		}
+
 		public abstract string ToString(bool formatted);
 	}
 }

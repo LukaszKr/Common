@@ -15,6 +15,18 @@
 		public abstract AObject ReadObject(string key);
 		public abstract AArray ReadArray(string key);
 
+		public void Write(string key, IObjectSerializable data)
+		{
+			AObject obj = WriteObject(key);
+			data.Serialize(obj);
+		}
+
+		public void Write(string key, IArraySerializable data)
+		{
+			AArray arr = WriteArray(key);
+			data.Serialize(arr);
+		}
+
 		public AObject TryReadObject(string key)
 		{
 			try
