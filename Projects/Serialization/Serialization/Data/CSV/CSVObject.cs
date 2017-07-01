@@ -90,30 +90,50 @@ namespace ProceduralLevel.Serialization.CSV
 			}
 		}
 
-		public void AddColumn(string name)
+		public bool AddHeader(string name)
 		{
-			Header.Resize(Width+1);
-			for(int x = 0; x < m_Data.Count; x++)
+			if(Header.IndexOf(name) < 0)
 			{
-				CSVEntry entry = m_Data[x];
-				entry.Resize(Width);
+				Header.Resize(Width+1);
+				for(int x = 0; x < m_Data.Count; x++)
+				{
+					CSVEntry entry = m_Data[x];
+					entry.Resize(Width);
+				}
+				Header[Width-1] = name;
+				return true;
 			}
-			Header[Width-1] = name;
+			return false;
 		}
 
-		public void AddColumns(params string[] names)
+		public bool AddHeaders(params string[] names)
 		{
-			int oldWidth = Width;
-			Header.Resize(Width+names.Length);
-			for(int x = 0; x < m_Data.Count; x++)
-			{
-				CSVEntry entry = m_Data[x];
-				entry.Resize(Width);
-			}
+			List<string> validNames = new List<string>();
 			for(int x = 0; x < names.Length; x++)
 			{
-				Header[x+oldWidth] = names[x];
+				string name = names[x];
+				if(Header.IndexOf(name) >= 0)
+				{
+					validNames.Add(name);
+				}
 			}
+
+			if(validNames.Count > 0)
+			{
+				int oldWidth = Width;
+				Header.Resize(Width+validNames.Count);
+				for(int x = 0; x < m_Data.Count; x++)
+				{
+					CSVEntry entry = m_Data[x];
+					entry.Resize(Width);
+				}
+				for(int x = 0; x < validNames.Count; x++)
+				{
+					Header[x+oldWidth] = validNames[x];
+				}
+				return true;
+			}
+			return false;
 		}
 
 		public void RemoveColumn(int index)
