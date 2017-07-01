@@ -44,7 +44,6 @@
     </Compile>
     <Compile Include="Serialization\Data\CSV\CSVEntry.cs" />
     <Compile Include="Serialization\Data\CSV\CSVObject.cs" />
-    <Compile Include="Serialization\Data\CSV\CSVTable.cs" />
     <Compile Include="Serialization\Data\CSV\Parser\CSVParserException.cs" />
     <Compile Include="Serialization\Data\CSV\Parser\CSVParser.cs" />
     <Compile Include="Serialization\Data\CSV\Parser\CSVTokenizer.cs" />

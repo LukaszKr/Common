@@ -13,6 +13,7 @@ namespace ProceduralLevel.Serialization.CSV
 			get { return m_Data[index]; }
 		}
 
+		public CSVEntry Header { get { return (Count > 0? this[0]: null); } }
 		public int Width { get; private set; }
 		public int Count { get { return m_Data.Count; } }
 
@@ -116,23 +117,19 @@ namespace ProceduralLevel.Serialization.CSV
 			}
 		}
 
-		public void InsertColumn(int index, string defualtValue = null)
+		public void InsertColumn(int index, string name, bool avoidDuplicates = true)
 		{
+			if(avoidDuplicates && Count > 0 && Header.IndexOf(name) >= 0)
+			{
+				return;
+			}
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
-				entry.Insert(index, defualtValue);
+				entry.Insert(index, (x == 0? name: string.Empty));
 			}
 		}
 
-		public void InsertColumns(params int[] indexes)
-		{
-			//TODO: optimize it to do it as a single operation
-			for(int x = 0; x < indexes.Length; x++)
-			{
-				InsertColumn(indexes[x]);
-			}
-		}
 		#endregion
 
 		public override string ToString()
