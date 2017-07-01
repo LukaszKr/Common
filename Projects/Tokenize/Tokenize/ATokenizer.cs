@@ -37,6 +37,7 @@ namespace ProceduralLevel.Tokenize
 			m_Tokens = new List<Token>();
 			m_RawBuffer.Length = 0;
 			m_ValueBuffer.Length = 0;
+			m_Cursor = 0;
 			m_Line = 0;
 			m_Column = 0;
 			m_Escaped = false;
