@@ -72,6 +72,7 @@ namespace ProceduralLevel.Serialization.CSV
 						}
 						else
 						{
+							values.Add(value);
 							return new CSVEntry(values);
 						}
 						break;
