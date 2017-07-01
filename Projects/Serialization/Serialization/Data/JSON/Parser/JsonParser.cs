@@ -120,14 +120,17 @@ namespace ProceduralLevel.Serialization.Json
 			bool emptyValue = false;
 			while(HasTokens())
 			{
+				token = PeekToken();
 				if(token.IsSeparator)
 				{
 					if(token.Value[0] == JsonConst.ARRAY_CLOSE)
 					{
+						ConsumeToken();
 						return new ArrayValue(arr);
 					}
 					else if(token.Value[0] == JsonConst.SEPARATOR)
 					{
+						ConsumeToken();
 						if(emptyValue)
 						{
 							arr.Write(new NullValue());
