@@ -92,6 +92,7 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void AddColumn(string name)
 		{
+			Header.Resize(Width+1);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -103,6 +104,7 @@ namespace ProceduralLevel.Serialization.CSV
 		public void AddColumns(params string[] names)
 		{
 			int oldWidth = Width;
+			Header.Resize(Width+names.Length);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -116,6 +118,7 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void RemoveColumn(int index)
 		{
+			Header.RemoveColumn(index);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -138,10 +141,11 @@ namespace ProceduralLevel.Serialization.CSV
 			{
 				return;
 			}
+			Header.Insert(index, name);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
-				entry.Insert(index, (x == 0? name: string.Empty));
+				entry.Insert(index, string.Empty);
 			}
 		}
 
