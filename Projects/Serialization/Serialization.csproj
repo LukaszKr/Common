@@ -42,6 +42,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AArray.Types.tt</DependentUpon>
     </Compile>
+    <Compile Include="Serialization\Data\CSV\CSVEntry.cs" />
+    <Compile Include="Serialization\Data\CSV\CSVObject.cs" />
+    <Compile Include="Serialization\Data\CSV\CSVTable.cs" />
     <Compile Include="Serialization\Data\JSON\JsonArray.Types.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
