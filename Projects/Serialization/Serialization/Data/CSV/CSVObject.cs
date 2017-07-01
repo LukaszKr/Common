@@ -90,17 +90,42 @@ namespace ProceduralLevel.Serialization.CSV
 			}
 		}
 
-		public void AddColumns(int count)
+		public void AddColumn(string name)
 		{
+			Width++;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
-				entry.Resize(Width+count);
+				entry.Resize(Width);
+			}
+			if(Count > 0)
+			{
+				Header[Width-1] = name;
+			}
+		}
+
+		public void AddColumns(params string[] names)
+		{
+			int oldWidth = Width;
+			Width += names.Length;
+			for(int x = 0; x < m_Data.Count; x++)
+			{
+				CSVEntry entry = m_Data[x];
+				entry.Resize(Width);
+			}
+			if(Count > 0)
+			{
+				CSVEntry header = Header;
+				for(int x = 0; x < names.Length; x++)
+				{
+					header[x+oldWidth] = names[x];
+				}
 			}
 		}
 
 		public void RemoveColumn(int index)
 		{
+			Width--;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
@@ -110,6 +135,7 @@ namespace ProceduralLevel.Serialization.CSV
 
 		public void RemoveColumns(params int[] indexes)
 		{
+			Width -= indexes.Length;
 			//TODO: optimize it to do it as a single operation
 			for(int x = 0; x < indexes.Length; x++)
 			{
@@ -123,6 +149,7 @@ namespace ProceduralLevel.Serialization.CSV
 			{
 				return;
 			}
+			Width++;
 			for(int x = 0; x < m_Data.Count; x++)
 			{
 				CSVEntry entry = m_Data[x];
