@@ -1,1 +1,1 @@
-﻿{ "history": [ "clear", "macro record macroExample", "\"print \"hello", "Word!\" Success\"", "print this_will_work_too Normal" ] }
+﻿{"history":["clear","macro record macroExample","print \"hello Word!\" Success","print this_will_work_too Normal"]}

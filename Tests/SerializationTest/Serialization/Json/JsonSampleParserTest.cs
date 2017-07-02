@@ -21,6 +21,7 @@ namespace Test.Serialization.Json.Parser.Sample
 		public void PowerConsoleSample()
 		{
 			AssertSample("PowerConsole.json");
+			AssertSample("FormattedPowerConsole.json");
 		}
 
 		private void AssertSample(string path)
