@@ -66,6 +66,9 @@
     <None Include="Sample\JSON\FormattedPowerConsole.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Sample\JSON\SpacedPowerConsole.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Sample\JSON\PowerConsole.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
