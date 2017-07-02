@@ -58,10 +58,14 @@
     <Compile Include="Serialization\JSON\JsonArrayTest.cs" />
     <Compile Include="Serialization\JSON\JsonObjectTest.cs" />
     <Compile Include="Serialization\JSON\JsonParserTest.cs" />
+    <Compile Include="Serialization\JSON\JsonSampleParserTest.cs" />
     <Compile Include="Serialization\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Sample\JSON\PowerConsole.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Projects\Serialization\Serialization.csproj">

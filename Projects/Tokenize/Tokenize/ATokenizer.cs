@@ -114,7 +114,10 @@ namespace ProceduralLevel.Tokenize
 						{
 							value = value.Trim();
 						}
-						m_Tokens.Add(new Token(value, ETokenType.Value, m_Line, m_Column));
+						if(value.Length > 0)
+						{
+							m_Tokens.Add(new Token(value, ETokenType.Value, m_Line, m_Column));
+						}
 						m_Column += value.Length;
 					}
 					Token separator = new Token(chr.ToString(), ETokenType.Separator, m_Line, m_Column);

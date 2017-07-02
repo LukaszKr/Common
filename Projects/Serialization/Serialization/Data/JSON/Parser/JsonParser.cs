@@ -5,7 +5,7 @@ namespace ProceduralLevel.Serialization.Json
 {
 	public class JsonParser: AParser<JsonObject>
 	{
-		public JsonParser() : base(new JsonTokenizer())
+		public JsonParser() : base(new JsonTokenizer(true))
 		{
 		}
 
@@ -180,6 +180,7 @@ namespace ProceduralLevel.Serialization.Json
 
 		private AValue ParseOther()
 		{
+			SkipToNextNonEmpty();
 			Token token = ConsumeToken();
 			if(token == null)
 			{

@@ -19,7 +19,7 @@ namespace Test.Serialization.Json.Parser
 		public void EmptyObject()
 		{
 			JsonObject raw = new JsonObject();
-			ParseAndAssert(raw);
+			TestHelper.ParseAndAssert(m_Parser, raw);
 		}
 
 		[TestMethod]
@@ -28,7 +28,7 @@ namespace Test.Serialization.Json.Parser
 			JsonObject raw = new JsonObject();
 			WritePrimitives(raw);
 
-			ParseAndAssert(raw);
+			TestHelper.ParseAndAssert(m_Parser, raw);
 		}
 
 		[TestMethod]
@@ -37,7 +37,7 @@ namespace Test.Serialization.Json.Parser
 			JsonObject raw = new JsonObject();
 			WriteNestedObject(raw);
 
-			ParseAndAssert(raw);
+			TestHelper.ParseAndAssert(m_Parser, raw);
 		}
 
 		[TestMethod]
@@ -46,7 +46,7 @@ namespace Test.Serialization.Json.Parser
 			JsonObject raw = new JsonObject();
 			WriteNestedArray(raw);
 
-			ParseAndAssert(raw);
+			TestHelper.ParseAndAssert(m_Parser, raw);
 		}
 
 		[TestMethod]
@@ -58,14 +58,7 @@ namespace Test.Serialization.Json.Parser
 			AObject nested = WriteNestedObject(raw);
 			WriteNestedObject(nested);
 
-			ParseAndAssert(raw);
-		}
-
-		private void ParseAndAssert(JsonObject raw)
-		{
-			JsonObject parsed = m_Parser.Parse(raw.ToString()).Flush();
-
-			Assert.AreEqual(true, raw.Equals(parsed));
+			TestHelper.ParseAndAssert(m_Parser, raw);
 		}
 
 		private AObject WritePrimitives(AObject obj)

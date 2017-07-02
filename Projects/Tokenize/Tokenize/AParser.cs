@@ -43,7 +43,7 @@ namespace ProceduralLevel.Tokenize
 			while(true)
 			{
 				token = PeekToken();
-				if(token.IsSeparator || !string.IsNullOrEmpty(token.Value))
+				if(token.IsSeparator || !string.IsNullOrEmpty(token.Value.Trim()))
 				{
 					return;
 				}
