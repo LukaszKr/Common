@@ -46,6 +46,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Event.tt</DependentUpon>
     </Compile>
+    <Compile Include="Common\Event\EventBinder.Bind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventBinder.Bind.tt</DependentUpon>
+    </Compile>
     <Compile Include="Common\Event\EventBinder.cs" />
     <Compile Include="Common\Event\EventBinding.cs">
       <AutoGen>True</AutoGen>
@@ -64,6 +69,10 @@
     <Content Include="Common\Event\Event.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Event.cs</LastGenOutput>
+    </Content>
+    <Content Include="Common\Event\EventBinder.Bind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
     </Content>
     <Content Include="Common\Event\EventBinding.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
