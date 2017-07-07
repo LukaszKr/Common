@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Event
 {
-	public abstract class EventBinder<EventIDType>
+	public abstract class EventBinder
 	{
 		private List<IEventBinding> m_Bindings;
 		
@@ -11,7 +11,7 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[EventBinder, EventIDType: {0}, Disabled: {1}", typeof(EventIDType).Name, IsDisabled);
+			return string.Format("[EventBinder, Disabled: {0}", IsDisabled);
 		}
 
 		public EventBinder()
