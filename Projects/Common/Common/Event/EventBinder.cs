@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Event
 {
-	public abstract class EventBinder
+	public class EventBinder
 	{
 		private List<IEventBinding> m_Bindings;
 		
