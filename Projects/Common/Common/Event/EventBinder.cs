@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Event
@@ -24,10 +23,15 @@ namespace ProceduralLevel.Common.Event
 			UnbindAll();
 		}
 
-		public void Bind<T1>(Event<T1> evt, Action<T1> callback)
-		{
-			AddBinding(new EventBinding<T1>(evt, callback));
-		}
+		//public void Bind<T1>(Event<T1> evt, Action<T1> callback)
+		//{
+		//	AddBinding(new EventBinding<T1>(evt, callback));
+		//}
+
+		//public void Bind<T1, T2>(Event<T1, T2> evt, Action<T1, T2> callback)
+		//{
+		//	AddBinding(new EventBinding<T1, T2>(evt, callback));
+		//}
 
 		private void AddBinding(IEventBinding binding)
 		{

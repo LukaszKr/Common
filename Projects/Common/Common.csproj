@@ -41,9 +41,17 @@
     <Compile Include="Common\Data\ChaoticList.cs" />
     <Compile Include="Common\Data\Mask\BitMask.cs" />
     <Compile Include="Common\Data\Mask\DynamicBitMask.cs" />
-    <Compile Include="Common\Event\Event.cs" />
+    <Compile Include="Common\Event\Event.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Event.tt</DependentUpon>
+    </Compile>
     <Compile Include="Common\Event\EventBinder.cs" />
-    <Compile Include="Common\Event\EventBinding.cs" />
+    <Compile Include="Common\Event\EventBinding.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventBinding.tt</DependentUpon>
+    </Compile>
     <Compile Include="Common\Event\IEventBinding.cs" />
     <Compile Include="Common\Ext\ArrayExt.cs" />
     <Compile Include="Common\Ext\DirectoryInfoExt.cs" />
@@ -52,6 +60,19 @@
     <Compile Include="Common\State\BaseState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Common\Event\Event.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Event.cs</LastGenOutput>
+    </Content>
+    <Content Include="Common\Event\EventBinding.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EventBinding.cs</LastGenOutput>
+    </Content>
+    <Content Include="Common\Event\HelperMethod.tt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

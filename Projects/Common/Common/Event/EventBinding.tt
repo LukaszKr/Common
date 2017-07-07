@@ -1,0 +1,30 @@
+﻿<#@ include file="./HelperMethod.tt" #>
+using System;
+
+namespace ProceduralLevel.Common.Event
+{
+<# for(int x = 0; x < tCount; x++) { #>
+	public class EventBinding<<#= listGenerics(x) #>>: IEventBinding
+	{
+		private Event<<#= listGenerics(x) #>> m_Target;
+		private Action<<#= listGenerics(x) #>> m_Callback;
+
+		public EventBinding(Event<<#= listGenerics(x) #>> target, Action<<#= listGenerics(x) #>> callback)
+		{
+			m_Target = target;
+			m_Callback = callback;
+		}
+
+		public void Bind()
+		{
+			m_Target.AddListener(m_Callback);
+		}
+
+		public void Unbind()
+		{
+			m_Target.RemoveListener(m_Callback);
+		}
+	}
+
+<#} #>
+}
