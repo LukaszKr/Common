@@ -1,0 +1,31 @@
+﻿namespace ProceduralLevel.Template.Evaluator
+{
+	public class GetterEvaluator: AEvaluator
+	{
+		public override EEvaluatorType EvalType { get { return EEvaluatorType.Getter; } }
+
+		private string m_ParamName;
+
+		public GetterEvaluator(string paramName)
+		{
+			m_ParamName = paramName;
+		}
+
+		public override object Evaluate(Manager manager, object data)
+		{
+			if(m_ParamName == "this")
+			{
+				return data;
+			}
+			else
+			{
+				return Get(data, m_ParamName);
+			}
+		}
+
+		public override string ToString()
+		{
+			return m_ParamName;
+		}
+	}
+}

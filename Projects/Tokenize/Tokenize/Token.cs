@@ -19,7 +19,7 @@
 
 		public override string ToString()
 		{
-			return string.Format("[Token][{0}, Type: {1} ({2},{3})]", Value, Type.ToString(), Line, Column);
+			return string.Format("[Token][Value: '{0}', Type: {1} ({2},{3})]", Value, Type.ToString(), Line, Column);
 		}
 	}
 }
