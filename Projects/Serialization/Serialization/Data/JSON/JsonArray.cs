@@ -94,6 +94,16 @@ namespace ProceduralLevel.Serialization.Json
 			return value.Data;
 		}
 
+		public AValue ReadValue()
+		{
+			return ReadValue(m_Index++);
+		}
+
+		public AValue ReadValue(int index)
+		{
+			return m_Values[index];
+		}
+
 		public override string ToString()
 		{
 			return ToString(false);

@@ -101,6 +101,22 @@ namespace ProceduralLevel.Serialization.Json
 			ArrayValue value = m_Keys[key] as ArrayValue;
 			return value.Data;
 		}
+
+		public AValue ReadValue(string key)
+		{
+			return m_Keys[key];
+		}
+
+		public AValue TryReadValue(string key)
+		{
+			try
+			{
+				AValue value = ReadValue(key);
+				return value;
+			}
+			catch { }
+			return null;
+		}
 		#endregion
 
 		public override string ToString()
