@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUnitTest", "CommonUnitTest\CommonUnitTest.csproj", "{4E537D75-FDAB-4243-B17B-74BD2343967A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Projects\Common\Common.csproj", "{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serialization", "Projects\Serialization\Serialization.csproj", "{969021E9-3082-4D72-B454-2C2BD65AEA5B}"
@@ -32,12 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Prototype|Any CPU.ActiveCfg = Prototype|Any CPU
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Prototype|Any CPU.Build.0 = Prototype|Any CPU
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E537D75-FDAB-4243-B17B-74BD2343967A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6077872A-59CD-44C5-8BA9-1A3BD8388C6A}.Prototype|Any CPU.ActiveCfg = Release|Any CPU
@@ -91,7 +83,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4E537D75-FDAB-4243-B17B-74BD2343967A} = {D5A6C8FB-B3C6-4CFA-A568-CBD21643BC1E}
 		{6077872A-59CD-44C5-8BA9-1A3BD8388C6A} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 		{969021E9-3082-4D72-B454-2C2BD65AEA5B} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 		{DD1382A7-B6E7-4D3C-B285-80F844063864} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
