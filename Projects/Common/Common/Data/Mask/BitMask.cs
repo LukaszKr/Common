@@ -37,6 +37,11 @@ namespace ProceduralLevel.Common.Data
 			}
 		}
 
+		public int[] GetRaw()
+		{
+			return m_Mask;
+		}
+
 		#region Bit Comparision
 		public bool HasBit(int bitIndex)
 		{
