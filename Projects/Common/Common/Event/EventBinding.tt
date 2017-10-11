@@ -1,15 +1,13 @@
 ﻿<#@ include file="./HelperMethod.tt" #>
-using System;
-
 namespace ProceduralLevel.Common.Event
 {
 <# for(int x = 0; x < tCount; x++) { #>
-	public class EventBinding<<#= listGenerics(x) #>>: IEventBinding
+	public class EventBinding<#= listGenerics(x) #>: IEventBinding
 	{
-		private Event<<#= listGenerics(x) #>> m_Target;
-		private Action<<#= listGenerics(x) #>> m_Callback;
+		private Event<#= listGenerics(x) #> m_Target;
+		private Event<#= listGenerics(x) #>.Callback m_Callback;
 
-		public EventBinding(Event<<#= listGenerics(x) #>> target, Action<<#= listGenerics(x) #>> callback)
+		public EventBinding(Event<#= listGenerics(x) #> target, Event<#= listGenerics(x) #>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;

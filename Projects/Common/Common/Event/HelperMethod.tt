@@ -1,6 +1,6 @@
 ﻿<# Func<string, int, string> listVars = (string format, int count) => {
 	string str = "";
-	for(int x = 0; x <= count; x++)
+	for(int x = 0; x < count; x++)
 	{
 		if(x > 0) 
 		{
@@ -12,7 +12,11 @@
 }; 
 
 Func<int, string> listGenerics = (int count) => {
-	return listVars("T{0}", count);
+	if(count > 0)
+	{
+		return "<"+listVars("T{0}", count)+">";
+	}
+	return "";
 }; 
 
 Func<int, string> listArgs = (int count) => {
@@ -22,4 +26,5 @@ Func<int, string> listArgs = (int count) => {
 Func<int, string> listParams = (int count) => {
 	return listVars("T{0} arg{0}", count);
 };
-int tCount = 4; #>
+
+int tCount = 5; #>
