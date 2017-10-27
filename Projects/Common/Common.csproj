@@ -41,6 +41,10 @@
     <Compile Include="Common\Data\ChaoticList.cs" />
     <Compile Include="Common\Data\Mask\BitMask.cs" />
     <Compile Include="Common\Data\Mask\DynamicBitMask.cs" />
+    <Compile Include="Common\ECS\AComponent.cs" />
+    <Compile Include="Common\ECS\ASystem.cs" />
+    <Compile Include="Common\ECS\Entity.cs" />
+    <Compile Include="Common\ECS\EntityManager.cs" />
     <Compile Include="Common\Event\Event.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -82,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\ECS\AComponent.cs.meta" />
+    <None Include="Common\ECS\ASystem.cs.meta" />
+    <None Include="Common\ECS\Entity.cs.meta" />
+    <None Include="Common\ECS\EntityManager.cs.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
