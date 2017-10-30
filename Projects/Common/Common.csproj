@@ -87,11 +87,5 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Common\ECS\AComponent.cs.meta" />
-    <None Include="Common\ECS\ASystem.cs.meta" />
-    <None Include="Common\ECS\Entity.cs.meta" />
-    <None Include="Common\ECS\EntityManager.cs.meta" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
