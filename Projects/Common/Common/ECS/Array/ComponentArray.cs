@@ -1,7 +1,9 @@
-﻿namespace ProceduralLevel.ECS
+﻿using System;
+
+namespace ProceduralLevel.ECS
 {
-	public class ComponentArray<DataType>: DataArray<DataType>, IComponentArray
-		where DataType : struct, IComponent
+	public class ComponentArray<TData>: GenericArray<TData>, IComponentArray
+		where TData : struct, IComponent
 	{
 		public ComponentID ID;
 
@@ -17,7 +19,12 @@
 
 		public void Create()
 		{
-			Add(default(DataType));
+			Add(default(TData));
+		}
+
+		public Type GetComponentType()
+		{
+			return typeof(TData);
 		}
 	}
 }

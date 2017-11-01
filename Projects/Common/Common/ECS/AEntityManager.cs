@@ -6,15 +6,15 @@ namespace ProceduralLevel.ECS
 	{
 		public readonly int MaxComponentID;
 
-		public DataArray<Entity> Entities;
-		private List<ISystem> m_Systems = new List<ISystem>();
+		public GenericArray<Entity> Entities;
+		private List<ASystem> m_Systems = new List<ASystem>();
 		public ComponentArray<MaskComponent> Mask = new ComponentArray<MaskComponent>(); 
 
 		private IComponentArray[] m_DataArrays;
 
 		public AEntityManager(int maxEntityCount)
 		{
-			Entities = new DataArray<Entity>();
+			Entities = new GenericArray<Entity>();
 			m_DataArrays = ComponentArrayHelper.FindComponentArrays(this);
 			for(int x = 0; x < m_DataArrays.Length; ++x)
 			{
@@ -25,7 +25,16 @@ namespace ProceduralLevel.ECS
 			SetEntityLimit(maxEntityCount);
 		}
 
-		public void RegisterSystem(ISystem system)
+		public void Update()
+		{
+			int count = m_Systems.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				m_Systems[x].Update();
+			}
+		}
+
+		public void RegisterSystem(ASystem system)
 		{
 			m_Systems.Add(system);
 			ComponentArrayHelper.MapArrays(m_DataArrays, system);

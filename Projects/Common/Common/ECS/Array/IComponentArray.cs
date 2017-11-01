@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.ECS
+﻿using System;
+
+namespace ProceduralLevel.ECS
 {
 	public interface IComponentArray
 	{
@@ -8,5 +10,7 @@
 		void Create();
 		void Remove(int index);
 		void Resize(int newSize);
+
+		Type GetComponentType();
 	}
 }

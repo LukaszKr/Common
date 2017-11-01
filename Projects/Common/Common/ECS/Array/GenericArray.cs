@@ -2,12 +2,12 @@
 
 namespace ProceduralLevel.ECS
 {
-	public class DataArray<DataType>
+	public class GenericArray<TData>
 	{
 		public int Count;
-		public DataType[] Data;
+		public TData[] Data;
 
-		public void Add(DataType component)
+		public void Add(TData component)
 		{
 			Data[Count++] = component;
 		}
@@ -16,12 +16,12 @@ namespace ProceduralLevel.ECS
 		{
 			int lastIndex = --Count;
 			Data[index] = Data[lastIndex];
-			Data[lastIndex] = default(DataType);
+			Data[lastIndex] = default(TData);
 		}
 
 		public void Clear(int index)
 		{
-			Data[index] = default(DataType);
+			Data[index] = default(TData);
 		}
 
 		public void Resize(int newSize)
@@ -29,8 +29,8 @@ namespace ProceduralLevel.ECS
 			int oldSize = (Data != null? Data.Length: 0);
 			if(newSize != oldSize)
 			{
-				DataType[] oldData = Data;
-				Data = new DataType[newSize];
+				TData[] oldData = Data;
+				Data = new TData[newSize];
 				int maxSize = Math.Min(oldSize, newSize);
 				for(int x = 0; x < maxSize; ++x)
 				{
@@ -41,7 +41,7 @@ namespace ProceduralLevel.ECS
 
 		public override string ToString()
 		{
-			return string.Format("[{0}][Count: {1}]", GetType().Name, Count);
+			return string.Format("[{0}<{1}>][Count: {2}]", GetType().Name, typeof(TData).Name, Count);
 		}
 	}
 }

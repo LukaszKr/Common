@@ -45,14 +45,13 @@
     <Compile Include="Common\ECS\AEntityManager.cs" />
     <Compile Include="Common\ECS\Array\ComponentArray.cs" />
     <Compile Include="Common\ECS\Array\ComponentArrayHelper.cs" />
-    <Compile Include="Common\ECS\Array\DataArray.cs" />
+    <Compile Include="Common\ECS\Array\GenericArray.cs" />
     <Compile Include="Common\ECS\Array\IComponentArray.cs" />
     <Compile Include="Common\ECS\ASystem.cs" />
     <Compile Include="Common\ECS\Component\ComponentID.cs" />
     <Compile Include="Common\ECS\Component\IComponent.cs" />
     <Compile Include="Common\ECS\Component\MaskComponent.cs" />
     <Compile Include="Common\ECS\Entity.cs" />
-    <Compile Include="Common\ECS\System\ISystem.cs" />
     <Compile Include="Common\Event\Event.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
