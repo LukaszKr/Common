@@ -1,70 +1,44 @@
-﻿using ProceduralLevel.Common.Data;
-
-namespace ProceduralLevel.ECS
+﻿namespace ProceduralLevel.ECS
 {
 	public class Entity
 	{
-		public readonly EntityManager EntityManager;
-		public readonly int ID;
-		public readonly AComponent[] Components;
-		public readonly BitMask ComponentMask;
+		public readonly AEntityManager Manager;
+		public int Index;
 
-		public bool IsActive;
-		public bool IsDirty;
-
-		public Entity(EntityManager entityManager, int id)
+		public Entity(AEntityManager manager, int index)
 		{
-			EntityManager = entityManager;
-			Components = new AComponent[entityManager.MaxComponentID];
-			ComponentMask = new BitMask(Components.Length);
+			Manager = manager;
+			Index = index;
 		}
 
-		public AComponent GetComponent(int id)
+		public bool AddComponent<TComponent>(TComponent component, ComponentArray<TComponent> components)
+			where TComponent : struct, IComponent
 		{
-			return Components[id];
-		}
-
-		public ComponentType GetComponent<ComponentType>(int id)
-			where ComponentType: AComponent
-		{
-			return Components[id] as ComponentType;
-		}
-
-		public void ReplaceComponent(AComponent component)
-		{
-			Components[component.ID] = component;
-			ComponentMask.SetBit(component.ID);
-			EntityManager.MarkEntityAsDirty(this);
-		}
-
-		public bool AddComponent(AComponent component)
-		{
-			if(!ComponentMask.HasBit(component.ID))
+			if(Manager.Mask.Data[Index].Has(components.ID))
 			{
-				Components[component.ID] = component;
-				ComponentMask.SetBit(component.ID);
-				EntityManager.MarkEntityAsDirty(this);
+				components.Data[Index] = component;
 				return true;
 			}
 			return false;
 		}
 
-		public void RemoveComponent(int id)
+		public void SetComponent<TComponent>(TComponent component, ComponentArray<TComponent> components)
+			where TComponent : struct, IComponent
 		{
-			if(ComponentMask.HasBit(id))
-			{
-				ComponentMask.UnsetBit(id);
-				Components[id] = null;
-				EntityManager.MarkEntityAsDirty(this);
-			}
+			components.Data[Index] = component;
+			Manager.Mask.Data[Index].Set(components.ID);
 		}
 
-		public void Clear()
+		public void RemoveComponent<TComponent>(ComponentArray<TComponent> components)
+			where TComponent : struct, IComponent
 		{
-			for(int x = 0; x < Components.Length; ++x)
-			{
-				Components[x] = null;
-			}
+			components.Clear(Index);
+			Manager.Mask.Data[Index].Unset(components.ID);
+		}
+
+		public override string ToString()
+		{
+			return string.Format("[{0}]", Index.ToString().PadLeft(5, '0'));
 		}
 	}
 }

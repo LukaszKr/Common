@@ -1,45 +1,26 @@
-﻿using ProceduralLevel.Common.Data;
-using System.Collections.Generic;
-
-namespace ProceduralLevel.ECS
+﻿namespace ProceduralLevel.ECS
 {
-	public abstract class ASystem
+	public abstract class ASystem<TEntityManager>: ISystem
+		where TEntityManager: AEntityManager
 	{
-		public readonly EntityManager EntityManager;
-		public readonly BitMask ComponentMask;
-		
-		protected List<Entity> m_ValidEntities = new List<Entity>();
+		public MaskComponent Mask = new MaskComponent();
+		private IComponentArray[] m_DataArrays;
 
-		public ASystem(EntityManager entityManager)
-		{
-			EntityManager = entityManager;
-			ComponentMask = new BitMask(entityManager.MaxComponentID);
-		}
 
-		public void ValidateEntity(Entity entity)
+		public ASystem(TEntityManager entityManager)
 		{
-			if(entity.ComponentMask.Contains(ComponentMask))
+			m_DataArrays = ComponentArrayHelper.FindComponentArrays(this);
+			for(int x = 0; x < m_DataArrays.Length; ++x)
 			{
-				int index = m_ValidEntities.IndexOf(entity);
-				if(index < 0)
-				{
-					m_ValidEntities.Add(entity);
-				}
-			}
-			else
-			{
-				m_ValidEntities.Remove(entity);
+				Mask.Set(m_DataArrays[x].GetID());
 			}
 		}
 
-		public void RemoveEntity(Entity entity)
+		public void Update()
 		{
-			m_ValidEntities.Remove(entity);
+			OnUpdate();
 		}
 
-		public void RemoveAllEntities()
-		{
-			m_ValidEntities.Clear();
-		}
+		protected abstract void OnUpdate();
 	}
 }
