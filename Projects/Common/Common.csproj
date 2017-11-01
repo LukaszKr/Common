@@ -51,7 +51,6 @@
     <Compile Include="Common\ECS\Component\ComponentID.cs" />
     <Compile Include="Common\ECS\Component\IComponent.cs" />
     <Compile Include="Common\ECS\Component\MaskComponent.cs" />
-    <Compile Include="Common\ECS\Component\SampleComponent.cs" />
     <Compile Include="Common\ECS\Entity.cs" />
     <Compile Include="Common\ECS\System\ISystem.cs" />
     <Compile Include="Common\Event\Event.cs">
