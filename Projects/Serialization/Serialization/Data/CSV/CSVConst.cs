@@ -2,14 +2,15 @@
 
 namespace ProceduralLevel.Serialization.CSV
 {
-	public static class CSVConst
+    public static class CSVConst
     {
         public const char QUOTATION = '\"';
 		public const char SEPARATOR = ',';
         public const char NEW_LINE = '\n';
+        public const char RETURN = '\r';
 
-		//CSV needs to escape quotation with another quotation
-		public static string EscapeString(string escape)
+        //CSV needs to escape quotation with another quotation
+        public static string EscapeString(string escape)
 		{
 			StringBuilder sb = new StringBuilder(escape.Length);
 			for(int x = 0; x < escape.Length; x++)

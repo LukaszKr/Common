@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProceduralLevel.Serialization.CSV
 {
-	public class CSVObject
+    public class CSVObject
 	{
 		private List<CSVEntry> m_Data;
 
@@ -183,7 +183,7 @@ namespace ProceduralLevel.Serialization.CSV
 			Header.ToString(sb);
 			for(int x = 0; x < m_Data.Count; x++)
 			{
-				sb.Append(CSVConst.NEW_LINE);
+				sb.Append(CSVConst.RETURN+CSVConst.NEW_LINE);
 				CSVEntry entry = m_Data[x];
 				entry.ToString(sb);
 			}

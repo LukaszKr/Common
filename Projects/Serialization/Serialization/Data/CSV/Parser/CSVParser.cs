@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Serialization.CSV
 {
-	public class CSVParser: AParser<CSVObject>
+    public class CSVParser: AParser<CSVObject>
 	{
 		public CSVParser() : base(new CSVTokenizer())
 		{
@@ -64,6 +64,8 @@ namespace ProceduralLevel.Serialization.CSV
 						}
 						isQuoted = !isQuoted;
 						break;
+                    case CSVConst.RETURN:
+                        continue;
 					case CSVConst.NEW_LINE:
 						if(isQuoted)
 						{

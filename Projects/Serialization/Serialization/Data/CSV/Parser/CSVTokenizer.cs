@@ -2,11 +2,11 @@
 
 namespace ProceduralLevel.Serialization.CSV
 {
-	public class CSVTokenizer: ATokenizer
+    public class CSVTokenizer: ATokenizer
 	{
 		protected readonly static char[] m_Separators = new char[]
 		{
-			CSVConst.NEW_LINE, CSVConst.QUOTATION, CSVConst.SEPARATOR
+			CSVConst.NEW_LINE, CSVConst.QUOTATION, CSVConst.SEPARATOR, CSVConst.RETURN
 		};
 
 		public CSVTokenizer(bool autoTrim = false) : base(autoTrim)
