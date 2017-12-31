@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProceduralLevel.Common</RootNamespace>
     <AssemblyName>Common</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,11 +32,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Action\ActionContext.cs" />
@@ -42,16 +45,6 @@
     <Compile Include="Common\Data\ChaoticList.cs" />
     <Compile Include="Common\Data\Mask\BitMask.cs" />
     <Compile Include="Common\Data\Mask\DynamicBitMask.cs" />
-    <Compile Include="Common\ECS\AEntityManager.cs" />
-    <Compile Include="Common\ECS\Array\ComponentArray.cs" />
-    <Compile Include="Common\ECS\Array\ComponentArrayHelper.cs" />
-    <Compile Include="Common\ECS\Array\GenericArray.cs" />
-    <Compile Include="Common\ECS\Array\IComponentArray.cs" />
-    <Compile Include="Common\ECS\ASystem.cs" />
-    <Compile Include="Common\ECS\Component\ComponentID.cs" />
-    <Compile Include="Common\ECS\Component\IComponent.cs" />
-    <Compile Include="Common\ECS\Component\MaskComponent.cs" />
-    <Compile Include="Common\ECS\Entity.cs" />
     <Compile Include="Common\Event\Event.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
