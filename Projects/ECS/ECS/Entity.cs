@@ -2,10 +2,10 @@
 {
 	public class Entity
 	{
-		public readonly AEntityManager Manager;
+		public readonly EntityManager Manager;
 		public int Index;
 
-		public Entity(AEntityManager manager, int index)
+		public Entity(EntityManager manager, int index)
 		{
 			Manager = manager;
 			Index = index;

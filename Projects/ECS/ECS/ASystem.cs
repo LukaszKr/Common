@@ -2,12 +2,12 @@
 {
 	public abstract class ASystem
 	{
-		public readonly AEntityManager EntityManager;
+		public readonly EntityManager EntityManager;
 		public MaskComponent Mask = new MaskComponent();
 		private IComponentArray[] m_DataArrays;
 
 
-		public ASystem(AEntityManager entityManager)
+		public ASystem(EntityManager entityManager)
 		{
 			EntityManager = entityManager;
 			m_DataArrays = ComponentArrayHelper.FindComponentArrays(this);

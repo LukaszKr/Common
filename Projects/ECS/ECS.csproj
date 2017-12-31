@@ -36,7 +36,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ECS\AEntityManager.cs" />
+    <Compile Include="ECS\EntityManager.cs" />
     <Compile Include="ECS\Array\ComponentArray.cs" />
     <Compile Include="ECS\Array\ComponentArrayHelper.cs" />
     <Compile Include="ECS\Array\GenericArray.cs" />

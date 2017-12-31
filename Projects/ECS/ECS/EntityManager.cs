@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.ECS
 {
-	public abstract class AEntityManager
+	public class EntityManager
 	{
 		public readonly int MaxComponentID;
 
@@ -12,7 +12,7 @@ namespace ProceduralLevel.ECS
 
 		private IComponentArray[] m_DataArrays;
 
-		public AEntityManager(int maxEntityCount)
+		public EntityManager(int maxEntityCount)
 		{
 			Entities = new GenericArray<Entity>();
 			m_DataArrays = ComponentArrayHelper.FindComponentArrays(this);
