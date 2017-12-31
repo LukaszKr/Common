@@ -2,8 +2,8 @@
 {
 	public unsafe struct MaskComponent: IComponent
 	{
-		public const int MAX_COMPONENT_SIZE = 64; //increase this if not enought
-		public const int LENGTH = MAX_COMPONENT_SIZE/ComponentID.INT_SIZE+1;
+		public const int LENGTH = 2; //64 ids, increase if more is needed
+		public const int MAX_COMPONENT_SIZE = ComponentID.INT_SIZE*LENGTH;
 
 		public fixed int Mask[LENGTH];
 
