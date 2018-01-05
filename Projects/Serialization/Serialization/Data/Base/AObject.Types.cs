@@ -143,6 +143,141 @@
 		public abstract string ReadString(string key);
 		#endregion
 
+		#region Read Array
+		public bool[] ReadBoolArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			bool[] data = new bool[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadBool();
+			}
+			return data;
+		}
+
+		public char[] ReadCharArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			char[] data = new char[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadChar();
+			}
+			return data;
+		}
+
+		public short[] ReadShortArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			short[] data = new short[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadShort();
+			}
+			return data;
+		}
+
+		public ushort[] ReadUShortArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			ushort[] data = new ushort[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadUShort();
+			}
+			return data;
+		}
+
+		public int[] ReadIntArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			int[] data = new int[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadInt();
+			}
+			return data;
+		}
+
+		public uint[] ReadUIntArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			uint[] data = new uint[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadUInt();
+			}
+			return data;
+		}
+
+		public long[] ReadLongArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			long[] data = new long[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadLong();
+			}
+			return data;
+		}
+
+		public ulong[] ReadULongArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			ulong[] data = new ulong[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadULong();
+			}
+			return data;
+		}
+
+		public float[] ReadFloatArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			float[] data = new float[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadFloat();
+			}
+			return data;
+		}
+
+		public double[] ReadDoubleArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			double[] data = new double[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadDouble();
+			}
+			return data;
+		}
+
+		public string[] ReadStringArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			string[] data = new string[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadString();
+			}
+			return data;
+		}
+
+		#endregion
+
 		#region TryRead
 		public bool TryReadBool(string key, bool defaultValue = default(bool))
 		{

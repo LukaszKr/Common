@@ -38,6 +38,24 @@ namespace ProceduralLevel.Serialization
 <# } #>
 		#endregion
 
+		#region Read Array
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public <#= lTypes[x] #>[] Read<#= uTypes[x] #>Array()
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			<#= lTypes[x] #>[] data = new <#= lTypes[x] #>[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.Read<#= uTypes[x] #>();
+			}
+			return data;
+		}
+
+<# } #>
+		#endregion
+
 		#region Read Indexed
 <# for(int x = 0; x < lTypes.Length; x++) 
 { #>
