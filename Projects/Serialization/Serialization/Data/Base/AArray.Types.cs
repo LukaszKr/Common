@@ -16,6 +16,119 @@
 		public abstract AArray Write(string data);
 		#endregion
 
+		#region WriteArray
+		public AArray Write(bool[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(char[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(short[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(ushort[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(int[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(uint[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(long[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(ulong[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(float[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(double[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(string[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		#endregion
+
 		#region Read
 		public bool ReadBool()
 		{

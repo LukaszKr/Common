@@ -10,6 +10,22 @@ namespace ProceduralLevel.Serialization
 <# } #>
 		#endregion
 
+		#region WriteArray
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public AObject Write(string key, <#= lTypes[x] #>[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+<# } #>
+		#endregion
+
 		#region Read
 <# for(int x = 0; x < lTypes.Length; x++) 
 { #>

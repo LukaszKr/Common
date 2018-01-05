@@ -16,6 +16,119 @@
 		public abstract AObject Write(string key, string data);
 		#endregion
 
+		#region WriteArray
+		public AObject Write(string key, bool[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, char[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, short[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, ushort[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, int[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, uint[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, long[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, ulong[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, float[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, double[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, string[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		#endregion
+
 		#region Read
 		public abstract bool ReadBool(string key);
 		public abstract char ReadChar(string key);
