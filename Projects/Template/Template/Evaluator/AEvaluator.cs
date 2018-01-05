@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace ProceduralLevel.Template.Evaluator
 {
-	public abstract class AEvaluator
+    public abstract class AEvaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 
@@ -22,7 +22,7 @@ namespace ProceduralLevel.Template.Evaluator
 			PropertyInfo property = type.GetProperty(name);
 			if(property != null)
 			{
-				return property.GetValue(data);
+				return property.GetValue(data, null);
 			}
 
 			return null;
