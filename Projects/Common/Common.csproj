@@ -35,53 +35,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Common\Action\ActionContext.cs" />
-    <Compile Include="Common\Action\ActionManager.cs" />
-    <Compile Include="Common\Action\IAction.cs" />
     <Compile Include="Common\Data\ChaoticList.cs" />
     <Compile Include="Common\Data\Mask\BitMask.cs" />
     <Compile Include="Common\Data\Mask\DynamicBitMask.cs" />
-    <Compile Include="Common\Event\Event.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Event.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Common\Event\EventBinder.Bind.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventBinder.Bind.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Common\Event\EventBinder.cs" />
-    <Compile Include="Common\Event\EventBinding.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EventBinding.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Common\Event\IEventBinding.cs" />
     <Compile Include="Common\Ext\ArrayExt.cs" />
     <Compile Include="Common\Ext\DirectoryInfoExt.cs" />
     <Compile Include="Common\Ext\EnumExt.cs" />
     <Compile Include="Common\State\AFiniteStateMachine.cs" />
     <Compile Include="Common\State\BaseState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Common\Event\Event.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Event.cs</LastGenOutput>
-    </Content>
-    <Content Include="Common\Event\EventBinder.Bind.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
-    </Content>
-    <Content Include="Common\Event\EventBinding.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EventBinding.cs</LastGenOutput>
-    </Content>
-    <Content Include="Common\Event\HelperMethod.tt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
