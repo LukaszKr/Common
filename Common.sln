@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateTest", "Tests\Templ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECS", "Projects\ECS\ECS.csproj", "{7C2B5479-F22A-426C-A63C-080B068C80F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event", "Event\Event.csproj", "{D3D135F7-7792-42FB-9FDC-51730A9A4989}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event", "Projects\Event\Event.csproj", "{D3D135F7-7792-42FB-9FDC-51730A9A4989}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
