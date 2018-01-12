@@ -2,9 +2,10 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class BoolValue: AValue<bool>
+    public class BoolValue: AValue<bool>
 	{
-		public BoolValue(bool data) : base(EValueType.Bool, data)
+		public BoolValue(bool data)
+            : base(data)
 		{
 		}
 

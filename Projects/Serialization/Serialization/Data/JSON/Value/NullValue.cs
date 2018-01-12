@@ -2,11 +2,11 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class NullValue: AValue
+    public class NullValue: AValue
 	{
 		public const string NULL = "null";
 
-		public NullValue() : base(EValueType.Null)
+		public NullValue() : base()
 		{
 		}
 

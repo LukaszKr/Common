@@ -2,15 +2,8 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public abstract class AValue
+    public abstract class AValue
 	{
-		public readonly EValueType Type;
-
-		public AValue(EValueType type)
-		{
-			Type = type;
-		}
-
 		public void ToString(StringBuilder sb, string key, bool formatted)
 		{
 			sb.Append(JsonConst.QUOTE).Append(key).Append(JsonConst.QUOTE).Append(JsonConst.ASSIGN);
@@ -35,7 +28,7 @@ namespace ProceduralLevel.Serialization.Json
 	{
 		public T Data;
 
-		public AValue(EValueType type, T data) : base(type)
+		public AValue(T data) : base()
 		{
 			Data = data;
 		}

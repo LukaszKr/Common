@@ -2,10 +2,10 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class StringValue: AValue<string>
+    public class StringValue: AValue<string>
 	{
 		public StringValue(string data) 
-			: base(EValueType.String, data)
+			: base(data)
 		{
 		}
 

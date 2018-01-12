@@ -2,10 +2,10 @@
 
 namespace ProceduralLevel.Serialization.Json
 {
-	public class ArrayValue: AValue<JsonArray>
+    public class ArrayValue: AValue<JsonArray>
 	{
 		public ArrayValue(JsonArray data) 
-			: base(EValueType.Array, data)
+			: base(data)
 		{
 		}
 

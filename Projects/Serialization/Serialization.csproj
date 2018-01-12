@@ -58,7 +58,6 @@
     <Compile Include="Serialization\Data\JSON\Parser\JsonTokenizer.cs" />
     <Compile Include="Serialization\Data\JSON\Value\AValue.cs" />
     <Compile Include="Serialization\Data\JSON\Value\BoolValue.cs" />
-    <Compile Include="Serialization\Data\JSON\Value\EValueType.cs" />
     <Compile Include="Serialization\Data\JSON\Value\ArrayValue.cs" />
     <Compile Include="Serialization\Data\JSON\Value\NullValue.cs" />
     <Compile Include="Serialization\Data\JSON\Value\NumberValue.cs" />
