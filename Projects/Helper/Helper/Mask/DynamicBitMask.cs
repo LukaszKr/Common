@@ -1,6 +1,6 @@
-﻿namespace ProceduralLevel.Common.Data
+﻿namespace ProceduralLevel.Common.Helper
 {
-	public class DynamicBitMask: BitMask
+    public class DynamicBitMask: BitMask
 	{
 		#region Bit Manipulation
 		public override void SetBit(int bitIndex)

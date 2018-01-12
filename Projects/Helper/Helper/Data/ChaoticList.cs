@@ -1,8 +1,6 @@
-using ProceduralLevel.Common.Ext;
-
-namespace ProceduralLevel.Common.Data
+namespace ProceduralLevel.Common.Helper
 {
-	public class ChaoticList<T> where T : class 
+    public class ChaoticList<T> where T : class 
 	{
 		private const int SHRINK_LIMIT = 4;
 		private const int SHRINK_FACTOR = 2;

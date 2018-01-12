@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace ProceduralLevel.Common.Ext
+namespace ProceduralLevel.Common.Helper
 {
-	public static class DirectoryInfoExt
+    public static class DirectoryInfoExt
     {
 		public delegate bool FileFilterDelegate(FileInfo file);
 

@@ -1,9 +1,9 @@
 using System;
 using System.Text;
 
-namespace ProceduralLevel.Common.Data
+namespace ProceduralLevel.Common.Helper
 {
-	public class BitMask
+    public class BitMask
 	{
 		public const int INT_SIZE = 32;
 

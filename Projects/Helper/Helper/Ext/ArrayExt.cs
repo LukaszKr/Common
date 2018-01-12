@@ -1,6 +1,6 @@
-﻿namespace ProceduralLevel.Common.Ext
+﻿namespace ProceduralLevel.Common.Helper
 {
-	public static class ArrayExt
+    public static class ArrayExt
     {
 		public static ArrayType[] Resize<ArrayType>(this ArrayType[] arr, int newSize)
 		{

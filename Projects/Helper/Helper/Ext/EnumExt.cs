@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ProceduralLevel.Common.Ext
+namespace ProceduralLevel.Common.Helper
 {
-	public static class EnumExt
+    public static class EnumExt
     {
 		public static void ValueRange<EnumType>(out int minValue, out int maxValue)
 		{
