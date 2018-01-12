@@ -1,6 +1,6 @@
-﻿namespace ProceduralLevel.Serialization
+﻿namespace ProceduralLevel.Common.Serialization
 {
-	public interface IArraySerializable
+    public interface IArraySerializable
 	{
 		void Serialize(AArray serializer);
 		void Deserialize(AArray serializer);

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Serialization.CSV
+﻿namespace ProceduralLevel.Common.Serialization.CSV
 {
 	public enum ECSVParserError
 	{

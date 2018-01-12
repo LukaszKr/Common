@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Serialization.Json
+namespace ProceduralLevel.Common.Serialization.Json
 {
 	public partial class JsonObject: AObject
 	{

@@ -1,14 +1,14 @@
-﻿using ProceduralLevel.Template.Parser;
+﻿using ProceduralLevel.Common.Template.Parser;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Template
+namespace ProceduralLevel.Common.Template
 {
-	public class Manager
+    public class TemplateManager
 	{
 		private TemplateParser m_Parser = new TemplateParser();
 		private Dictionary<string, TextTemplate> m_Templates = new Dictionary<string, TextTemplate>();
 
-		public Manager()
+		public TemplateManager()
 		{
 
 		}

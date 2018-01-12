@@ -1,6 +1,6 @@
-﻿using ProceduralLevel.Tokenize;
+﻿using ProceduralLevel.Common.Tokenize;
 
-namespace ProceduralLevel.Serialization.Json
+namespace ProceduralLevel.Common.Serialization.Json
 {
 	public class JsonParserException: ParserException<EJsonParserError>
 	{

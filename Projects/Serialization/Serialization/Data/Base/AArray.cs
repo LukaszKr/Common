@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Serialization
+namespace ProceduralLevel.Common.Serialization
 {
 	public abstract partial class AArray
 	{

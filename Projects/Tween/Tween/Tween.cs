@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Logic.Tween
+namespace ProceduralLevel.Common.Tween
 {
     public static class Tween
 	{

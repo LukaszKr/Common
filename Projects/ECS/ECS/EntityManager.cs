@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace ProceduralLevel.ECS
+namespace ProceduralLevel.Common.ECS
 {
-	public class EntityManager
+    public class EntityManager
 	{
 		public readonly int MaxComponentID;
 

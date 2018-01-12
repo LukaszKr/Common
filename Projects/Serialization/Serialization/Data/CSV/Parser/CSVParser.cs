@@ -1,7 +1,7 @@
-﻿using ProceduralLevel.Tokenize;
+﻿using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Serialization.CSV
+namespace ProceduralLevel.Common.Serialization.CSV
 {
     public class CSVParser: AParser<CSVObject>
 	{

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Serialization.Json
+﻿namespace ProceduralLevel.Common.Serialization.Json
 {
 	public enum EJsonParserError
 	{

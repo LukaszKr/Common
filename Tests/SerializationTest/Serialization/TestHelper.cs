@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization.CSV;
-using ProceduralLevel.Serialization.Json;
+using ProceduralLevel.Common.Serialization.CSV;
+using ProceduralLevel.Common.Serialization.Json;
 
 namespace Test.Serialization
 {
-	public static class TestHelper
+    public static class TestHelper
 	{
 		public static void AssertCSVEntry(CSVEntry entry, params string[] values)
 		{

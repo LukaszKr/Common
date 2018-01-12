@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization;
+using ProceduralLevel.Common.Serialization;
 using System;
 
 namespace Test.Serialization
 {
-	[TestClass]
+    [TestClass]
 	public abstract class AObjectTest<T> where T: AObject
 	{
 		protected abstract AObject CreateObject();

@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization.Json;
+using ProceduralLevel.Common.Serialization.Json;
 using System.IO;
 
 namespace Test.Serialization.Json.Parser.Sample
 {
-	[TestClass]
+    [TestClass]
 	public class JsonSampleParserTest
 	{
 		public const string PATH_PREFIX = "./Sample/JSON/";

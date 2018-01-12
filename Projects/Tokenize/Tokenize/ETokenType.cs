@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Tokenize
+﻿namespace ProceduralLevel.Common.Tokenize
 {
 	public enum ETokenType
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Template.Evaluator
+namespace ProceduralLevel.Common.Template.Evaluator
 {
 	public class MethodEvaluator: AEvaluator
 	{
@@ -21,7 +21,7 @@ namespace ProceduralLevel.Template.Evaluator
 			m_Args.Add(evaluator);
 		}
 
-		public override object Evaluate(Manager manager, object data)
+		public override object Evaluate(TemplateManager manager, object data)
 		{
 			return "NOT_IMPLEMENTED";
 		}

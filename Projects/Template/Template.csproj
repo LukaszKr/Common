@@ -7,7 +7,7 @@
     <ProjectGuid>{243CD9CA-4314-456C-A15C-4E68E526F854}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProceduralLevel</RootNamespace>
+    <RootNamespace>ProceduralLevel.Common</RootNamespace>
     <AssemblyName>Template</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,7 +39,7 @@
     <Compile Include="Template\Evaluator\MethodEvaluator.cs" />
     <Compile Include="Template\Evaluator\NameEvaluator.cs" />
     <Compile Include="Template\Evaluator\StringEvaluator.cs" />
-    <Compile Include="Template\Manager.cs" />
+    <Compile Include="Template\TemplateManager.cs" />
     <Compile Include="Template\Parser\ETemplateParserError.cs" />
     <Compile Include="Template\Parser\TemplateParserException.cs" />
     <Compile Include="Template\TextTemplate.cs" />

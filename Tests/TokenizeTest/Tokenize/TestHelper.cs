@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Tokenize;
+using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
 namespace Test.Tokenize

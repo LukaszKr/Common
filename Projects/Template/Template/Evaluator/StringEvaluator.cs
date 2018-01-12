@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Template.Evaluator
+﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
 	public class StringEvaluator: AEvaluator
 	{
@@ -11,7 +11,7 @@
 			m_Text = text;
 		}
 
-		public override object Evaluate(Manager manager, object data)
+		public override object Evaluate(TemplateManager manager, object data)
 		{
 			return m_Text;
 		}

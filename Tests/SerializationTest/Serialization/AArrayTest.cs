@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization;
+using ProceduralLevel.Common.Serialization;
 
 namespace Test.Serialization
 {
-	[TestClass]
+    [TestClass]
 	public abstract class AArrayTest<T> where T : AArray
 	{
 		protected abstract AArray CreateArray();

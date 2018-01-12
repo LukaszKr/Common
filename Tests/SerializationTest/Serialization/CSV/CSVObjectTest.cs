@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization.CSV;
+using ProceduralLevel.Common.Serialization.CSV;
 
 namespace Test.Serialization.CSV
 {
-	[TestClass]
+    [TestClass]
 	public class CSVObjectTest
 	{
 		protected CSVObject m_CSV;

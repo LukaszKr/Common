@@ -1,10 +1,10 @@
-﻿using ProceduralLevel.Template.Evaluator;
-using ProceduralLevel.Tokenize;
+﻿using ProceduralLevel.Common.Template.Evaluator;
+using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Template.Parser
+namespace ProceduralLevel.Common.Template.Parser
 {
-	public class TemplateParser: AParser<List<TextTemplate>>
+    public class TemplateParser: AParser<List<TextTemplate>>
 	{
 		private List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 

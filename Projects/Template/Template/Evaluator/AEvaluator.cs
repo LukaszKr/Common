@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Reflection;
 
-namespace ProceduralLevel.Template.Evaluator
+namespace ProceduralLevel.Common.Template.Evaluator
 {
     public abstract class AEvaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 
-		public abstract object Evaluate(Manager manager, object data);
+		public abstract object Evaluate(TemplateManager manager, object data);
 
 		protected object Get(object data, string name)
 		{

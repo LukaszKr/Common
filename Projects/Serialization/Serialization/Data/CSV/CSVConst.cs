@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ProceduralLevel.Serialization.CSV
+namespace ProceduralLevel.Common.Serialization.CSV
 {
     public static class CSVConst
     {

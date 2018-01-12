@@ -1,7 +1,7 @@
-﻿using ProceduralLevel.Tokenize;
+﻿using ProceduralLevel.Common.Tokenize;
 using System;
 
-namespace ProceduralLevel.Serialization.Json
+namespace ProceduralLevel.Common.Serialization.Json
 {
 	public class JsonParser: AParser<JsonObject>
 	{

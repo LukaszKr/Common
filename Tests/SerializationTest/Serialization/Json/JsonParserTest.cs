@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Serialization;
-using ProceduralLevel.Serialization.Json;
+using ProceduralLevel.Common.Serialization;
+using ProceduralLevel.Common.Serialization.Json;
 
 namespace Test.Serialization.Json.Parser
 {
-	[TestClass]
+    [TestClass]
 	public class JsonParserTest
 	{
 		private JsonParser m_Parser;

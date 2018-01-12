@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Tokenize
+namespace ProceduralLevel.Common.Tokenize
 {
 	public class ParserException<ErrorIDType>: Exception
 	{

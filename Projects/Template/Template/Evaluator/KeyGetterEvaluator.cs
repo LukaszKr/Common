@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Template.Evaluator
+﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
 	public class KeyGetterEvaluator: AEvaluator
 	{
@@ -15,7 +15,7 @@
 			m_Dot = dot;
 		}
 
-		public override object Evaluate(Manager manager, object data)
+		public override object Evaluate(TemplateManager manager, object data)
 		{
 			object context = m_Key.Evaluate(manager, data);
 			object value = m_Value.Evaluate(manager, (m_Dot? context: data));

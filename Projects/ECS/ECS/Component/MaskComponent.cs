@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.ECS
+﻿namespace ProceduralLevel.Common.ECS
 {
 	public unsafe struct MaskComponent: IComponent
 	{

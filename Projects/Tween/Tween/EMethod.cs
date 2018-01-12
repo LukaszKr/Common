@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Logic.Tween
+﻿namespace ProceduralLevel.Common.Tween
 {
     public enum EMethod
 	{

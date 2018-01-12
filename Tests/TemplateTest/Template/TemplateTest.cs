@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProceduralLevel.Template;
+using ProceduralLevel.Common.Template;
 
 namespace Test.Template
 {
-	public class TestData
+    public class TestData
 	{ 
 		public string Hello = "World";
 		public NestedClass Nested = new NestedClass();
@@ -19,13 +19,13 @@ namespace Test.Template
 	[TestClass]
 	public class TemplateTest
 	{
-		private Manager m_Manager;
+		private TemplateManager m_Manager;
 		private TestData m_Data;
 
 		[TestInitialize]
 		public void Initialize()
 		{
-			m_Manager = new Manager();
+			m_Manager = new TemplateManager();
 			m_Data = new TestData();
 		}
 

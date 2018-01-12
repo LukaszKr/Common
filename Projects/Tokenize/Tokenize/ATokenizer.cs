@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Tokenize
+namespace ProceduralLevel.Common.Tokenize
 {
-	public abstract class ATokenizer
+    public abstract class ATokenizer
     {
 		public const char ESCAPE_CHAR = '\\';
 		public const char NEW_LINE = '\n';

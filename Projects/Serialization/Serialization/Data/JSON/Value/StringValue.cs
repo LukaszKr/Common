@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace ProceduralLevel.Serialization.Json
+namespace ProceduralLevel.Common.Serialization.Json
 {
     public class StringValue: AValue<string>
 	{

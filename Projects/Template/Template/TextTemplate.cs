@@ -1,10 +1,10 @@
-﻿using ProceduralLevel.Template.Evaluator;
+﻿using ProceduralLevel.Common.Template.Evaluator;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Template
+namespace ProceduralLevel.Common.Template
 {
-	public class TextTemplate
+    public class TextTemplate
 	{
 		public readonly string Name;
 
@@ -20,14 +20,14 @@ namespace ProceduralLevel.Template
 			m_Evaluators.AddRange(evaluators);
 		}
 
-		public string Compile(Manager manager, object data)
+		public string Compile(TemplateManager manager, object data)
 		{
 			StringBuilder sb = new StringBuilder();
 			Compile(manager, data, sb);
 			return sb.ToString();
 		}
 
-		public void Compile(Manager manager, object data, StringBuilder sb)
+		public void Compile(TemplateManager manager, object data, StringBuilder sb)
 		{
 			if(data.GetType().IsArray)
 			{
@@ -43,7 +43,7 @@ namespace ProceduralLevel.Template
 			}
 		}
 
-		private void CompileObject(Manager manager, object data, StringBuilder sb)
+		private void CompileObject(TemplateManager manager, object data, StringBuilder sb)
 		{
 			for(int x = 0; x < m_Evaluators.Count; x++)
 			{

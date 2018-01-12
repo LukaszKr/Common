@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.ECS
+namespace ProceduralLevel.Common.ECS
 {
 	public class ComponentArray<TData>: GenericArray<TData>, IComponentArray
 		where TData : struct, IComponent

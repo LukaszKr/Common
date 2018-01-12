@@ -1,6 +1,6 @@
-﻿using ProceduralLevel.Tokenize;
+﻿using ProceduralLevel.Common.Tokenize;
 
-namespace ProceduralLevel.Serialization.CSV
+namespace ProceduralLevel.Common.Serialization.CSV
 {
     public class CSVTokenizer: ATokenizer
 	{

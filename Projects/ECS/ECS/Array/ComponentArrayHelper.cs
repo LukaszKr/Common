@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace ProceduralLevel.ECS
+namespace ProceduralLevel.Common.ECS
 {
 	public static class ComponentArrayHelper
 	{

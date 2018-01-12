@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProceduralLevel.Serialization.CSV
+namespace ProceduralLevel.Common.Serialization.CSV
 {
     public class CSVObject
 	{

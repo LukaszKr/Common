@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.ECS
+﻿namespace ProceduralLevel.Common.ECS
 {
 	public class Entity
 	{

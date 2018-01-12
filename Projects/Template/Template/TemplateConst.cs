@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Template
+﻿namespace ProceduralLevel.Common.Template
 {
 	public static class TemplateConst
 	{

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Serialization
+﻿namespace ProceduralLevel.Common.Serialization
 {
     public partial class AObject
     {

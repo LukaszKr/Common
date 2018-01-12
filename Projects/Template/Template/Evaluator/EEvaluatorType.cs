@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Template.Evaluator
+﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
 	public enum EEvaluatorType
 	{
