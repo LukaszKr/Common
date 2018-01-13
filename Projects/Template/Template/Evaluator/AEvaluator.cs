@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace ProceduralLevel.Common.Template.Evaluator
 {
-    public abstract class AEvaluator
+	public abstract class AEvaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 
@@ -19,10 +19,18 @@ namespace ProceduralLevel.Common.Template.Evaluator
 				return field.GetValue(data);
 			}
 
-			PropertyInfo property = type.GetProperty(name);
-			if(property != null)
+			if(type.IsArray)
 			{
-				return property.GetValue(data, null);
+				Array arr = data as Array;
+				return arr.GetValue(int.Parse(name));
+			}
+			else
+			{
+				PropertyInfo property = type.GetProperty(name);
+				if(property != null)
+				{
+					return property.GetValue(data, null);
+				}
 			}
 
 			return null;
