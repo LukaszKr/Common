@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.Common.Serialization
+﻿using System.Collections.Generic;
+
+namespace ProceduralLevel.Common.Serialization
 {
 	public abstract partial class AObject
 	{
@@ -25,6 +27,27 @@
 		{
 			AArray arr = WriteArray(key);
 			data.Serialize(arr);
+		}
+
+		public void Write<TSerializable>(string key, TSerializable[] data)
+			where TSerializable : IObjectSerializable
+		{
+			AArray arr = WriteArray(key);
+			int count = data.Length;
+			for(int x = 0; x < count; ++x)
+			{
+				arr.Write(data[x]);
+			}
+		}
+
+		public void Write<TSerializable>(string key, ICollection<TSerializable> data)
+			where TSerializable : IObjectSerializable
+		{
+			AArray arr = WriteArray(key);
+			foreach(TSerializable item in data)
+			{
+				arr.Write(item);
+			}
 		}
 
 		public AObject TryReadObject(string key)

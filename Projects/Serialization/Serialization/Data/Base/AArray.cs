@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Serialization
 {
@@ -39,6 +40,27 @@ namespace ProceduralLevel.Common.Serialization
 		{
 			AArray arr = WriteArray();
 			data.Serialize(arr);
+		}
+
+		public void Write<TSerializable>(TSerializable[] data)
+	where TSerializable : IObjectSerializable
+		{
+			AArray arr = WriteArray();
+			int count = data.Length;
+			for(int x = 0; x < count; ++x)
+			{
+				arr.Write(data[x]);
+			}
+		}
+
+		public void Write<TSerializable>(ICollection<TSerializable> data)
+			where TSerializable : IObjectSerializable
+		{
+			AArray arr = WriteArray();
+			foreach(TSerializable item in data)
+			{
+				arr.Write(item);
+			}
 		}
 
 		public abstract string ToString(bool formatted);
