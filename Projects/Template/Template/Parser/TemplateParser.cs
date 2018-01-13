@@ -4,12 +4,18 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Template.Parser
 {
-    public class TemplateParser: AParser<List<TextTemplate>>
+	public class TemplateParser: AParser<List<TextTemplate>>
 	{
 		private List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
 		public TemplateParser() : base(new TemplateTokenizer())
 		{
+		}
+
+		protected override void Reset()
+		{
+			base.Reset();
+			m_Evaluators.Clear();
 		}
 
 		protected override List<TextTemplate> Parse()

@@ -3,7 +3,7 @@ using ProceduralLevel.Common.Template;
 
 namespace Test.Template
 {
-    public class TestData
+	public class TestData
 	{ 
 		public string Hello = "World";
 		public NestedClass Nested = new NestedClass();
@@ -32,9 +32,14 @@ namespace Test.Template
 		[TestMethod]
 		public void HelloWorld()
 		{
-			TestHelper.AssertTemplate(m_Manager, 
-				"<b>World</b>", 
+			TestHelper.AssertTemplate(m_Manager,
+				"<b>World</b>",
 				"<b>{Hello}</b>",
+				m_Data);
+
+			TestHelper.AssertTemplate(m_Manager,
+				"<b>World</b>",
+				"<b>{this.Hello}</b>",
 				m_Data);
 		}
 
