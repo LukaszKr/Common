@@ -59,6 +59,11 @@ namespace Test.Template
 				"123",
 				"{Nested.val}",
 				m_Data);
+
+			TestHelper.AssertTemplate(m_Manager,
+				"123",
+				"{this.Nested.val}",
+				m_Data);
 		}
 
 		[TestMethod]
