@@ -104,7 +104,7 @@ namespace ProceduralLevel.Common.Template.Parser
 						ConsumeToken();
 						ParseTemplate();
 						ParseKeyGetter(true);
-						break;
+						return;
 					case TemplateConst.SEPARATOR:
 						ConsumeToken();
 						break;
