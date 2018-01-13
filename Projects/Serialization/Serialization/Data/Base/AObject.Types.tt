@@ -1,4 +1,6 @@
 ﻿<#@ include file="./../Types.tt" #>
+using System.Collections.Generic;
+
 namespace ProceduralLevel.Common.Serialization
 {
     public partial class AObject
@@ -10,7 +12,7 @@ namespace ProceduralLevel.Common.Serialization
 <# } #>
 		#endregion
 
-		#region WriteArray
+		#region Write Array
 <# for(int x = 0; x < lTypes.Length; x++) 
 { #>
 		public AObject Write(string key, <#= lTypes[x] #>[] data)
@@ -19,6 +21,22 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < data.Length; ++x)
 			{
 				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+<# } #>
+		#endregion
+
+		#region Write Collection
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public AObject Write(string key, ICollection<<#= lTypes[x] #>> data)
+		{
+			AArray arr = WriteArray(key);
+			foreach(<#= lTypes[x] #> item in data)
+			{
+				arr.Write(item);
 			}
 			return this;
 		}
@@ -46,6 +64,22 @@ namespace ProceduralLevel.Common.Serialization
 				data[x] = arr.Read<#= uTypes[x] #>();
 			}
 			return data;
+		}
+
+<# } #>
+		#endregion
+
+		#region Read Collection
+<# for(int x = 0; x < lTypes.Length; x++) 
+{ #>
+		public void Read(string key, ICollection<<#= lTypes[x] #>> data)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.Read<#= uTypes[x] #>());
+			}
 		}
 
 <# } #>

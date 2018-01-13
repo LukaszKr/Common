@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.Common.Serialization
+﻿using System.Collections.Generic;
+
+namespace ProceduralLevel.Common.Serialization
 {
     public partial class AArray
     {
@@ -16,7 +18,7 @@
 		public abstract AArray Write(string data);
 		#endregion
 
-		#region WriteArray
+		#region Write Array
 		public AArray Write(bool[] data)
 		{
 			AArray arr = WriteArray();
@@ -123,6 +125,119 @@
 			for(int x = 0; x < data.Length; ++x)
 			{
 				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		#endregion
+
+		#region Write Collection
+		public AArray Write(ICollection<bool> data)
+		{
+			AArray arr = WriteArray();
+			foreach(bool item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<char> data)
+		{
+			AArray arr = WriteArray();
+			foreach(char item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<short> data)
+		{
+			AArray arr = WriteArray();
+			foreach(short item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<ushort> data)
+		{
+			AArray arr = WriteArray();
+			foreach(ushort item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<int> data)
+		{
+			AArray arr = WriteArray();
+			foreach(int item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<uint> data)
+		{
+			AArray arr = WriteArray();
+			foreach(uint item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<long> data)
+		{
+			AArray arr = WriteArray();
+			foreach(long item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<ulong> data)
+		{
+			AArray arr = WriteArray();
+			foreach(ulong item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<float> data)
+		{
+			AArray arr = WriteArray();
+			foreach(float item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<double> data)
+		{
+			AArray arr = WriteArray();
+			foreach(double item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
+		public AArray Write(ICollection<string> data)
+		{
+			AArray arr = WriteArray();
+			foreach(string item in data)
+			{
+				arr.Write(item);
 			}
 			return this;
 		}
@@ -329,6 +444,119 @@
 				data[x] = arr.ReadString();
 			}
 			return data;
+		}
+
+		#endregion
+
+		#region Read Collection
+		public void Read(ICollection<bool> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadBool());
+			}
+		}
+
+		public void Read(ICollection<char> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadChar());
+			}
+		}
+
+		public void Read(ICollection<short> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadShort());
+			}
+		}
+
+		public void Read(ICollection<ushort> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadUShort());
+			}
+		}
+
+		public void Read(ICollection<int> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadInt());
+			}
+		}
+
+		public void Read(ICollection<uint> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadUInt());
+			}
+		}
+
+		public void Read(ICollection<long> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadLong());
+			}
+		}
+
+		public void Read(ICollection<ulong> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadULong());
+			}
+		}
+
+		public void Read(ICollection<float> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadFloat());
+			}
+		}
+
+		public void Read(ICollection<double> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadDouble());
+			}
+		}
+
+		public void Read(ICollection<string> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadString());
+			}
 		}
 
 		#endregion
