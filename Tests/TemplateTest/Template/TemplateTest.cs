@@ -36,11 +36,6 @@ namespace Test.Template
 				"<b>World</b>",
 				"<b>{Hello}</b>",
 				m_Data);
-
-			TestHelper.AssertTemplate(m_Manager,
-				"<b>World</b>",
-				"<b>{this.Hello}</b>",
-				m_Data);
 		}
 
 		[TestMethod]
