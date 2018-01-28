@@ -23,45 +23,53 @@ namespace ProceduralLevel.Common.Serialization
 
 		public static string EscapeString(string str)
 		{
-			StringBuilder builder = new StringBuilder(str.Length);
-			for(int x = 0; x < str.Length; x++)
+			if(str != null)
 			{
-				bool escape = false;
-				char c = str[x];
-				for(int y = 0; y < m_ToEscape.Length; y++)
+				StringBuilder builder = new StringBuilder(str.Length);
+				for(int x = 0; x < str.Length; x++)
 				{
-					if(m_ToEscape[y] == c)
+					bool escape = false;
+					char c = str[x];
+					for(int y = 0; y < m_ToEscape.Length; y++)
 					{
-						builder.Append(m_Escaped[y]);
-						escape = true;
-						break;
+						if(m_ToEscape[y] == c)
+						{
+							builder.Append(m_Escaped[y]);
+							escape = true;
+							break;
+						}
+					}
+					if(!escape)
+					{
+						builder.Append(c);
 					}
 				}
-				if(!escape)
-				{
-					builder.Append(c);
-				}
-			}
 
-			return builder.ToString();
+				return builder.ToString();
+			}
+			return str;
 		}
 
 		public static string UnescapeString(string str)
 		{
-			StringBuilder builder = new StringBuilder(str.Length);
-			for(int x = 0; x < str.Length; x++)
+			if(str != null)
 			{
-				char c = str[x];
-				if(c == '\\')
+				StringBuilder builder = new StringBuilder(str.Length);
+				for(int x = 0; x < str.Length; x++)
 				{
-					x ++;
+					char c = str[x];
+					if(c == '\\')
+					{
+						x++;
+					}
+					else
+					{
+						builder.Append(c);
+					}
 				}
-				else
-				{
-					builder.Append(c);
-				}
+				return builder.ToString();
 			}
-			return builder.ToString();
+			return str;
 		}
 	}
 }
