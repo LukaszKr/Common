@@ -7,6 +7,7 @@ namespace ProceduralLevel.Common.Serialization
 		#region Write
 		public abstract AArray Write(bool data);
 		public abstract AArray Write(char data);
+		public abstract AArray Write(byte data);
 		public abstract AArray Write(short data);
 		public abstract AArray Write(ushort data);
 		public abstract AArray Write(int data);
@@ -30,6 +31,16 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		public AArray Write(char[] data)
+		{
+			AArray arr = WriteArray();
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AArray Write(byte[] data)
 		{
 			AArray arr = WriteArray();
 			for(int x = 0; x < data.Length; ++x)
@@ -152,6 +163,16 @@ namespace ProceduralLevel.Common.Serialization
 			return this;
 		}
 
+		public AArray Write(ICollection<byte> data)
+		{
+			AArray arr = WriteArray();
+			foreach(byte item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
 		public AArray Write(ICollection<short> data)
 		{
 			AArray arr = WriteArray();
@@ -257,6 +278,12 @@ namespace ProceduralLevel.Common.Serialization
 			return value;
 		}
 
+		public byte ReadByte()
+		{
+			byte value = ReadByte(m_Index++);
+			return value;
+		}
+
 		public short ReadShort()
 		{
 			short value = ReadShort(m_Index++);
@@ -334,6 +361,18 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < count; ++x)
 			{
 				data[x] = arr.ReadChar();
+			}
+			return data;
+		}
+
+		public byte[] ReadByteArray()
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			byte[] data = new byte[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadByte();
 			}
 			return data;
 		}
@@ -469,6 +508,16 @@ namespace ProceduralLevel.Common.Serialization
 			}
 		}
 
+		public void Read(ICollection<byte> data)
+		{
+			AArray arr = ReadArray();
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadByte());
+			}
+		}
+
 		public void Read(ICollection<short> data)
 		{
 			AArray arr = ReadArray();
@@ -564,6 +613,7 @@ namespace ProceduralLevel.Common.Serialization
 		#region Read Indexed
 		public abstract bool ReadBool(int index);
 		public abstract char ReadChar(int index);
+		public abstract byte ReadByte(int index);
 		public abstract short ReadShort(int index);
 		public abstract ushort ReadUShort(int index);
 		public abstract int ReadInt(int index);

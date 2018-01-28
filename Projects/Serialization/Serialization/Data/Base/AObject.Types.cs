@@ -7,6 +7,7 @@ namespace ProceduralLevel.Common.Serialization
 		#region Write
 		public abstract AObject Write(string key, bool data);
 		public abstract AObject Write(string key, char data);
+		public abstract AObject Write(string key, byte data);
 		public abstract AObject Write(string key, short data);
 		public abstract AObject Write(string key, ushort data);
 		public abstract AObject Write(string key, int data);
@@ -30,6 +31,16 @@ namespace ProceduralLevel.Common.Serialization
 		}
 
 		public AObject Write(string key, char[] data)
+		{
+			AArray arr = WriteArray(key);
+			for(int x = 0; x < data.Length; ++x)
+			{
+				arr.Write(data[x]);
+			}
+			return this;
+		}
+
+		public AObject Write(string key, byte[] data)
 		{
 			AArray arr = WriteArray(key);
 			for(int x = 0; x < data.Length; ++x)
@@ -152,6 +163,16 @@ namespace ProceduralLevel.Common.Serialization
 			return this;
 		}
 
+		public AObject Write(string key, ICollection<byte> data)
+		{
+			AArray arr = WriteArray(key);
+			foreach(byte item in data)
+			{
+				arr.Write(item);
+			}
+			return this;
+		}
+
 		public AObject Write(string key, ICollection<short> data)
 		{
 			AArray arr = WriteArray(key);
@@ -247,6 +268,7 @@ namespace ProceduralLevel.Common.Serialization
 		#region Read
 		public abstract bool ReadBool(string key);
 		public abstract char ReadChar(string key);
+		public abstract byte ReadByte(string key);
 		public abstract short ReadShort(string key);
 		public abstract ushort ReadUShort(string key);
 		public abstract int ReadInt(string key);
@@ -279,6 +301,18 @@ namespace ProceduralLevel.Common.Serialization
 			for(int x = 0; x < count; ++x)
 			{
 				data[x] = arr.ReadChar();
+			}
+			return data;
+		}
+
+		public byte[] ReadByteArray(string key)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			byte[] data = new byte[count];
+			for(int x = 0; x < count; ++x)
+			{
+				data[x] = arr.ReadByte();
 			}
 			return data;
 		}
@@ -414,6 +448,16 @@ namespace ProceduralLevel.Common.Serialization
 			}
 		}
 
+		public void Read(string key, ICollection<byte> data)
+		{
+			AArray arr = ReadArray(key);
+			int count = arr.Count;
+			for(int x = 0; x < count; ++x)
+			{
+				data.Add(arr.ReadByte());
+			}
+		}
+
 		public void Read(string key, ICollection<short> data)
 		{
 			AArray arr = ReadArray(key);
@@ -522,6 +566,16 @@ namespace ProceduralLevel.Common.Serialization
 			try
 			{
 				char value = ReadChar(key);
+				return value;
+			} catch {}
+			return defaultValue;
+		}
+
+		public byte TryReadByte(string key, byte defaultValue = default(byte))
+		{
+			try
+			{
+				byte value = ReadByte(key);
 				return value;
 			} catch {}
 			return defaultValue;
