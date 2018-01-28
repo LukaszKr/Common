@@ -17,6 +17,13 @@
 			return this;
 		}
 
+		public override AArray Write(byte data)
+		{
+			NumberValue value = new NumberValue(data.ToString());
+			m_Values.Add(value);
+			return this;
+		}
+
 		public override AArray Write(short data)
 		{
 			NumberValue value = new NumberValue(data.ToString());
@@ -93,6 +100,13 @@
 		{
 			NumberValue value = m_Values[index] as NumberValue;
 			char data = char.Parse(value.Data);
+			return data;
+		}
+
+		public override byte ReadByte(int index)
+		{
+			NumberValue value = m_Values[index] as NumberValue;
+			byte data = byte.Parse(value.Data);
 			return data;
 		}
 
