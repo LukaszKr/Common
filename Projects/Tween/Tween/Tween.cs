@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-    public static class Tween
+	public static class Tween
 	{
 		private const float HALF_PI = (float)Math.PI/2f;
 		private const float DOUBLE_PI = (float)Math.PI*2f;
@@ -36,9 +36,9 @@ namespace ProceduralLevel.Common.Tween
 			Methods[index+2] = CreateInOut(inDelegate);
 		}
 
-		public static float Calculate(ETween type, EMethod method, float value, float t)
+		public static float Calculate(ETween type, EMethod method, float t)
 		{
-			return value*Methods[(int)type*METHOD_COUNT+(int)method](t);
+			return Methods[(int)type*METHOD_COUNT+(int)method](t);
 		}
 
 		#region Delegate generator
