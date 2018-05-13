@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\Data\ASingleton.cs" />
     <Compile Include="Helper\Data\ChaoticList.cs" />
     <Compile Include="Helper\Ext\ArrayExt.cs" />
     <Compile Include="Helper\Ext\DirectoryInfoExt.cs" />
