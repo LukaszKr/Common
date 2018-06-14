@@ -48,10 +48,6 @@
     <Compile Include="Template\Parser\TemplateTokenizer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Serialization\Serialization.csproj">
-      <Project>{969021E9-3082-4D72-B454-2C2BD65AEA5B}</Project>
-      <Name>Serialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tokenize\Tokenize.csproj">
       <Project>{FB003E6C-3D58-41A9-8209-13B9944E5164}</Project>
       <Name>Tokenize</Name>
