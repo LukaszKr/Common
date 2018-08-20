@@ -3,7 +3,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Tokenize
 {
-    public abstract class ATokenizer
+	public abstract class ATokenizer
     {
 		public const char ESCAPE_CHAR = '\\';
 		public const char NEW_LINE = '\n';
@@ -62,7 +62,7 @@ namespace ProceduralLevel.Common.Tokenize
 
 		protected abstract char[] GetSeparators();
 
-		protected virtual char[] GetSeparators(Token token)
+		protected virtual char[] GetSeparators(Token separator)
 		{
 			return GetSeparators();
 		}
