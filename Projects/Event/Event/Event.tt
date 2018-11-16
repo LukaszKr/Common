@@ -13,7 +13,7 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[EventChannel, ListenerCount: {<#= x #>}, Types: <#= listVars("{{{0}}}", x) #>]", 
+			return string.Format("[Event, ListenerCount: {<#= x #>}, Types: <#= listVars("{{{0}}}", x) #>]", 
 				<#= listVars("typeof(T{0}).Name", x) #><#= (x > 0? ", ": "") #> m_Listeners.Count);
 		}
 
