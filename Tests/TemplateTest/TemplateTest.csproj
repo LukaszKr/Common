@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Projects\Template\Template.csproj">
-      <Project>{243CD9CA-4314-456C-A15C-4E68E526F854}</Project>
+      <Project>{f5064303-6512-44fa-ad31-ebf0f7953218}</Project>
       <Name>Template</Name>
     </ProjectReference>
   </ItemGroup>

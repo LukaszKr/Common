@@ -1,75 +1,62 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3D135F7-7792-42FB-9FDC-51730A9A4989}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>netstandard2.0;net35;net461</TargetFrameworks>
     <RootNamespace>ProceduralLevel.Common</RootNamespace>
-    <AssemblyName>Event</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\build\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\build\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\build\Debug\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Event\Event.cs">
-      <DependentUpon>Event.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Event\EventBinder.Bind.cs">
-      <DependentUpon>EventBinder.Bind.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Event\EventBinder.cs" />
-    <Compile Include="Event\EventBinding.cs">
-      <DependentUpon>EventBinding.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Event\IEventBinding.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Event\Event.tt">
+    <None Update="Event\Event.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Event.cs</LastGenOutput>
-    </Content>
-    <Content Include="Event\EventBinder.Bind.tt">
+    </None>
+    <None Update="Event\EventBinder.Bind.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
-    </Content>
-    <Content Include="Event\EventBinding.tt">
+    </None>
+    <None Update="Event\EventBinding.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EventBinding.cs</LastGenOutput>
-    </Content>
-    <Content Include="Event\HelperMethod.tt" />
+    </None>
+    <None Update="Event\HelperMethod.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HelperMethod.cs</LastGenOutput>
+    </None>
   </ItemGroup>
+
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <Compile Update="Event\Event.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Event.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Event\EventBinder.Bind.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EventBinder.Bind.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Event\EventBinding.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EventBinding.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Event\HelperMethod.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HelperMethod.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

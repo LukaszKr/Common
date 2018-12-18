@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Projects\Tokenize\Tokenize.csproj">
-      <Project>{fb003e6c-3d58-41a9-8209-13b9944e5164}</Project>
+      <Project>{afe4c785-97c2-47a3-bc59-d0d4be302c28}</Project>
       <Name>Tokenize</Name>
     </ProjectReference>
   </ItemGroup>
