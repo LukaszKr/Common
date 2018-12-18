@@ -1,1 +1,1 @@
-Code shared by other projects
+Utility projects.
