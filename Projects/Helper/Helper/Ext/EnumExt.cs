@@ -2,9 +2,11 @@
 
 namespace ProceduralLevel.Common.Helper
 {
-    public static class EnumExt
+	public static class EnumExt<EnumType>
     {
-		public static void ValueRange<EnumType>(out int minValue, out int maxValue)
+		public readonly static EnumType[] Values = (EnumType[])Enum.GetValues(typeof(EnumType));
+
+		public static void ValueRange(out int minValue, out int maxValue)
 		{
 			EnumType[] values = (EnumType[])Enum.GetValues(typeof(EnumType));
 			maxValue = int.MinValue;
@@ -18,15 +20,15 @@ namespace ProceduralLevel.Common.Helper
 			}
 		}
 
-		public static int MinValue<EnumType>()
+		public static int MinValue()
 		{
-			ValueRange<EnumType>(out int minValue, out int maxValue);
+			ValueRange(out int minValue, out int maxValue);
 			return minValue;
 		}
 
-		public static int MaxValue<EnumType>()
+		public static int MaxValue()
 		{
-			ValueRange<EnumType>(out int minValue, out int maxValue);
+			ValueRange(out int minValue, out int maxValue);
 			return maxValue;
 		}
 	}
