@@ -1,5 +1,4 @@
 ﻿<#@ include file="./HelperMethod.tt" #>
-using System;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Event
