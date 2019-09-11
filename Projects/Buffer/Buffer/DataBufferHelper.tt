@@ -1,0 +1,61 @@
+﻿<# Action<string, string> generatePrimitive = (lCase, uCase) => { #>
+		public abstract ADataBuffer Write(<#=lCase #> data);
+		public abstract <#=lCase #> Read<#=uCase #>(); 
+<# }; #>
+<# Action<string, string> generateCollection = (lCase, uCase) => { #>
+		public ADataBuffer Write(<#=lCase #>[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public ADataBuffer Write(List<<#=lCase #>> list)
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public void Read(List<<#=lCase #>> list, bool append = false)
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				list.Add(Read<#=uCase #>());
+			}
+		}
+
+		public int Read(<#=lCase #>[] arr, int offset = 0)
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x+offset] = Read<#=uCase #>();
+			}
+			return length;
+		}
+
+		public <#=lCase #>[] Read<#=uCase #>Array()
+		{
+			int length = ReadInt();
+			<#=lCase #>[] arr = new <#=lCase #>[length];
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x] = Read<#=uCase #>();
+			}
+			return arr;
+		}
+<# };#>
