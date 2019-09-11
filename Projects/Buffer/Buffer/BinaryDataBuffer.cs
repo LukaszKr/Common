@@ -4,8 +4,6 @@ namespace ProceduralLevel.Common.Buffer
 {
 	public sealed class BinaryDataBuffer: ADataBuffer
 	{
-		public readonly static BinaryDataBuffer Reusable = new BinaryDataBuffer(1024*4096);
-
 		private byte[] m_Data;
 		private int m_Head;
 		private int m_Length;
