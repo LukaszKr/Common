@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.SimpleID
 {
-	public abstract class AIDGroup<TID>
+	public class IDGroup<TID>
 		where TID : ID
 	{
 		private const int BUFFER_SIZE = 8;
@@ -11,21 +11,7 @@ namespace ProceduralLevel.Common.SimpleID
 		private TID[] m_IDBuffer = new TID[BUFFER_SIZE];
 		private int m_IDCount;
 
-		public AIDGroup()
-		{
-
-		}
-
-		public TID CreateID(uint value, string name)
-		{
-			TID id = CreateInstance(value, name);
-			RegisterID(id);
-			return id;
-		}
-
-		protected abstract TID CreateInstance(uint value, string name);
-
-		private void RegisterID(TID id)
+		public void RegisterID(TID id)
 		{
 			int desiredIndex = 0;
 			int length = m_IDBuffer.Length;
