@@ -7,8 +7,8 @@ namespace ProceduralLevel.Common.Buffer
 {
     public partial class BinaryDataBuffer
     {
-<# string[] lowerCase = new string[] { "char", "bool", "byte", "short", "ushort", "int", "uint", "string" };
-string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "Int", "UInt", "String" };
+<# string[] lowerCase = new string[] { "char", "bool", "byte", "short", "ushort", "int", "uint", "long", "ulong", "string", "float", "double" };
+string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "Int", "UInt", "Long", "ULong", "String", "Float", "Double" };
 
 for(int x = 0; x < lowerCase.Length; ++x)
 { #>

@@ -412,6 +412,122 @@ namespace ProceduralLevel.Common.Buffer
 		}
 		#endregion 
 
+		#region Long
+		public BinaryDataBuffer Write(long[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(List<long> list)
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public void Read(List<long> list, bool append = false)
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				list.Add(ReadLong());
+			}
+		}
+
+		public int Read(long[] arr, int offset = 0)
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x+offset] = ReadLong();
+			}
+			return length;
+		}
+
+		public long[] ReadLongArray()
+		{
+			int length = ReadInt();
+			long[] arr = new long[length];
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x] = ReadLong();
+			}
+			return arr;
+		}
+		#endregion 
+
+		#region ULong
+		public BinaryDataBuffer Write(ulong[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(List<ulong> list)
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public void Read(List<ulong> list, bool append = false)
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				list.Add(ReadULong());
+			}
+		}
+
+		public int Read(ulong[] arr, int offset = 0)
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x+offset] = ReadULong();
+			}
+			return length;
+		}
+
+		public ulong[] ReadULongArray()
+		{
+			int length = ReadInt();
+			ulong[] arr = new ulong[length];
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x] = ReadULong();
+			}
+			return arr;
+		}
+		#endregion 
+
 		#region String
 		public BinaryDataBuffer Write(string[] arr)
 		{
@@ -465,6 +581,122 @@ namespace ProceduralLevel.Common.Buffer
 			for(int x = 0; x < length; ++x)
 			{
 				arr[x] = ReadString();
+			}
+			return arr;
+		}
+		#endregion 
+
+		#region Float
+		public BinaryDataBuffer Write(float[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(List<float> list)
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public void Read(List<float> list, bool append = false)
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				list.Add(ReadFloat());
+			}
+		}
+
+		public int Read(float[] arr, int offset = 0)
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x+offset] = ReadFloat();
+			}
+			return length;
+		}
+
+		public float[] ReadFloatArray()
+		{
+			int length = ReadInt();
+			float[] arr = new float[length];
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x] = ReadFloat();
+			}
+			return arr;
+		}
+		#endregion 
+
+		#region Double
+		public BinaryDataBuffer Write(double[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(List<double> list)
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public void Read(List<double> list, bool append = false)
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				list.Add(ReadDouble());
+			}
+		}
+
+		public int Read(double[] arr, int offset = 0)
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x+offset] = ReadDouble();
+			}
+			return length;
+		}
+
+		public double[] ReadDoubleArray()
+		{
+			int length = ReadInt();
+			double[] arr = new double[length];
+			for(int x = 0; x < length; ++x)
+			{
+				arr[x] = ReadDouble();
 			}
 			return arr;
 		}

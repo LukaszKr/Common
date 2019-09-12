@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
@@ -201,6 +202,32 @@ namespace ProceduralLevel.Common.Buffer
 			return value;
 		}
 
+		public long ReadLong()
+		{
+			long value = m_Data[m_Head++];
+			value += m_Data[m_Head++] << 8;
+			value += m_Data[m_Head++] << 16;
+			value += m_Data[m_Head++] << 24;
+			value += m_Data[m_Head++] << 32;
+			value += m_Data[m_Head++] << 40;
+			value += m_Data[m_Head++] << 48;
+			value += m_Data[m_Head++] << 56;
+			return value;
+		}
+
+		public ulong ReadULong()
+		{
+			ulong value = m_Data[m_Head++];
+			value += (ulong)(m_Data[m_Head++] << 8);
+			value += (ulong)(m_Data[m_Head++] << 16);
+			value += (ulong)(m_Data[m_Head++] << 24);
+			value += (ulong)(m_Data[m_Head++] << 32);
+			value += (ulong)(m_Data[m_Head++] << 40);
+			value += (ulong)(m_Data[m_Head++] << 48);
+			value += (ulong)(m_Data[m_Head++] << 56);
+			return value;
+		}
+
 		public string ReadString()
 		{
 			int length = ReadInt();
@@ -214,6 +241,19 @@ namespace ProceduralLevel.Common.Buffer
 				bytes[x] = m_Data[m_Head++];
 			}
 			return Encoding.UTF8.GetString(bytes);
+		}
+		
+		public float ReadFloat()
+		{
+			float value = BitConverter.ToSingle(m_Data, m_Head);
+			m_Head += 4;
+			return value;
+		}
+
+		public double ReadDouble()
+		{
+			long value = ReadLong();
+			return BitConverter.Int64BitsToDouble(value);
 		}
 		#endregion
 
@@ -297,6 +337,32 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
+		public BinaryDataBuffer Write(long data)
+		{
+			m_Data[m_Length++] = (byte)data;
+			m_Data[m_Length++] = (byte)(data >> 8);
+			m_Data[m_Length++] = (byte)(data >> 16);
+			m_Data[m_Length++] = (byte)(data >> 24);
+			m_Data[m_Length++] = (byte)(data >> 32);
+			m_Data[m_Length++] = (byte)(data >> 40);
+			m_Data[m_Length++] = (byte)(data >> 48);
+			m_Data[m_Length++] = (byte)(data >> 56);
+			return this;
+		}
+
+		public BinaryDataBuffer Write(ulong data)
+		{
+			m_Data[m_Length++] = (byte)data;
+			m_Data[m_Length++] = (byte)(data >> 8);
+			m_Data[m_Length++] = (byte)(data >> 16);
+			m_Data[m_Length++] = (byte)(data >> 24);
+			m_Data[m_Length++] = (byte)(data >> 32);
+			m_Data[m_Length++] = (byte)(data >> 40);
+			m_Data[m_Length++] = (byte)(data >> 48);
+			m_Data[m_Length++] = (byte)(data >> 56);
+			return this;
+		}
+
 		public BinaryDataBuffer Write(string data)
 		{
 			if(string.IsNullOrEmpty(data))
@@ -313,6 +379,23 @@ namespace ProceduralLevel.Common.Buffer
 					m_Data[m_Length++] = bytes[x];
 				}
 			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(float data)
+		{
+			byte[] bytes = BitConverter.GetBytes(data); //allocates memory, but I couldn't find a better way of doing this
+			m_Data[m_Length++] = bytes[0];
+			m_Data[m_Length++] = bytes[1];
+			m_Data[m_Length++] = bytes[2];
+			m_Data[m_Length++] = bytes[3];
+			return this;
+		}
+
+		public BinaryDataBuffer Write(double data)
+		{
+			long value = BitConverter.DoubleToInt64Bits(data);
+			Write(value);
 			return this;
 		}
 		#endregion
