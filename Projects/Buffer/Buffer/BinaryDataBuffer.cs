@@ -28,14 +28,13 @@ namespace ProceduralLevel.Common.Buffer
 			return m_Head;
 		}
 
-		public void FromBytes(byte[] bytes)
+		public void FromBytes(byte[] bytes, int readOffset, int length)
 		{
-			int length = bytes.Length;
 			m_Head = 0;
 			m_Length = length;
 			for(int x = 0; x < length; ++x)
 			{
-				m_Data[x] = bytes[x];
+				m_Data[x] = bytes[x+readOffset];
 			}
 		}
 
