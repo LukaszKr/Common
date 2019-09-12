@@ -14,13 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Buffer\ADataBuffer.Types.tt">
+    <None Update="Buffer\BinaryDataBuffer.Types.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ADataBuffer.Types.cs</LastGenOutput>
+      <LastGenOutput>BinaryDataBuffer.Types.cs</LastGenOutput>
     </None>
     <None Update="Buffer\DataBufferHelper.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataBufferHelper.cs</LastGenOutput>
+      <Generator></Generator>
     </None>
   </ItemGroup>
 
@@ -29,15 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Buffer\ADataBuffer.Types.cs">
+    <Compile Update="Buffer\BinaryDataBuffer.Types.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ADataBuffer.Types.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Buffer\DataBufferHelper.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DataBufferHelper.tt</DependentUpon>
+      <DependentUpon>BinaryDataBuffer.Types.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

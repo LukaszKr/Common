@@ -2,6 +2,6 @@
 {
 	public interface IBufferSerialized
 	{
-		void ToDataBuffer(ADataBuffer buffer);
+		void ToDataBuffer(BinaryDataBuffer buffer);
 	}
 }

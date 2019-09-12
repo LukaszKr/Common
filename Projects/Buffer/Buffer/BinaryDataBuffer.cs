@@ -1,22 +1,23 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
 {
-	public sealed class BinaryDataBuffer: ADataBuffer
+	public partial class BinaryDataBuffer
 	{
 		private byte[] m_Data;
 		private int m_Head;
 		private int m_Length;
 
-		public override int Length { get { return m_Length; } }
-		public override int UnreadCount { get { return m_Length-m_Head; } }
+		public int Length { get { return m_Length; } }
+		public int UnreadCount { get { return m_Length-m_Head; } }
 
 		public BinaryDataBuffer(int capacity)
 		{
 			m_Data = new byte[capacity];
 		}
 
-		public override int ToBytes(byte[] bytes, int offset)
+		public int ToBytes(byte[] bytes, int offset)
 		{
 			for(int x = 0; x < m_Length; x++)
 			{
@@ -25,7 +26,7 @@ namespace ProceduralLevel.Common.Buffer
 			return m_Head;
 		}
 
-		public override void FromBytes(byte[] bytes)
+		public void FromBytes(byte[] bytes)
 		{
 			int length = bytes.Length;
 			m_Head = 0;
@@ -50,61 +51,157 @@ namespace ProceduralLevel.Common.Buffer
 			m_Head += bytes;
 		}
 
-		public override void Reset()
+		public void Reset()
 		{
 			m_Length = 0;
 			m_Head = 0;
 		}
 
-		#region Read
-		public override char ReadChar()
+		#region Deserialize
+		public void Read(IBufferDeserialized serializable)
 		{
-			return (char)ReadByte();
+			serializable.FromDataBuffer(this);
 		}
 
-		public override bool ReadBool()
+		public void Read<TEntry>(List<TEntry> list, bool append = false)
+			where TEntry : IBufferDeserialized, new()
 		{
-			return (ReadByte() == 1? true: false);
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry);
+				list.Add(entry);
+			}
 		}
 
-		public override byte ReadByte()
+		public int Read<TEntry>(TEntry[] arr, int offset = 0)
+			where TEntry : IBufferDeserialized, new()
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry);
+				arr[x+offset] = entry;
+			}
+			return length;
+		}
+
+		public TEntry[] ReadArray<TEntry>()
+			where TEntry : IBufferDeserialized, new()
+		{
+			int length = ReadInt();
+			TEntry[] arr = new TEntry[length];
+			for(int x = 0; x < length; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry);
+				arr[x] = entry;
+			}
+			return arr;
+		}
+
+		public void Read<TData>(IBufferDeserialized<TData> serializable, TData data)
+		{
+			serializable.FromDataBuffer(this, data);
+		}
+
+		public void Read<TEntry, TData>(List<TEntry> list, TData data, bool append = false)
+			where TEntry : IBufferDeserialized<TData>, new()
+		{
+			if(!append)
+			{
+				list.Clear();
+			}
+			int count = ReadInt();
+			for(int x = 0; x < count; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry, data);
+				list.Add(entry);
+			}
+		}
+
+		public int Read<TEntry, TData>(TEntry[] arr, TData data, int offset = 0)
+			where TEntry : IBufferDeserialized<TData>, new()
+		{
+			int length = ReadInt();
+			for(int x = 0; x < length; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry, data);
+				arr[x+offset] = entry;
+			}
+			return length;
+		}
+
+		public TEntry[] ReadArray<TEntry, TData>(TData data)
+			where TEntry : IBufferDeserialized<TData>, new()
+		{
+			int length = ReadInt();
+			TEntry[] arr = new TEntry[length];
+			for(int x = 0; x < length; ++x)
+			{
+				TEntry entry = new TEntry();
+				Read(entry, data);
+				arr[x] = entry;
+			}
+			return arr;
+		}
+
+		public char ReadChar()
+		{
+			return (char)m_Data[m_Head++];
+		}
+
+		public bool ReadBool()
+		{
+			return (m_Data[m_Head++] == 1? true: false);
+		}
+
+		public byte ReadByte()
 		{
 			return m_Data[m_Head++];
 		}
 
-		public override short ReadShort()
+		public short ReadShort()
 		{
-			short value = ReadByte();
-			value += (short)(ReadByte() << 8);
+			short value = m_Data[m_Head++];
+			value += (short)(m_Data[m_Head++] << 8);
 			return value;
 		}
 
-		public override ushort ReadUShort()
+		public ushort ReadUShort()
 		{
-			ushort value = ReadByte();
-			value += (ushort)(ReadByte() << 8);
+			ushort value = m_Data[m_Head++];
+			value += (ushort)(m_Data[m_Head++] << 8);
 			return value;
 		}
 
-		public override int ReadInt()
+		public int ReadInt()
 		{
-			int value = ReadByte();
-			value += ReadByte() << 8;
-			value += ReadByte() << 16;
-			value += ReadByte() << 24;
+			int value = m_Data[m_Head++];
+			value += m_Data[m_Head++] << 8;
+			value += m_Data[m_Head++] << 16;
+			value += m_Data[m_Head++] << 24;
 			return value;
 		}
 
-		public override uint ReadUInt()
+		public uint ReadUInt()
 		{
-			uint value = ReadByte();
-			value += (uint)(ReadByte() << 8);
-			value += (uint)(ReadByte() << 16);
-			value += (uint)(ReadByte() << 24);
+			uint value = m_Data[m_Head++];
+			value += (uint)(m_Data[m_Head++] << 8);
+			value += (uint)(m_Data[m_Head++] << 16);
+			value += (uint)(m_Data[m_Head++] << 24);
 			return value;
 		}
 
-		public override string ReadString()
+		public string ReadString()
 		{
 			int length = ReadInt();
 			if(length == 0)
@@ -114,55 +211,75 @@ namespace ProceduralLevel.Common.Buffer
 			byte[] bytes = new byte[length];
 			for(int x = 0; x < length; ++x)
 			{
-				bytes[x] = ReadByte();
+				bytes[x] = m_Data[m_Head++];
 			}
 			return Encoding.UTF8.GetString(bytes);
 		}
 		#endregion
 
 		#region Write
-		public override ADataBuffer Write(char data)
+		public BinaryDataBuffer Write(IBufferSerialized serializable)
+		{
+			serializable.ToDataBuffer(this);
+			return this;
+		}
+
+		public BinaryDataBuffer Write(IBufferSerialized[] arr)
+		{
+			int length = arr.Length;
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write<TEntry>(List<TEntry> list)
+			where TEntry : IBufferSerialized
+		{
+			int count = list.Count;
+			Write(count);
+			for(int x = 0; x < count; ++x)
+			{
+				Write(list[x]);
+			}
+			return this;
+		}
+
+		public BinaryDataBuffer Write(char data)
 		{
 			m_Data[m_Length++] = (byte)data;
 			return this;
 		}
 
-		public override ADataBuffer Write(bool data)
+		public BinaryDataBuffer Write(bool data)
 		{
 			m_Data[m_Length++] = (data? (byte)1: (byte)0);
 			return this;
 		}
 
-		public override ADataBuffer Write(byte data)
+		public BinaryDataBuffer Write(byte data)
 		{
 			m_Data[m_Length++] = data;
 			return this;
 		}
 
-		public override ADataBuffer Write(short data)
+		public BinaryDataBuffer Write(short data)
 		{
 			m_Data[m_Length++] = (byte)data;
 			m_Data[m_Length++] = (byte)(data >> 8);
 			return this;
 		}
 
-		public override ADataBuffer Write(ushort data)
+		public BinaryDataBuffer Write(ushort data)
 		{
 			m_Data[m_Length++] = (byte)data;
 			m_Data[m_Length++] = (byte)(data >> 8);
 			return this;
 		}
 
-		public override ADataBuffer Write(int data)
-		{
-			m_Data[m_Length++] = (byte)data;
-			m_Data[m_Length++] = (byte)(data >> 8);
-			m_Data[m_Length++] = (byte)(data >> 16);
-			m_Data[m_Length++] = (byte)(data >> 24);
-			return this;
-		}
-
-		public override ADataBuffer Write(uint data)
+		public BinaryDataBuffer Write(int data)
 		{
 			m_Data[m_Length++] = (byte)data;
 			m_Data[m_Length++] = (byte)(data >> 8);
@@ -171,7 +288,16 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public override ADataBuffer Write(string data)
+		public BinaryDataBuffer Write(uint data)
+		{
+			m_Data[m_Length++] = (byte)data;
+			m_Data[m_Length++] = (byte)(data >> 8);
+			m_Data[m_Length++] = (byte)(data >> 16);
+			m_Data[m_Length++] = (byte)(data >> 24);
+			return this;
+		}
+
+		public BinaryDataBuffer Write(string data)
 		{
 			if(string.IsNullOrEmpty(data))
 			{
@@ -193,7 +319,7 @@ namespace ProceduralLevel.Common.Buffer
 
 		public override string ToString()
 		{
-			return base.ToString()+string.Format("[Head: {0}]", m_Head);
+			return string.Format("[Length: {0}, Head: {1}]", m_Length, m_Head);
 		}
 	}
 }

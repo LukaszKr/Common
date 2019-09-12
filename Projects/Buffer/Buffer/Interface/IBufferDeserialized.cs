@@ -2,11 +2,11 @@
 {
 	public interface IBufferDeserialized
 	{
-		void FromDataBuffer(ADataBuffer buffer);
+		void FromDataBuffer(BinaryDataBuffer buffer);
 	}
 
 	public interface IBufferDeserialized<TData>
 	{
-		void FromDataBuffer(ADataBuffer buffer, TData data);
+		void FromDataBuffer(BinaryDataBuffer buffer, TData data);
 	}
 }

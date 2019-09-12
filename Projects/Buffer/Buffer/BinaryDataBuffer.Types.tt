@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
 {
-    public partial class ADataBuffer
+    public partial class BinaryDataBuffer
     {
 <# string[] lowerCase = new string[] { "char", "bool", "byte", "short", "ushort", "int", "uint", "string" };
 string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "Int", "UInt", "String" };
@@ -13,7 +13,6 @@ string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "
 for(int x = 0; x < lowerCase.Length; ++x)
 { #>
 		#region <#=upperCase[x] #>
-<# generatePrimitive(lowerCase[x], upperCase[x]); #> 
 <# generateCollection(lowerCase[x], upperCase[x]); #>
 		#endregion 
 

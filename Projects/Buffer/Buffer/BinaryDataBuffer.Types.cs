@@ -4,13 +4,10 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
 {
-    public partial class ADataBuffer
+    public partial class BinaryDataBuffer
     {
 		#region Char
-		public abstract ADataBuffer Write(char data);
-		public abstract char ReadChar(); 
- 
-		public ADataBuffer Write(char[] arr)
+		public BinaryDataBuffer Write(char[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -21,7 +18,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<char> list)
+		public BinaryDataBuffer Write(List<char> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -68,10 +65,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region Bool
-		public abstract ADataBuffer Write(bool data);
-		public abstract bool ReadBool(); 
- 
-		public ADataBuffer Write(bool[] arr)
+		public BinaryDataBuffer Write(bool[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -82,7 +76,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<bool> list)
+		public BinaryDataBuffer Write(List<bool> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -129,10 +123,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region Byte
-		public abstract ADataBuffer Write(byte data);
-		public abstract byte ReadByte(); 
- 
-		public ADataBuffer Write(byte[] arr)
+		public BinaryDataBuffer Write(byte[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -143,7 +134,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<byte> list)
+		public BinaryDataBuffer Write(List<byte> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -190,10 +181,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region Short
-		public abstract ADataBuffer Write(short data);
-		public abstract short ReadShort(); 
- 
-		public ADataBuffer Write(short[] arr)
+		public BinaryDataBuffer Write(short[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -204,7 +192,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<short> list)
+		public BinaryDataBuffer Write(List<short> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -251,10 +239,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region UShort
-		public abstract ADataBuffer Write(ushort data);
-		public abstract ushort ReadUShort(); 
- 
-		public ADataBuffer Write(ushort[] arr)
+		public BinaryDataBuffer Write(ushort[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -265,7 +250,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<ushort> list)
+		public BinaryDataBuffer Write(List<ushort> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -312,10 +297,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region Int
-		public abstract ADataBuffer Write(int data);
-		public abstract int ReadInt(); 
- 
-		public ADataBuffer Write(int[] arr)
+		public BinaryDataBuffer Write(int[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -326,7 +308,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<int> list)
+		public BinaryDataBuffer Write(List<int> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -373,10 +355,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region UInt
-		public abstract ADataBuffer Write(uint data);
-		public abstract uint ReadUInt(); 
- 
-		public ADataBuffer Write(uint[] arr)
+		public BinaryDataBuffer Write(uint[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -387,7 +366,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<uint> list)
+		public BinaryDataBuffer Write(List<uint> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -434,10 +413,7 @@ namespace ProceduralLevel.Common.Buffer
 		#endregion 
 
 		#region String
-		public abstract ADataBuffer Write(string data);
-		public abstract string ReadString(); 
- 
-		public ADataBuffer Write(string[] arr)
+		public BinaryDataBuffer Write(string[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -448,7 +424,7 @@ namespace ProceduralLevel.Common.Buffer
 			return this;
 		}
 
-		public ADataBuffer Write(List<string> list)
+		public BinaryDataBuffer Write(List<string> list)
 		{
 			int count = list.Count;
 			Write(count);

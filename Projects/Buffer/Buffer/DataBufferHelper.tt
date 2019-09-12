@@ -1,9 +1,5 @@
-﻿<# Action<string, string> generatePrimitive = (lCase, uCase) => { #>
-		public abstract ADataBuffer Write(<#=lCase #> data);
-		public abstract <#=lCase #> Read<#=uCase #>(); 
-<# }; #>
-<# Action<string, string> generateCollection = (lCase, uCase) => { #>
-		public ADataBuffer Write(<#=lCase #>[] arr)
+﻿<# Action<string, string> generateCollection = (lCase, uCase) => { #>
+		public BinaryDataBuffer Write(<#=lCase #>[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -14,7 +10,7 @@
 			return this;
 		}
 
-		public ADataBuffer Write(List<<#=lCase #>> list)
+		public BinaryDataBuffer Write(List<<#=lCase #>> list)
 		{
 			int count = list.Count;
 			Write(count);
