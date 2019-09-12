@@ -6,10 +6,11 @@ namespace ProceduralLevel.Common.Buffer
 {
 	public partial class BinaryDataBuffer
 	{
-		private byte[] m_Data;
+		private readonly byte[] m_Data;
 		private int m_Head;
 		private int m_Length;
 
+		public byte[] Bytes { get { return m_Data; } }
 		public int Length { get { return m_Length; } }
 		public int UnreadCount { get { return m_Length-m_Head; } }
 
@@ -32,10 +33,6 @@ namespace ProceduralLevel.Common.Buffer
 			int length = bytes.Length;
 			m_Head = 0;
 			m_Length = length;
-			if(m_Data.Length < length)
-			{
-				m_Data = new byte[length];
-			}
 			for(int x = 0; x < length; ++x)
 			{
 				m_Data[x] = bytes[x];
