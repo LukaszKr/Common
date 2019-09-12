@@ -3,6 +3,7 @@
   <PropertyGroup>
 	<TargetFrameworks>netstandard2.0;net35;net461</TargetFrameworks>
     <RootNamespace>ProceduralLevel.Common</RootNamespace>
+    <AssemblyName>ProceduralLevel.Common.Tween</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
