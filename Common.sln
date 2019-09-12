@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Template", "Projects\Templa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buffer", "Projects\Buffer\Buffer.csproj", "{7AC8BC96-523D-4D74-BCA1-A967DF5D4674}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleID", "Projects\SimpleID\SimpleID.csproj", "{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,12 @@ Global
 		{7AC8BC96-523D-4D74-BCA1-A967DF5D4674}.Prototype|Any CPU.Build.0 = Release|Any CPU
 		{7AC8BC96-523D-4D74-BCA1-A967DF5D4674}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AC8BC96-523D-4D74-BCA1-A967DF5D4674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Prototype|Any CPU.ActiveCfg = Release|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Prototype|Any CPU.Build.0 = Release|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +90,7 @@ Global
 		{AFE4C785-97C2-47A3-BC59-D0D4BE302C28} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 		{F5064303-6512-44FA-AD31-EBF0F7953218} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 		{7AC8BC96-523D-4D74-BCA1-A967DF5D4674} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
+		{B330C146-8F40-4F02-8532-CAF7B4FEBFD0} = {7F1D891C-7E7D-4941-AA86-D38242E391E9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8F843F23-9889-4798-86A6-66212FFC1750}
