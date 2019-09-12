@@ -201,26 +201,26 @@ namespace ProceduralLevel.Common.Buffer
 		public long ReadLong()
 		{
 			long value = m_Data[m_Head++];
-			value += m_Data[m_Head++] << 8;
-			value += m_Data[m_Head++] << 16;
-			value += m_Data[m_Head++] << 24;
-			value += m_Data[m_Head++] << 32;
-			value += m_Data[m_Head++] << 40;
-			value += m_Data[m_Head++] << 48;
-			value += m_Data[m_Head++] << 56;
+			value += (long)m_Data[m_Head++] << 8;
+			value += (long)m_Data[m_Head++] << 16;
+			value += (long)m_Data[m_Head++] << 24;
+			value += (long)m_Data[m_Head++] << 32;
+			value += (long)m_Data[m_Head++] << 40;
+			value += (long)m_Data[m_Head++] << 48;
+			value += (long)m_Data[m_Head++] << 56;
 			return value;
 		}
 
 		public ulong ReadULong()
 		{
 			ulong value = m_Data[m_Head++];
-			value += (ulong)(m_Data[m_Head++] << 8);
-			value += (ulong)(m_Data[m_Head++] << 16);
-			value += (ulong)(m_Data[m_Head++] << 24);
-			value += (ulong)(m_Data[m_Head++] << 32);
-			value += (ulong)(m_Data[m_Head++] << 40);
-			value += (ulong)(m_Data[m_Head++] << 48);
-			value += (ulong)(m_Data[m_Head++] << 56);
+			value += ((ulong)m_Data[m_Head++] << 8);
+			value += ((ulong)m_Data[m_Head++] << 16);
+			value += ((ulong)m_Data[m_Head++] << 24);
+			value += ((ulong)m_Data[m_Head++] << 32);
+			value += ((ulong)m_Data[m_Head++] << 40);
+			value += ((ulong)m_Data[m_Head++] << 48);
+			value += ((ulong)m_Data[m_Head++] << 56);
 			return value;
 		}
 
