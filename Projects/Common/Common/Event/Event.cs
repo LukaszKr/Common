@@ -8,12 +8,6 @@ namespace ProceduralLevel.Common.Event
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {0}, Types: ]", 
-				 m_Listeners.Count);
-		}
-
 		public void Invoke()
 		{
 			for(int x = m_Listeners.Count-1; x >= 0; x--)
@@ -36,6 +30,12 @@ namespace ProceduralLevel.Common.Event
 		{
 			m_Listeners.Clear();
 		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {0}, Types: ]", 
+				 m_Listeners.Count);
+		}
 	}
 
 	public class Event<T0>
@@ -43,12 +43,6 @@ namespace ProceduralLevel.Common.Event
 		public delegate void Callback(T0 arg0);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
-
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {1}, Types: {0}]", 
-				typeof(T0).Name,  m_Listeners.Count);
-		}
 
 		public void Invoke(T0 arg0)
 		{
@@ -72,6 +66,12 @@ namespace ProceduralLevel.Common.Event
 		{
 			m_Listeners.Clear();
 		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {1}, Types: {0}]", 
+				typeof(T0).Name,  m_Listeners.Count);
+		}
 	}
 
 	public class Event<T0, T1>
@@ -79,12 +79,6 @@ namespace ProceduralLevel.Common.Event
 		public delegate void Callback(T0 arg0, T1 arg1);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
-
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {2}, Types: {0}, {1}]", 
-				typeof(T0).Name, typeof(T1).Name,  m_Listeners.Count);
-		}
 
 		public void Invoke(T0 arg0, T1 arg1)
 		{
@@ -108,6 +102,12 @@ namespace ProceduralLevel.Common.Event
 		{
 			m_Listeners.Clear();
 		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {2}, Types: {0}, {1}]", 
+				typeof(T0).Name, typeof(T1).Name,  m_Listeners.Count);
+		}
 	}
 
 	public class Event<T0, T1, T2>
@@ -115,12 +115,6 @@ namespace ProceduralLevel.Common.Event
 		public delegate void Callback(T0 arg0, T1 arg1, T2 arg2);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
-
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {3}, Types: {0}, {1}, {2}]", 
-				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name,  m_Listeners.Count);
-		}
 
 		public void Invoke(T0 arg0, T1 arg1, T2 arg2)
 		{
@@ -144,6 +138,12 @@ namespace ProceduralLevel.Common.Event
 		{
 			m_Listeners.Clear();
 		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {3}, Types: {0}, {1}, {2}]", 
+				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name,  m_Listeners.Count);
+		}
 	}
 
 	public class Event<T0, T1, T2, T3>
@@ -151,12 +151,6 @@ namespace ProceduralLevel.Common.Event
 		public delegate void Callback(T0 arg0, T1 arg1, T2 arg2, T3 arg3);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
-
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {4}, Types: {0}, {1}, {2}, {3}]", 
-				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name, typeof(T3).Name,  m_Listeners.Count);
-		}
 
 		public void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
 		{
@@ -179,6 +173,12 @@ namespace ProceduralLevel.Common.Event
 		public void RemoveAllListeners()
 		{
 			m_Listeners.Clear();
+		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {4}, Types: {0}, {1}, {2}, {3}]", 
+				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name, typeof(T3).Name,  m_Listeners.Count);
 		}
 	}
 

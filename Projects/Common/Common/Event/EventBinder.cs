@@ -5,7 +5,7 @@ namespace ProceduralLevel.Common.Event
 	public partial class EventBinder
 	{
 		private List<IEventBinding> m_Bindings;
-		
+
 		public bool IsDisabled { get; private set; }
 
 		public override string ToString()
@@ -62,6 +62,18 @@ namespace ProceduralLevel.Common.Event
 				{
 					m_Bindings[x].Bind();
 				}
+			}
+		}
+
+		public void Enable(bool enable)
+		{
+			if(enable)
+			{
+				Enable();
+			}
+			else
+			{
+				Disable();
 			}
 		}
 	}

@@ -10,12 +10,6 @@ namespace ProceduralLevel.Common.Event
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public override string ToString()
-		{
-			return string.Format("[Event, ListenerCount: {<#= x #>}, Types: <#= listVars("{{{0}}}", x) #>]", 
-				<#= listVars("typeof(T{0}).Name", x) #><#= (x > 0? ", ": "") #> m_Listeners.Count);
-		}
-
 		public void Invoke(<#= listParams(x) #>)
 		{
 			for(int x = m_Listeners.Count-1; x >= 0; x--)
@@ -37,6 +31,12 @@ namespace ProceduralLevel.Common.Event
 		public void RemoveAllListeners()
 		{
 			m_Listeners.Clear();
+		}
+
+		public override string ToString()
+		{
+			return string.Format("[Event, ListenerCount: {<#= x #>}, Types: <#= listVars("{{{0}}}", x) #>]", 
+				<#= listVars("typeof(T{0}).Name", x) #><#= (x > 0? ", ": "") #> m_Listeners.Count);
 		}
 	}
 

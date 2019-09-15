@@ -40,11 +40,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="Common\Event\HelperMethod.cs">
-      <DependentUpon>HelperMethod.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -69,8 +64,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="Common\Event\HelperMethod.tt">
-      <LastGenOutput>HelperMethod.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
+      <Generator></Generator>
     </None>
   </ItemGroup>
 
