@@ -13,7 +13,7 @@ for(int x = 0; x < lowerCase.Length; ++x)
 		private int m_Head;
 		private <#=lowerCase[x] #> m_Sum;
 
-		public <#=lowerCase[x] #> Average { get; private set; }
+		public <#=lowerCase[x] #> Value { get; private set; }
 
 		public RollingAverage<#=upperCase[x] #>(int bufferSize)
 		{
@@ -35,7 +35,7 @@ for(int x = 0; x < lowerCase.Length; ++x)
 			{
 				m_Head = 0;
 			}
-			Average = (<#=lowerCase[x] #>)(m_Sum/(double)m_Count);
+			Value = (<#=lowerCase[x] #>)(m_Sum/(double)m_Count);
 		}
 	}
 

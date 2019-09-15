@@ -7,7 +7,7 @@
 		private int m_Head;
 		private byte m_Sum;
 
-		public byte Average { get; private set; }
+		public byte Value { get; private set; }
 
 		public RollingAverageByte(int bufferSize)
 		{
@@ -29,7 +29,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (byte)(m_Sum/(double)m_Count);
+			Value = (byte)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -40,7 +40,7 @@
 		private int m_Head;
 		private short m_Sum;
 
-		public short Average { get; private set; }
+		public short Value { get; private set; }
 
 		public RollingAverageShort(int bufferSize)
 		{
@@ -62,7 +62,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (short)(m_Sum/(double)m_Count);
+			Value = (short)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -73,7 +73,7 @@
 		private int m_Head;
 		private ushort m_Sum;
 
-		public ushort Average { get; private set; }
+		public ushort Value { get; private set; }
 
 		public RollingAverageUShort(int bufferSize)
 		{
@@ -95,7 +95,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (ushort)(m_Sum/(double)m_Count);
+			Value = (ushort)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -106,7 +106,7 @@
 		private int m_Head;
 		private int m_Sum;
 
-		public int Average { get; private set; }
+		public int Value { get; private set; }
 
 		public RollingAverageInt(int bufferSize)
 		{
@@ -128,7 +128,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (int)(m_Sum/(double)m_Count);
+			Value = (int)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -139,7 +139,7 @@
 		private int m_Head;
 		private uint m_Sum;
 
-		public uint Average { get; private set; }
+		public uint Value { get; private set; }
 
 		public RollingAverageUInt(int bufferSize)
 		{
@@ -161,7 +161,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (uint)(m_Sum/(double)m_Count);
+			Value = (uint)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -172,7 +172,7 @@
 		private int m_Head;
 		private long m_Sum;
 
-		public long Average { get; private set; }
+		public long Value { get; private set; }
 
 		public RollingAverageLong(int bufferSize)
 		{
@@ -194,7 +194,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (long)(m_Sum/(double)m_Count);
+			Value = (long)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -205,7 +205,7 @@
 		private int m_Head;
 		private ulong m_Sum;
 
-		public ulong Average { get; private set; }
+		public ulong Value { get; private set; }
 
 		public RollingAverageULong(int bufferSize)
 		{
@@ -227,7 +227,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (ulong)(m_Sum/(double)m_Count);
+			Value = (ulong)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -238,7 +238,7 @@
 		private int m_Head;
 		private float m_Sum;
 
-		public float Average { get; private set; }
+		public float Value { get; private set; }
 
 		public RollingAverageFloat(int bufferSize)
 		{
@@ -260,7 +260,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (float)(m_Sum/(double)m_Count);
+			Value = (float)(m_Sum/(double)m_Count);
 		}
 	}
 
@@ -271,7 +271,7 @@
 		private int m_Head;
 		private double m_Sum;
 
-		public double Average { get; private set; }
+		public double Value { get; private set; }
 
 		public RollingAverageDouble(int bufferSize)
 		{
@@ -293,7 +293,7 @@
 			{
 				m_Head = 0;
 			}
-			Average = (double)(m_Sum/(double)m_Count);
+			Value = (double)(m_Sum/(double)m_Count);
 		}
 	}
 

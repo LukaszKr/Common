@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Tests\Buffer\BufferTest.cs" />
     <Compile Include="Tests\SimpleID\SimpleIDTest.cs" />
+    <Compile Include="Tests\Stats\RollingAverageTest.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
     <Compile Include="Tests\Tokenize\Escape\TokenEscapeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
