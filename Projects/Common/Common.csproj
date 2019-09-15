@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net35;net461</TargetFrameworks>
+    <RootNamespace>ProceduralLevel</RootNamespace>
+    <AssemblyName>ProceduralLevel.Common</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\build\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\build\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Common\Buffer\BinaryDataBuffer.Types.cs">
+      <DependentUpon>BinaryDataBuffer.Types.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Buffer\DataBufferHelper.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataBufferHelper.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Common\Event\Event.cs">
+      <DependentUpon>Event.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Event\EventBinder.Bind.cs">
+      <DependentUpon>EventBinder.Bind.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Event\EventBinding.cs">
+      <DependentUpon>EventBinding.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Event\HelperMethod.cs">
+      <DependentUpon>HelperMethod.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Common\Buffer\BinaryDataBuffer.Types.tt">
+      <LastGenOutput>BinaryDataBuffer.Types.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Common\Buffer\DataBufferHelper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataBufferHelper.cs</LastGenOutput>
+    </None>
+    <None Update="Common\Event\Event.tt">
+      <LastGenOutput>Event.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Common\Event\EventBinder.Bind.tt">
+      <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Common\Event\EventBinding.tt">
+      <LastGenOutput>EventBinding.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Common\Event\HelperMethod.tt">
+      <LastGenOutput>HelperMethod.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+</Project>

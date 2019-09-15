@@ -58,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Projects\Tokenize\Tokenize.csproj">
-      <Project>{afe4c785-97c2-47a3-bc59-d0d4be302c28}</Project>
-      <Name>Tokenize</Name>
+    <ProjectReference Include="..\..\Projects\Common\Common.csproj">
+      <Project>{8bdaea91-21d8-456a-ae41-6a9e403421b2}</Project>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
