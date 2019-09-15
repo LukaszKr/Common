@@ -238,7 +238,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return Encoding.UTF8.GetString(bytes);
 		}
-		
+
 		public float ReadFloat()
 		{
 			float value = BitConverter.ToSingle(m_Data, m_Head);

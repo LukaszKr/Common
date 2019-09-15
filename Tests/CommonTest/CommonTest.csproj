@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\SimpleID\SimpleIDTest.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
     <Compile Include="Tests\Tokenize\Escape\TokenEscapeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

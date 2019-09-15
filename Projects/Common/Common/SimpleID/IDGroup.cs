@@ -11,6 +11,8 @@ namespace ProceduralLevel.Common.SimpleID
 		private TID[] m_IDBuffer = new TID[BUFFER_SIZE];
 		private int m_IDCount;
 
+		public int Count { get { return m_IDCount; } }
+
 		public void RegisterID(TID id)
 		{
 			int desiredIndex = 0;
