@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 

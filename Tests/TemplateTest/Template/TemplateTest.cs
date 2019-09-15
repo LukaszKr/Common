@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.Template;
 
 namespace Test.Template
 {
 	public class TestData
-	{ 
+	{
 		public string Hello = "World";
 		public NestedClass Nested = new NestedClass();
 		public string[] Arr = new string[] { "a", "b" };
@@ -16,20 +16,20 @@ namespace Test.Template
 	}
 
 
-	[TestClass]
+	[TestFixture]
 	public class TemplateTest
 	{
 		private TemplateManager m_Manager;
 		private TestData m_Data;
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			m_Manager = new TemplateManager();
 			m_Data = new TestData();
 		}
 
-		[TestMethod]
+		[Test]
 		public void HelloWorld()
 		{
 			TestHelper.AssertTemplate(m_Manager,
@@ -43,7 +43,7 @@ namespace Test.Template
 				m_Data);
 		}
 
-		[TestMethod]
+		[Test]
 		public void ShouldPrintOutTheData()
 		{
 			TestHelper.AssertTemplate(m_Manager,
@@ -52,7 +52,7 @@ namespace Test.Template
 				"hello world");
 		}
 
-		[TestMethod]
+		[Test]
 		public void PrintNestedObject()
 		{
 			TestHelper.AssertTemplate(m_Manager,
@@ -66,7 +66,7 @@ namespace Test.Template
 				m_Data);
 		}
 
-		[TestMethod]
+		[Test]
 		public void PrintArrayElement()
 		{
 			TestHelper.AssertTemplate(m_Manager,

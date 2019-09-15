@@ -1,36 +1,36 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.SimpleID;
 using System;
 
 namespace ProceduralLevel.Common.Tests.SimpleID
 {
-	[TestClass]
+	[TestFixture]
 	public class SimpleIDTest
 	{
 		private IDGroup<ID> m_Group;
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			m_Group = new IDGroup<ID>();
 		}
 
-		[TestMethod]
+		[Test]
 		public void CreateAndGetID()
 		{
 			m_Group.RegisterID(new ID(1, "TestID"));
 			AssertID(1, "TestID");
 		}
 
-		[TestMethod]
+		[Test]
 		public void PreventDuplicates()
 		{
 			m_Group.RegisterID(new ID(1, "TestID"));
-			Assert.ThrowsException<ArgumentException>(() => m_Group.RegisterID(new ID(1, "DuplicatedID")));
+			Assert.Throws<ArgumentException>(() => m_Group.RegisterID(new ID(1, "DuplicatedID")));
 			AssertID(1, "TestID");
 		}
 
-		[TestMethod]
+		[Test]
 		public void ReturnNullIfNotFound()
 		{
 			m_Group.RegisterID(new ID(1, ""));

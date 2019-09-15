@@ -1,21 +1,21 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Tests.Tokenize.Escape
 {
-	[TestClass]
+	[TestFixture]
 	public class TokenEscapeTest
 	{
 		private SimpleTokenizer m_Tokenizer;
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			m_Tokenizer = new SimpleTokenizer(',', ' ', '!');
 		}
 
-		[TestMethod]
+		[Test]
 		public void SimpleEscape()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello\\, world\\!").Flush();
@@ -26,7 +26,7 @@ namespace ProceduralLevel.Common.Tests.Tokenize.Escape
 			TokenizerTestHelper.AssertToken(tokens[2], ETokenType.Value, "world!", 0, 7);
 		}
 
-		[TestMethod]
+		[Test]
 		public void EscapeCharAtTheEnd()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello\\").Flush();
@@ -35,7 +35,7 @@ namespace ProceduralLevel.Common.Tests.Tokenize.Escape
 			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
 
-		[TestMethod]
+		[Test]
 		public void EscapeCharAtBeggining()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("\\hello").Flush();
@@ -44,7 +44,7 @@ namespace ProceduralLevel.Common.Tests.Tokenize.Escape
 			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
 
-		[TestMethod]
+		[Test]
 		public void EscapeAnEscape()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("\\\\").Flush();

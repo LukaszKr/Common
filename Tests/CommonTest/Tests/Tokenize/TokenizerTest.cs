@@ -1,21 +1,21 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Tests.Tokenize
 {
-	[TestClass]
+	[TestFixture]
 	public class TokenizerTest
 	{
 		private SimpleTokenizer m_Tokenizer;
 
-		[TestInitialize]
+		[SetUp]
 		public void Initialize()
 		{
 			m_Tokenizer = new SimpleTokenizer(',', ' ', '!');
 		}
 
-		[TestMethod]
+		[Test]
 		public void BasicHelloWorld()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello, world!").Flush();
@@ -23,7 +23,7 @@ namespace ProceduralLevel.Common.Tests.Tokenize
 			AssertHelloWorld(tokens);
 		}
 
-		[TestMethod]
+		[Test]
 		public void MultiPartTokenize()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello, ").Tokenize("world").Tokenize("!").Flush();
