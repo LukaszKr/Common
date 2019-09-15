@@ -2,9 +2,9 @@
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace Test.Tokenize
+namespace ProceduralLevel.Common.Tests.Tokenize
 {
-	public static class TestHelper
+	public static class TokenizerTestHelper
 	{
 		public static void AssertToken(Token token, ETokenType type, string value, int line = -1, int column = -1)
 		{

@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace Test.Tokenize.Escape
+namespace ProceduralLevel.Common.Tests.Tokenize.Escape
 {
 	[TestClass]
 	public class TokenEscapeTest
@@ -21,18 +21,18 @@ namespace Test.Tokenize.Escape
 			List<Token> tokens = m_Tokenizer.Tokenize("hello\\, world\\!").Flush();
 
 			Assert.AreEqual(3, tokens.Count);
-			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello,", 0, 0);
-			TestHelper.AssertToken(tokens[1], ETokenType.Separator, " ", 0, 6);
-			TestHelper.AssertToken(tokens[2], ETokenType.Value, "world!", 0, 7);
+			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "hello,", 0, 0);
+			TokenizerTestHelper.AssertToken(tokens[1], ETokenType.Separator, " ", 0, 6);
+			TokenizerTestHelper.AssertToken(tokens[2], ETokenType.Value, "world!", 0, 7);
 		}
 
 		[TestMethod]
 		public void EscapeCharAtTheEnd()
 		{
 			List<Token> tokens = m_Tokenizer.Tokenize("hello\\").Flush();
-			
+
 			Assert.AreEqual(1, tokens.Count);
-			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
+			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
 
 		[TestMethod]
@@ -41,7 +41,7 @@ namespace Test.Tokenize.Escape
 			List<Token> tokens = m_Tokenizer.Tokenize("\\hello").Flush();
 
 			Assert.AreEqual(1, tokens.Count);
-			TestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
+			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "hello");
 		}
 
 		[TestMethod]
@@ -50,7 +50,7 @@ namespace Test.Tokenize.Escape
 			List<Token> tokens = m_Tokenizer.Tokenize("\\\\").Flush();
 
 			Assert.AreEqual(1, tokens.Count);
-			TestHelper.AssertToken(tokens[0], ETokenType.Value, "\\");
+			TokenizerTestHelper.AssertToken(tokens[0], ETokenType.Value, "\\");
 		}
 	}
 }
