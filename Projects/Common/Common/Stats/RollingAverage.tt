@@ -1,0 +1,43 @@
+﻿namespace ProceduralLevel.Common.Stats
+{
+<# string[] lowerCase = new string[] { "byte", "short", "ushort", "int", "uint", "long", "ulong", "float", "double" };
+string[] upperCase = new string[] { "Byte", "Short", "UShort", "Int", "UInt", "Long", "ULong", "Float", "Double" };
+
+
+for(int x = 0; x < lowerCase.Length; ++x)
+{ #>
+	public class RollingAverage<#=upperCase[x] #>
+	{
+		private readonly <#=lowerCase[x] #>[] m_Buffer;
+		private int m_Count;
+		private int m_Head;
+		private <#=lowerCase[x] #> m_Sum;
+
+		public <#=lowerCase[x] #> Average { get; private set; }
+
+		public RollingAverage<#=upperCase[x] #>(int bufferSize)
+		{
+			m_Buffer = new <#=lowerCase[x] #>[bufferSize];
+		}
+
+		public void Push(<#=lowerCase[x] #> value)
+		{
+			int length = m_Buffer.Length;
+			if(m_Count < length)
+			{
+				++m_Count;
+			}
+			m_Sum -= m_Buffer[m_Head];
+			m_Sum += value;
+			m_Buffer[m_Head] = value;
+			++m_Head;
+			if(m_Head >= length)
+			{
+				m_Head = 0;
+			}
+			Average = (<#=lowerCase[x] #>)(m_Sum/(double)m_Count);
+		}
+	}
+
+<# } #>
+}

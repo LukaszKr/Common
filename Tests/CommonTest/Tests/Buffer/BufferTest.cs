@@ -16,65 +16,68 @@ namespace ProceduralLevel.Common.Tests.Buffer
 		}
 
 		[Test]
+		public void Char()
+		{
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadChar, 1, 'a', 'z');
+		}
+
+		[Test]
 		public void Bool()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadBool, 1, true, false);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadBool, 1, true, false);
 		}
 
 		[Test]
 		public void Byte()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadByte, 1, byte.MinValue, byte.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadByte, 1, byte.MinValue, byte.MaxValue);
 		}
 
 		[Test]
 		public void Short()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadShort, 2, short.MinValue, short.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadShort, 2, short.MinValue, short.MaxValue);
 		}
 
 		[Test]
 		public void UShort()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadUShort, 2, ushort.MinValue, ushort.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadUShort, 2, ushort.MinValue, ushort.MaxValue);
 		}
 
 		[Test]
 		public void Int()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadInt, 4, int.MinValue, int.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadInt, 4, int.MinValue, int.MaxValue);
 		}
 
 		[Test]
 		public void UInt()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadUInt, 4, uint.MinValue, uint.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadUInt, 4, uint.MinValue, uint.MaxValue);
 		}
 
 		[Test]
 		public void Long()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadLong, 8, long.MinValue, long.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadLong, 8, long.MinValue, long.MaxValue);
 		}
 
 		[Test]
 		public void ULong()
 		{
-			TestPrimitive(m_Buffer.Write, m_Buffer.ReadULong, 8, ulong.MinValue, ulong.MaxValue);
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadULong, 8, ulong.MinValue, ulong.MaxValue);
 		}
 
 		[Test]
 		public void String()
 		{
 			string str = "Hello World";
-			m_Buffer.Write(str);
-			Assert.AreEqual(str.Length+4, m_Buffer.Length); //str length + str content
-			Assert.AreEqual(str, m_Buffer.ReadString());
-			AssertPostTest();
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadString, str.Length+4, str);
 		}
 
 		#region Helper
-		private void TestPrimitive<TPrimitive>(Func<TPrimitive, BinaryDataBuffer> write, Func<TPrimitive> read, int size, params TPrimitive[] values)
+		private void TestReadWrite<TPrimitive>(Func<TPrimitive, BinaryDataBuffer> write, Func<TPrimitive> read, int size, params TPrimitive[] values)
 		{
 			int length = values.Length;
 			for(int x = 0; x < length; ++x)
