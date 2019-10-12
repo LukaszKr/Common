@@ -48,6 +48,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\Buffer\BufferTest.cs" />
+    <Compile Include="Tests\Collision\ACollisionTest.cs" />
+    <Compile Include="Tests\Collision\CollisionTest.cs" />
+    <Compile Include="Tests\Collision\Distance\ADistanceTest.cs" />
+    <Compile Include="Tests\Collision\Distance\CircleToCircleDistanceTest.cs" />
+    <Compile Include="Tests\Collision\Distance\CircleToLineDistanceTest.cs" />
+    <Compile Include="Tests\Collision\Distance\PointToCircleDistanceTest.cs" />
+    <Compile Include="Tests\Collision\Distance\PointToLineDistanceTest.cs" />
+    <Compile Include="Tests\Collision\Distance\PointToPointDistanceTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\AIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\CircleToCircleIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\CircleToLineIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\LineToLineIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\PointToCircleIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Intersection\PointToLineIntersectionTest.cs" />
+    <Compile Include="Tests\Collision\Other\OrientationTest.cs" />
     <Compile Include="Tests\SimpleID\SimpleIDTest.cs" />
     <Compile Include="Tests\Stats\RollingAverageTest.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
