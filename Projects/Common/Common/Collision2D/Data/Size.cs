@@ -1,6 +1,8 @@
-﻿namespace ProceduralLevel.Common.Collision2D
+﻿using System;
+
+namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Size
+	public struct Size: IEquatable<Size>
 	{
 		public readonly float Width;
 		public readonly float Height;
@@ -9,6 +11,11 @@
 		{
 			Width = width;
 			Height = height;
+		}
+
+		public bool Equals(Size other)
+		{
+			return Width == other.Width && Height == other.Height;
 		}
 
 		public override string ToString()

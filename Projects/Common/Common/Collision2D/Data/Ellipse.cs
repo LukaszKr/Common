@@ -1,6 +1,8 @@
-﻿namespace ProceduralLevel.Common.Collision2D
+﻿using System;
+
+namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Ellipse
+	public struct Ellipse: IEquatable<Ellipse>
 	{
 		public readonly Point Position;
 		public readonly Size Size;
@@ -17,9 +19,15 @@
 			Size = size;
 		}
 
+		public bool Equals(Ellipse other)
+		{
+			return Position.Equals(other.Position) && Size.Equals(other.Size);
+		}
+
 		public override string ToString()
 		{
 			return string.Format("[Position: {0}, Size: {1}]", Position.ToString(), Size.ToString());
 		}
+
 	}
 }

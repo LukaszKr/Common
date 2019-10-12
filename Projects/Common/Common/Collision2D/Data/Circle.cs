@@ -1,6 +1,8 @@
-﻿namespace ProceduralLevel.Common.Collision2D
+﻿using System;
+
+namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Circle
+	public struct Circle: IEquatable<Circle>
 	{
 		public readonly Point Center;
 		public readonly float Radius;
@@ -66,9 +68,15 @@
 		}
 		#endregion
 
+		public bool Equals(Circle other)
+		{
+			return Radius == other.Radius && Center.Equals(other.Center);
+		}
+
 		public override string ToString()
 		{
 			return string.Format("[Center: {0}, Radius: {1}]", Center.ToString(), Radius.ToString());
 		}
+
 	}
 }

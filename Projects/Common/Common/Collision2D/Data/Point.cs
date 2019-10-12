@@ -1,6 +1,8 @@
-﻿namespace ProceduralLevel.Common.Collision2D
+﻿using System;
+
+namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Point
+	public struct Point: IEquatable<Point>
 	{
 		public readonly float X;
 		public readonly float Y;
@@ -62,9 +64,15 @@
 		}
 		#endregion
 
+		public bool Equals(Point other)
+		{
+			return X == other.X && Y == other.Y;
+		}
+
 		public override string ToString()
 		{
 			return string.Format("[X: {0}, Y: {1}]", X.ToString(), Y.ToString());
 		}
+
 	}
 }

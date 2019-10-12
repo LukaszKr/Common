@@ -1,6 +1,8 @@
-﻿namespace ProceduralLevel.Common.Collision2D
+﻿using System;
+
+namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Line
+	public struct Line: IEquatable<Line>
 	{
 		public readonly Point A;
 		public readonly Point B;
@@ -66,9 +68,15 @@
 		}
 		#endregion
 
+		public bool Equals(Line other)
+		{
+			return A.Equals(other.A) && B.Equals(other.B);
+		}
+
 		public override string ToString()
 		{
 			return string.Format("[A: {0}, B: {1}]", A.ToString(), B.ToString());
 		}
+
 	}
 }
