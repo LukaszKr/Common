@@ -19,13 +19,25 @@ namespace ProceduralLevel.Common.Buffer
 			m_Data = new byte[capacity];
 		}
 
-		public int ToBytes(byte[] bytes, int offset)
+		public byte[] ToBytes()
+		{
+			byte[] bytes = new byte[m_Length];
+			ToBytes(bytes, 0);
+			return bytes;
+		}
+
+		public int ToBytes(byte[] bytes, int offset = 0)
 		{
 			for(int x = 0; x < m_Length; x++)
 			{
 				bytes[x+offset] = m_Data[x];
 			}
 			return m_Head;
+		}
+
+		public void FromBytes(byte[] bytes)
+		{
+			FromBytes(bytes, 0, bytes.Length);
 		}
 
 		public void FromBytes(byte[] bytes, int readOffset, int length)
