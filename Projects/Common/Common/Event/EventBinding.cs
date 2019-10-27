@@ -2,10 +2,10 @@
 {
 	public class EventBinding: IEventBinding
 	{
-		private Event m_Target;
-		private Event.Callback m_Callback;
+		private AEvent m_Target;
+		private AEvent.Callback m_Callback;
 
-		public EventBinding(Event target, Event.Callback callback)
+		public EventBinding(AEvent target, AEvent.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;
@@ -24,10 +24,10 @@
 
 	public class EventBinding<T0>: IEventBinding
 	{
-		private Event<T0> m_Target;
-		private Event<T0>.Callback m_Callback;
+		private AEvent<T0> m_Target;
+		private AEvent<T0>.Callback m_Callback;
 
-		public EventBinding(Event<T0> target, Event<T0>.Callback callback)
+		public EventBinding(AEvent<T0> target, AEvent<T0>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;
@@ -46,10 +46,10 @@
 
 	public class EventBinding<T0, T1>: IEventBinding
 	{
-		private Event<T0, T1> m_Target;
-		private Event<T0, T1>.Callback m_Callback;
+		private AEvent<T0, T1> m_Target;
+		private AEvent<T0, T1>.Callback m_Callback;
 
-		public EventBinding(Event<T0, T1> target, Event<T0, T1>.Callback callback)
+		public EventBinding(AEvent<T0, T1> target, AEvent<T0, T1>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;
@@ -68,10 +68,10 @@
 
 	public class EventBinding<T0, T1, T2>: IEventBinding
 	{
-		private Event<T0, T1, T2> m_Target;
-		private Event<T0, T1, T2>.Callback m_Callback;
+		private AEvent<T0, T1, T2> m_Target;
+		private AEvent<T0, T1, T2>.Callback m_Callback;
 
-		public EventBinding(Event<T0, T1, T2> target, Event<T0, T1, T2>.Callback callback)
+		public EventBinding(AEvent<T0, T1, T2> target, AEvent<T0, T1, T2>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;
@@ -90,10 +90,10 @@
 
 	public class EventBinding<T0, T1, T2, T3>: IEventBinding
 	{
-		private Event<T0, T1, T2, T3> m_Target;
-		private Event<T0, T1, T2, T3>.Callback m_Callback;
+		private AEvent<T0, T1, T2, T3> m_Target;
+		private AEvent<T0, T1, T2, T3>.Callback m_Callback;
 
-		public EventBinding(Event<T0, T1, T2, T3> target, Event<T0, T1, T2, T3>.Callback callback)
+		public EventBinding(AEvent<T0, T1, T2, T3> target, AEvent<T0, T1, T2, T3>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;

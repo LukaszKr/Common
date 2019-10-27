@@ -25,10 +25,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DataBufferHelper.tt</DependentUpon>
     </Compile>
-    <Compile Update="Common\Event\Event.cs">
-      <DependentUpon>Event.tt</DependentUpon>
+    <Compile Update="Common\Event\AEvent.cs">
+      <DependentUpon>AEvent.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Event\Types\CustomEvent.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomEvent.tt</DependentUpon>
     </Compile>
     <Compile Update="Common\Event\EventBinder.Bind.cs">
       <DependentUpon>EventBinder.Bind.tt</DependentUpon>
@@ -39,6 +44,16 @@
       <DependentUpon>EventBinding.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Common\Event\Types\QueueEvent.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>QueueEvent.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Common\Event\Types\StackEvent.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StackEvent.tt</DependentUpon>
     </Compile>
     <Compile Update="Common\Stats\RollingAverage.cs">
       <DesignTime>True</DesignTime>
@@ -56,9 +71,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DataBufferHelper.cs</LastGenOutput>
     </None>
-    <None Update="Common\Event\Event.tt">
-      <LastGenOutput>Event.cs</LastGenOutput>
+    <None Update="Common\Event\AEvent.tt">
+      <LastGenOutput>AEvent.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="Common\Event\Types\CustomEvent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CustomEvent.cs</LastGenOutput>
     </None>
     <None Update="Common\Event\EventBinder.Bind.tt">
       <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
@@ -70,6 +89,14 @@
     </None>
     <None Update="Common\Event\HelperMethod.tt">
       <Generator></Generator>
+    </None>
+    <None Update="Common\Event\Types\QueueEvent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>QueueEvent.cs</LastGenOutput>
+    </None>
+    <None Update="Common\Event\Types\StackEvent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StackEvent.cs</LastGenOutput>
     </None>
     <None Update="Common\Stats\RollingAverage.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -4,7 +4,7 @@ namespace ProceduralLevel.Common.Event
     public partial class EventBinder
     {
 <# for(int x = 0; x < tCount; x++) { #>
-		public void Bind<#= listGenerics(x) #>(Event<#= listGenerics(x) #> evt, Event<#= listGenerics(x) #>.Callback callback)
+		public void Bind<#= listGenerics(x) #>(AEvent<#= listGenerics(x) #> evt, AEvent<#= listGenerics(x) #>.Callback callback)
 		{
 			AddBinding(new EventBinding<#= listGenerics(x) #>(evt, callback));
 		}

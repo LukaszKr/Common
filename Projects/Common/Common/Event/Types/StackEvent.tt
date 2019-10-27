@@ -1,0 +1,18 @@
+﻿<#@ include file="./../HelperMethod.tt" #>
+namespace ProceduralLevel.Common.Event
+{
+<# for(int x = 0; x < tCount; x++) { #>
+    public class StackEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
+    {
+		public override void Invoke(<#= listParams(x) #>)
+		{
+			int lastIndex = m_Listeners.Count-1;
+			if(lastIndex >= 0)
+			{
+				m_Listeners[lastIndex](<#= listArgs(x) #>);
+			}
+		}
+    }
+
+<# } #>
+}

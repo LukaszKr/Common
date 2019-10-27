@@ -1,0 +1,18 @@
+﻿<#@ include file="./../HelperMethod.tt" #>
+namespace ProceduralLevel.Common.Event
+{
+<# for(int x = 0; x < tCount; x++) { #>
+    public class QueueEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
+    {
+		public override void Invoke(<#= listParams(x) #>)
+		{
+			int count = m_Listeners.Count;
+			if(count > 0)
+			{
+				m_Listeners[0](<#= listArgs(x) #>);
+			}
+		}
+    }
+
+<# } #>
+}

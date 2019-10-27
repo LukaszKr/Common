@@ -4,10 +4,10 @@ namespace ProceduralLevel.Common.Event
 <# for(int x = 0; x < tCount; x++) { #>
 	public class EventBinding<#= listGenerics(x) #>: IEventBinding
 	{
-		private Event<#= listGenerics(x) #> m_Target;
-		private Event<#= listGenerics(x) #>.Callback m_Callback;
+		private AEvent<#= listGenerics(x) #> m_Target;
+		private AEvent<#= listGenerics(x) #>.Callback m_Callback;
 
-		public EventBinding(Event<#= listGenerics(x) #> target, Event<#= listGenerics(x) #>.Callback callback)
+		public EventBinding(AEvent<#= listGenerics(x) #> target, AEvent<#= listGenerics(x) #>.Callback callback)
 		{
 			m_Target = target;
 			m_Callback = callback;

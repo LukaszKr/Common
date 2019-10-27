@@ -2,19 +2,13 @@
 
 namespace ProceduralLevel.Common.Event
 {
-	public class Event
+	public abstract class AEvent
 	{
 		public delegate void Callback();
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public void Invoke()
-		{
-			for(int x = m_Listeners.Count-1; x >= 0; x--)
-			{
-				m_Listeners[x]();
-			}
-		}
+		public abstract void Invoke();
 
 		public void AddListener(Callback listener)
 		{
@@ -38,19 +32,13 @@ namespace ProceduralLevel.Common.Event
 		}
 	}
 
-	public class Event<T0>
+	public abstract class AEvent<T0>
 	{
 		public delegate void Callback(T0 arg0);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public void Invoke(T0 arg0)
-		{
-			for(int x = m_Listeners.Count-1; x >= 0; x--)
-			{
-				m_Listeners[x](arg0);
-			}
-		}
+		public abstract void Invoke(T0 arg0);
 
 		public void AddListener(Callback listener)
 		{
@@ -74,19 +62,13 @@ namespace ProceduralLevel.Common.Event
 		}
 	}
 
-	public class Event<T0, T1>
+	public abstract class AEvent<T0, T1>
 	{
 		public delegate void Callback(T0 arg0, T1 arg1);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public void Invoke(T0 arg0, T1 arg1)
-		{
-			for(int x = m_Listeners.Count-1; x >= 0; x--)
-			{
-				m_Listeners[x](arg0, arg1);
-			}
-		}
+		public abstract void Invoke(T0 arg0, T1 arg1);
 
 		public void AddListener(Callback listener)
 		{
@@ -110,19 +92,13 @@ namespace ProceduralLevel.Common.Event
 		}
 	}
 
-	public class Event<T0, T1, T2>
+	public abstract class AEvent<T0, T1, T2>
 	{
 		public delegate void Callback(T0 arg0, T1 arg1, T2 arg2);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public void Invoke(T0 arg0, T1 arg1, T2 arg2)
-		{
-			for(int x = m_Listeners.Count-1; x >= 0; x--)
-			{
-				m_Listeners[x](arg0, arg1, arg2);
-			}
-		}
+		public abstract void Invoke(T0 arg0, T1 arg1, T2 arg2);
 
 		public void AddListener(Callback listener)
 		{
@@ -146,19 +122,13 @@ namespace ProceduralLevel.Common.Event
 		}
 	}
 
-	public class Event<T0, T1, T2, T3>
+	public abstract class AEvent<T0, T1, T2, T3>
 	{
 		public delegate void Callback(T0 arg0, T1 arg1, T2 arg2, T3 arg3);
 
 		protected List<Callback> m_Listeners = new List<Callback>();
 
-		public void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
-		{
-			for(int x = m_Listeners.Count-1; x >= 0; x--)
-			{
-				m_Listeners[x](arg0, arg1, arg2, arg3);
-			}
-		}
+		public abstract void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3);
 
 		public void AddListener(Callback listener)
 		{
