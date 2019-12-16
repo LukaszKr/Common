@@ -51,8 +51,14 @@ namespace ProceduralLevel.Common.Tokenize
 			{
 				m_Tokens.Add(new Token(remaining, ETokenType.Value, m_Line, m_Column));
 			}
+			OnPreFlush(tokens);
 			Clear();
 			return tokens;
+		}
+
+		protected virtual void OnPreFlush(List<Token> tokens)
+		{
+
 		}
 
 		public List<Token> Peek()
