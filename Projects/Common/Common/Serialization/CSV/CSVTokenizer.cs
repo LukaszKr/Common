@@ -3,7 +3,7 @@ using System;
 
 namespace ProceduralLevel.Common.Serialization.CSV
 {
-	internal sealed class CSVTokenizer: ATokenizer
+	public sealed class CSVTokenizer: ATokenizer
 	{
 		public const char ALT_SEPARATOR = ';';
 		public const char SEPARATOR = ',';

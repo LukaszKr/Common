@@ -63,6 +63,7 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
+    <Compile Include="Tests\Serialization\CSV\CSVTest.cs" />
     <Compile Include="Tests\SimpleID\SimpleIDTest.cs" />
     <Compile Include="Tests\Stats\RollingAverageTest.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
