@@ -29,9 +29,49 @@ namespace ProceduralLevel.Common.Tests.Serialization.CSV
 
 			Assert.AreEqual(1, table.Entries.Count);
 			CSVEntry entry = table.Entries[0];
-			Assert.AreEqual(2, entry.Values.Length);
-			Assert.AreEqual("a", entry.Values[0]);
-			Assert.AreEqual("b", entry.Values[1]);
+			AssertEntry(entry, "a", "b");
+		}
+
+		[Test]
+		public void KeyValuePair()
+		{
+			CSVTable table = m_Parser.Parse("key;value").Flush();
+			AssertEntry(table.Entries[0], "key", "value");
+		}
+
+		[Test]
+		public void QuotedValues()
+		{
+			CSVTable table = m_Parser.Parse("\"key\";\"value\"").Flush();
+			AssertEntry(table.Entries[0], "key", "value");
+		}
+
+		[Test]
+		public void MultiLineValue()
+		{
+			CSVTable table = m_Parser.Parse("\"key\";\"value\nvalue\"").Flush();
+			AssertEntry(table.Entries[0], "key", "value\nvalue");
+		}
+
+		[Test]
+		public void MultipleEntries()
+		{
+			CSVTable table = m_Parser.Parse("\"key1\";\"value1\"\nkey2;value2").Flush();
+			AssertEntry(table.Entries[0], "key1", "value1");
+			AssertEntry(table.Entries[1], "key2", "value2");
+		}
+
+
+
+		private static void AssertEntry(CSVEntry entry, params string[] values)
+		{
+			int length = values.Length;
+			Assert.AreEqual(length, entry.Values.Length);
+
+			for(int x = 0; x < length; ++x)
+			{
+				Assert.AreEqual(values[x], entry.Values[x]);
+			}
 		}
 	}
 }
