@@ -61,7 +61,23 @@ namespace ProceduralLevel.Common.Tests.Serialization.CSV
 			AssertEntry(table.Entries[1], "key2", "value2");
 		}
 
+		[Test]
+		public void MixedSeparators()
+		{
+			CSVTable table = m_Parser.Parse("1;2,3").Flush();
+			AssertEntry(table.Entries[0], "1", "2,3");
 
+			table = m_Parser.Parse("1,2;3").Flush();
+			AssertEntry(table.Entries[0], "1", "2;3");
+		}
+
+		[Test]
+		public void PutInQuotesIfNeeded()
+		{
+			CSVEntry entry = new CSVEntry("1,2", "3");
+			string strEntry = entry.ToString(',');
+			Assert.AreEqual("\"1,2\",3", strEntry);
+		}
 
 		private static void AssertEntry(CSVEntry entry, params string[] values)
 		{

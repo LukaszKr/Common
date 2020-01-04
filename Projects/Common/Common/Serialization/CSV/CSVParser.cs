@@ -11,7 +11,6 @@ namespace ProceduralLevel.Common.Serialization.CSV
 
 		protected override CSVTable Parse()
 		{
-
 			CSVTable table = new CSVTable();
 			while(HasTokens())
 			{

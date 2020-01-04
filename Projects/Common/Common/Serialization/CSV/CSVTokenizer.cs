@@ -11,9 +11,19 @@ namespace ProceduralLevel.Common.Serialization.CSV
 		public const char TERMINATOR = '\n';
 
 		private static char[] m_AllSeparators = new char[] { SEPARATOR, ALT_SEPARATOR, QUOTE, TERMINATOR };
+		private static char[] m_DefaultSeparators = new char[] { SEPARATOR, QUOTE, TERMINATOR };
+		private static char[] m_AltSeparators = new char[] { ALT_SEPARATOR, QUOTE, TERMINATOR };
+
 		private static char[] m_QuoteSeparators = new char[] { QUOTE };
 
 		private bool m_QuoteOpen = false;
+		private char[] m_ExpectedSeparators = null;
+
+		protected override void Clear()
+		{
+			base.Clear();
+			m_ExpectedSeparators = null;
+		}
 
 		protected override char[] GetSeparators()
 		{
@@ -32,9 +42,19 @@ namespace ProceduralLevel.Common.Serialization.CSV
 					}
 					return m_QuoteSeparators;
 				case TERMINATOR:
-				case SEPARATOR:
-				case ALT_SEPARATOR:
 					return m_AllSeparators;
+				case SEPARATOR:
+					if(m_ExpectedSeparators == null)
+					{
+						m_ExpectedSeparators = m_DefaultSeparators;
+					}
+					return m_ExpectedSeparators;
+				case ALT_SEPARATOR:
+					if(m_ExpectedSeparators == null)
+					{
+						m_ExpectedSeparators = m_AltSeparators;
+					}
+					return m_ExpectedSeparators;
 				default:
 					throw new NotImplementedException();
 			}

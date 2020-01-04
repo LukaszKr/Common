@@ -5,10 +5,17 @@ namespace ProceduralLevel.Common.Serialization.CSV
 {
 	public sealed class CSVTable
 	{
+		public char Separator;
 		public readonly List<CSVEntry> Entries = new List<CSVEntry>();
 
 		public CSVTable()
 		{
+			Separator = CSVTokenizer.SEPARATOR;
+		}
+
+		public CSVTable(char separator)
+		{
+			Separator = separator;
 		}
 
 		public override string ToString()
@@ -17,7 +24,8 @@ namespace ProceduralLevel.Common.Serialization.CSV
 			int count = Entries.Count;
 			for(int x = 0; x < count; ++x)
 			{
-				sb.AppendLine(Entries[x].ToString());
+				Entries[x].ToString(sb, Separator);
+				sb.AppendLine();
 			}
 			return sb.ToString();
 		}
