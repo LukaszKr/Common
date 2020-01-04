@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Serialization.CSV
 {
-	public sealed class CSVParser: AParser<CSVTable>
+	public sealed class CSVParser: AParser<CSVTokenizer, CSVTable>
 	{
 		public CSVParser() : base(new CSVTokenizer())
 		{
@@ -11,7 +11,7 @@ namespace ProceduralLevel.Common.Serialization.CSV
 
 		protected override CSVTable Parse()
 		{
-			CSVTable table = new CSVTable();
+			CSVTable table = new CSVTable(m_Tokenizer.LastDetectedSeparator);
 			while(HasTokens())
 			{
 				CSVEntry entry = ParseEntry();

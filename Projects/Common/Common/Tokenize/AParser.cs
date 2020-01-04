@@ -2,7 +2,8 @@
 
 namespace ProceduralLevel.Common.Tokenize
 {
-	public abstract class AParser<DataType>
+	public abstract class AParser<TokenizerType, DataType>
+		where TokenizerType: ATokenizer
     {
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
@@ -11,9 +12,9 @@ namespace ProceduralLevel.Common.Tokenize
 		protected string m_ConsumedSoFar = "";
 		#endif
 
-		protected ATokenizer m_Tokenizer;
+		protected TokenizerType m_Tokenizer;
 
-		public AParser(ATokenizer tokenizer)
+		public AParser(TokenizerType tokenizer)
 		{
 			m_Tokenizer = tokenizer;
 		}
@@ -51,14 +52,14 @@ namespace ProceduralLevel.Common.Tokenize
 			}
 		}
 
-		public AParser<DataType> Parse(string str)
+		public AParser<TokenizerType, DataType> Parse(string str)
 		{
 			m_Tokenizer.Tokenize(str);
 			m_Next = 0;
 			return this;
 		}
 
-		public AParser<DataType> ParseLine(string str)
+		public AParser<TokenizerType, DataType> ParseLine(string str)
 		{
 			m_Tokenizer.Tokenize(str+ATokenizer.NEW_LINE);
 			m_Next = 0;

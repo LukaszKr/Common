@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Template.Parser
 {
-	public class TemplateParser: AParser<List<TextTemplate>>
+	public class TemplateParser: AParser<TemplateTokenizer, List<TextTemplate>>
 	{
 		private List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 

@@ -18,6 +18,7 @@ namespace ProceduralLevel.Common.Serialization.CSV
 
 		private bool m_QuoteOpen = false;
 		private char[] m_ExpectedSeparators = null;
+		public char LastDetectedSeparator { get; private set; }
 
 		protected override void Clear()
 		{
@@ -47,12 +48,14 @@ namespace ProceduralLevel.Common.Serialization.CSV
 					if(m_ExpectedSeparators == null)
 					{
 						m_ExpectedSeparators = m_DefaultSeparators;
+						LastDetectedSeparator = SEPARATOR;
 					}
 					return m_ExpectedSeparators;
 				case ALT_SEPARATOR:
 					if(m_ExpectedSeparators == null)
 					{
 						m_ExpectedSeparators = m_AltSeparators;
+						LastDetectedSeparator = ALT_SEPARATOR;
 					}
 					return m_ExpectedSeparators;
 				default:
