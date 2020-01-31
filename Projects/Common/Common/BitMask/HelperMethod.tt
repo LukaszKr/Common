@@ -1,0 +1,18 @@
+﻿<#
+	Func<string, int, string, string> writeList = (string format, int count, string separator) => {
+		string str = "";
+		for(int x = 0; x < count; x++)
+		{
+			if(x > 0) 
+			{ 
+				str += separator;
+			}
+			str += string.Format(format, x.ToString());
+		}
+		return str;
+	}; 
+
+	Func<int, string> listArgs = (int count) => {
+		return writeList("int i{0}", count, ", ");
+	};
+#>

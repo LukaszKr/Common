@@ -1,0 +1,123 @@
+﻿<#@ include file="./HelperMethod.tt" #>
+using System;
+
+namespace ProceduralLevel.Common.BitMask
+{
+<# for(int x = 1; x <= 8; x++) {
+	int currentMask = x*32;
+#>
+    public unsafe struct BitMask<#= currentMask #>: IEquatable<BitMask<#= currentMask #>>
+    {
+		public const int LENGTH = <#= currentMask #>;
+
+		private fixed int m_Data[<#= x #>];
+
+		private BitMask<#= currentMask #>(<#= listArgs(x) #>)
+		{
+<# for(int y = 0; y < x; ++y) { #>
+			m_Data[<#= y #>] = i<#= y #>;
+<# } #>
+		}
+
+#region Getter/Setter
+		public bool Get(int position)
+		{
+			BitIndex index = new BitIndex(position);
+			int mask = 1 << index.Local;
+			return (m_Data[index.Group] & mask) != 0;
+		}
+
+		public bool Get(BitIndex index)
+		{
+			int mask = 1 << index.Local;
+			return (m_Data[index.Group] & mask) != 0;
+		}
+
+		public int GetGroup(int group)
+		{
+			return m_Data[group];
+		}
+
+		public void Set(int position, bool value)
+		{
+			BitIndex index = new BitIndex(position);
+			int mask = 1 << index.Local;
+			if(value)
+			{
+				m_Data[index.Group] |= mask;
+			}
+			else
+			{
+				m_Data[index.Group] &= ~mask;
+			}
+		}
+
+		public void Set(BitIndex index, bool value)
+		{
+			int mask = 1 << index.Local;
+			if(value)
+			{
+				m_Data[index.Group] |= mask;
+			}
+			else
+			{
+				m_Data[index.Group] &= ~mask;
+			}
+		}
+
+		public void SetGroup(int group, int value)
+		{
+			m_Data[group] = value;
+		}
+#endregion
+
+#region Bit Operations
+<# string[] operations = new string[] { "And", "&", "Or", "|", "XOr", "^" }; #>
+<# for(int z = 0; z < operations.Length; z += 2) { #>
+		public BitMask<#= currentMask #> <#= operations[z]#>(BitMask<#= currentMask #> other)
+		{
+			return new BitMask<#= currentMask #>(
+<# for(int y = 0; y < x; ++y) { #>
+				m_Data[<#= y #>] <#= operations[z+1] #> other.m_Data[<#= y #>]<#= (y+1 < x? ", ": ");") #>
+<# } #>
+		}
+
+<# } #>
+		public BitMask<#= currentMask #> Negate()
+		{
+			return new BitMask<#= currentMask #>(
+<# for(int y = 0; y < x; ++y) { #>
+				~m_Data[<#= y #>]<#= (y+1 < x? ",": ");") #>
+<# } #>
+		}
+#endregion
+
+#region Other
+		public bool IsEmpty()
+		{
+			return
+<# for(int y = 0; y < x; ++y) { #>
+				m_Data[<#= y #>] == 0<#= (y+1 < x? " &&": ";") #>
+<# } #>
+		}
+
+		public bool HasCommonPart(BitMask<#= currentMask #> other)
+		{
+			return 
+<# for(int y = 0; y < x; ++y) { #>
+				(m_Data[<#= y #>] & other.m_Data[<#= y #>]) != 0<#= (y+1 < x? " &&": ";") #>
+<# } #>
+		}
+#endregion
+
+
+		public bool Equals(BitMask<#= currentMask #> other)
+		{
+			return 
+<# for(int y = 0; y < x; ++y) { #>
+				m_Data[<#= y #>] == other.m_Data[<#= y #>]<#= (y+1 < x? " &&": ";") #>
+<# } #>
+		}
+    }
+<#} #>
+}
