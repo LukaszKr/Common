@@ -6,9 +6,9 @@ namespace ProceduralLevel.Common.Buffer
 {
 	public partial class BinaryDataBuffer
 	{
-		private readonly byte[] m_Data;
-		private int m_Head;
-		private int m_Length;
+		protected readonly byte[] m_Data;
+		protected int m_Head;
+		protected int m_Length;
 
 		public byte[] Bytes { get { return m_Data; } }
 		public int Length { get { return m_Length; } }
