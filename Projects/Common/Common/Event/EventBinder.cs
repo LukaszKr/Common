@@ -34,9 +34,12 @@ namespace ProceduralLevel.Common.Event
 
 		public void UnbindAll()
 		{
-			for(int x = 0; x < m_Bindings.Count; x++)
+			if(!IsDisabled)
 			{
-				m_Bindings[x].Unbind();
+				for(int x = 0; x < m_Bindings.Count; x++)
+				{
+					m_Bindings[x].Unbind();
+				}
 			}
 			m_Bindings.Clear();
 		}
