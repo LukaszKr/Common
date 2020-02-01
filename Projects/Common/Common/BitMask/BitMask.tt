@@ -1,5 +1,6 @@
 ﻿<#@ include file="./HelperMethod.tt" #>
 using System;
+using System.Runtime.CompilerServices;
 
 namespace ProceduralLevel.Common.BitMask
 {
@@ -20,6 +21,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 #region Getter/Setter
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool Get(int position)
 		{
 			BitIndex index = new BitIndex(position);
@@ -27,17 +29,20 @@ namespace ProceduralLevel.Common.BitMask
 			return (m_Data[index.Group] & mask) != 0;
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool Get(BitIndex index)
 		{
 			int mask = 1 << index.Local;
 			return (m_Data[index.Group] & mask) != 0;
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int GetGroup(int group)
 		{
 			return m_Data[group];
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Set(int position, bool value)
 		{
 			BitIndex index = new BitIndex(position);
@@ -52,6 +57,7 @@ namespace ProceduralLevel.Common.BitMask
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Set(BitIndex index, bool value)
 		{
 			int mask = 1 << index.Local;
@@ -65,6 +71,52 @@ namespace ProceduralLevel.Common.BitMask
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Set(int position)
+		{
+			BitIndex index = new BitIndex(position);
+			int mask = 1 << index.Local;
+			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Set(BitIndex index)
+		{
+			int mask = 1 << index.Local;
+			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear(int position)
+		{
+			BitIndex index = new BitIndex(position);
+			int mask = 1 << index.Local;
+			m_Data[index.Group] &= ~mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear(BitIndex index)
+		{
+			int mask = 1 << index.Local;
+			m_Data[index.Group] &= ~mask;
+		}
+		
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Toggle(int position)
+		{
+			BitIndex index = new BitIndex(position);
+			int mask = 1 << index.Local;
+			m_Data[index.Group] ^= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Toggle(BitIndex index)
+		{
+			int mask = 1 << index.Local;
+			m_Data[index.Group] ^= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void SetGroup(int group, int value)
 		{
 			m_Data[group] = value;
@@ -74,6 +126,7 @@ namespace ProceduralLevel.Common.BitMask
 #region Bit Operations
 <# string[] operations = new string[] { "And", "&", "Or", "|", "XOr", "^" }; #>
 <# for(int z = 0; z < operations.Length; z += 2) { #>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask<#= currentMask #> <#= operations[z]#>(BitMask<#= currentMask #> other)
 		{
 			return new BitMask<#= currentMask #>(
@@ -83,6 +136,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 <# } #>
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask<#= currentMask #> Negate()
 		{
 			return new BitMask<#= currentMask #>(
@@ -93,6 +147,7 @@ namespace ProceduralLevel.Common.BitMask
 #endregion
 
 #region Other
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool IsEmpty()
 		{
 			return
@@ -101,6 +156,7 @@ namespace ProceduralLevel.Common.BitMask
 <# } #>
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool HasCommonPart(BitMask<#= currentMask #> other)
 		{
 			return 
@@ -110,7 +166,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 #endregion
 
-
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool Equals(BitMask<#= currentMask #> other)
 		{
 			return 

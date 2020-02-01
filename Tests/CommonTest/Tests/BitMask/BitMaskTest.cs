@@ -26,5 +26,31 @@ namespace ProceduralLevel.Common.Tests.BitMask
 			Assert.IsTrue(m_Buffer.Get(64));
 			Assert.IsTrue(m_Buffer.Get(65));
 		}
+
+		[Test]
+		public void ToggleBit()
+		{
+			m_Buffer.Set(32);
+			m_Buffer.Set(33);
+
+			Assert.IsTrue(m_Buffer.Get(33));
+			m_Buffer.Toggle(33);
+			Assert.IsTrue(m_Buffer.Get(32));
+			Assert.IsFalse(m_Buffer.Get(33));
+			m_Buffer.Toggle(33);
+			Assert.IsTrue(m_Buffer.Get(33));
+		}
+
+		[Test]
+		public void ClearBit()
+		{
+			m_Buffer.Set(33);
+
+			m_Buffer.Clear(32);
+			m_Buffer.Clear(33);
+			Assert.IsFalse(m_Buffer.Get(32));
+			Assert.IsFalse(m_Buffer.Get(33));
+
+		}
 	}
 }
