@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace ProceduralLevel.Common.Tween
 {
@@ -36,6 +37,7 @@ namespace ProceduralLevel.Common.Tween
 			Methods[index+2] = CreateInOut(inDelegate);
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static float Calculate(ETween type, EMethod method, float t)
 		{
 			return Methods[(int)type*METHOD_COUNT+(int)method](t);

@@ -140,7 +140,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask32 Negate()
+		public BitMask32 ToggleAll()
 		{
 			return new BitMask32(
 				~m_Data[0]);
@@ -311,7 +311,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask64 Negate()
+		public BitMask64 ToggleAll()
 		{
 			return new BitMask64(
 				~m_Data[0],
@@ -490,7 +490,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask96 Negate()
+		public BitMask96 ToggleAll()
 		{
 			return new BitMask96(
 				~m_Data[0],
@@ -677,7 +677,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask128 Negate()
+		public BitMask128 ToggleAll()
 		{
 			return new BitMask128(
 				~m_Data[0],
@@ -872,7 +872,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask160 Negate()
+		public BitMask160 ToggleAll()
 		{
 			return new BitMask160(
 				~m_Data[0],
@@ -1075,7 +1075,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask192 Negate()
+		public BitMask192 ToggleAll()
 		{
 			return new BitMask192(
 				~m_Data[0],
@@ -1286,7 +1286,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask224 Negate()
+		public BitMask224 ToggleAll()
 		{
 			return new BitMask224(
 				~m_Data[0],
@@ -1505,7 +1505,7 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask256 Negate()
+		public BitMask256 ToggleAll()
 		{
 			return new BitMask256(
 				~m_Data[0],
