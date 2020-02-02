@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Animation
+﻿namespace ProceduralLevel.Common.Tween
 {
 	public enum EEasingMethod
 	{
