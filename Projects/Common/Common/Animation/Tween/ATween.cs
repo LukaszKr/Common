@@ -9,7 +9,6 @@ namespace ProceduralLevel.Common.Animation
 
 		public ETweenState State { get { return m_State; } }
 
-		public readonly CustomEvent OnStart = new CustomEvent();
 		public readonly CustomEvent OnFinish = new CustomEvent();
 
 		public bool IsFinished { get { return m_State == ETweenState.Finished; } }
@@ -40,7 +39,6 @@ namespace ProceduralLevel.Common.Animation
 
 		public virtual void Cancel()
 		{
-			OnStart.RemoveAllListeners();
 			OnFinish.RemoveAllListeners();
 		}
 
@@ -48,8 +46,6 @@ namespace ProceduralLevel.Common.Animation
 		{
 			m_State = ETweenState.Started;
 			Start();
-			OnStart.Invoke();
-			OnStart.RemoveAllListeners();
 		}
 
 		protected void SetFinished()

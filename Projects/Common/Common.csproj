@@ -23,6 +23,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Common\Animation\Tween\Impl\Value\ValueTween.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ValueTween.tt</DependentUpon>
+    </Compile>
     <Compile Update="Common\BitMask\BitMask.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -76,6 +81,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Common\Animation\Tween\Impl\Value\ValueTween.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ValueTween.cs</LastGenOutput>
+    </None>
     <None Update="Common\BitMask\BitMask.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BitMask.cs</LastGenOutput>

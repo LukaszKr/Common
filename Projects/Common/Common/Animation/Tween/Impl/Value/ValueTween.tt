@@ -1,0 +1,24 @@
+﻿<# 
+	string[] lType = new string[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long" ,"ulong", "float", "double" };
+	string[] uType = new string[] { "Byte", "SByte", "Short", "UShort", "Int", "UInt", "Long" ,"ULong", "Float", "Double" };
+#>
+
+namespace ProceduralLevel.Common.Animation
+{
+<# for(int x = 0; x < lType.Length; ++x) { #>
+    public class <#= uType[x] #>Tween: AValueTween<<#= lType[x] #>>
+    {
+		public <#= uType[x] #>Tween(Easing easing, <#= lType[x] #> source, <#= lType[x] #> target)
+			: base(easing, source, target)
+		{
+		
+		}
+
+		protected override <#= lType[x] #> Blend(<#= lType[x] #> source, <#= lType[x] #> target, float blend, float reverseBlend)
+		{
+			return (<#= lType[x] #>)(source*reverseBlend+target*blend);
+		}
+    }
+
+<# } #>
+}
