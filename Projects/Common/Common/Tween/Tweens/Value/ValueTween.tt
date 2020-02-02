@@ -2,13 +2,14 @@
 	string[] lType = new string[] { "byte", "sbyte", "short", "ushort", "int", "uint", "long" ,"ulong", "float", "double" };
 	string[] uType = new string[] { "Byte", "SByte", "Short", "UShort", "Int", "UInt", "Long" ,"ULong", "Float", "Double" };
 #>
+using ProceduralLevel.Common.Easing;
 
-namespace ProceduralLevel.Common.Animation
+namespace ProceduralLevel.Common.Tween
 {
 <# for(int x = 0; x < lType.Length; ++x) { #>
     public class <#= uType[x] #>Tween: AValueTween<<#= lType[x] #>>
     {
-		public <#= uType[x] #>Tween(Easing easing, <#= lType[x] #> source, <#= lType[x] #> target)
+		public <#= uType[x] #>Tween(EasingFunc easing, <#= lType[x] #> source, <#= lType[x] #> target)
 			: base(easing, source, target)
 		{
 		

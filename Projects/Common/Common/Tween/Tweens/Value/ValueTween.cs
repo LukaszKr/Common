@@ -1,9 +1,10 @@
-﻿
-namespace ProceduralLevel.Common.Animation
+﻿using ProceduralLevel.Common.Easing;
+
+namespace ProceduralLevel.Common.Tween
 {
     public class ByteTween: AValueTween<byte>
     {
-		public ByteTween(Easing easing, byte source, byte target)
+		public ByteTween(EasingFunc easing, byte source, byte target)
 			: base(easing, source, target)
 		{
 		
@@ -17,7 +18,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class SByteTween: AValueTween<sbyte>
     {
-		public SByteTween(Easing easing, sbyte source, sbyte target)
+		public SByteTween(EasingFunc easing, sbyte source, sbyte target)
 			: base(easing, source, target)
 		{
 		
@@ -31,7 +32,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class ShortTween: AValueTween<short>
     {
-		public ShortTween(Easing easing, short source, short target)
+		public ShortTween(EasingFunc easing, short source, short target)
 			: base(easing, source, target)
 		{
 		
@@ -45,7 +46,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class UShortTween: AValueTween<ushort>
     {
-		public UShortTween(Easing easing, ushort source, ushort target)
+		public UShortTween(EasingFunc easing, ushort source, ushort target)
 			: base(easing, source, target)
 		{
 		
@@ -59,7 +60,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class IntTween: AValueTween<int>
     {
-		public IntTween(Easing easing, int source, int target)
+		public IntTween(EasingFunc easing, int source, int target)
 			: base(easing, source, target)
 		{
 		
@@ -73,7 +74,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class UIntTween: AValueTween<uint>
     {
-		public UIntTween(Easing easing, uint source, uint target)
+		public UIntTween(EasingFunc easing, uint source, uint target)
 			: base(easing, source, target)
 		{
 		
@@ -87,7 +88,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class LongTween: AValueTween<long>
     {
-		public LongTween(Easing easing, long source, long target)
+		public LongTween(EasingFunc easing, long source, long target)
 			: base(easing, source, target)
 		{
 		
@@ -101,7 +102,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class ULongTween: AValueTween<ulong>
     {
-		public ULongTween(Easing easing, ulong source, ulong target)
+		public ULongTween(EasingFunc easing, ulong source, ulong target)
 			: base(easing, source, target)
 		{
 		
@@ -115,7 +116,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class FloatTween: AValueTween<float>
     {
-		public FloatTween(Easing easing, float source, float target)
+		public FloatTween(EasingFunc easing, float source, float target)
 			: base(easing, source, target)
 		{
 		
@@ -129,7 +130,7 @@ namespace ProceduralLevel.Common.Animation
 
     public class DoubleTween: AValueTween<double>
     {
-		public DoubleTween(Easing easing, double source, double target)
+		public DoubleTween(EasingFunc easing, double source, double target)
 			: base(easing, source, target)
 		{
 		

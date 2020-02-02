@@ -1,7 +1,7 @@
 ﻿using ProceduralLevel.Common.Event;
 using System;
 
-namespace ProceduralLevel.Common.Animation
+namespace ProceduralLevel.Common.Tween
 {
 	public abstract class ATween: ITween
 	{

@@ -1,11 +1,11 @@
-﻿namespace ProceduralLevel.Common.Animation
+﻿namespace ProceduralLevel.Common.Easing
 {
-	public struct Easing
+	public struct EasingFunc
 	{
 		public readonly float Duration;
 		private readonly EasingHelper.EasingDelegate m_Method;
 
-		public Easing(float duration, EEasingMethod method = EEasingMethod.Sine, EEasingType type = EEasingType.In)
+		public EasingFunc(float duration, EEasingMethod method = EEasingMethod.Sine, EEasingType type = EEasingType.In)
 		{
 			m_Method = EasingHelper.Get(method, type);
 			Duration = duration;

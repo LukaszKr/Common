@@ -1,4 +1,6 @@
-﻿namespace ProceduralLevel.Common.Animation
+﻿using ProceduralLevel.Common.Easing;
+
+namespace ProceduralLevel.Common.Tween
 {
 	public abstract class AEasingTween: ATween
 	{
@@ -6,12 +8,12 @@
 		public readonly string Callstack;
 #endif
 
-		private readonly Easing m_Easing;
+		private readonly EasingFunc m_Easing;
 
 		private float m_Elapsed;
 		private float m_Progress;
 
-		public AEasingTween(Easing easing)
+		public AEasingTween(EasingFunc easing)
 		{
 #if CALLSTACK_DEBUG
 			Callstack = System.Environment.StackTrace;
@@ -50,7 +52,7 @@
 	{
 		public readonly TTarget Target;
 
-		public AEasingTween(TTarget target, Easing settings)
+		public AEasingTween(TTarget target, EasingFunc settings)
 			: base(settings)
 		{
 			Target = target;

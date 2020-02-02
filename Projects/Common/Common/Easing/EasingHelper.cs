@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace ProceduralLevel.Common.Animation
+namespace ProceduralLevel.Common.Easing
 {
 	public static class EasingHelper
 	{

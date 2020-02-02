@@ -1,6 +1,7 @@
-﻿using ProceduralLevel.Common.Event;
+﻿using ProceduralLevel.Common.Easing;
+using ProceduralLevel.Common.Event;
 
-namespace ProceduralLevel.Common.Animation
+namespace ProceduralLevel.Common.Tween
 {
 	public abstract class AValueTween<TValue>: AEasingTween
 	{
@@ -11,7 +12,7 @@ namespace ProceduralLevel.Common.Animation
 
 		public readonly CustomEvent<TValue> OnValueChanged = new CustomEvent<TValue>();
 
-		public AValueTween(Easing easing, TValue source, TValue target)
+		public AValueTween(EasingFunc easing, TValue source, TValue target)
 			: base(easing)
 		{
 			m_Source = source;

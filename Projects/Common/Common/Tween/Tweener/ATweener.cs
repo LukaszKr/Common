@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Animation
+namespace ProceduralLevel.Common.Tween
 {
 	public abstract class ATweener: ITween
 	{
