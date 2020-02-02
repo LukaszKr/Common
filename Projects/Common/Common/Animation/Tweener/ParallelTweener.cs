@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Common.Tween
+namespace ProceduralLevel.Common.Animation
 {
 	public sealed class ParallelTweener: ATweener
 	{

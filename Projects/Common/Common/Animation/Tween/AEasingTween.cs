@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Tween
+﻿namespace ProceduralLevel.Common.Animation
 {
 	public abstract class AEasingTween: ATween
 	{

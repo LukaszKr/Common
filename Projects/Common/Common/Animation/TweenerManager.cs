@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Tween
+namespace ProceduralLevel.Common.Animation
 {
 	public sealed class TweenerManager
 	{

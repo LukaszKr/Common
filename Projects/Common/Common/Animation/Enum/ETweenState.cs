@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Tween
+﻿namespace ProceduralLevel.Common.Animation
 {
 	public enum ETweenState: byte
 	{
