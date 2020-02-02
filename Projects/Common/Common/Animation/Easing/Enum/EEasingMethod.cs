@@ -1,6 +1,6 @@
-﻿namespace ProceduralLevel.Common.Tween
+﻿namespace ProceduralLevel.Common.Animation
 {
-    public enum ETween
+	public enum EEasingMethod
 	{
 		Sine = 0,
 		Quad = 1,
@@ -14,7 +14,7 @@
 		Bounce = 9
 	}
 
-    public static class ETweenExt
+    public static class EEasingMethodExt
     {
         public const int MAX_VALUE = 9;
     }

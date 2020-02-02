@@ -1,35 +1,35 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace ProceduralLevel.Common.Tween
+namespace ProceduralLevel.Common.Animation
 {
-	public static class Tween
+	public static class EasingHelper
 	{
 		private const float HALF_PI = (float)Math.PI/2f;
 		private const float DOUBLE_PI = (float)Math.PI*2f;
 		private const float OVERSHOOT = 1.70158f;
 		private const float OFFSET = 0.075f;
 
-		private readonly static int METHOD_COUNT = EMethodExt.MAX_VALUE+1;
+		private readonly static int METHOD_COUNT = EEasingTypeExt.MAX_VALUE+1;
 
 		public delegate float EasingDelegate(float t);
-		public static EasingDelegate[] Methods = new EasingDelegate[(ETweenExt.MAX_VALUE+1)*METHOD_COUNT];
+		public static EasingDelegate[] Methods = new EasingDelegate[(EEasingMethodExt.MAX_VALUE+1)*METHOD_COUNT];
 
-		static Tween()
+		static EasingHelper()
 		{
-			Register(ETween.Sine, SineIn);
-			Register(ETween.Quad, QuadIn);
-			Register(ETween.Cubic, CubicIn);
-			Register(ETween.Quart, QuartIn);
-			Register(ETween.Quint, QuintIn);
-			Register(ETween.Expo, ExpoIn);
-			Register(ETween.Circ, CircIn);
-			Register(ETween.Back, BackIn);
-			Register(ETween.Elastic, ElasticIn);
-			Register(ETween.Bounce, BounceIn);
+			Register(EEasingMethod.Sine, SineIn);
+			Register(EEasingMethod.Quad, QuadIn);
+			Register(EEasingMethod.Cubic, CubicIn);
+			Register(EEasingMethod.Quart, QuartIn);
+			Register(EEasingMethod.Quint, QuintIn);
+			Register(EEasingMethod.Expo, ExpoIn);
+			Register(EEasingMethod.Circ, CircIn);
+			Register(EEasingMethod.Back, BackIn);
+			Register(EEasingMethod.Elastic, ElasticIn);
+			Register(EEasingMethod.Bounce, BounceIn);
 		}
 
-		private static void Register(ETween type, EasingDelegate inDelegate)
+		private static void Register(EEasingMethod type, EasingDelegate inDelegate)
 		{
 			int index = ((int)type)*METHOD_COUNT;
 			Methods[index] = inDelegate;
@@ -38,7 +38,14 @@ namespace ProceduralLevel.Common.Tween
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static float Calculate(ETween type, EMethod method, float t)
+		public static EasingDelegate Get(EEasingMethod type, EEasingType method)
+		{
+			return Methods[(int)type*METHOD_COUNT+(int)method];
+		}
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static float Calculate(EEasingMethod type, EEasingType method, float t)
 		{
 			return Methods[(int)type*METHOD_COUNT+(int)method](t);
 		}
@@ -108,7 +115,6 @@ namespace ProceduralLevel.Common.Tween
 
 		private static float ElasticIn(float t)
 		{
-
 			if(t == 0) return 0;
 			if(t == 1) return 1;
 
