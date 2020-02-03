@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.BitMask
 {
-	public struct BitIndex
+	public readonly struct BitIndex
 	{
 		private const int LOOKUP_SIZE = 256;
 		private static readonly BitIndex[] m_Cache;
