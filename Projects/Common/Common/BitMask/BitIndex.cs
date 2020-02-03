@@ -2,19 +2,38 @@
 {
 	public struct BitIndex
 	{
+		private const int LOOKUP_SIZE = 256;
+		private static readonly BitIndex[] m_Cache;
+
 		public readonly byte Group;
 		public readonly byte Local;
 
-		public BitIndex(int index)
+		static BitIndex()
 		{
-			int count = 0;
-			while(index >= 32)
+			int offset = 0;
+			int counter = 0;
+			m_Cache = new BitIndex[LOOKUP_SIZE];
+			for(int x = 0; x < LOOKUP_SIZE; ++x)
 			{
-				index -= 32;
-				count++;
+				m_Cache[x] = new BitIndex((byte)offset, (byte)counter);
+				++counter;
+				if(counter == 32)
+				{
+					counter = 0;
+					++offset;
+				}
 			}
-			Group = (byte)count;
-			Local = (byte)index;
+		}
+
+		private BitIndex(byte group, byte local)
+		{
+			Group = group;
+			Local = local;
+		}
+
+		public static BitIndex Get(int index)
+		{
+			return m_Cache[index];
 		}
 
 		public override string ToString()
