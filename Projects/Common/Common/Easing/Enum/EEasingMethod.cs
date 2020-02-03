@@ -11,11 +11,12 @@
 		Circ = 6,
 		Back = 7,
 		Elastic = 8,
-		Bounce = 9
+		Bounce = 9,
+		Linear = 10
 	}
 
     public static class EEasingMethodExt
     {
-        public const int MAX_VALUE = 9;
+        public const int MAX_VALUE = 10;
     }
 }

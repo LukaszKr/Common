@@ -27,6 +27,7 @@ namespace ProceduralLevel.Common.Easing
 			Register(EEasingMethod.Back, BackIn);
 			Register(EEasingMethod.Elastic, ElasticIn);
 			Register(EEasingMethod.Bounce, BounceIn);
+			Register(EEasingMethod.Linear, LinearIn);
 		}
 
 		private static void Register(EEasingMethod type, EasingDelegate inDelegate)
@@ -147,6 +148,11 @@ namespace ProceduralLevel.Common.Easing
 				result = 7.5625f*t*t+0.984375f;
 			}
 			return 1f-result;
+		}
+
+		private static float LinearIn(float t)
+		{
+			return t;
 		}
 		#endregion
 	}
