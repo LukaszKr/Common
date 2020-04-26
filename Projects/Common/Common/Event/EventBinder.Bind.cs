@@ -1,7 +1,7 @@
 ﻿namespace ProceduralLevel.Common.Event
 {
-    public partial class EventBinder
-    {
+	public partial class EventBinder
+	{
 		public void Bind(AEvent evt, AEvent.Callback callback)
 		{
 			AddBinding(new EventBinding(evt, callback));
@@ -22,5 +22,5 @@
 		{
 			AddBinding(new EventBinding<T0, T1, T2, T3>(evt, callback));
 		}
-    }
+	}
 }

@@ -7,8 +7,8 @@
 		InOut = 2
 	}
 
-    public static class EEasingTypeExt
-    { 
-        public const int MAX_VALUE = 2;    
-    }
+	public static class EEasingTypeExt
+	{ 
+		public const int MAX_VALUE = 2;	
+	}
 }

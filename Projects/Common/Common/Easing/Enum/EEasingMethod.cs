@@ -15,8 +15,8 @@
 		Linear = 10
 	}
 
-    public static class EEasingMethodExt
-    {
-        public const int MAX_VALUE = 10;
-    }
+	public static class EEasingMethodExt
+	{
+		public const int MAX_VALUE = 10;
+	}
 }

@@ -3,8 +3,8 @@ using System.Runtime.CompilerServices;
 
 namespace ProceduralLevel.Common.BitMask
 {
-    public unsafe struct BitMask32: IEquatable<BitMask32>
-    {
+	public unsafe struct BitMask32: IEquatable<BitMask32>
+	{
 		public const int LENGTH = 32;
 
 		private fixed int m_Data[1];
@@ -169,9 +169,9 @@ namespace ProceduralLevel.Common.BitMask
 			return 
 				m_Data[0] == other.m_Data[0];
 		}
-    }
-    public unsafe struct BitMask64: IEquatable<BitMask64>
-    {
+	}
+	public unsafe struct BitMask64: IEquatable<BitMask64>
+	{
 		public const int LENGTH = 64;
 
 		private fixed int m_Data[2];
@@ -344,9 +344,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[0] == other.m_Data[0] &&
 				m_Data[1] == other.m_Data[1];
 		}
-    }
-    public unsafe struct BitMask96: IEquatable<BitMask96>
-    {
+	}
+	public unsafe struct BitMask96: IEquatable<BitMask96>
+	{
 		public const int LENGTH = 96;
 
 		private fixed int m_Data[3];
@@ -527,9 +527,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[1] == other.m_Data[1] &&
 				m_Data[2] == other.m_Data[2];
 		}
-    }
-    public unsafe struct BitMask128: IEquatable<BitMask128>
-    {
+	}
+	public unsafe struct BitMask128: IEquatable<BitMask128>
+	{
 		public const int LENGTH = 128;
 
 		private fixed int m_Data[4];
@@ -718,9 +718,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[2] == other.m_Data[2] &&
 				m_Data[3] == other.m_Data[3];
 		}
-    }
-    public unsafe struct BitMask160: IEquatable<BitMask160>
-    {
+	}
+	public unsafe struct BitMask160: IEquatable<BitMask160>
+	{
 		public const int LENGTH = 160;
 
 		private fixed int m_Data[5];
@@ -917,9 +917,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[3] == other.m_Data[3] &&
 				m_Data[4] == other.m_Data[4];
 		}
-    }
-    public unsafe struct BitMask192: IEquatable<BitMask192>
-    {
+	}
+	public unsafe struct BitMask192: IEquatable<BitMask192>
+	{
 		public const int LENGTH = 192;
 
 		private fixed int m_Data[6];
@@ -1124,9 +1124,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[4] == other.m_Data[4] &&
 				m_Data[5] == other.m_Data[5];
 		}
-    }
-    public unsafe struct BitMask224: IEquatable<BitMask224>
-    {
+	}
+	public unsafe struct BitMask224: IEquatable<BitMask224>
+	{
 		public const int LENGTH = 224;
 
 		private fixed int m_Data[7];
@@ -1339,9 +1339,9 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[5] == other.m_Data[5] &&
 				m_Data[6] == other.m_Data[6];
 		}
-    }
-    public unsafe struct BitMask256: IEquatable<BitMask256>
-    {
+	}
+	public unsafe struct BitMask256: IEquatable<BitMask256>
+	{
 		public const int LENGTH = 256;
 
 		private fixed int m_Data[8];
@@ -1562,5 +1562,5 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[6] == other.m_Data[6] &&
 				m_Data[7] == other.m_Data[7];
 		}
-    }
+	}
 }

@@ -1,7 +1,7 @@
 ﻿namespace ProceduralLevel.Common.Tokenize
 {
 	public class Token
-    {
+	{
 		public readonly ETokenType Type;
 		public readonly string Value;
 		public readonly int Line;

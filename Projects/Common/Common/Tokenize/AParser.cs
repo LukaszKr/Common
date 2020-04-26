@@ -4,7 +4,7 @@ namespace ProceduralLevel.Common.Tokenize
 {
 	public abstract class AParser<TokenizerType, DataType>
 		where TokenizerType: ATokenizer
-    {
+	{
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
 
@@ -84,5 +84,5 @@ namespace ProceduralLevel.Common.Tokenize
 			m_ConsumedSoFar = "";
 			#endif
 		}
-    }
+	}
 }

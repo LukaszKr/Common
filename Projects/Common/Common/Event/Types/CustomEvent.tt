@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace ProceduralLevel.Common.Event
 {
 <# for(int x = 0; x < tCount; x++) { #>
-    public class CustomEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
-    {
+	public class CustomEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
+	{
 		public override void Invoke(<#= listParams(x) #>)
 		{
 			for(int x = m_Listeners.Count-1; x >= 0; x--)
@@ -13,7 +13,7 @@ namespace ProceduralLevel.Common.Event
 				m_Listeners[x](<#= listArgs(x) #>);
 			}
 		}
-    }
+	}
 
 <# } #>
 }

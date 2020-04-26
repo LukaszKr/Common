@@ -2,8 +2,8 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-    public class ByteTween: AValueTween<byte>
-    {
+	public class ByteTween: AValueTween<byte>
+	{
 		public ByteTween(EasingFunc easing, byte source, byte target)
 			: base(easing, source, target)
 		{
@@ -14,10 +14,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (byte)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class SByteTween: AValueTween<sbyte>
-    {
+	public class SByteTween: AValueTween<sbyte>
+	{
 		public SByteTween(EasingFunc easing, sbyte source, sbyte target)
 			: base(easing, source, target)
 		{
@@ -28,10 +28,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (sbyte)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class ShortTween: AValueTween<short>
-    {
+	public class ShortTween: AValueTween<short>
+	{
 		public ShortTween(EasingFunc easing, short source, short target)
 			: base(easing, source, target)
 		{
@@ -42,10 +42,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (short)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class UShortTween: AValueTween<ushort>
-    {
+	public class UShortTween: AValueTween<ushort>
+	{
 		public UShortTween(EasingFunc easing, ushort source, ushort target)
 			: base(easing, source, target)
 		{
@@ -56,10 +56,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (ushort)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class IntTween: AValueTween<int>
-    {
+	public class IntTween: AValueTween<int>
+	{
 		public IntTween(EasingFunc easing, int source, int target)
 			: base(easing, source, target)
 		{
@@ -70,10 +70,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (int)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class UIntTween: AValueTween<uint>
-    {
+	public class UIntTween: AValueTween<uint>
+	{
 		public UIntTween(EasingFunc easing, uint source, uint target)
 			: base(easing, source, target)
 		{
@@ -84,10 +84,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (uint)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class LongTween: AValueTween<long>
-    {
+	public class LongTween: AValueTween<long>
+	{
 		public LongTween(EasingFunc easing, long source, long target)
 			: base(easing, source, target)
 		{
@@ -98,10 +98,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (long)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class ULongTween: AValueTween<ulong>
-    {
+	public class ULongTween: AValueTween<ulong>
+	{
 		public ULongTween(EasingFunc easing, ulong source, ulong target)
 			: base(easing, source, target)
 		{
@@ -112,10 +112,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (ulong)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class FloatTween: AValueTween<float>
-    {
+	public class FloatTween: AValueTween<float>
+	{
 		public FloatTween(EasingFunc easing, float source, float target)
 			: base(easing, source, target)
 		{
@@ -126,10 +126,10 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (float)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
-    public class DoubleTween: AValueTween<double>
-    {
+	public class DoubleTween: AValueTween<double>
+	{
 		public DoubleTween(EasingFunc easing, double source, double target)
 			: base(easing, source, target)
 		{
@@ -140,6 +140,6 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (double)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
 }

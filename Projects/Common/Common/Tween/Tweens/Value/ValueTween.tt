@@ -7,8 +7,8 @@ using ProceduralLevel.Common.Easing;
 namespace ProceduralLevel.Common.Tween
 {
 <# for(int x = 0; x < lType.Length; ++x) { #>
-    public class <#= uType[x] #>Tween: AValueTween<<#= lType[x] #>>
-    {
+	public class <#= uType[x] #>Tween: AValueTween<<#= lType[x] #>>
+	{
 		public <#= uType[x] #>Tween(EasingFunc easing, <#= lType[x] #> source, <#= lType[x] #> target)
 			: base(easing, source, target)
 		{
@@ -19,7 +19,7 @@ namespace ProceduralLevel.Common.Tween
 		{
 			return (<#= lType[x] #>)(source*reverseBlend+target*blend);
 		}
-    }
+	}
 
 <# } #>
 }

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
 {
-    public partial class BinaryDataBuffer
-    {
+	public partial class BinaryDataBuffer
+	{
 		#region Char
 		public BinaryDataBuffer Write(char[] arr)
 		{
@@ -702,5 +702,5 @@ namespace ProceduralLevel.Common.Buffer
 		}
 		#endregion 
 
-    }
+	}
 }
