@@ -1,18 +1,16 @@
-﻿using NUnit.Framework;
-using ProceduralLevel.Common.Template;
-
-namespace Test.Template
+﻿namespace Test.Template
 {
 	public class TestData
 	{
 		public string Hello = "World";
 		public NestedClass Nested = new NestedClass();
 		public string[] Arr = new string[] { "a", "b" };
+		public NestedClass[] NestedClassArr = new NestedClass[] { new NestedClass() } ;
 	}
 
 	public class NestedClass
 	{
-		public int val = 123;
+		public int Val = 123;
 	}
 
 
@@ -57,12 +55,12 @@ namespace Test.Template
 		{
 			TestHelper.AssertTemplate(m_Manager,
 				"123",
-				"{Nested.val}",
+				"{Nested.Val}",
 				m_Data);
 
 			TestHelper.AssertTemplate(m_Manager,
 				"123",
-				"{this.Nested.val}",
+				"{this.Nested.Val}",
 				m_Data);
 		}
 
@@ -72,6 +70,15 @@ namespace Test.Template
 			TestHelper.AssertTemplate(m_Manager,
 				"b",
 				"{Arr[1]}",
+				m_Data);
+		}
+
+		[Test]
+		public void PrintArrayElementField()
+		{
+			TestHelper.AssertTemplate(m_Manager,
+				"123",
+				"{NestedClassArr[0].Val}",
 				m_Data);
 		}
 	}
