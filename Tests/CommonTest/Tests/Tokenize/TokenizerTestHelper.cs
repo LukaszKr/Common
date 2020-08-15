@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Tests.Tokenize
+namespace Tests.Tokenize
 {
 	public static class TokenizerTestHelper
 	{

@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Collision2D;
-using ProceduralLevel.Common.Tests.Collision2D;
+using Tests.Collision2D;
 
-namespace ProceduralLevel.Common.Tests.Collision
+namespace Tests.Collision
 {
 	[TestFixture]
 	public class CollisionTest

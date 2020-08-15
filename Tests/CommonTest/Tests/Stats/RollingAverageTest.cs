@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Stats;
 
-namespace ProceduralLevel.Common.Tests.Stats
+namespace Tests.Stats
 {
 	[TestFixture]
 	public class RollingAverageTest

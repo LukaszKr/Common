@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.BitMask;
 using System.Diagnostics;
 
-namespace ProceduralLevel.Common.Tests.BitMask
+namespace Tests.BitMask
 {
 	[TestFixture]
 	public class BitMaskTest

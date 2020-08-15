@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Tests.Collision2D
+﻿namespace Tests.Collision2D
 {
 	public abstract class AIntersectionTest: ACollisionTest
 	{

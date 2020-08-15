@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Serialization.CSV;
 
-namespace ProceduralLevel.Common.Tests.Serialization.CSV
+namespace Tests.Serialization.CSV
 {
 	[TestFixture]
 	public class CSVTest

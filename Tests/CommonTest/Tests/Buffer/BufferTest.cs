@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Buffer;
 using System;
 
-namespace ProceduralLevel.Common.Tests.Buffer
+namespace Tests.Buffer
 {
 	[TestFixture]
 	public class BufferTest

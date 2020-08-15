@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Common.Tests.Collision2D
+namespace Tests.Collision2D
 {
 	public abstract class ADistanceTest: ACollisionTest
 	{

@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Tokenize;
 using System.Collections.Generic;
 
-namespace ProceduralLevel.Common.Tests.Tokenize
+namespace Tests.Tokenize
 {
 	[TestFixture]
 	public class TokenizerTest

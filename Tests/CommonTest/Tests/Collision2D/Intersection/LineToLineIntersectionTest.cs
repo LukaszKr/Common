@@ -1,6 +1,6 @@
 ﻿using ProceduralLevel.Common.Collision2D;
 
-namespace ProceduralLevel.Common.Tests.Collision2D
+namespace Tests.Collision2D
 {
 	public class LineToLineIntersectionTest: AIntersectionTest
 	{

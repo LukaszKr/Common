@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Template;
 
-namespace Test.Template
+namespace Tests.Template
 {
 	public static class TestHelper
 	{

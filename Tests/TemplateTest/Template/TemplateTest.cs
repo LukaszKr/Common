@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.Template;
 using Test.Template.Data;
 
-namespace Test.Template
+namespace Tests.Template
 {
 	[TestFixture]
 	public class TemplateTest

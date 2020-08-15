@@ -2,7 +2,7 @@
 using ProceduralLevel.Common.SimpleID;
 using System;
 
-namespace ProceduralLevel.Common.Tests.SimpleID
+namespace Tests.SimpleID
 {
 	[TestFixture]
 	public class SimpleIDTest
