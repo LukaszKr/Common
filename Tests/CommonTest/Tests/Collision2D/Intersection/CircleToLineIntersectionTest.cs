@@ -12,7 +12,7 @@ namespace Tests.Collision2D
 		{
 			m_C = c;
 			m_L = l;
-			m_Calculated = c.Intersects(l);
+			m_Calculated = m_C.Intersects(m_L);
 		}
 
 		protected override bool Intersects()

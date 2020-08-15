@@ -14,7 +14,7 @@ namespace Tests.Collision2D
 			m_P = p;
 			m_L = l;
 			m_Segment = segment;
-			m_Calculated = m_P.Distance(l, segment);
+			m_Calculated = m_P.Distance(m_L, segment);
 		}
 
 		protected override float GetDistance()

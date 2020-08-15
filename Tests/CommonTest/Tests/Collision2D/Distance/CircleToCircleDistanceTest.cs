@@ -12,7 +12,7 @@ namespace Tests.Collision2D
 		{
 			m_A = a;
 			m_B = b;
-			m_Calculated = a.Distance(b);
+			m_Calculated = m_A.Distance(m_B);
 		}
 
 		protected override float GetDistance()

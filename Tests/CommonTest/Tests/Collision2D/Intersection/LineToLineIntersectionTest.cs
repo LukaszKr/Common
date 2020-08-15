@@ -6,7 +6,7 @@ namespace Tests.Collision2D
 	{
 		private readonly Line m_A;
 		private readonly Line m_B;
-		private bool m_Calculated;
+		private readonly bool m_Calculated;
 
 		public LineToLineIntersectionTest(Line a, Line b, bool expected) : base(expected)
 		{
