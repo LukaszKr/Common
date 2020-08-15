@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProceduralLevel.Common.Template.Parser;
+using System;
 using System.Reflection;
 
 namespace ProceduralLevel.Common.Template.Evaluator
@@ -13,12 +14,6 @@ namespace ProceduralLevel.Common.Template.Evaluator
 		{
 			Type type = context.GetType();
 
-			FieldInfo field = type.GetField(name);
-			if(field != null)
-			{
-				return field.GetValue(context);
-			}
-
 			if(type.IsArray)
 			{
 				Array arr = context as Array;
@@ -26,6 +21,12 @@ namespace ProceduralLevel.Common.Template.Evaluator
 			}
 			else
 			{
+				FieldInfo field = type.GetField(name);
+				if(field != null)
+				{
+					return field.GetValue(context);
+				}
+
 				PropertyInfo property = type.GetProperty(name);
 				if(property != null)
 				{
@@ -33,7 +34,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 				}
 			}
 
-			return null;
+			throw new TemplateEvaluationException(ETemplateEvaluationError.Property_NotFound);
 		}
 	}
 }

@@ -2,6 +2,7 @@
 {
 	public enum ETemplateEvaluationError
 	{
-		IncorrectMethodNameEvaluator = 0
+		Method_NotFound = 0,
+		Property_NotFound = 1
 	}
 }

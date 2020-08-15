@@ -34,7 +34,7 @@ namespace Tests.Template
 		}
 
 		[Test]
-		public void ShouldPrintOutTheData()
+		public void PrintString()
 		{
 			TestHelper.AssertTemplate(m_Manager,
 				"hello world",
@@ -106,7 +106,7 @@ namespace Tests.Template
 		{
 			TestHelper.AssertTemplate(m_Manager,
 				"World",
-				"{MethodWithParameter(\"World\")}",
+				@"{MethodWithParameter(""World"")}",
 				m_Data, m_GlobalContext);
 		}
 

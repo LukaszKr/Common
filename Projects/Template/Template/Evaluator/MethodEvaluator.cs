@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProceduralLevel.Common.Template.Parser;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -31,13 +32,33 @@ namespace ProceduralLevel.Common.Template.Evaluator
 			Type type = usedContext.GetType();
 
 			m_MethodName.ToString();
-			MethodInfo method = type.GetMethod(m_MethodName);
 
 			int argCount = m_Args.Count;
 			object[] args = new object[argCount];
 			for(int x = 0; x < argCount; ++x)
 			{
 				args[x] = m_Args[x].Evaluate(context, globalContext);
+			}
+
+			MethodInfo[] methods = type.GetMethods();
+			int methodCount = methods.Length;
+			MethodInfo method = null;
+			for(int x = 0; x < methodCount; ++x)
+			{
+				MethodInfo checkMethod = methods[x];
+				if(checkMethod.Name == m_MethodName)
+				{
+					ParameterInfo[] parameters = checkMethod.GetParameters();
+					if(parameters.Length == argCount)
+					{
+						method = checkMethod;
+						break;
+					}
+				}
+			}
+			if(method == null)
+			{
+				throw new TemplateEvaluationException(ETemplateEvaluationError.Method_NotFound);
 			}
 
 			return method.Invoke(usedContext, args);

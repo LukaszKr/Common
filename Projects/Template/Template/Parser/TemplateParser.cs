@@ -150,20 +150,20 @@ namespace ProceduralLevel.Common.Template.Parser
 						{
 							throw new TemplateParserException(ETemplateParserError.UnexpectedToken, token);
 						}
+						ConsumeToken();
 						if(isString)
 						{
-							ParseString();
+							Push(new StringEvaluator(token.Value));
 						}
 						else
 						{
-							char c = token.Value[0];
+							char c = trimmedValue[0];
 							if(char.IsNumber(c) || c == '.')
 							{
-								ParseString();
+								Push(new StringEvaluator(trimmedValue));
 							}
 							else
 							{
-								ConsumeToken();
 								Push(new GetterEvaluator(token.Value, globalContext));
 							}
 						}
@@ -191,7 +191,7 @@ namespace ProceduralLevel.Common.Template.Parser
 			AEvaluator methodName = Pop();
 			if(methodName.EvalType != EEvaluatorType.Getter)
 			{
-				throw new TemplateEvaluationException(ETemplateEvaluationError.IncorrectMethodNameEvaluator);
+				throw new TemplateParserException(ETemplateParserError.Method_IncorrectName, PeekToken());
 			}
 			MethodEvaluator method = new MethodEvaluator(methodName.ToString(), globalContext);
 			int count = m_Evaluators.Count;
@@ -213,12 +213,6 @@ namespace ProceduralLevel.Common.Template.Parser
 				Pop();
 			}
 			Push(method);
-		}
-
-		private void ParseString()
-		{
-			Token token = ConsumeToken();
-			Push(new StringEvaluator(token.Value));
 		}
 
 		private void Push(AEvaluator evaluator)
