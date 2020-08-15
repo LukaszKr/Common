@@ -1,4 +1,7 @@
-﻿namespace Test.Template
+﻿using NUnit.Framework;
+using ProceduralLevel.Common.Template;
+
+namespace Test.Template
 {
 	public class TestData
 	{
@@ -6,11 +9,21 @@
 		public NestedClass Nested = new NestedClass();
 		public string[] Arr = new string[] { "a", "b" };
 		public NestedClass[] NestedClassArr = new NestedClass[] { new NestedClass() } ;
+
+		public string ExampleMethod()
+		{
+			return "ExampleMethod";
+		}
 	}
 
 	public class NestedClass
 	{
 		public int Val = 123;
+
+		public string NestedMethod()
+		{
+			return "NestedMethod";
+		}
 	}
 
 
@@ -79,6 +92,24 @@
 			TestHelper.AssertTemplate(m_Manager,
 				"123",
 				"{NestedClassArr[0].Val}",
+				m_Data);
+		}
+
+		[Test]
+		public void MethodInvoke()
+		{
+			TestHelper.AssertTemplate(m_Manager,
+				"ExampleMethod",
+				"{ExampleMethod()}",
+				m_Data);
+		}
+
+		[Test]
+		public void NestedMethodInvome()
+		{
+			TestHelper.AssertTemplate(m_Manager,
+				"NestedMethod",
+				"{NestedClassArr[0].NestedMethod()}",
 				m_Data);
 		}
 	}

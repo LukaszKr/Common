@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace ProceduralLevel.Common.Template.Evaluator
@@ -23,7 +25,19 @@ namespace ProceduralLevel.Common.Template.Evaluator
 
 		public override object Evaluate(TemplateManager manager, object data)
 		{
-			return "NOT_IMPLEMENTED";
+			Type type = data.GetType();
+
+			string methodName = Name.ToString();
+			MethodInfo method = type.GetMethod(methodName);
+
+			int argCount = m_Args.Count;
+			object[] args = new object[argCount];
+			for(int x = 0; x < argCount; ++x)
+			{
+				args[x] = m_Args[x].Evaluate(manager, data);
+			}
+
+			return method.Invoke(data, args);
 		}
 
 		public override string ToString()
