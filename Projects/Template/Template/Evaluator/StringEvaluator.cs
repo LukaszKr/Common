@@ -4,7 +4,7 @@
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.String; } }
 
-		private string m_Text;
+		private readonly string m_Text;
 
 		public StringEvaluator(string text)
 		{

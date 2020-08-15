@@ -4,9 +4,9 @@
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.KeyGetter; } }
 
-		private AEvaluator m_Key;
-		private AEvaluator m_Value;
-		private bool m_Dot;
+		private readonly AEvaluator m_Key;
+		private readonly AEvaluator m_Value;
+		private readonly bool m_Dot;
 
 		public KeyGetterEvaluator(AEvaluator key, AEvaluator value, bool dot)
 		{

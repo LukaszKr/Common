@@ -10,7 +10,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Method; } }
 
 		public readonly AEvaluator Name;
-		private List<AEvaluator> m_Args = new List<AEvaluator>();
+		private readonly List<AEvaluator> m_Args = new List<AEvaluator>();
 
 		public MethodEvaluator(AEvaluator name, params AEvaluator[] args)
 		{

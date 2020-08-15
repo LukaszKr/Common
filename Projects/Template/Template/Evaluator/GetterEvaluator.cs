@@ -4,7 +4,7 @@
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Getter; } }
 
-		private string m_ParamName;
+		private readonly string m_ParamName;
 
 		public GetterEvaluator(string paramName)
 		{

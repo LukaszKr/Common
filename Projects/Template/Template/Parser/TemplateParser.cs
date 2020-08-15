@@ -6,7 +6,7 @@ namespace ProceduralLevel.Common.Template.Parser
 {
 	public class TemplateParser: AParser<TemplateTokenizer, List<TextTemplate>>
 	{
-		private List<AEvaluator> m_Evaluators = new List<AEvaluator>();
+		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
 		public TemplateParser() : base(new TemplateTokenizer())
 		{

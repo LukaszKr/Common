@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ProceduralLevel.Common.Template.Evaluator;
+using System.Collections.Generic;
 using System.Text;
-using ProceduralLevel.Common.Template.Evaluator;
 
 namespace ProceduralLevel.Common.Template
 {
@@ -8,7 +8,7 @@ namespace ProceduralLevel.Common.Template
 	{
 		public readonly string Name;
 
-		private List<AEvaluator> m_Evaluators = new List<AEvaluator>();
+		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
 		public TextTemplate(string name)
 		{
