@@ -30,7 +30,7 @@ namespace ProceduralLevel.Common.Tests.BitMask
 					mask.Set(y);
 				}
 			}
-			TestContext.WriteLine("Fixed: "+watch.ElapsedMilliseconds);
+			TestContext.WriteLine($"128bitmask, {passes} passes, time elapsed: {watch.ElapsedMilliseconds}ms");
 		}
 
 		[Test]

@@ -1,32 +1,9 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Template;
+using Test.Template.Data;
 
 namespace Test.Template
 {
-	public class TestData
-	{
-		public string Hello = "World";
-		public NestedClass Nested = new NestedClass();
-		public string[] Arr = new string[] { "a", "b" };
-		public NestedClass[] NestedClassArr = new NestedClass[] { new NestedClass() } ;
-
-		public string ExampleMethod()
-		{
-			return "ExampleMethod";
-		}
-	}
-
-	public class NestedClass
-	{
-		public int Val = 123;
-
-		public string NestedMethod()
-		{
-			return "NestedMethod";
-		}
-	}
-
-
 	[TestFixture]
 	public class TemplateTest
 	{
