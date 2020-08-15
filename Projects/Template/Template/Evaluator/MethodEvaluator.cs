@@ -9,12 +9,12 @@ namespace ProceduralLevel.Common.Template.Evaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Method; } }
 
-		public readonly AEvaluator Name;
+		private readonly string m_MethodName;
 		private readonly List<AEvaluator> m_Args = new List<AEvaluator>();
 
-		public MethodEvaluator(AEvaluator name, params AEvaluator[] args)
+		public MethodEvaluator(string methodName, params AEvaluator[] args)
 		{
-			Name = name;
+			m_MethodName = methodName;
 			m_Args.AddRange(args);
 		}
 
@@ -27,8 +27,8 @@ namespace ProceduralLevel.Common.Template.Evaluator
 		{
 			Type type = data.GetType();
 
-			string methodName = Name.ToString();
-			MethodInfo method = type.GetMethod(methodName);
+			m_MethodName.ToString();
+			MethodInfo method = type.GetMethod(m_MethodName);
 
 			int argCount = m_Args.Count;
 			object[] args = new object[argCount];
@@ -43,7 +43,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 		public override string ToString()
 		{
 			StringBuilder sb = new StringBuilder();
-			sb.Append(Name.ToString()).Append(TemplateConst.PARENT_OPEN);
+			sb.Append(m_MethodName).Append(TemplateConst.PARENT_OPEN);
 			for(int x = 0; x < m_Args.Count; x++)
 			{
 				if(x > 0)

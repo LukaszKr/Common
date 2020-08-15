@@ -33,7 +33,7 @@ namespace ProceduralLevel.Common.Template.Parser
 				AEvaluator evaluator = m_Evaluators[x];
 				if(evaluator.EvalType == EEvaluatorType.Name)
 				{
-					NameEvaluator nameEval = evaluator as NameEvaluator;
+					TemplateNameEvaluator nameEval = evaluator as TemplateNameEvaluator;
 					if(template != null)
 					{
 						templates.Add(template);
@@ -71,7 +71,8 @@ namespace ProceduralLevel.Common.Template.Parser
 		private void ParseTemplate()
 		{
 			bool isString = false;
-			bool isSpecial = false;
+			bool isTemplateName = false;
+
 			while(HasTokens())
 			{
 				Token token = PeekToken();
@@ -84,9 +85,12 @@ namespace ProceduralLevel.Common.Template.Parser
 
 				switch(token.Value[0])
 				{
-					case TemplateConst.SPECIAL:
+					case TemplateConst.GLOBAL:
 						ConsumeToken();
-						isSpecial = true;
+						break;
+					case TemplateConst.TEMPLATE_NAME:
+						ConsumeToken();
+						isTemplateName = true;
 						break;
 					case TemplateConst.BRACES_CLOSE:
 						ConsumeToken();
@@ -94,7 +98,7 @@ namespace ProceduralLevel.Common.Template.Parser
 					case TemplateConst.SQUARE_CLOSE:
 						{
 							ConsumeToken();
-							ParseKeyGetter(false);
+							ParseArrayGetter();
 						}
 						break;
 					case TemplateConst.SQUARE_OPEN:
@@ -103,7 +107,7 @@ namespace ProceduralLevel.Common.Template.Parser
 					case TemplateConst.DOT:
 						ConsumeToken();
 						ParseTemplate();
-						ParseKeyGetter(true);
+						ParseKeyGetter();
 						return;
 					case TemplateConst.SEPARATOR:
 						ConsumeToken();
@@ -132,14 +136,14 @@ namespace ProceduralLevel.Common.Template.Parser
 						}
 						if(isString)
 						{
-							ParseString(isSpecial);
+							ParseString(isTemplateName);
 						}
 						else
 						{
 							char c = token.Value[0];
-							if(char.IsNumber(c) || c == '.' || isSpecial)
+							if(char.IsNumber(c) || c == '.' || isTemplateName)
 							{
-								ParseString(isSpecial);
+								ParseString(isTemplateName);
 							}
 							else
 							{
@@ -152,16 +156,28 @@ namespace ProceduralLevel.Common.Template.Parser
 			}
 		}
 
-		private void ParseKeyGetter(bool dot)
+		private void ParseArrayGetter()
 		{
 			AEvaluator value = Pop();
 			AEvaluator key = Pop();
-			Push(new KeyGetterEvaluator(key, value, dot));
+			Push(new ArrayGetterEvaluator(key, value));
+		}
+
+		private void ParseKeyGetter()
+		{
+			AEvaluator value = Pop();
+			AEvaluator key = Pop();
+			Push(new KeyGetterEvaluator(key, value));
 		}
 
 		private void ParseMethod()
 		{
-			MethodEvaluator method = new MethodEvaluator(Pop());
+			AEvaluator methodName = Pop();
+			if(methodName.EvalType != EEvaluatorType.Getter)
+			{
+				throw new TemplateEvaluationException(ETemplateEvaluationError.IncorrectMethodNameEvaluator);
+			}
+			MethodEvaluator method = new MethodEvaluator(methodName.ToString());
 			int count = m_Evaluators.Count;
 
 			while(HasTokens() && PeekToken().Value[0] != TemplateConst.PARENT_CLOSE)
@@ -183,12 +199,12 @@ namespace ProceduralLevel.Common.Template.Parser
 			Push(method);
 		}
 
-		private void ParseString(bool isSpecial)
+		private void ParseString(bool isTemplateName)
 		{
 			Token token = ConsumeToken();
-			if(isSpecial)
+			if(isTemplateName)
 			{
-				Push(new NameEvaluator(token.Value));
+				Push(new TemplateNameEvaluator(token.Value));
 			}
 			else
 			{

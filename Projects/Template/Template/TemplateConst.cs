@@ -11,6 +11,7 @@
 		public const char SEPARATOR = ',';
 		public const char QUOTE = '"';
 		public const char DOT = '.';
-		public const char SPECIAL = '#';
+		public const char TEMPLATE_NAME = '#';
+		public const char GLOBAL = '$';
 	}
 }

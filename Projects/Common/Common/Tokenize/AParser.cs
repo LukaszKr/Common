@@ -3,14 +3,14 @@
 namespace ProceduralLevel.Common.Tokenize
 {
 	public abstract class AParser<TokenizerType, DataType>
-		where TokenizerType: ATokenizer
+		where TokenizerType : ATokenizer
 	{
 		private List<Token> m_Tokens;
 		private int m_Next = 0;
 
-		#if DEBUG
+#if DEBUG
 		protected string m_ConsumedSoFar = "";
-		#endif
+#endif
 
 		protected TokenizerType m_Tokenizer;
 
@@ -22,9 +22,9 @@ namespace ProceduralLevel.Common.Tokenize
 		protected Token ConsumeToken()
 		{
 			Token token = m_Tokens[m_Next++];
-			#if DEBUG
+#if DEBUG
 			m_ConsumedSoFar += token.Value;
-			#endif
+#endif
 			return token;
 		}
 
@@ -40,10 +40,9 @@ namespace ProceduralLevel.Common.Tokenize
 
 		protected void SkipToNextNonEmpty()
 		{
-			Token token = null;
 			while(true)
 			{
-				token = PeekToken();
+				Token token = PeekToken();
 				if(token.IsSeparator || !string.IsNullOrEmpty(token.Value.Trim()))
 				{
 					return;
@@ -80,9 +79,9 @@ namespace ProceduralLevel.Common.Tokenize
 		{
 			m_Next = 0;
 			m_Tokens = null;
-			#if DEBUG
+#if DEBUG
 			m_ConsumedSoFar = "";
-			#endif
+#endif
 		}
 	}
 }

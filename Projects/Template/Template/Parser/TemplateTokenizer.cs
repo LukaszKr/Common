@@ -15,7 +15,7 @@ namespace ProceduralLevel.Common.Template.Parser
 			TemplateConst.PARENT_OPEN, TemplateConst.PARENT_CLOSE,
 			TemplateConst.SQUARE_OPEN, TemplateConst.SQUARE_CLOSE,
 			TemplateConst.SEPARATOR, TemplateConst.QUOTE,
-			TemplateConst.DOT, TemplateConst.SPECIAL
+			TemplateConst.DOT, TemplateConst.TEMPLATE_NAME
 		};
 
 		public TemplateTokenizer(bool autoTrim = false) : base(autoTrim)

@@ -1,12 +1,12 @@
 ﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public class NameEvaluator: AEvaluator
+	public class TemplateNameEvaluator: AEvaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Name; } }
 
 		public readonly string Name;
 
-		public NameEvaluator(string name)
+		public TemplateNameEvaluator(string name)
 		{
 			Name = name;
 		}
@@ -18,7 +18,7 @@
 
 		public override string ToString()
 		{
-			return TemplateConst.SPECIAL+Name;
+			return TemplateConst.TEMPLATE_NAME+Name;
 		}
 	}
 }

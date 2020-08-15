@@ -82,7 +82,7 @@ namespace Tests.Template
 		}
 
 		[Test]
-		public void NestedMethodInvome()
+		public void NestedMethodInvoke()
 		{
 			TestHelper.AssertTemplate(m_Manager,
 				"NestedMethod",

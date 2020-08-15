@@ -4,8 +4,10 @@
 	{
 		Name = 0,
 		String = 1,
-		Getter = 2, 
+		Getter = 2,
 		KeyGetter = 3,
-		Method = 4
+		ArrayGetter = 4,
+		Method = 5,
+		Context = 6
 	}
 }

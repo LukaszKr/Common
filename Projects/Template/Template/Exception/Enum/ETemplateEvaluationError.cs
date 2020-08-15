@@ -2,5 +2,6 @@
 {
 	public enum ETemplateEvaluationError
 	{
+		IncorrectMethodNameEvaluator = 0
 	}
 }
