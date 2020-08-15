@@ -6,8 +6,8 @@ namespace Tests.Collision2D
 	{
 		private readonly Line m_Line;
 		private readonly Point m_Point;
-		private EOrientation m_Expected;
-		private EOrientation m_Calculated;
+		private readonly EOrientation m_Expected;
+		private readonly EOrientation m_Calculated;
 
 		public OrientationTest(Line line, Point point, EOrientation expected)
 		{

@@ -5,21 +5,27 @@
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Getter; } }
 
 		private readonly string m_ParamName;
+		private readonly bool m_GlobalContext;
 
-		public GetterEvaluator(string paramName)
+		public GetterEvaluator(string paramName, bool globalContext)
 		{
-			m_ParamName = paramName;
+			m_ParamName = paramName.Trim();
+			m_GlobalContext = globalContext;
 		}
 
-		public override object Evaluate(TemplateManager manager, object data)
+		public override object Evaluate(object context, object globalContext)
 		{
 			if(m_ParamName == "this")
 			{
-				return data;
+				return (m_GlobalContext ? globalContext : context);
 			}
 			else
 			{
-				return Get(data, m_ParamName);
+				if(m_GlobalContext)
+				{
+					return Get(globalContext, m_ParamName);
+				}
+				return Get(context, m_ParamName);
 			}
 		}
 

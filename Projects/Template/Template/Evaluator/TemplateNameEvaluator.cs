@@ -11,7 +11,7 @@
 			Name = name;
 		}
 
-		public override object Evaluate(TemplateManager manager, object data)
+		public override object Evaluate(object context, object globalContext)
 		{
 			return Name;
 		}

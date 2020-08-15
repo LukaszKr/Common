@@ -11,7 +11,7 @@
 			m_Text = text;
 		}
 
-		public override object Evaluate(TemplateManager manager, object data)
+		public override object Evaluate(object context, object globalContext)
 		{
 			return m_Text;
 		}

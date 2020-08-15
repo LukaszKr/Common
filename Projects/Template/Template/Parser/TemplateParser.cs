@@ -60,7 +60,16 @@ namespace ProceduralLevel.Common.Template.Parser
 			switch(token.Value[0])
 			{
 				case TemplateConst.BRACES_OPEN:
-					ParseTemplate();
+					Token contextToken = PeekToken();
+					switch(contextToken.Value[0])
+					{
+						case TemplateConst.TEMPLATE_NAME:
+							ParseTemplateName();
+							break;
+						default:
+							ParseAccess();
+							break;
+					}
 					break;
 				default:
 					Push(new StringEvaluator(token.Value));
@@ -68,10 +77,29 @@ namespace ProceduralLevel.Common.Template.Parser
 			}
 		}
 
-		private void ParseTemplate()
+		private void ParseTemplateName()
+		{
+			ConsumeToken();
+			Token token = ConsumeToken();
+			char firstChar = token.Value[0];
+			if(!IsBasicLetter(firstChar))
+			{
+				throw new TemplateParserException(ETemplateParserError.TemplateName_IllegalCharacter, token);
+			}
+			TemplateNameEvaluator evaluator = new TemplateNameEvaluator(token.Value);
+			Push(evaluator);
+
+			token = ConsumeToken();
+			if(!token.IsSeparator || token.Value[0] != TemplateConst.BRACES_CLOSE)
+			{
+				throw new TemplateParserException(ETemplateParserError.TemplateName_IllegalFormat, token);
+			}
+		}
+
+		private void ParseAccess()
 		{
 			bool isString = false;
-			bool isTemplateName = false;
+			bool globalContext = false;
 
 			while(HasTokens())
 			{
@@ -87,26 +115,21 @@ namespace ProceduralLevel.Common.Template.Parser
 				{
 					case TemplateConst.GLOBAL:
 						ConsumeToken();
-						break;
-					case TemplateConst.TEMPLATE_NAME:
-						ConsumeToken();
-						isTemplateName = true;
+						globalContext = true;
 						break;
 					case TemplateConst.BRACES_CLOSE:
 						ConsumeToken();
 						return;
 					case TemplateConst.SQUARE_CLOSE:
-						{
-							ConsumeToken();
-							ParseArrayGetter();
-						}
+						ConsumeToken();
+						ParseArrayGetter();
 						break;
 					case TemplateConst.SQUARE_OPEN:
 						ConsumeToken();
 						break;
 					case TemplateConst.DOT:
 						ConsumeToken();
-						ParseTemplate();
+						ParseAccess();
 						ParseKeyGetter();
 						return;
 					case TemplateConst.SEPARATOR:
@@ -116,18 +139,11 @@ namespace ProceduralLevel.Common.Template.Parser
 						return;
 					case TemplateConst.PARENT_OPEN:
 						ConsumeToken();
-						ParseMethod();
+						ParseMethod(globalContext);
 						break;
 					case TemplateConst.QUOTE:
 						ConsumeToken();
-						if(!isString)
-						{
-							isString = !isString;
-						}
-						else
-						{
-							Push(new StringEvaluator(token.Value));
-						}
+						isString = !isString;
 						break;
 					default:
 						if(token.IsSeparator)
@@ -136,19 +152,19 @@ namespace ProceduralLevel.Common.Template.Parser
 						}
 						if(isString)
 						{
-							ParseString(isTemplateName);
+							ParseString();
 						}
 						else
 						{
 							char c = token.Value[0];
-							if(char.IsNumber(c) || c == '.' || isTemplateName)
+							if(char.IsNumber(c) || c == '.')
 							{
-								ParseString(isTemplateName);
+								ParseString();
 							}
 							else
 							{
 								ConsumeToken();
-								Push(new GetterEvaluator(token.Value));
+								Push(new GetterEvaluator(token.Value, globalContext));
 							}
 						}
 						break;
@@ -170,19 +186,19 @@ namespace ProceduralLevel.Common.Template.Parser
 			Push(new KeyGetterEvaluator(key, value));
 		}
 
-		private void ParseMethod()
+		private void ParseMethod(bool globalContext)
 		{
 			AEvaluator methodName = Pop();
 			if(methodName.EvalType != EEvaluatorType.Getter)
 			{
 				throw new TemplateEvaluationException(ETemplateEvaluationError.IncorrectMethodNameEvaluator);
 			}
-			MethodEvaluator method = new MethodEvaluator(methodName.ToString());
+			MethodEvaluator method = new MethodEvaluator(methodName.ToString(), globalContext);
 			int count = m_Evaluators.Count;
 
 			while(HasTokens() && PeekToken().Value[0] != TemplateConst.PARENT_CLOSE)
 			{
-				ParseTemplate();
+				ParseAccess();
 			}
 
 			ConsumeToken();
@@ -199,17 +215,10 @@ namespace ProceduralLevel.Common.Template.Parser
 			Push(method);
 		}
 
-		private void ParseString(bool isTemplateName)
+		private void ParseString()
 		{
 			Token token = ConsumeToken();
-			if(isTemplateName)
-			{
-				Push(new TemplateNameEvaluator(token.Value));
-			}
-			else
-			{
-				Push(new StringEvaluator(token.Value));
-			}
+			Push(new StringEvaluator(token.Value));
 		}
 
 		private void Push(AEvaluator evaluator)
@@ -223,6 +232,11 @@ namespace ProceduralLevel.Common.Template.Parser
 			AEvaluator evaluator = m_Evaluators[last];
 			m_Evaluators.RemoveAt(last);
 			return evaluator;
+		}
+
+		public static bool IsBasicLetter(char c)
+		{
+			return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 		}
 	}
 }

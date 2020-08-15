@@ -7,21 +7,21 @@ namespace ProceduralLevel.Common.Template.Evaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 
-		public abstract object Evaluate(TemplateManager manager, object data);
+		public abstract object Evaluate(object context, object globalContext);
 
-		protected object Get(object data, string name)
+		protected object Get(object context, string name)
 		{
-			Type type = data.GetType();
+			Type type = context.GetType();
 
 			FieldInfo field = type.GetField(name);
 			if(field != null)
 			{
-				return field.GetValue(data);
+				return field.GetValue(context);
 			}
 
 			if(type.IsArray)
 			{
-				Array arr = data as Array;
+				Array arr = context as Array;
 				return arr.GetValue(int.Parse(name));
 			}
 			else
@@ -29,7 +29,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 				PropertyInfo property = type.GetProperty(name);
 				if(property != null)
 				{
-					return property.GetValue(data, null);
+					return property.GetValue(context, null);
 				}
 			}
 

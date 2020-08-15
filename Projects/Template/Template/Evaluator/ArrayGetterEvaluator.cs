@@ -13,12 +13,12 @@
 			m_Value = value;
 		}
 
-		public override object Evaluate(TemplateManager manager, object data)
+		public override object Evaluate(object context, object globalContext)
 		{
-			object context = m_Key.Evaluate(manager, data);
-			object value = m_Value.Evaluate(manager, data);
+			object key = m_Key.Evaluate(context, globalContext);
+			object value = m_Value.Evaluate(context, globalContext);
 
-			return Get(context, value.ToString());
+			return Get(key, value.ToString());
 		}
 
 		public override string ToString()

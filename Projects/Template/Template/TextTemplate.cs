@@ -20,35 +20,35 @@ namespace ProceduralLevel.Common.Template
 			m_Evaluators.AddRange(evaluators);
 		}
 
-		public string Compile(TemplateManager manager, object data)
+		public string Compile(object context, object globalContext)
 		{
 			StringBuilder sb = new StringBuilder();
-			Compile(manager, data, sb);
+			Compile(sb, context, globalContext);
 			return sb.ToString();
 		}
 
-		public void Compile(TemplateManager manager, object data, StringBuilder sb)
+		public void Compile(StringBuilder sb, object context, object globalContext)
 		{
-			if(data.GetType().IsArray)
+			if(context.GetType().IsArray)
 			{
-				object[] arr = data as object[];
+				object[] arr = context as object[];
 				for(int x = 0; x < arr.Length; x++)
 				{
-					CompileObject(manager, arr[x], sb);
+					CompileObject(sb, arr[x], globalContext);
 				}
 			}
 			else
 			{
-				CompileObject(manager, data, sb);
+				CompileObject(sb, context, globalContext);
 			}
 		}
 
-		private void CompileObject(TemplateManager manager, object data, StringBuilder sb)
+		private void CompileObject(StringBuilder sb, object context, object globalContext)
 		{
 			for(int x = 0; x < m_Evaluators.Count; x++)
 			{
 				AEvaluator evaluator = m_Evaluators[x];
-				object result = evaluator.Evaluate(manager, data);
+				object result = evaluator.Evaluate(context, globalContext);
 				if(result != null)
 				{
 					sb.Append(result.ToString());

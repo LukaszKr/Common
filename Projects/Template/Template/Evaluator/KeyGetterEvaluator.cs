@@ -13,10 +13,10 @@
 			m_Value = value;
 		}
 
-		public override object Evaluate(TemplateManager manager, object data)
+		public override object Evaluate(object context, object globalContext)
 		{
-			object context = m_Key.Evaluate(manager, data);
-			object value = m_Value.Evaluate(manager, context);
+			object key = m_Key.Evaluate(context, globalContext);
+			object value = m_Value.Evaluate(key, globalContext);
 
 			return value;
 		}

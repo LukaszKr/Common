@@ -7,7 +7,6 @@
 		Getter = 2,
 		KeyGetter = 3,
 		ArrayGetter = 4,
-		Method = 5,
-		Context = 6
+		Method = 5
 	}
 }
