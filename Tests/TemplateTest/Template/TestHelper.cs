@@ -15,9 +15,4 @@ namespace Test.Template
 			manager.RemoveTemplate("template");
 		}
 	}
-
-
-
-
-
 }

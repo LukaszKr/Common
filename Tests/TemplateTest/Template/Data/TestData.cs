@@ -11,5 +11,10 @@
 		{
 			return "ExampleMethod";
 		}
+
+		public string MethodWithParameter(string input)
+		{
+			return input;
+		}
 	}
 }

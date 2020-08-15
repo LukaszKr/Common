@@ -89,5 +89,14 @@ namespace Test.Template
 				"{NestedClassArr[0].NestedMethod()}",
 				m_Data);
 		}
+
+		[Test]
+		public void MethodWithParameterInvoke()
+		{
+			TestHelper.AssertTemplate(m_Manager,
+				"World",
+				"{MethodWithParameter(Hello)}",
+				m_Data);
+		}
 	}
 }
