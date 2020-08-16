@@ -10,13 +10,11 @@ namespace ProceduralLevel.Common.Template.Evaluator
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Method; } }
 
 		private readonly string m_MethodName;
-		private readonly bool m_GlobalContext;
 		private readonly List<AEvaluator> m_Args = new List<AEvaluator>();
 
-		public MethodEvaluator(string methodName, bool globalContext, params AEvaluator[] args)
+		public MethodEvaluator(string methodName, params AEvaluator[] args)
 		{
 			m_MethodName = methodName;
-			m_GlobalContext = globalContext;
 			m_Args.AddRange(args);
 		}
 
@@ -25,10 +23,9 @@ namespace ProceduralLevel.Common.Template.Evaluator
 			m_Args.Add(evaluator);
 		}
 
-		public override object Evaluate(object context, object globalContext)
+		public override object Evaluate(object context)
 		{
-			object usedContext = (m_GlobalContext? globalContext: context);
-			Type type = usedContext.GetType();
+			Type type = context.GetType();
 
 			m_MethodName.ToString();
 
@@ -36,7 +33,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 			object[] args = new object[argCount];
 			for(int x = 0; x < argCount; ++x)
 			{
-				args[x] = m_Args[x].Evaluate(context, globalContext);
+				args[x] = m_Args[x].Evaluate(context);
 			}
 
 			MethodInfo[] methods = type.GetMethods();
@@ -60,7 +57,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 				throw new TemplateEvaluationException(ETemplateEvaluationError.Method_NotFound);
 			}
 
-			return method.Invoke(usedContext, args);
+			return method.Invoke(context, args);
 		}
 
 		public override string ToString()

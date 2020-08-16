@@ -6,16 +6,10 @@ namespace ProceduralLevel.Common.Template
 {
 	public class TextTemplate
 	{
-		public readonly string Name;
-
-		private readonly TemplateManager m_Manager;
 		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
-		internal TextTemplate(string name, TemplateManager manager)
+		internal TextTemplate()
 		{
-			Name = name;
-			m_Manager = manager;
-			m_Manager.AddTemplate(this);
 		}
 
 		internal void AddEvalautor(params AEvaluator[] evaluators)
@@ -23,35 +17,35 @@ namespace ProceduralLevel.Common.Template
 			m_Evaluators.AddRange(evaluators);
 		}
 
-		public string Compile(object context, object globalContext)
+		public string Compile(object context)
 		{
 			StringBuilder sb = new StringBuilder();
-			Compile(sb, context, globalContext);
+			Compile(sb, context);
 			return sb.ToString();
 		}
 
-		public void Compile(StringBuilder sb, object context, object globalContext)
+		public void Compile(StringBuilder sb, object context)
 		{
 			if(context.GetType().IsArray)
 			{
 				object[] arr = context as object[];
 				for(int x = 0; x < arr.Length; x++)
 				{
-					CompileObject(sb, arr[x], globalContext);
+					CompileObject(sb, arr[x]);
 				}
 			}
 			else
 			{
-				CompileObject(sb, context, globalContext);
+				CompileObject(sb, context);
 			}
 		}
 
-		private void CompileObject(StringBuilder sb, object context, object globalContext)
+		private void CompileObject(StringBuilder sb, object context)
 		{
 			for(int x = 0; x < m_Evaluators.Count; x++)
 			{
 				AEvaluator evaluator = m_Evaluators[x];
-				object result = evaluator.Evaluate(context, globalContext);
+				object result = evaluator.Evaluate(context);
 				if(result != null)
 				{
 					sb.Append(result.ToString());

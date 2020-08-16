@@ -11,7 +11,7 @@
 			m_Text = text;
 		}
 
-		public override object Evaluate(object context, object globalContext)
+		public override object Evaluate(object context)
 		{
 			return m_Text;
 		}

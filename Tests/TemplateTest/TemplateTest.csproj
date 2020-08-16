@@ -54,6 +54,10 @@
     <Compile Include="Template\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Projects\Common\Common.csproj">
+      <Project>{8BDAEA91-21D8-456A-AE41-6A9E403421B2}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Projects\Template\Template.csproj">
       <Project>{f5064303-6512-44fa-ad31-ebf0f7953218}</Project>
       <Name>Template</Name>

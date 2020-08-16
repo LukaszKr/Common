@@ -2,11 +2,9 @@
 {
 	internal enum EEvaluatorType
 	{
-		Name = 0,
-		String = 1,
-		Getter = 2,
-		KeyGetter = 3,
-		ArrayGetter = 4,
-		Method = 5
+		String = 0,
+		Getter = 1,
+		DotGetter = 2,
+		Method = 3
 	}
 }

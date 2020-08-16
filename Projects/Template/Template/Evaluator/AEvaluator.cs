@@ -7,7 +7,7 @@ namespace ProceduralLevel.Common.Template.Evaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 
-		public abstract object Evaluate(object context, object globalContext);
+		public abstract object Evaluate(object context);
 
 		protected object Get(object context, string name)
 		{

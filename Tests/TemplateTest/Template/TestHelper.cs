@@ -1,18 +1,17 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.Template;
+using ProceduralLevel.Common.Template.Parser;
 
 namespace Tests.Template
 {
 	public static class TestHelper
 	{
-		public static void AssertTemplate(TemplateManager manager, string expected, string rawTemplate, object context, object globalContext)
+		public static void AssertTemplate(string expected, string rawTemplate, object context)
 		{
-			manager.Parse("{#template}"+rawTemplate);
-			TextTemplate template = manager.GetTemplate("template");
+			TemplateParser parser = new TemplateParser();
+			TextTemplate template = parser.Parse(rawTemplate).Flush();
 
-			Assert.AreEqual(expected, template.Compile(context, globalContext));
-
-			manager.RemoveTemplate("template");
+			Assert.AreEqual(expected, template.Compile(context));
 		}
 	}
 }
