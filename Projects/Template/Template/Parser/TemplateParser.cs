@@ -67,12 +67,6 @@ namespace ProceduralLevel.Common.Template.Parser
 			while(HasTokens())
 			{
 				Token token = PeekToken();
-				string trimmedValue = token.Value.Trim();
-				if(trimmedValue.Length < 1)
-				{
-					ConsumeToken();
-					continue;
-				}
 
 				switch(token.Value[0])
 				{
@@ -99,15 +93,7 @@ namespace ProceduralLevel.Common.Template.Parser
 							throw new TemplateParserException(ETemplateParserError.UnexpectedToken, token);
 						}
 						ConsumeToken();
-						char c = trimmedValue[0];
-						if(char.IsNumber(c) || c == '.')
-						{
-							Push(new StringEvaluator(trimmedValue));
-						}
-						else
-						{
-							Push(new GetterEvaluator(token.Value));
-						}
+						Push(new GetterEvaluator(token.Value));
 						break;
 				}
 			}
