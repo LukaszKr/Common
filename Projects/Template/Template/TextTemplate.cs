@@ -8,14 +8,17 @@ namespace ProceduralLevel.Common.Template
 	{
 		public readonly string Name;
 
+		private readonly TemplateManager m_Manager;
 		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
-		public TextTemplate(string name)
+		internal TextTemplate(string name, TemplateManager manager)
 		{
 			Name = name;
+			m_Manager = manager;
+			m_Manager.AddTemplate(this);
 		}
 
-		public void AddEvalautor(params AEvaluator[] evaluators)
+		internal void AddEvalautor(params AEvaluator[] evaluators)
 		{
 			m_Evaluators.AddRange(evaluators);
 		}

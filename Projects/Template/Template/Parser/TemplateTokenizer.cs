@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Template.Parser
 {
-	public class TemplateTokenizer: ATokenizer
+	internal class TemplateTokenizer: ATokenizer
 	{
 		private static readonly char[] m_Default = new char[]
 		{

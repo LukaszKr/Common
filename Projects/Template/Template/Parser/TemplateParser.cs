@@ -4,12 +4,15 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Template.Parser
 {
-	public class TemplateParser: AParser<TemplateTokenizer, List<TextTemplate>>
+	internal class TemplateParser: AParser<TemplateTokenizer, List<TextTemplate>>
 	{
+		private readonly TemplateManager m_Manager;
 		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 
-		public TemplateParser() : base(new TemplateTokenizer())
+		public TemplateParser(TemplateManager manager)
+			: base(new TemplateTokenizer())
 		{
+			m_Manager = manager;
 		}
 
 		protected override void Reset()
@@ -38,7 +41,7 @@ namespace ProceduralLevel.Common.Template.Parser
 					{
 						templates.Add(template);
 					}
-					template = new TextTemplate(nameEval.Name);
+					template = new TextTemplate(nameEval.Name, m_Manager);
 				}
 				else
 				{

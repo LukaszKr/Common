@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public class StringEvaluator: AEvaluator
+	internal class StringEvaluator: AEvaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.String; } }
 

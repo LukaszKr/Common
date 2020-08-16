@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public enum EEvaluatorType
+	internal enum EEvaluatorType
 	{
 		Name = 0,
 		String = 1,

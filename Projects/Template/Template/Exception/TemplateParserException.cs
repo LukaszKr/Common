@@ -1,6 +1,6 @@
 ﻿using ProceduralLevel.Common.Tokenize;
 
-namespace ProceduralLevel.Common.Template.Parser
+namespace ProceduralLevel.Common.Template
 {
 	public class TemplateParserException: ParserException<ETemplateParserError>
 	{

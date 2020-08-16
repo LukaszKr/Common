@@ -1,10 +1,9 @@
-﻿using ProceduralLevel.Common.Template.Parser;
-using System;
+﻿using System;
 using System.Reflection;
 
 namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public abstract class AEvaluator
+	internal abstract class AEvaluator
 	{
 		public abstract EEvaluatorType EvalType { get; }
 

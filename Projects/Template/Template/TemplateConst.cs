@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Template
 {
-	public static class TemplateConst
+	internal static class TemplateConst
 	{
 		public const char BRACES_OPEN = '{';
 		public const char BRACES_CLOSE = '}';

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevel.Common.Template.Parser
+﻿namespace ProceduralLevel.Common.Template
 {
 	public enum ETemplateParserError
 	{

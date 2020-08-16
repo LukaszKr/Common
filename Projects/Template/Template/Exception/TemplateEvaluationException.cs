@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevel.Common.Template.Parser
+namespace ProceduralLevel.Common.Template
 {
 	public class TemplateEvaluationException: Exception
 	{

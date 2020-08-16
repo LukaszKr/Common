@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public class ArrayGetterEvaluator: AEvaluator
+	internal class ArrayGetterEvaluator: AEvaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.ArrayGetter; } }
 
@@ -8,6 +8,7 @@
 		private readonly AEvaluator m_Value;
 
 		public ArrayGetterEvaluator(AEvaluator key, AEvaluator value)
+
 		{
 			m_Key = key;
 			m_Value = value;

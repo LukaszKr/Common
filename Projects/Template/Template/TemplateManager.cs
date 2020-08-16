@@ -5,12 +5,12 @@ namespace ProceduralLevel.Common.Template
 {
 	public class TemplateManager
 	{
-		private readonly TemplateParser m_Parser = new TemplateParser();
+		private readonly TemplateParser m_Parser;
 		private readonly Dictionary<string, TextTemplate> m_Templates = new Dictionary<string, TextTemplate>();
 
 		public TemplateManager()
 		{
-
+			m_Parser = new TemplateParser(this);
 		}
 
 		public List<TextTemplate> Parse(string rawTemplate)
@@ -23,7 +23,7 @@ namespace ProceduralLevel.Common.Template
 			return templates;
 		}
 
-		public void AddTemplate(TextTemplate template)
+		internal void AddTemplate(TextTemplate template)
 		{
 			m_Templates.Add(template.Name, template);
 		}

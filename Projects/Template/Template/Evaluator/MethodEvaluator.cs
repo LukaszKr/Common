@@ -1,12 +1,11 @@
-﻿using ProceduralLevel.Common.Template.Parser;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
 namespace ProceduralLevel.Common.Template.Evaluator
 {
-	public class MethodEvaluator: AEvaluator
+	internal class MethodEvaluator: AEvaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Method; } }
 
