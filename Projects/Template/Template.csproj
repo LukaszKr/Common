@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>netstandard3.1;net461</TargetFrameworks>
+	<TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
     <RootNamespace>ProceduralLevel.Common.Template</RootNamespace>
     <AssemblyName>ProceduralLevel.Common.Template</AssemblyName>
   </PropertyGroup>
