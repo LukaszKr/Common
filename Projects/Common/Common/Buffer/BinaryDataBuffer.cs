@@ -20,6 +20,11 @@ namespace ProceduralLevel.Common.Buffer
 			m_Data = new byte[capacity];
 		}
 
+		public BinaryDataBuffer(byte[] data)
+		{
+			m_Data = data;
+		}
+
 		public byte[] ToBytes()
 		{
 			byte[] bytes = new byte[m_WritePos];
