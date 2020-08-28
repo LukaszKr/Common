@@ -84,10 +84,7 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 1; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -276,10 +273,8 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 2; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -476,10 +471,9 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 3; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -684,10 +678,10 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 4; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
+			m_Data[3] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -900,10 +894,11 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 5; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
+			m_Data[3] = 0;
+			m_Data[4] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1124,10 +1119,12 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 6; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
+			m_Data[3] = 0;
+			m_Data[4] = 0;
+			m_Data[5] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1356,10 +1353,13 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 7; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
+			m_Data[3] = 0;
+			m_Data[4] = 0;
+			m_Data[5] = 0;
+			m_Data[6] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1596,10 +1596,14 @@ namespace ProceduralLevel.Common.BitMask
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear()
 		{
-			for(int x = 0; x < 8; ++x)
-			{
-				m_Data[x] = 0;
-			}
+			m_Data[0] = 0;
+			m_Data[1] = 0;
+			m_Data[2] = 0;
+			m_Data[3] = 0;
+			m_Data[4] = 0;
+			m_Data[5] = 0;
+			m_Data[6] = 0;
+			m_Data[7] = 0;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
