@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Runtime.CompilerServices;
 
 namespace ProceduralLevel.Common.BitMask
@@ -168,6 +169,21 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			return 
 				m_Data[0] == other.m_Data[0];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask64: IEquatable<BitMask64>
@@ -343,6 +359,21 @@ namespace ProceduralLevel.Common.BitMask
 			return 
 				m_Data[0] == other.m_Data[0] &&
 				m_Data[1] == other.m_Data[1];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask96: IEquatable<BitMask96>
@@ -526,6 +557,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[0] == other.m_Data[0] &&
 				m_Data[1] == other.m_Data[1] &&
 				m_Data[2] == other.m_Data[2];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask128: IEquatable<BitMask128>
@@ -717,6 +763,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[1] == other.m_Data[1] &&
 				m_Data[2] == other.m_Data[2] &&
 				m_Data[3] == other.m_Data[3];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask160: IEquatable<BitMask160>
@@ -916,6 +977,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[2] == other.m_Data[2] &&
 				m_Data[3] == other.m_Data[3] &&
 				m_Data[4] == other.m_Data[4];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask192: IEquatable<BitMask192>
@@ -1123,6 +1199,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[3] == other.m_Data[3] &&
 				m_Data[4] == other.m_Data[4] &&
 				m_Data[5] == other.m_Data[5];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask224: IEquatable<BitMask224>
@@ -1338,6 +1429,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[4] == other.m_Data[4] &&
 				m_Data[5] == other.m_Data[5] &&
 				m_Data[6] == other.m_Data[6];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 	public unsafe struct BitMask256: IEquatable<BitMask256>
@@ -1561,6 +1667,21 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[5] == other.m_Data[5] &&
 				m_Data[6] == other.m_Data[6] &&
 				m_Data[7] == other.m_Data[7];
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 }

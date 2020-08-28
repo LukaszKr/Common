@@ -1,5 +1,6 @@
 ﻿<#@ include file="./HelperMethod.tt" #>
 using System;
+using System.Text;
 using System.Runtime.CompilerServices;
 
 namespace ProceduralLevel.Common.BitMask
@@ -173,6 +174,21 @@ namespace ProceduralLevel.Common.BitMask
 <# for(int y = 0; y < x; ++y) { #>
 				m_Data[<#= y #>] == other.m_Data[<#= y #>]<#= (y+1 < x? " &&": ";") #>
 <# } #>
+		}
+
+		public override string ToString()
+		{
+			return ToString(LENGTH);
+		}
+
+		public string ToString(int maxLength)
+		{
+			StringBuilder sb = new StringBuilder(maxLength);
+			for(int x = 0; x < maxLength; ++x)
+			{
+				sb.Append(Get(x));
+			}
+			return sb.ToString();
 		}
 	}
 <#} #>
