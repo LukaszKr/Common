@@ -34,6 +34,27 @@ namespace Tests.BitMask
 		}
 
 		[Test]
+		public void NewMaskIsEmpty()
+		{
+			BitMask96 mask = new BitMask96();
+			Assert.IsTrue(mask.IsEmpty());
+		}
+
+		[Test]
+		public void CheckToString()
+		{
+			BitMask32 mask = new BitMask32();
+			string actual = mask.ToString();
+			string expected = "".PadLeft(BitMask32.LENGTH, '0');
+
+			Assert.AreEqual(expected, actual);
+			mask.Set(2);
+			actual = mask.ToString();
+			expected = expected.Substring(0, 29)+'1'+expected.Substring(30);
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
 		public void SetGet()
 		{
 			m_Mask.Set(63, true);

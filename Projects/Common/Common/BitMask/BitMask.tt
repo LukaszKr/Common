@@ -88,6 +88,15 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < <#= x #>; ++x)
+			{
+				m_Data[x] = 0;
+			}
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear(int position)
 		{
 			BitIndex index = BitIndex.Get(position);
@@ -184,7 +193,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}

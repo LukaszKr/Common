@@ -82,6 +82,15 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 1; ++x)
+			{
+				m_Data[x] = 0;
+			}
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public void Clear(int position)
 		{
 			BitIndex index = BitIndex.Get(position);
@@ -179,7 +188,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -262,6 +271,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 2; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -369,7 +387,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -453,6 +471,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 3; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -567,7 +594,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -652,6 +679,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 4; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -773,7 +809,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -859,6 +895,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 5; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -987,7 +1032,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -1074,6 +1119,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 6; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1209,7 +1263,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -1297,6 +1351,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 7; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1439,7 +1502,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
@@ -1528,6 +1591,15 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] |= mask;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void Clear()
+		{
+			for(int x = 0; x < 8; ++x)
+			{
+				m_Data[x] = 0;
+			}
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1677,7 +1749,7 @@ namespace ProceduralLevel.Common.BitMask
 		public string ToString(int maxLength)
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
-			for(int x = 0; x < maxLength; ++x)
+			for(int x = maxLength-1; x >= 0; --x)
 			{
 				sb.Append(Get(x)? '1': '0');
 			}
