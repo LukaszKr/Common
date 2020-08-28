@@ -52,6 +52,8 @@ namespace Tests.BitMask
 			actual = mask.ToString();
 			expected = expected.Substring(0, 29)+'1'+expected.Substring(30);
 			Assert.AreEqual(expected, actual);
+
+			Assert.AreEqual("0100", mask.ToString(4));
 		}
 
 		[Test]
