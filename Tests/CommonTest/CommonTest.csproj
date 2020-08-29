@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\BitMask\BitMaskPerformanceTest.cs" />
     <Compile Include="Tests\BitMask\BitMaskTest.cs" />
     <Compile Include="Tests\Buffer\BufferTest.cs" />
     <Compile Include="Tests\Collision2D\ACollisionTest.cs" />

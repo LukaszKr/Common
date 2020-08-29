@@ -16,28 +16,23 @@ namespace Tests.BitMask
 		}
 
 		[Test]
-		public void Performace()
-		{
-			const int passes = 1000000;
-
-			Stopwatch watch = new Stopwatch();
-			watch.Restart();
-			for(int x = 0; x < passes; ++x)
-			{
-				BitMask128 mask = new BitMask128();
-				for(int y = 0; y < BitMask128.LENGTH; ++y)
-				{
-					mask.Set(y);
-				}
-			}
-			TestContext.WriteLine($"128bitmask, {passes} passes, time elapsed: {watch.ElapsedMilliseconds}ms");
-		}
-
-		[Test]
 		public void NewMaskIsEmpty()
 		{
 			BitMask96 mask = new BitMask96();
 			Assert.IsTrue(mask.IsEmpty());
+		}
+
+		[Test]
+		public void EqualMask()
+		{
+			m_Mask.Clear();
+			m_Mask.Set(5);
+			BitMask128 otherMask = new BitMask128();
+			otherMask.Set(5);
+
+			Assert.IsTrue(m_Mask.Equals(otherMask));
+			m_Mask.Set(4);
+			Assert.IsFalse(m_Mask.Equals(otherMask));
 		}
 
 		[Test]
