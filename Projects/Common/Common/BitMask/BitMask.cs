@@ -182,12 +182,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -379,12 +379,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -585,12 +585,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -800,12 +800,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -1024,12 +1024,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -1257,12 +1257,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -1499,12 +1499,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
@@ -1750,12 +1750,12 @@ namespace ProceduralLevel.Common.BitMask
 			return ToString(LENGTH);
 		}
 
-		public string ToString(int maxLength)
+		public string ToString(int maxLength, char trueChar = '1', char falseChar = '0')
 		{
 			StringBuilder sb = new StringBuilder(maxLength);
 			for(int x = maxLength-1; x >= 0; --x)
 			{
-				sb.Append(Get(x)? '1': '0');
+				sb.Append(Get(x)? trueChar: falseChar);
 			}
 			return sb.ToString();
 		}
