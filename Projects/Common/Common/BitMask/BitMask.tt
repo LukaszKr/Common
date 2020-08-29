@@ -146,7 +146,7 @@ namespace ProceduralLevel.Common.BitMask
 
 <# } #>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public BitMask<#= currentMask #> ToggleAll()
+		public BitMask<#= currentMask #> Not()
 		{
 			return new BitMask<#= currentMask #>(
 <# for(int y = 0; y < x; ++y) { #>
