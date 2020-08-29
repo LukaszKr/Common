@@ -168,6 +168,13 @@ namespace ProceduralLevel.Common.BitMask
 			return 
 				(m_Data[0] & other.m_Data[0]) != 0;
 		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask32 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0];
+		}
 #endregion
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -363,6 +370,14 @@ namespace ProceduralLevel.Common.BitMask
 			return 
 				(m_Data[0] & other.m_Data[0]) != 0 &&
 				(m_Data[1] & other.m_Data[1]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask64 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1];
 		}
 #endregion
 
@@ -568,6 +583,15 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[0] & other.m_Data[0]) != 0 &&
 				(m_Data[1] & other.m_Data[1]) != 0 &&
 				(m_Data[2] & other.m_Data[2]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask96 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2];
 		}
 #endregion
 
@@ -782,6 +806,16 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[1] & other.m_Data[1]) != 0 &&
 				(m_Data[2] & other.m_Data[2]) != 0 &&
 				(m_Data[3] & other.m_Data[3]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask128 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2] &&
+				(m_Data[3] & other.m_Data[3]) == other.m_Data[3];
 		}
 #endregion
 
@@ -1005,6 +1039,17 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[2] & other.m_Data[2]) != 0 &&
 				(m_Data[3] & other.m_Data[3]) != 0 &&
 				(m_Data[4] & other.m_Data[4]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask160 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2] &&
+				(m_Data[3] & other.m_Data[3]) == other.m_Data[3] &&
+				(m_Data[4] & other.m_Data[4]) == other.m_Data[4];
 		}
 #endregion
 
@@ -1237,6 +1282,18 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[3] & other.m_Data[3]) != 0 &&
 				(m_Data[4] & other.m_Data[4]) != 0 &&
 				(m_Data[5] & other.m_Data[5]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask192 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2] &&
+				(m_Data[3] & other.m_Data[3]) == other.m_Data[3] &&
+				(m_Data[4] & other.m_Data[4]) == other.m_Data[4] &&
+				(m_Data[5] & other.m_Data[5]) == other.m_Data[5];
 		}
 #endregion
 
@@ -1478,6 +1535,19 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[4] & other.m_Data[4]) != 0 &&
 				(m_Data[5] & other.m_Data[5]) != 0 &&
 				(m_Data[6] & other.m_Data[6]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask224 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2] &&
+				(m_Data[3] & other.m_Data[3]) == other.m_Data[3] &&
+				(m_Data[4] & other.m_Data[4]) == other.m_Data[4] &&
+				(m_Data[5] & other.m_Data[5]) == other.m_Data[5] &&
+				(m_Data[6] & other.m_Data[6]) == other.m_Data[6];
 		}
 #endregion
 
@@ -1728,6 +1798,20 @@ namespace ProceduralLevel.Common.BitMask
 				(m_Data[5] & other.m_Data[5]) != 0 &&
 				(m_Data[6] & other.m_Data[6]) != 0 &&
 				(m_Data[7] & other.m_Data[7]) != 0;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public bool Contains(BitMask256 other)
+		{
+			return 
+				(m_Data[0] & other.m_Data[0]) == other.m_Data[0] &&
+				(m_Data[1] & other.m_Data[1]) == other.m_Data[1] &&
+				(m_Data[2] & other.m_Data[2]) == other.m_Data[2] &&
+				(m_Data[3] & other.m_Data[3]) == other.m_Data[3] &&
+				(m_Data[4] & other.m_Data[4]) == other.m_Data[4] &&
+				(m_Data[5] & other.m_Data[5]) == other.m_Data[5] &&
+				(m_Data[6] & other.m_Data[6]) == other.m_Data[6] &&
+				(m_Data[7] & other.m_Data[7]) == other.m_Data[7];
 		}
 #endregion
 

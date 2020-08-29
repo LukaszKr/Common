@@ -92,7 +92,20 @@ namespace Tests.BitMask
 			m_Mask.Clear(33);
 			Assert.IsFalse(m_Mask.Get(32));
 			Assert.IsFalse(m_Mask.Get(33));
+		}
 
+		[Test]
+		public void Contains()
+		{
+			m_Mask.Set(2);
+			m_Mask.Set(3);
+
+			BitMask128 otherMask = new BitMask128();
+			otherMask.Set(3);
+
+			Assert.IsTrue(m_Mask.Contains(otherMask));
+			otherMask.Set(4);
+			Assert.IsFalse(m_Mask.Contains(otherMask));
 		}
 	}
 }
