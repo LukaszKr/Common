@@ -133,10 +133,22 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask32 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask32 Or(BitMask32 other)
 		{
 			return new BitMask32(
 				m_Data[0] | other.m_Data[0]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask32 other)
+		{
+			m_Data[0] |= other.m_Data[0];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -147,10 +159,22 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask32 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask32 Not()
 		{
 			return new BitMask32(
 				~m_Data[0]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
 		}
 #endregion
 
@@ -331,11 +355,25 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask64 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask64 Or(BitMask64 other)
 		{
 			return new BitMask64(
 				m_Data[0] | other.m_Data[0], 
 				m_Data[1] | other.m_Data[1]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask64 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -347,11 +385,25 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask64 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask64 Not()
 		{
 			return new BitMask64(
 				~m_Data[0],
 				~m_Data[1]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
 		}
 #endregion
 
@@ -539,12 +591,28 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask96 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask96 Or(BitMask96 other)
 		{
 			return new BitMask96(
 				m_Data[0] | other.m_Data[0], 
 				m_Data[1] | other.m_Data[1], 
 				m_Data[2] | other.m_Data[2]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask96 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -557,12 +625,28 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask96 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask96 Not()
 		{
 			return new BitMask96(
 				~m_Data[0],
 				~m_Data[1],
 				~m_Data[2]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
 		}
 #endregion
 
@@ -757,6 +841,15 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask128 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+			m_Data[3] &= other.m_Data[3];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask128 Or(BitMask128 other)
 		{
 			return new BitMask128(
@@ -764,6 +857,15 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[1] | other.m_Data[1], 
 				m_Data[2] | other.m_Data[2], 
 				m_Data[3] | other.m_Data[3]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask128 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
+			m_Data[3] |= other.m_Data[3];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -777,6 +879,15 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask128 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+			m_Data[3] ^= other.m_Data[3];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask128 Not()
 		{
 			return new BitMask128(
@@ -784,6 +895,15 @@ namespace ProceduralLevel.Common.BitMask
 				~m_Data[1],
 				~m_Data[2],
 				~m_Data[3]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
+			m_Data[3] = ~m_Data[3];
 		}
 #endregion
 
@@ -985,6 +1105,16 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask160 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+			m_Data[3] &= other.m_Data[3];
+			m_Data[4] &= other.m_Data[4];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask160 Or(BitMask160 other)
 		{
 			return new BitMask160(
@@ -993,6 +1123,16 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[2] | other.m_Data[2], 
 				m_Data[3] | other.m_Data[3], 
 				m_Data[4] | other.m_Data[4]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask160 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
+			m_Data[3] |= other.m_Data[3];
+			m_Data[4] |= other.m_Data[4];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1007,6 +1147,16 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask160 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+			m_Data[3] ^= other.m_Data[3];
+			m_Data[4] ^= other.m_Data[4];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask160 Not()
 		{
 			return new BitMask160(
@@ -1015,6 +1165,16 @@ namespace ProceduralLevel.Common.BitMask
 				~m_Data[2],
 				~m_Data[3],
 				~m_Data[4]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
+			m_Data[3] = ~m_Data[3];
+			m_Data[4] = ~m_Data[4];
 		}
 #endregion
 
@@ -1223,6 +1383,17 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask192 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+			m_Data[3] &= other.m_Data[3];
+			m_Data[4] &= other.m_Data[4];
+			m_Data[5] &= other.m_Data[5];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask192 Or(BitMask192 other)
 		{
 			return new BitMask192(
@@ -1232,6 +1403,17 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[3] | other.m_Data[3], 
 				m_Data[4] | other.m_Data[4], 
 				m_Data[5] | other.m_Data[5]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask192 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
+			m_Data[3] |= other.m_Data[3];
+			m_Data[4] |= other.m_Data[4];
+			m_Data[5] |= other.m_Data[5];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1247,6 +1429,17 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask192 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+			m_Data[3] ^= other.m_Data[3];
+			m_Data[4] ^= other.m_Data[4];
+			m_Data[5] ^= other.m_Data[5];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask192 Not()
 		{
 			return new BitMask192(
@@ -1256,6 +1449,17 @@ namespace ProceduralLevel.Common.BitMask
 				~m_Data[3],
 				~m_Data[4],
 				~m_Data[5]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
+			m_Data[3] = ~m_Data[3];
+			m_Data[4] = ~m_Data[4];
+			m_Data[5] = ~m_Data[5];
 		}
 #endregion
 
@@ -1471,6 +1675,18 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask224 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+			m_Data[3] &= other.m_Data[3];
+			m_Data[4] &= other.m_Data[4];
+			m_Data[5] &= other.m_Data[5];
+			m_Data[6] &= other.m_Data[6];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask224 Or(BitMask224 other)
 		{
 			return new BitMask224(
@@ -1481,6 +1697,18 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[4] | other.m_Data[4], 
 				m_Data[5] | other.m_Data[5], 
 				m_Data[6] | other.m_Data[6]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask224 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
+			m_Data[3] |= other.m_Data[3];
+			m_Data[4] |= other.m_Data[4];
+			m_Data[5] |= other.m_Data[5];
+			m_Data[6] |= other.m_Data[6];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1497,6 +1725,18 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask224 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+			m_Data[3] ^= other.m_Data[3];
+			m_Data[4] ^= other.m_Data[4];
+			m_Data[5] ^= other.m_Data[5];
+			m_Data[6] ^= other.m_Data[6];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask224 Not()
 		{
 			return new BitMask224(
@@ -1507,6 +1747,18 @@ namespace ProceduralLevel.Common.BitMask
 				~m_Data[4],
 				~m_Data[5],
 				~m_Data[6]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
+			m_Data[3] = ~m_Data[3];
+			m_Data[4] = ~m_Data[4];
+			m_Data[5] = ~m_Data[5];
+			m_Data[6] = ~m_Data[6];
 		}
 #endregion
 
@@ -1729,6 +1981,19 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void AndModify(BitMask256 other)
+		{
+			m_Data[0] &= other.m_Data[0];
+			m_Data[1] &= other.m_Data[1];
+			m_Data[2] &= other.m_Data[2];
+			m_Data[3] &= other.m_Data[3];
+			m_Data[4] &= other.m_Data[4];
+			m_Data[5] &= other.m_Data[5];
+			m_Data[6] &= other.m_Data[6];
+			m_Data[7] &= other.m_Data[7];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask256 Or(BitMask256 other)
 		{
 			return new BitMask256(
@@ -1740,6 +2005,19 @@ namespace ProceduralLevel.Common.BitMask
 				m_Data[5] | other.m_Data[5], 
 				m_Data[6] | other.m_Data[6], 
 				m_Data[7] | other.m_Data[7]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void OrModify(BitMask256 other)
+		{
+			m_Data[0] |= other.m_Data[0];
+			m_Data[1] |= other.m_Data[1];
+			m_Data[2] |= other.m_Data[2];
+			m_Data[3] |= other.m_Data[3];
+			m_Data[4] |= other.m_Data[4];
+			m_Data[5] |= other.m_Data[5];
+			m_Data[6] |= other.m_Data[6];
+			m_Data[7] |= other.m_Data[7];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1757,6 +2035,19 @@ namespace ProceduralLevel.Common.BitMask
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void XOrModify(BitMask256 other)
+		{
+			m_Data[0] ^= other.m_Data[0];
+			m_Data[1] ^= other.m_Data[1];
+			m_Data[2] ^= other.m_Data[2];
+			m_Data[3] ^= other.m_Data[3];
+			m_Data[4] ^= other.m_Data[4];
+			m_Data[5] ^= other.m_Data[5];
+			m_Data[6] ^= other.m_Data[6];
+			m_Data[7] ^= other.m_Data[7];
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask256 Not()
 		{
 			return new BitMask256(
@@ -1768,6 +2059,19 @@ namespace ProceduralLevel.Common.BitMask
 				~m_Data[5],
 				~m_Data[6],
 				~m_Data[7]);
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+			m_Data[0] = ~m_Data[0];
+			m_Data[1] = ~m_Data[1];
+			m_Data[2] = ~m_Data[2];
+			m_Data[3] = ~m_Data[3];
+			m_Data[4] = ~m_Data[4];
+			m_Data[5] = ~m_Data[5];
+			m_Data[6] = ~m_Data[6];
+			m_Data[7] = ~m_Data[7];
 		}
 #endregion
 

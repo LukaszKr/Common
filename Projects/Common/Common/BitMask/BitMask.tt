@@ -144,6 +144,14 @@ namespace ProceduralLevel.Common.BitMask
 <# } #>
 		}
 
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void <#= operations[z]#>Modify(BitMask<#= currentMask #> other)
+		{
+<# for(int y = 0; y < x; ++y) { #>
+			m_Data[<#= y #>] <#= operations[z+1] #>= other.m_Data[<#= y #>];
+<# } #>
+		}
+
 <# } #>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BitMask<#= currentMask #> Not()
@@ -151,6 +159,14 @@ namespace ProceduralLevel.Common.BitMask
 			return new BitMask<#= currentMask #>(
 <# for(int y = 0; y < x; ++y) { #>
 				~m_Data[<#= y #>]<#= (y+1 < x? ",": ");") #>
+<# } #>
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public void NotModify()
+		{
+<# for(int y = 0; y < x; ++y) { #>
+			m_Data[<#= y #>] = ~m_Data[<#= y #>];
 <# } #>
 		}
 #endregion
