@@ -14,7 +14,7 @@ namespace ProceduralLevel.Common.BitMask
 
 		private fixed int m_Data[<#= x #>];
 
-		private BitMask<#= currentMask #>(<#= listArgs(x) #>)
+		public BitMask<#= currentMask #>(<#= listArgs(x) #>)
 		{
 <# for(int y = 0; y < x; ++y) { #>
 			m_Data[<#= y #>] = i<#= y #>;
@@ -35,12 +35,6 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			return (m_Data[index.Group] & mask) != 0;
-		}
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public int GetGroup(int group)
-		{
-			return m_Data[group];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -123,12 +117,6 @@ namespace ProceduralLevel.Common.BitMask
 		{
 			int mask = 1 << index.Local;
 			m_Data[index.Group] ^= mask;
-		}
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public void SetGroup(int group, int value)
-		{
-			m_Data[group] = value;
 		}
 #endregion
 
