@@ -102,5 +102,13 @@ namespace Tests.BitMask
 			otherMask.Set(4);
 			Assert.IsFalse(m_Mask.Contains(otherMask));
 		}
+
+		[Test]
+		public void CopyByAssign()
+		{
+			BitMask128 mask = m_Mask;
+			mask.Set(1);
+			Assert.IsFalse(mask.Equals(m_Mask));
+		}
 	}
 }
