@@ -6,6 +6,6 @@ namespace ProceduralLevel.Common.SourceListener
 		where TSource : class
 	{
 		void AttachToSource(TSource source, EventBinder binder);
-		void DetachFromSource(TSource source);
+		void DetachFromSource();
 	}
 }

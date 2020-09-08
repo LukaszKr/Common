@@ -51,7 +51,7 @@ namespace ProceduralLevel.Common.SourceListener
 
 			if(IsActiveAndEnabled)
 			{
-				entry.DetachFromSource(m_CurrentSource);
+				entry.DetachFromSource();
 			}
 			m_Listeners.Remove(entry);
 		}
@@ -84,7 +84,7 @@ namespace ProceduralLevel.Common.SourceListener
 			for(int x = 0; x < m_Listeners.Count; ++x)
 			{
 				SourceListenerEntry<TSource> listener = m_Listeners[x];
-				listener.DetachFromSource(m_CurrentSource);
+				listener.DetachFromSource();
 			}
 		}
 

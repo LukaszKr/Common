@@ -18,10 +18,10 @@ namespace ProceduralLevel.Common.SourceListener
 			Listener.AttachToSource(source, m_EventBinder);
 		}
 
-		public void DetachFromSource(TSource source)
+		public void DetachFromSource()
 		{
 			m_EventBinder.UnbindAll();
-			Listener.DetachFromSource(source);
+			Listener.DetachFromSource();
 		}
 
 		public override string ToString()
