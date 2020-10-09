@@ -8,12 +8,10 @@ namespace ProceduralLevel.Common.Buffer
 	public partial class BinaryDataBuffer
 	{
 		protected readonly byte[] m_Data;
-		protected int m_ReadPos;
-		protected int m_WritePos;
+		protected int m_Position;
 
 		public byte[] Bytes { get { return m_Data; } }
-		public int Length { get { return m_WritePos; } }
-		public int UnreadCount { get { return m_WritePos-m_ReadPos; } }
+		public int Position { get { return m_Position; } }
 
 		public BinaryDataBuffer(int capacity)
 		{
@@ -27,18 +25,18 @@ namespace ProceduralLevel.Common.Buffer
 
 		public byte[] ToBytes()
 		{
-			byte[] bytes = new byte[m_WritePos];
+			byte[] bytes = new byte[m_Position];
 			ToBytes(bytes, 0);
 			return bytes;
 		}
 
 		public int ToBytes(byte[] bytes, int offset = 0)
 		{
-			for(int x = 0; x < m_WritePos; x++)
+			for(int x = 0; x < m_Position; x++)
 			{
 				bytes[x+offset] = m_Data[x];
 			}
-			return m_ReadPos;
+			return m_Position;
 		}
 
 		public void FromBytes(byte[] bytes)
@@ -48,8 +46,7 @@ namespace ProceduralLevel.Common.Buffer
 
 		public void FromBytes(byte[] bytes, int readOffset, int length)
 		{
-			m_ReadPos = 0;
-			m_WritePos = length;
+			m_Position = 0;
 			for(int x = 0; x < length; ++x)
 			{
 				m_Data[x] = bytes[x+readOffset];
@@ -58,18 +55,12 @@ namespace ProceduralLevel.Common.Buffer
 
 		public void Seek(int position)
 		{
-			m_ReadPos = position;
+			m_Position = position;
 		}
 
 		public void Skip(int bytes)
 		{
-			m_ReadPos += bytes;
-		}
-
-		public void Reset()
-		{
-			m_WritePos = 0;
-			m_ReadPos = 0;
+			m_Position += bytes;
 		}
 
 		#region Deserialize
@@ -162,82 +153,82 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public char ReadChar()
 		{
-			return (char)m_Data[m_ReadPos++];
+			return (char)m_Data[m_Position++];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool ReadBool()
 		{
-			return (m_Data[m_ReadPos++] == 1? true: false);
+			return (m_Data[m_Position++] == 1? true: false);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public byte ReadByte()
 		{
-			return m_Data[m_ReadPos++];
+			return m_Data[m_Position++];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public short ReadShort()
 		{
-			short value = m_Data[m_ReadPos++];
-			value += (short)(m_Data[m_ReadPos++] << 8);
+			short value = m_Data[m_Position++];
+			value += (short)(m_Data[m_Position++] << 8);
 			return value;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public ushort ReadUShort()
 		{
-			ushort value = m_Data[m_ReadPos++];
-			value += (ushort)(m_Data[m_ReadPos++] << 8);
+			ushort value = m_Data[m_Position++];
+			value += (ushort)(m_Data[m_Position++] << 8);
 			return value;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public int ReadInt()
 		{
-			int value = m_Data[m_ReadPos++];
-			value += m_Data[m_ReadPos++] << 8;
-			value += m_Data[m_ReadPos++] << 16;
-			value += m_Data[m_ReadPos++] << 24;
+			int value = m_Data[m_Position++];
+			value += m_Data[m_Position++] << 8;
+			value += m_Data[m_Position++] << 16;
+			value += m_Data[m_Position++] << 24;
 			return value;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public uint ReadUInt()
 		{
-			uint value = m_Data[m_ReadPos++];
-			value += (uint)(m_Data[m_ReadPos++] << 8);
-			value += (uint)(m_Data[m_ReadPos++] << 16);
-			value += (uint)(m_Data[m_ReadPos++] << 24);
+			uint value = m_Data[m_Position++];
+			value += (uint)(m_Data[m_Position++] << 8);
+			value += (uint)(m_Data[m_Position++] << 16);
+			value += (uint)(m_Data[m_Position++] << 24);
 			return value;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public long ReadLong()
 		{
-			long value = m_Data[m_ReadPos++];
-			value += (long)m_Data[m_ReadPos++] << 8;
-			value += (long)m_Data[m_ReadPos++] << 16;
-			value += (long)m_Data[m_ReadPos++] << 24;
-			value += (long)m_Data[m_ReadPos++] << 32;
-			value += (long)m_Data[m_ReadPos++] << 40;
-			value += (long)m_Data[m_ReadPos++] << 48;
-			value += (long)m_Data[m_ReadPos++] << 56;
+			long value = m_Data[m_Position++];
+			value += (long)m_Data[m_Position++] << 8;
+			value += (long)m_Data[m_Position++] << 16;
+			value += (long)m_Data[m_Position++] << 24;
+			value += (long)m_Data[m_Position++] << 32;
+			value += (long)m_Data[m_Position++] << 40;
+			value += (long)m_Data[m_Position++] << 48;
+			value += (long)m_Data[m_Position++] << 56;
 			return value;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public ulong ReadULong()
 		{
-			ulong value = m_Data[m_ReadPos++];
-			value += ((ulong)m_Data[m_ReadPos++] << 8);
-			value += ((ulong)m_Data[m_ReadPos++] << 16);
-			value += ((ulong)m_Data[m_ReadPos++] << 24);
-			value += ((ulong)m_Data[m_ReadPos++] << 32);
-			value += ((ulong)m_Data[m_ReadPos++] << 40);
-			value += ((ulong)m_Data[m_ReadPos++] << 48);
-			value += ((ulong)m_Data[m_ReadPos++] << 56);
+			ulong value = m_Data[m_Position++];
+			value += ((ulong)m_Data[m_Position++] << 8);
+			value += ((ulong)m_Data[m_Position++] << 16);
+			value += ((ulong)m_Data[m_Position++] << 24);
+			value += ((ulong)m_Data[m_Position++] << 32);
+			value += ((ulong)m_Data[m_Position++] << 40);
+			value += ((ulong)m_Data[m_Position++] << 48);
+			value += ((ulong)m_Data[m_Position++] << 56);
 			return value;
 		}
 
@@ -252,7 +243,7 @@ namespace ProceduralLevel.Common.Buffer
 			byte[] bytes = new byte[length];
 			for(int x = 0; x < length; ++x)
 			{
-				bytes[x] = m_Data[m_ReadPos++];
+				bytes[x] = m_Data[m_Position++];
 			}
 			return Encoding.UTF8.GetString(bytes);
 		}
@@ -260,8 +251,8 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public float ReadFloat()
 		{
-			float value = BitConverter.ToSingle(m_Data, m_ReadPos);
-			m_ReadPos += 4;
+			float value = BitConverter.ToSingle(m_Data, m_Position);
+			m_Position += 4;
 			return value;
 		}
 
@@ -309,85 +300,85 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(char data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
+			m_Data[m_Position++] = (byte)data;
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(bool data)
 		{
-			m_Data[m_WritePos++] = (data? (byte)1: (byte)0);
+			m_Data[m_Position++] = (data? (byte)1: (byte)0);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(byte data)
 		{
-			m_Data[m_WritePos++] = data;
+			m_Data[m_Position++] = data;
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(short data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(ushort data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(int data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
-			m_Data[m_WritePos++] = (byte)(data >> 16);
-			m_Data[m_WritePos++] = (byte)(data >> 24);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)(data >> 16);
+			m_Data[m_Position++] = (byte)(data >> 24);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(uint data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
-			m_Data[m_WritePos++] = (byte)(data >> 16);
-			m_Data[m_WritePos++] = (byte)(data >> 24);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)(data >> 16);
+			m_Data[m_Position++] = (byte)(data >> 24);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(long data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
-			m_Data[m_WritePos++] = (byte)(data >> 16);
-			m_Data[m_WritePos++] = (byte)(data >> 24);
-			m_Data[m_WritePos++] = (byte)(data >> 32);
-			m_Data[m_WritePos++] = (byte)(data >> 40);
-			m_Data[m_WritePos++] = (byte)(data >> 48);
-			m_Data[m_WritePos++] = (byte)(data >> 56);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)(data >> 16);
+			m_Data[m_Position++] = (byte)(data >> 24);
+			m_Data[m_Position++] = (byte)(data >> 32);
+			m_Data[m_Position++] = (byte)(data >> 40);
+			m_Data[m_Position++] = (byte)(data >> 48);
+			m_Data[m_Position++] = (byte)(data >> 56);
 			return this;
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(ulong data)
 		{
-			m_Data[m_WritePos++] = (byte)data;
-			m_Data[m_WritePos++] = (byte)(data >> 8);
-			m_Data[m_WritePos++] = (byte)(data >> 16);
-			m_Data[m_WritePos++] = (byte)(data >> 24);
-			m_Data[m_WritePos++] = (byte)(data >> 32);
-			m_Data[m_WritePos++] = (byte)(data >> 40);
-			m_Data[m_WritePos++] = (byte)(data >> 48);
-			m_Data[m_WritePos++] = (byte)(data >> 56);
+			m_Data[m_Position++] = (byte)data;
+			m_Data[m_Position++] = (byte)(data >> 8);
+			m_Data[m_Position++] = (byte)(data >> 16);
+			m_Data[m_Position++] = (byte)(data >> 24);
+			m_Data[m_Position++] = (byte)(data >> 32);
+			m_Data[m_Position++] = (byte)(data >> 40);
+			m_Data[m_Position++] = (byte)(data >> 48);
+			m_Data[m_Position++] = (byte)(data >> 56);
 			return this;
 		}
 
@@ -405,7 +396,7 @@ namespace ProceduralLevel.Common.Buffer
 				Write(length);
 				for(int x = 0; x < length; ++x)
 				{
-					m_Data[m_WritePos++] = bytes[x];
+					m_Data[m_Position++] = bytes[x];
 				}
 			}
 			return this;
@@ -415,10 +406,10 @@ namespace ProceduralLevel.Common.Buffer
 		public BinaryDataBuffer Write(float data)
 		{
 			byte[] bytes = BitConverter.GetBytes(data); //allocates memory, but I couldn't find a better way of doing this
-			m_Data[m_WritePos++] = bytes[0];
-			m_Data[m_WritePos++] = bytes[1];
-			m_Data[m_WritePos++] = bytes[2];
-			m_Data[m_WritePos++] = bytes[3];
+			m_Data[m_Position++] = bytes[0];
+			m_Data[m_Position++] = bytes[1];
+			m_Data[m_Position++] = bytes[2];
+			m_Data[m_Position++] = bytes[3];
 			return this;
 		}
 
@@ -433,7 +424,7 @@ namespace ProceduralLevel.Common.Buffer
 
 		public override string ToString()
 		{
-			return string.Format("[Length: {0}, Head: {1}]", m_WritePos, m_ReadPos);
+			return string.Format("[Length: {0}, Head: {1}]", m_Position, m_Position);
 		}
 	}
 }

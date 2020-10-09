@@ -84,17 +84,14 @@ namespace Tests.Buffer
 			{
 				write(values[x]);
 			}
-			Assert.AreEqual(size*length, m_Buffer.Length);
+			int position = m_Buffer.Position;
+			Assert.AreEqual(size*length, position);
+			m_Buffer.Seek(0);
 			for(int x = 0; x < length; ++x)
 			{
 				Assert.AreEqual(values[x], read());
 			}
-			AssertPostTest();
-		}
-
-		private void AssertPostTest()
-		{
-			Assert.AreEqual(0, m_Buffer.UnreadCount);
+			Assert.AreEqual(position, m_Buffer.Position);
 		}
 		#endregion
 	}
