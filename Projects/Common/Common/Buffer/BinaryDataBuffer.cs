@@ -23,16 +23,18 @@ namespace ProceduralLevel.Common.Buffer
 			m_Data = data;
 		}
 
-		public byte[] ToBytes()
+		public byte[] ToBytes(bool usePosition = true)
 		{
-			byte[] bytes = new byte[m_Position];
+			int length = (usePosition? m_Position: m_Data.Length);
+			byte[] bytes = new byte[length];
 			ToBytes(bytes, 0);
 			return bytes;
 		}
 
-		public int ToBytes(byte[] bytes, int offset = 0)
+		public int ToBytes(byte[] bytes, int offset = 0, bool usePosition = true)
 		{
-			for(int x = 0; x < m_Position; x++)
+			int length = (usePosition? m_Position: m_Data.Length);
+			for(int x = 0; x < length; x++)
 			{
 				bytes[x+offset] = m_Data[x];
 			}
