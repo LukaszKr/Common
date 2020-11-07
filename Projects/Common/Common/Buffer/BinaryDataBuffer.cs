@@ -12,6 +12,7 @@ namespace ProceduralLevel.Common.Buffer
 
 		public byte[] Bytes { get { return m_Data; } }
 		public int Position { get { return m_Position; } }
+		public int Capacity { get { return m_Data.Length; } }
 
 		public BinaryDataBuffer(int capacity)
 		{
@@ -55,14 +56,22 @@ namespace ProceduralLevel.Common.Buffer
 			}
 		}
 
-		public void Seek(int position)
+		public void Seek(int position, ESeekOrigin origin = ESeekOrigin.Begin)
 		{
-			m_Position = position;
-		}
-
-		public void Skip(int bytes)
-		{
-			m_Position += bytes;
+			switch(origin)
+			{
+				case ESeekOrigin.Begin:
+					m_Position = position;
+					break;
+				case ESeekOrigin.Current:
+					m_Position += position;
+					break;
+				case ESeekOrigin.End:
+					m_Position = m_Data.Length-position;
+					break;
+				default:
+					throw new NotImplementedException();
+			}
 		}
 
 		#region Deserialize
@@ -161,7 +170,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public bool ReadBool()
 		{
-			return (m_Data[m_Position++] == 1? true: false);
+			return (m_Data[m_Position++] == 1 ? true : false);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -309,7 +318,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryDataBuffer Write(bool data)
 		{
-			m_Data[m_Position++] = (data? (byte)1: (byte)0);
+			m_Data[m_Position++] = (data ? (byte)1 : (byte)0);
 			return this;
 		}
 
