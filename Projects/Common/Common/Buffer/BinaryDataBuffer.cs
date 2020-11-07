@@ -74,6 +74,11 @@ namespace ProceduralLevel.Common.Buffer
 			}
 		}
 
+		public BufferGroup CreateGroup()
+		{
+			return new BufferGroup(this);
+		}
+
 		#region Deserialize
 		public void Read<TEntry>(List<TEntry> list, bool append = false)
 			where TEntry : IBufferDeserialized, new()

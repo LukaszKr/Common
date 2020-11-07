@@ -76,6 +76,28 @@ namespace Tests.Buffer
 			TestReadWrite(m_Buffer.Write, m_Buffer.ReadString, str.Length+4, str);
 		}
 
+		[Test]
+		public void Group()
+		{
+			const int BYTE_COUNT = 15;
+			BufferGroup group = m_Buffer.CreateGroup();
+			byte emptyByte = 0;
+			for(int x = 0; x < BYTE_COUNT; ++x)
+			{
+				m_Buffer.Write(emptyByte);
+			}
+			Assert.AreEqual(m_Buffer.Position, BYTE_COUNT+4);
+			Assert.AreEqual(group.Length, BYTE_COUNT);
+			
+			int position = m_Buffer.Position;
+			group.Save();
+			Assert.AreEqual(position, m_Buffer.Position);
+
+			m_Buffer.Seek(0);
+			int groupSize = m_Buffer.ReadInt();
+			Assert.AreEqual(BYTE_COUNT, groupSize);
+		}
+
 		#region Helper
 		private void TestReadWrite<TPrimitive>(Func<TPrimitive, BinaryDataBuffer> write, Func<TPrimitive> read, int size, params TPrimitive[] values)
 		{
