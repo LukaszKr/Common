@@ -74,9 +74,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 		}
 
-		public BufferGroup CreateGroup()
+		public BufferChunk CreateChunk()
 		{
-			return new BufferGroup(this);
+			return new BufferChunk(this);
 		}
 
 		#region Deserialize

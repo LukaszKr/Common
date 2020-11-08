@@ -77,20 +77,20 @@ namespace Tests.Buffer
 		}
 
 		[Test]
-		public void Group()
+		public void Chunk()
 		{
 			const int BYTE_COUNT = 15;
-			BufferGroup group = m_Buffer.CreateGroup();
+			BufferChunk chunk = m_Buffer.CreateChunk();
 			byte emptyByte = 0;
 			for(int x = 0; x < BYTE_COUNT; ++x)
 			{
 				m_Buffer.Write(emptyByte);
 			}
 			Assert.AreEqual(m_Buffer.Position, BYTE_COUNT+4);
-			Assert.AreEqual(group.Length, BYTE_COUNT);
+			Assert.AreEqual(chunk.Length, BYTE_COUNT);
 			
 			int position = m_Buffer.Position;
-			group.Save();
+			chunk.Save();
 			Assert.AreEqual(position, m_Buffer.Position);
 
 			m_Buffer.Seek(0);

@@ -1,6 +1,7 @@
 ﻿namespace ProceduralLevel.Common.Buffer
 {
-	public class BufferGroup
+	public class BufferChunk
+
 	{
 		public readonly BinaryDataBuffer Buffer;
 		public readonly int SizePosition;
@@ -8,7 +9,7 @@
 
 		public int Length { get { return Buffer.Position-DataPosition; } }
 
-		public BufferGroup(BinaryDataBuffer buffer)
+		public BufferChunk(BinaryDataBuffer buffer)
 		{
 			Buffer = buffer;
 			SizePosition = buffer.Position;
