@@ -77,6 +77,13 @@ namespace Tests.Buffer
 		}
 
 		[Test]
+		public void Guid()
+		{
+			Guid g = System.Guid.NewGuid();
+			TestReadWrite(m_Buffer.Write, m_Buffer.ReadGuid, 16, g);
+		}
+
+		[Test]
 		public void Chunk()
 		{
 			const int BYTE_COUNT = 15;
@@ -99,7 +106,7 @@ namespace Tests.Buffer
 		}
 
 		#region Helper
-		private void TestReadWrite<TPrimitive>(Func<TPrimitive, BinaryDataBuffer> write, Func<TPrimitive> read, int size, params TPrimitive[] values)
+		private void TestReadWrite<TData>(Func<TData, BinaryDataBuffer> write, Func<TData> read, int size, params TData[] values)
 		{
 			int length = values.Length;
 			for(int x = 0; x < length; ++x)

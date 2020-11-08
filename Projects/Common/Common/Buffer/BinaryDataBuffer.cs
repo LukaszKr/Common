@@ -7,6 +7,8 @@ namespace ProceduralLevel.Common.Buffer
 {
 	public partial class BinaryDataBuffer
 	{
+		private const int GUID_LENGTH = 16;
+
 		protected readonly byte[] m_Data;
 		protected int m_Position;
 
@@ -79,7 +81,7 @@ namespace ProceduralLevel.Common.Buffer
 			return new BufferChunk(this);
 		}
 
-		#region Deserialize
+		#region Read
 		public void Read<TEntry>(List<TEntry> list, bool append = false)
 			where TEntry : IBufferDeserialized, new()
 		{
@@ -164,6 +166,17 @@ namespace ProceduralLevel.Common.Buffer
 				arr[x] = entry;
 			}
 			return arr;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public Guid ReadGuid()
+		{
+			byte[] bytes = new byte[GUID_LENGTH];
+			for(int x = 0; x < GUID_LENGTH; ++x)
+			{
+				bytes[x] = m_Data[m_Position++];
+			}
+			return new Guid(bytes);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -309,6 +322,17 @@ namespace ProceduralLevel.Common.Buffer
 			for(int x = 0; x < count; ++x)
 			{
 				Write(list[x]);
+			}
+			return this;
+		}
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public BinaryDataBuffer Write(Guid guid)
+		{
+			byte[] bytes = guid.ToByteArray();
+			for(int x = 0; x < GUID_LENGTH; ++x)
+			{
+				m_Data[m_Position++] = bytes[x];
 			}
 			return this;
 		}
