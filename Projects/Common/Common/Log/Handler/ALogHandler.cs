@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ProceduralLevel.Common.Log
+﻿namespace ProceduralLevel.Common.Log
 {
 	public abstract class ALogHandler<TLogChannel>
 	{

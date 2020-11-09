@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Buffer
 {
@@ -62,7 +60,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Bool
 		public BinaryDataBuffer Write(bool[] arr)
@@ -120,7 +118,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Byte
 		public BinaryDataBuffer Write(byte[] arr)
@@ -178,7 +176,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Short
 		public BinaryDataBuffer Write(short[] arr)
@@ -236,7 +234,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region UShort
 		public BinaryDataBuffer Write(ushort[] arr)
@@ -294,7 +292,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Int
 		public BinaryDataBuffer Write(int[] arr)
@@ -352,7 +350,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region UInt
 		public BinaryDataBuffer Write(uint[] arr)
@@ -410,7 +408,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Long
 		public BinaryDataBuffer Write(long[] arr)
@@ -468,7 +466,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region ULong
 		public BinaryDataBuffer Write(ulong[] arr)
@@ -526,7 +524,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region String
 		public BinaryDataBuffer Write(string[] arr)
@@ -584,7 +582,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Float
 		public BinaryDataBuffer Write(float[] arr)
@@ -642,7 +640,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Double
 		public BinaryDataBuffer Write(double[] arr)
@@ -700,7 +698,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 	}
 }

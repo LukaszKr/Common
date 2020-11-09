@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using ProceduralLevel.Common.Buffer;
-using System;
 
 namespace Tests.Buffer
 {
@@ -95,7 +95,7 @@ namespace Tests.Buffer
 			}
 			Assert.AreEqual(m_Buffer.Position, BYTE_COUNT+4);
 			Assert.AreEqual(chunk.Length, BYTE_COUNT);
-			
+
 			int position = m_Buffer.Position;
 			chunk.Save();
 			Assert.AreEqual(position, m_Buffer.Position);

@@ -27,7 +27,7 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {0}, Types: ]", 
+			return string.Format("[Event, ListenerCount: {0}, Types: ]",
 				 m_Listeners.Count);
 		}
 	}
@@ -57,8 +57,8 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {1}, Types: {0}]", 
-				typeof(T0).Name,  m_Listeners.Count);
+			return string.Format("[Event, ListenerCount: {1}, Types: {0}]",
+				typeof(T0).Name, m_Listeners.Count);
 		}
 	}
 
@@ -87,8 +87,8 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {2}, Types: {0}, {1}]", 
-				typeof(T0).Name, typeof(T1).Name,  m_Listeners.Count);
+			return string.Format("[Event, ListenerCount: {2}, Types: {0}, {1}]",
+				typeof(T0).Name, typeof(T1).Name, m_Listeners.Count);
 		}
 	}
 
@@ -117,8 +117,8 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {3}, Types: {0}, {1}, {2}]", 
-				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name,  m_Listeners.Count);
+			return string.Format("[Event, ListenerCount: {3}, Types: {0}, {1}, {2}]",
+				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name, m_Listeners.Count);
 		}
 	}
 
@@ -147,8 +147,8 @@ namespace ProceduralLevel.Common.Event
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {4}, Types: {0}, {1}, {2}, {3}]", 
-				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name, typeof(T3).Name,  m_Listeners.Count);
+			return string.Format("[Event, ListenerCount: {4}, Types: {0}, {1}, {2}, {3}]",
+				typeof(T0).Name, typeof(T1).Name, typeof(T2).Name, typeof(T3).Name, m_Listeners.Count);
 		}
 	}
 

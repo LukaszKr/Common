@@ -22,7 +22,7 @@
 
 		public static bool Intersects(Circle c, Line l)
 		{
-			return Distance(c, l, true) == 0;	
+			return Distance(c, l, true) == 0;
 			//return DistanceSqr(c, l, true) == 0;	
 		}
 		#endregion

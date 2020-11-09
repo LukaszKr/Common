@@ -15,7 +15,7 @@ namespace ProceduralLevel.Common.Tokenize
 
 		public override string ToString()
 		{
-			return string.Format("[{0} {1}]", ErrorCode.ToString(), (Token != null? Token.ToString(): "-"));
+			return string.Format("[{0} {1}]", ErrorCode.ToString(), (Token != null ? Token.ToString() : "-"));
 		}
 	}
 }

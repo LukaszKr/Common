@@ -1,6 +1,6 @@
-﻿using ProceduralLevel.Common.Template.Evaluator;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using ProceduralLevel.Common.Template.Evaluator;
 
 namespace ProceduralLevel.Common.Template
 {

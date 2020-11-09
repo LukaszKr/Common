@@ -1,5 +1,5 @@
-﻿using ProceduralLevel.Common.Tokenize;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ProceduralLevel.Common.Tokenize;
 
 namespace ProceduralLevel.Common.Serialization.CSV
 {

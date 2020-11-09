@@ -1,5 +1,5 @@
-﻿using ProceduralLevel.Common.Event;
-using System;
+﻿using System;
+using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Tween
 {

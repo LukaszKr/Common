@@ -106,7 +106,7 @@ namespace ProceduralLevel.Common.Tokenize
 				else if(chr == NEW_LINE)
 				{
 					m_Column = 0;
-					m_Line ++;
+					m_Line++;
 				}
 
 				if(IsSeparator(chr))
@@ -128,7 +128,7 @@ namespace ProceduralLevel.Common.Tokenize
 					}
 					Token separator = new Token(chr.ToString(), ETokenType.Separator, m_Line, m_Column);
 					m_Tokens.Add(separator);
-					m_Column ++;
+					m_Column++;
 					m_ActiveSeparators = GetSeparators(separator);
 
 					m_Cursor = index+1;

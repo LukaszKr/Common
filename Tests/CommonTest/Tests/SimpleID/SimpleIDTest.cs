@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using ProceduralLevel.Common.SimpleID;
-using System;
 
 namespace Tests.SimpleID
 {

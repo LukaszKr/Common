@@ -4,7 +4,7 @@ namespace ProceduralLevel.Common.Tween
 {
 	public sealed class ParallelTweener: ATweener
 	{
-		public ParallelTweener(ATweener parent = null) 
+		public ParallelTweener(ATweener parent = null)
 			: base(parent)
 		{
 		}

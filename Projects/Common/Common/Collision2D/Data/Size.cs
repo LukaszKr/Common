@@ -6,7 +6,7 @@ namespace ProceduralLevel.Common.Collision2D
 	{
 		public readonly float Width;
 		public readonly float Height;
-		
+
 		public Size(float width, float height)
 		{
 			Width = width;

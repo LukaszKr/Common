@@ -4,7 +4,7 @@
 	{
 		private ITween m_Current;
 
-		public LinearTweener(ATweener parent = null) 
+		public LinearTweener(ATweener parent = null)
 			: base(parent)
 		{
 		}

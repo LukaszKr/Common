@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using ProceduralLevel.Common.BitMask;
-using System.Diagnostics;
 
 namespace Tests.BitMask
 {

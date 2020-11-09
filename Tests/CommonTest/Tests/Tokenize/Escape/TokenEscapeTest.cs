@@ -1,6 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using ProceduralLevel.Common.Tokenize;
-using System.Collections.Generic;
 
 namespace Tests.Tokenize.Escape
 {

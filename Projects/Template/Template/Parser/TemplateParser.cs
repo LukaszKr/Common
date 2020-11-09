@@ -1,6 +1,6 @@
-﻿using ProceduralLevel.Common.Template.Evaluator;
+﻿using System.Collections.Generic;
+using ProceduralLevel.Common.Template.Evaluator;
 using ProceduralLevel.Common.Tokenize;
-using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Template.Parser
 {
