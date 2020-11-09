@@ -18,15 +18,19 @@ namespace ProceduralLevel.Common.Serialization.CSV
 			Separator = separator;
 		}
 
-		public override string ToString()
+		public void ToString(StringBuilder sb)
 		{
-			StringBuilder sb = new StringBuilder();
 			int count = Entries.Count;
 			for(int x = 0; x < count; ++x)
 			{
 				Entries[x].ToString(sb, Separator);
 				sb.AppendLine();
 			}
+		}
+
+		public override string ToString()
+		{
+			StringBuilder sb = new StringBuilder();
 			return sb.ToString();
 		}
 	}
