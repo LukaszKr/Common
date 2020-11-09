@@ -47,6 +47,13 @@ namespace Tests.Serialization.CSV
 		}
 
 		[Test]
+		public void QuotedSeparator()
+		{
+			CSVTable table = m_Parser.Parse("\"1;2\";\"3\"").Flush();
+			AssertEntry(table.Entries[0], "1;2", "3");
+		}
+
+		[Test]
 		public void MultiLineValue()
 		{
 			CSVTable table = m_Parser.Parse("\"key\";\"value\nvalue\"").Flush();
