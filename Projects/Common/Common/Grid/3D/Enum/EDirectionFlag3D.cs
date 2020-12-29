@@ -1,4 +1,5 @@
 ﻿using System;
+using ProceduralLevel.Common.Ext;
 
 namespace ProceduralLevel.Common.Grid
 {
@@ -17,7 +18,7 @@ namespace ProceduralLevel.Common.Grid
 
 	public static class EDirectionFlag3DExt
 	{
-		public readonly static EDirectionFlag3D[] Values = (EDirectionFlag3D[])Enum.GetValues(typeof(EDirectionFlag3D));
+		public static readonly EnumExt<EDirectionFlag3D> Meta = new EnumExt<EDirectionFlag3D>();
 
 		public static bool Contains(this EDirectionFlag3D flag, EDirectionFlag3D other)
 		{

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ProceduralLevel.Common.Ext;
 
 namespace ProceduralLevel.Common.Grid
 {
@@ -10,6 +10,6 @@ namespace ProceduralLevel.Common.Grid
 
 	public static class EGridAxis2DExt
 	{
-		public static readonly EGridAxis2D[] Values = (EGridAxis2D[])Enum.GetValues(typeof(EGridAxis2D));
+		public static readonly EnumExt<EGridAxis2D> Meta = new EnumExt<EGridAxis2D>();
 	}
 }

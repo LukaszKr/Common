@@ -1,4 +1,5 @@
 ﻿using System;
+using ProceduralLevel.Common.Ext;
 
 namespace ProceduralLevel.Common.Grid
 {
@@ -11,7 +12,7 @@ namespace ProceduralLevel.Common.Grid
 
 	public static class EGridAxis3DExt
 	{
-		public static readonly EGridAxis3D[] Values = (EGridAxis3D[])Enum.GetValues(typeof(EGridAxis3D));
+		public static readonly EnumExt<EGridAxis3D> Meta = new EnumExt<EGridAxis3D>();
 
 		public static EGridAxis3D GetRemainingAxis(EGridAxis3D a, EGridAxis3D b)
 		{

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ProceduralLevel.Common.Ext;
 
 namespace ProceduralLevel.Common.Grid
 {
@@ -14,7 +14,7 @@ namespace ProceduralLevel.Common.Grid
 
 	public static class EDirection3DExt
 	{
-		public static readonly EDirection3D[] Values = (EDirection3D[])Enum.GetValues(typeof(EDirection3D));
+		public static readonly EnumExt<EDirection3D> Meta = new EnumExt<EDirection3D>();
 
 		#region Opposite
 		private static readonly EDirection3D[] m_Opposite = new EDirection3D[]
