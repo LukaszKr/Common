@@ -10,7 +10,7 @@ namespace ProceduralLevel.Common.Easing
 		private const float OVERSHOOT = 1.70158f;
 		private const float OFFSET = 0.075f;
 
-		private readonly static int METHOD_COUNT = EEasingTypeExt.MAX_VALUE+1;
+		private static readonly int METHOD_COUNT = EEasingTypeExt.MAX_VALUE+1;
 
 		public delegate float EasingDelegate(float t);
 		public static EasingDelegate[] Methods = new EasingDelegate[(EEasingMethodExt.MAX_VALUE+1)*METHOD_COUNT];

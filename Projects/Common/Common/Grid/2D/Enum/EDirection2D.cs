@@ -15,7 +15,7 @@ namespace ProceduralLevel.Common.Grid
 		public static readonly EDirection2D[] Values = (EDirection2D[])Enum.GetValues(typeof(EDirection2D));
 
 		#region Opposite
-		private readonly static EDirection2D[] m_Opposite = new EDirection2D[]
+		private static readonly EDirection2D[] m_Opposite = new EDirection2D[]
 		{
 			EDirection2D.Down,
 			EDirection2D.Up,

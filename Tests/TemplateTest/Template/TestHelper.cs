@@ -1,6 +1,4 @@
 ﻿using NUnit.Framework;
-using ProceduralLevel.Common.Template;
-using ProceduralLevel.Common.Template.Parser;
 
 namespace Tests.Template
 {
