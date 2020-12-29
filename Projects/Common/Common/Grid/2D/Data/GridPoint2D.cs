@@ -21,23 +21,6 @@ namespace ProceduralLevel.Common.Grid
 			return new GridPoint2D(x, y);
 		}
 
-		public GridPoint2D Transform(EDirection2D direction, int distance)
-		{
-			switch(direction)
-			{
-				case EDirection2D.Up:
-					return new GridPoint2D(X, Y+distance);
-				case EDirection2D.Down:
-					return new GridPoint2D(X, Y-distance);
-				case EDirection2D.Right:
-					return new GridPoint2D(X+distance, Y);
-				case EDirection2D.Left:
-					return new GridPoint2D(X-distance, Y);
-				default:
-					throw new NotImplementedException();
-			}
-		}
-
 		public int Get(EGridAxis2D axis)
 		{
 			switch(axis)
@@ -63,9 +46,62 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
+		#region Other
+		public GridPoint2D Translate(EDirection2D direction, int distance)
+		{
+			switch(direction)
+			{
+				case EDirection2D.Up:
+					return new GridPoint2D(X, Y+distance);
+				case EDirection2D.Down:
+					return new GridPoint2D(X, Y-distance);
+				case EDirection2D.Right:
+					return new GridPoint2D(X+distance, Y);
+				case EDirection2D.Left:
+					return new GridPoint2D(X-distance, Y);
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
+		public GridPoint2D Add(GridPoint2D other)
+		{
+			return new GridPoint2D(
+				X+other.X,
+				Y+other.Y
+			);
+		}
+
+		public GridPoint2D Remove(GridPoint2D other)
+		{
+			return new GridPoint2D(
+				X-other.X,
+				Y-other.Y
+			);
+		}
+
+		public int GetMinValue()
+		{
+			return Math.Min(X, Y);
+		}
+
+		public int GetMaxValue()
+		{
+			return Math.Max(X, Y);
+		}
+		#endregion
+
 		public bool Equals(GridPoint2D other)
 		{
 			return X == other.X && Y == other.Y;
+		}
+
+		public override int GetHashCode()
+		{
+			int hash = 17;
+			hash = hash * 23 + X.GetHashCode();
+			hash = hash * 23 + Y.GetHashCode();
+			return hash;
 		}
 
 		public override string ToString()

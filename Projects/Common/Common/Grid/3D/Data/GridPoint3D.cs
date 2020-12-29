@@ -26,27 +26,6 @@ namespace ProceduralLevel.Common.Grid
 			return new GridPoint3D(x, y, z);
 		}
 
-		public GridPoint3D Transform(EDirection3D direction, int distance)
-		{
-			switch(direction)
-			{
-				case EDirection3D.Up:
-					return new GridPoint3D(X, Y+distance, Z);
-				case EDirection3D.Down:
-					return new GridPoint3D(X, Y-distance, Z);
-				case EDirection3D.Right:
-					return new GridPoint3D(X+distance, Y, Z);
-				case EDirection3D.Left:
-					return new GridPoint3D(X-distance, Y, Z);
-				case EDirection3D.Forward:
-					return new GridPoint3D(X, Y, Z+distance);
-				case EDirection3D.Back:
-					return new GridPoint3D(X, Y, Z-distance);
-				default:
-					throw new NotImplementedException();
-			}
-		}
-
 		public int Get(EGridAxis3D axis)
 		{
 			switch(axis)
@@ -74,6 +53,67 @@ namespace ProceduralLevel.Common.Grid
 				default:
 					throw new NotImplementedException();
 			}
+		}
+
+		#region Other
+
+		public GridPoint3D Translate(EDirection3D direction, int distance)
+		{
+			switch(direction)
+			{
+				case EDirection3D.Up:
+					return new GridPoint3D(X, Y+distance, Z);
+				case EDirection3D.Down:
+					return new GridPoint3D(X, Y-distance, Z);
+				case EDirection3D.Right:
+					return new GridPoint3D(X+distance, Y, Z);
+				case EDirection3D.Left:
+					return new GridPoint3D(X-distance, Y, Z);
+				case EDirection3D.Forward:
+					return new GridPoint3D(X, Y, Z+distance);
+				case EDirection3D.Back:
+					return new GridPoint3D(X, Y, Z-distance);
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
+		public GridPoint3D Add(GridPoint3D other)
+		{
+			return new GridPoint3D(
+				X+other.X,
+				Y+other.Y,
+				Z+other.Z
+			);
+		}
+
+		public GridPoint3D Remove(GridPoint3D other)
+		{
+			return new GridPoint3D(
+				X-other.X,
+				Y-other.Y,
+				Z-other.Z
+			);
+		}
+
+		public int GetMinValue()
+		{
+			return Math.Min(Math.Min(X, Y), Z);
+		}
+
+		public int GetMaxValue()
+		{
+			return Math.Max(Math.Max(X, Y), Z);
+		}
+		#endregion
+
+		public override int GetHashCode()
+		{
+			int hash = 17;
+			hash = hash * 23 + X.GetHashCode();
+			hash = hash * 23 + Y.GetHashCode();
+			hash = hash * 23 + Z.GetHashCode();
+			return hash;
 		}
 
 		public bool Equals(GridPoint3D other)
