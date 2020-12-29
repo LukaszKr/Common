@@ -2,18 +2,18 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public struct VoxelHit: IEquatable<VoxelHit>
+	public struct GridHit3D: IEquatable<GridHit3D>
 	{
 		public readonly GridPoint3D Point;
 		public readonly EDirection3D Face;
 
-		public VoxelHit(GridPoint3D point, EDirection3D face)
+		public GridHit3D(GridPoint3D point, EDirection3D face)
 		{
 			Point = point;
 			Face = face;
 		}
 
-		public bool Equals(VoxelHit other)
+		public bool Equals(GridHit3D other)
 		{
 			return (Face == other.Face && Point.Equals(other.Point));
 		}

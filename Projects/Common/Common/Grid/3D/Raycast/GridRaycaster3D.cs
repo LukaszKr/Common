@@ -2,9 +2,9 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public static class VoxelRaycaster
+	public static class GridRaycaster3D
 	{
-		public static int Raycast(float startX, float startY, float startZ, float directionX, float directionY, float directionZ, VoxelHit[] hitBuffer)
+		public static int Raycast(float startX, float startY, float startZ, float directionX, float directionY, float directionZ, GridHit3D[] hitBuffer)
 		{
 			int stepX = Math.Sign(directionX);
 			int stepY = Math.Sign(directionY);
@@ -66,7 +66,7 @@ namespace ProceduralLevel.Common.Grid
 				{
 					if(travelX < travelZ)
 					{
-						hitBuffer[iterator++] = new VoxelHit(point, selectedFace);
+						hitBuffer[iterator++] = new GridHit3D(point, selectedFace);
 						selectedFace = xExitFace;
 
 						currentX += stepX;
@@ -74,7 +74,7 @@ namespace ProceduralLevel.Common.Grid
 					}
 					else
 					{
-						hitBuffer[iterator++] = new VoxelHit(point, selectedFace);
+						hitBuffer[iterator++] = new GridHit3D(point, selectedFace);
 						selectedFace = zExitFace;
 
 						currentZ += stepZ;
@@ -85,7 +85,7 @@ namespace ProceduralLevel.Common.Grid
 				{
 					if(travelY < travelZ)
 					{
-						hitBuffer[iterator++] = new VoxelHit(point, selectedFace);
+						hitBuffer[iterator++] = new GridHit3D(point, selectedFace);
 						selectedFace = yExitFace;
 
 						currentY += stepY;
@@ -93,7 +93,7 @@ namespace ProceduralLevel.Common.Grid
 					}
 					else
 					{
-						hitBuffer[iterator++] = new VoxelHit(point, selectedFace);
+						hitBuffer[iterator++] = new GridHit3D(point, selectedFace);
 						selectedFace = zExitFace;
 
 						currentZ += stepZ;
