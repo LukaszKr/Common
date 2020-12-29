@@ -15,6 +15,11 @@
 		{
 		}
 
+		public DataGrid2D(GridSize2D size)
+		{
+			SetSize(size);
+		}
+
 		public TCell Get(int x, int y)
 		{
 			GridCoord2D coord = new GridCoord2D(m_Size, x, y);

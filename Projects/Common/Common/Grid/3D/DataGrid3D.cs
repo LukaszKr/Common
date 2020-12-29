@@ -15,6 +15,11 @@
 		{
 		}
 
+		public DataGrid3D(GridSize3D size)
+		{
+			SetSize(size);
+		}
+
 		public TCell Get(int x, int y, int z)
 		{
 			GridCoord3D coord = new GridCoord3D(m_Size, x, y, z);
