@@ -69,7 +69,7 @@ namespace ProceduralLevel.Common.Grid
 					return new GridPoint3D(X+distance, Y, Z);
 				case EDirection3D.Left:
 					return new GridPoint3D(X-distance, Y, Z);
-				case EDirection3D.Forward:
+				case EDirection3D.Front:
 					return new GridPoint3D(X, Y, Z+distance);
 				case EDirection3D.Back:
 					return new GridPoint3D(X, Y, Z-distance);

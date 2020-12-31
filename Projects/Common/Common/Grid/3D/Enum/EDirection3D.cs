@@ -8,7 +8,7 @@ namespace ProceduralLevel.Common.Grid
 		Down = 1,
 		Left = 2,
 		Right = 3,
-		Forward = 4,
+		Front = 4,
 		Back = 5
 	}
 
@@ -24,7 +24,7 @@ namespace ProceduralLevel.Common.Grid
 			EDirection3D.Right,
 			EDirection3D.Left,
 			EDirection3D.Back,
-			EDirection3D.Forward
+			EDirection3D.Front
 		};
 
 		public static EDirection3D GetOpposite(this EDirection3D direction)
