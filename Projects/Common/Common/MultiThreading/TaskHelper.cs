@@ -41,6 +41,19 @@ namespace ProceduralLevel.Common.MultiThreading
 			RunAndWaitAll(buffer);
 		}
 
+		public void RunAndWaitAll(params ITask[] tasks)
+		{
+			int taskCount = tasks.Length;
+			Task[] buffer = GetTaskBuffer(taskCount);
+
+			for(int x = 0; x < taskCount; ++x)
+			{
+				ITask task = tasks[x];
+				buffer[x] = Task.Run(task.Run);
+			}
+			RunAndWaitAll(buffer);
+		}
+
 		public void RunAndWaitAll<TTaskData>(Action<TTaskData> action, TTaskData[] tasksData)
 		{
 			int taskCount = tasksData.Length;
