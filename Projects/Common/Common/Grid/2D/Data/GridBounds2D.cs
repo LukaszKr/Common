@@ -22,6 +22,12 @@ namespace ProceduralLevel.Common.Grid
 			Max = max;
 		}
 
+		public GridBounds2D(GridSize2D size)
+		{
+			Min = new GridPoint2D(0, 0);
+			Max = new GridPoint2D(size.X, size.Y);
+		}
+
 		public GridBounds2D GetIntersection(GridBounds2D bounds)
 		{
 			if(Intersects(bounds))

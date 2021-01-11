@@ -23,6 +23,12 @@ namespace ProceduralLevel.Common.Grid
 			Max = max;
 		}
 
+		public GridBounds3D(GridSize3D size)
+		{
+			Min = new GridPoint3D(0, 0, 0);
+			Max = new GridPoint3D(size.X, size.Y, size.Z);
+		}
+
 		public GridBounds3D GetIntersection(GridBounds3D bounds)
 		{
 			if(Intersects(bounds))
