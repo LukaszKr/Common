@@ -17,7 +17,7 @@ namespace ProceduralLevel.Common.Grid
 			Z = z;
 		}
 
-		public GridPoint3D(EDirection3D direction, int length)
+		public GridPoint3D(EDirection3D direction, int length = 1)
 		{
 			X = 0;
 			Y = 0;
@@ -104,6 +104,16 @@ namespace ProceduralLevel.Common.Grid
 				Z-other.Z
 			);
 		}
+
+		public int GetMinValue()
+		{
+			return Math.Min(Math.Min(X, Y), Z);
+		}
+
+		public int GetMaxValue()
+		{
+			return Math.Max(Math.Max(X, Y), Z);
+		}
 		#endregion
 
 		#region Other
@@ -147,16 +157,6 @@ namespace ProceduralLevel.Common.Grid
 				default:
 					throw new NotImplementedException();
 			}
-		}
-
-		public int GetMinValue()
-		{
-			return Math.Min(Math.Min(X, Y), Z);
-		}
-
-		public int GetMaxValue()
-		{
-			return Math.Max(Math.Max(X, Y), Z);
 		}
 		#endregion
 

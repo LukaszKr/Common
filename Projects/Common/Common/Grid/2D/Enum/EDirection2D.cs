@@ -28,5 +28,18 @@ namespace ProceduralLevel.Common.Grid
 			return m_Opposite[(int)direction];
 		}
 		#endregion
+
+		#region Axes
+		private static readonly EGridAxis2D[] m_Axes = new EGridAxis2D[]
+		{
+			EGridAxis2D.Y, EGridAxis2D.Y,
+			EGridAxis2D.X, EGridAxis2D.X
+		};
+
+		public static EGridAxis2D ToAxis(this EDirection2D direction)
+		{
+			return m_Axes[(int)direction];
+		}
+		#endregion
 	}
 }

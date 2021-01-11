@@ -13,6 +13,30 @@ namespace ProceduralLevel.Common.Grid
 			Y = y;
 		}
 
+		public GridPoint2D(EDirection2D direction, int length = 1)
+		{
+			X = 0;
+			Y = 0;
+
+			switch(direction)
+			{
+				case EDirection2D.Up:
+					Y = length;
+					break;
+				case EDirection2D.Down:
+					Y = -length;
+					break;
+				case EDirection2D.Left:
+					X = -length;
+					break;
+				case EDirection2D.Right:
+					X = length;
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
 		public static GridPoint2D Create(GridAxes2D axes, int a, int b)
 		{
 			GridPoint2D coord = new GridPoint2D(a, b);
@@ -46,24 +70,7 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
-		#region Other
-		public GridPoint2D Translate(EDirection2D direction, int distance)
-		{
-			switch(direction)
-			{
-				case EDirection2D.Up:
-					return new GridPoint2D(X, Y+distance);
-				case EDirection2D.Down:
-					return new GridPoint2D(X, Y-distance);
-				case EDirection2D.Right:
-					return new GridPoint2D(X+distance, Y);
-				case EDirection2D.Left:
-					return new GridPoint2D(X-distance, Y);
-				default:
-					throw new NotImplementedException();
-			}
-		}
-
+		#region Math
 		public GridPoint2D Add(GridPoint2D other)
 		{
 			return new GridPoint2D(
@@ -88,6 +95,25 @@ namespace ProceduralLevel.Common.Grid
 		public int GetMaxValue()
 		{
 			return Math.Max(X, Y);
+		}
+		#endregion
+
+		#region Other
+		public GridPoint2D Translate(EDirection2D direction, int distance)
+		{
+			switch(direction)
+			{
+				case EDirection2D.Up:
+					return new GridPoint2D(X, Y+distance);
+				case EDirection2D.Down:
+					return new GridPoint2D(X, Y-distance);
+				case EDirection2D.Right:
+					return new GridPoint2D(X+distance, Y);
+				case EDirection2D.Left:
+					return new GridPoint2D(X-distance, Y);
+				default:
+					throw new NotImplementedException();
+			}
 		}
 		#endregion
 
