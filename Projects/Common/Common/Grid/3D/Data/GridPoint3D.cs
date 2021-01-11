@@ -17,6 +17,37 @@ namespace ProceduralLevel.Common.Grid
 			Z = z;
 		}
 
+		public GridPoint3D(EDirection3D direction, int length)
+		{
+			X = 0;
+			Y = 0;
+			Z = 0;
+
+			switch(direction)
+			{
+				case EDirection3D.Up:
+					Y = length;
+					break;
+				case EDirection3D.Down:
+					Y = -length;
+					break;
+				case EDirection3D.Right:
+					X = length;
+					break;
+				case EDirection3D.Left:
+					X = -length;
+					break;
+				case EDirection3D.Front:
+					Z = length;
+					break;
+				case EDirection3D.Back:
+					Z = -length;
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
 		public static GridPoint3D Create(GridAxes3D axes, int a, int b, int c)
 		{
 			GridPoint3D coord = new GridPoint3D(a, b, c);
@@ -55,7 +86,47 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
+		#region Math
+		public GridPoint3D Add(GridPoint3D other)
+		{
+			return new GridPoint3D(
+				X+other.X,
+				Y+other.Y,
+				Z+other.Z
+			);
+		}
+
+		public GridPoint3D Remove(GridPoint3D other)
+		{
+			return new GridPoint3D(
+				X-other.X,
+				Y-other.Y,
+				Z-other.Z
+			);
+		}
+		#endregion
+
 		#region Other
+		public GridPoint3D Rotate(EDirection3D direction)
+		{
+			switch(direction)
+			{
+				case EDirection3D.Up:
+					return new GridPoint3D(X, Z, -Y);
+				case EDirection3D.Down:
+					return new GridPoint3D(X, -Z, Y);
+				case EDirection3D.Front:
+					return new GridPoint3D(X, Y, Z);
+				case EDirection3D.Back:
+					return new GridPoint3D(-X, Y, -Z);
+				case EDirection3D.Left:
+					return new GridPoint3D(-Z, Y, X);
+				case EDirection3D.Right:
+					return new GridPoint3D(Z, Y, -X);
+				default:
+					throw new NotImplementedException();
+			}
+		}
 
 		public GridPoint3D Translate(EDirection3D direction, int distance)
 		{
@@ -76,24 +147,6 @@ namespace ProceduralLevel.Common.Grid
 				default:
 					throw new NotImplementedException();
 			}
-		}
-
-		public GridPoint3D Add(GridPoint3D other)
-		{
-			return new GridPoint3D(
-				X+other.X,
-				Y+other.Y,
-				Z+other.Z
-			);
-		}
-
-		public GridPoint3D Remove(GridPoint3D other)
-		{
-			return new GridPoint3D(
-				X-other.X,
-				Y-other.Y,
-				Z-other.Z
-			);
 		}
 
 		public int GetMinValue()

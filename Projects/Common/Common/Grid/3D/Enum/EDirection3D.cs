@@ -32,5 +32,19 @@ namespace ProceduralLevel.Common.Grid
 			return m_Opposite[(int)direction];
 		}
 		#endregion
+
+		#region Axes
+		private static readonly EGridAxis3D[] m_Axes = new EGridAxis3D[]
+		{
+			EGridAxis3D.Y, EGridAxis3D.Y,
+			EGridAxis3D.X, EGridAxis3D.X,
+			EGridAxis3D.Z, EGridAxis3D.Z
+		};
+
+		public static EGridAxis3D ToAxis(this EDirection3D direction)
+		{
+			return m_Axes[(int)direction];
+		}
+		#endregion
 	}
 }
