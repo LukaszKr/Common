@@ -4,12 +4,12 @@ using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Tween
 {
-	public abstract class ATweener: ITween
+	public abstract class AGroupTween: ITween
 	{
 		protected readonly List<ITween> m_Tweens = new List<ITween>();
 
-		private readonly TweenerManager m_Manager;
-		private readonly ATweener m_Parent;
+		private readonly TweenUpdater m_Manager;
+		private readonly AGroupTween m_Parent;
 
 		public readonly CustomEvent OnFinished = new CustomEvent();
 
@@ -17,18 +17,18 @@ namespace ProceduralLevel.Common.Tween
 
 		public float Speed = 1.0f;
 
-		public ATweener(ATweener parent)
+		public AGroupTween(AGroupTween parent)
 		{
 			m_Manager = parent.m_Manager;
 			m_Parent = parent;
 		}
 
-		public ATweener(TweenerManager manager)
+		public AGroupTween(TweenUpdater manager)
 		{
 			m_Manager = manager;
 		}
 
-		public ATweener Add(ITween tween)
+		public AGroupTween Add(ITween tween)
 		{
 			m_Tweens.Add(tween);
 			if(m_Parent == null && m_Tweens.Count == 1)
@@ -88,21 +88,21 @@ namespace ProceduralLevel.Common.Tween
 		protected abstract TweenProgress OnUpdate(float deltaTime);
 
 		#region Grouping
-		public LinearTweener Linear()
+		public LinearGroupTween Linear()
 		{
-			LinearTweener tweener = new LinearTweener(this);
+			LinearGroupTween tweener = new LinearGroupTween(this);
 			Add(tweener);
 			return tweener;
 		}
 
-		public ParallelTweener Parallel()
+		public ParallelGroupTween Parallel()
 		{
-			ParallelTweener tweener = new ParallelTweener(this);
+			ParallelGroupTween tweener = new ParallelGroupTween(this);
 			Add(tweener);
 			return tweener;
 		}
 
-		public ATweener EndGroup()
+		public AGroupTween EndGroup()
 		{
 			return m_Parent;
 		}

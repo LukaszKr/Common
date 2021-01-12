@@ -2,11 +2,11 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-	public sealed class TweenerManager
+	public sealed class TweenUpdater
 	{
-		private readonly List<ATweener> m_Active = new List<ATweener>();
+		private readonly List<ITween> m_Active = new List<ITween>();
 
-		private TweenerManager()
+		public TweenUpdater()
 		{
 
 		}
@@ -16,8 +16,8 @@ namespace ProceduralLevel.Common.Tween
 			int count = m_Active.Count;
 			for(int x = 0; x < count; ++x)
 			{
-				ATweener animator = m_Active[x];
-				TweenProgress progress = animator.Update(deltaTime);
+				ITween tween = m_Active[x];
+				TweenProgress progress = tween.Update(deltaTime);
 				if(progress.Finished)
 				{
 					m_Active.RemoveAt(x);
@@ -27,7 +27,7 @@ namespace ProceduralLevel.Common.Tween
 			}
 		}
 
-		public void Push(ATweener tween)
+		public void Push(ITween tween)
 		{
 			m_Active.Add(tween);
 		}

@@ -2,14 +2,14 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-	public sealed class ParallelTweener: ATweener
+	public sealed class ParallelGroupTween: AGroupTween
 	{
-		public ParallelTweener(ATweener parent)
+		public ParallelGroupTween(AGroupTween parent)
 			: base(parent)
 		{
 		}
 
-		public ParallelTweener(TweenerManager manager)
+		public ParallelGroupTween(TweenUpdater manager)
 			: base(manager)
 		{
 		}

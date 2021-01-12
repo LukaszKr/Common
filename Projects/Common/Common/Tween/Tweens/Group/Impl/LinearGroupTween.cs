@@ -1,15 +1,15 @@
 ﻿namespace ProceduralLevel.Common.Tween
 {
-	public sealed class LinearTweener: ATweener
+	public sealed class LinearGroupTween: AGroupTween
 	{
 		private ITween m_Current;
 
-		public LinearTweener(ATweener parent)
+		public LinearGroupTween(AGroupTween parent)
 			: base(parent)
 		{
 		}
 
-		public LinearTweener(TweenerManager manager)
+		public LinearGroupTween(TweenUpdater manager)
 			: base(manager)
 		{
 		}
