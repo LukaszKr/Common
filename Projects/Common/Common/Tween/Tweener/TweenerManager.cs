@@ -4,8 +4,6 @@ namespace ProceduralLevel.Common.Tween
 {
 	public sealed class TweenerManager
 	{
-		public static TweenerManager Instance = new TweenerManager();
-
 		private readonly List<ATweener> m_Active = new List<ATweener>();
 
 		private TweenerManager()
@@ -29,9 +27,9 @@ namespace ProceduralLevel.Common.Tween
 			}
 		}
 
-		public void Push(ATweener animator)
+		public void Push(ATweener tween)
 		{
-			m_Active.Add(animator);
+			m_Active.Add(tween);
 		}
 	}
 }

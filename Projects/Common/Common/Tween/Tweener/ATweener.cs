@@ -6,27 +6,32 @@ namespace ProceduralLevel.Common.Tween
 {
 	public abstract class ATweener: ITween
 	{
-		protected readonly List<ITween> m_Animations = new List<ITween>();
+		protected readonly List<ITween> m_Tweens = new List<ITween>();
 
 		private readonly TweenerManager m_Manager;
 		private readonly ATweener m_Parent;
 
 		public readonly CustomEvent OnFinished = new CustomEvent();
 
-		public bool IsActive { get { return m_Animations.Count > 0; } }
+		public bool IsActive { get { return m_Tweens.Count > 0; } }
 
 		public float Speed = 1.0f;
 
 		public ATweener(ATweener parent)
 		{
-			m_Manager = TweenerManager.Instance;
+			m_Manager = parent.m_Manager;
 			m_Parent = parent;
 		}
 
-		public ATweener Add(ITween animation)
+		public ATweener(TweenerManager manager)
 		{
-			m_Animations.Add(animation);
-			if(m_Parent == null && m_Animations.Count == 1)
+			m_Manager = manager;
+		}
+
+		public ATweener Add(ITween tween)
+		{
+			m_Tweens.Add(tween);
+			if(m_Parent == null && m_Tweens.Count == 1)
 			{
 				m_Manager.Push(this);
 			}
@@ -35,12 +40,12 @@ namespace ProceduralLevel.Common.Tween
 
 		public TweenProgress Update(float deltaTime)
 		{
-			if(m_Animations.Count > 0)
+			if(m_Tweens.Count > 0)
 			{
 				TweenProgress progress = OnUpdate(deltaTime*Speed);
 				if(progress.Finished)
 				{
-					if(m_Animations.Count > 0)
+					if(m_Tweens.Count > 0)
 					{
 						throw new Exception();
 					}
@@ -54,16 +59,16 @@ namespace ProceduralLevel.Common.Tween
 			return new TweenProgress(true, 0f);
 		}
 
-		public void Cancel(ITween animation)
+		public void Cancel(ITween tween)
 		{
-			int count = m_Animations.Count;
+			int count = m_Tweens.Count;
 			for(int x = 0; x < count; ++x)
 			{
-				ITween existingAnimation = m_Animations[x];
-				if(existingAnimation == animation)
+				ITween existingTween = m_Tweens[x];
+				if(existingTween == tween)
 				{
-					existingAnimation.Cancel();
-					m_Animations.RemoveAt(x);
+					existingTween.Cancel();
+					m_Tweens.RemoveAt(x);
 					break;
 				}
 			}
@@ -71,13 +76,13 @@ namespace ProceduralLevel.Common.Tween
 
 		public virtual void Cancel()
 		{
-			int count = m_Animations.Count;
+			int count = m_Tweens.Count;
 			for(int x = 0; x < count; ++x)
 			{
-				ITween animation = m_Animations[x];
-				animation.Cancel();
+				ITween tween = m_Tweens[x];
+				tween.Cancel();
 			}
-			m_Animations.Clear();
+			m_Tweens.Clear();
 		}
 
 		protected abstract TweenProgress OnUpdate(float deltaTime);
@@ -85,16 +90,16 @@ namespace ProceduralLevel.Common.Tween
 		#region Grouping
 		public LinearTweener Linear()
 		{
-			LinearTweener animator = new LinearTweener(this);
-			Add(animator);
-			return animator;
+			LinearTweener tweener = new LinearTweener(this);
+			Add(tweener);
+			return tweener;
 		}
 
 		public ParallelTweener Parallel()
 		{
-			ParallelTweener animator = new ParallelTweener(this);
-			Add(animator);
-			return animator;
+			ParallelTweener tweener = new ParallelTweener(this);
+			Add(tweener);
+			return tweener;
 		}
 
 		public ATweener EndGroup()

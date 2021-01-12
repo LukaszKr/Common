@@ -4,8 +4,13 @@
 	{
 		private ITween m_Current;
 
-		public LinearTweener(ATweener parent = null)
+		public LinearTweener(ATweener parent)
 			: base(parent)
+		{
+		}
+
+		public LinearTweener(TweenerManager manager)
+			: base(manager)
 		{
 		}
 
@@ -13,9 +18,9 @@
 		{
 			if(m_Current == null)
 			{
-				if(m_Animations.Count > 0)
+				if(m_Tweens.Count > 0)
 				{
-					m_Current = m_Animations[0];
+					m_Current = m_Tweens[0];
 				}
 			}
 			if(m_Current != null)
@@ -24,11 +29,11 @@
 				if(result.Finished)
 				{
 					m_Current = null;
-					m_Animations.RemoveAt(0);
+					m_Tweens.RemoveAt(0);
 					if(result.UsedTime < deltaTime)
 					{
 						TweenProgress subResult = OnUpdate(deltaTime-result.UsedTime);
-						return new TweenProgress(subResult.Finished && m_Animations.Count == 0, result.UsedTime+subResult.UsedTime);
+						return new TweenProgress(subResult.Finished && m_Tweens.Count == 0, result.UsedTime+subResult.UsedTime);
 					}
 					else
 					{
@@ -54,7 +59,7 @@
 			if(m_Current != null)
 			{
 				return string.Format("[LinearAnimator, Current: {0}, Pending: {1}]",
-					m_Current.ToString(), (m_Animations.Count-1).ToString());
+					m_Current.ToString(), (m_Tweens.Count-1).ToString());
 			}
 			else
 			{
