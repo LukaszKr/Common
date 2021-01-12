@@ -9,7 +9,7 @@
 		{
 		}
 
-		public LinearGroupTween(TweenUpdater manager)
+		public LinearGroupTween(TweenUpdater manager = null)
 			: base(manager)
 		{
 		}

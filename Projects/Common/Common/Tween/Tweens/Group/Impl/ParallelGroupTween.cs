@@ -9,7 +9,7 @@ namespace ProceduralLevel.Common.Tween
 		{
 		}
 
-		public ParallelGroupTween(TweenUpdater manager)
+		public ParallelGroupTween(TweenUpdater manager = null)
 			: base(manager)
 		{
 		}

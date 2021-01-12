@@ -4,6 +4,8 @@ namespace ProceduralLevel.Common.Tween
 {
 	public sealed class TweenUpdater
 	{
+		public static readonly TweenUpdater Default = new TweenUpdater();
+
 		private readonly List<ITween> m_Active = new List<ITween>();
 
 		public TweenUpdater()
