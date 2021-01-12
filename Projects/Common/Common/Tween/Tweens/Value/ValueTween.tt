@@ -21,5 +21,23 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
+	public class <#= uType[x] #>ArrayTween: AValueArrayTween<<#= lType[x] #>>
+	{
+		public <#= uType[x] #>ArrayTween(EasingFunc easing, <#= lType[x] #>[] buffer, <#= lType[x] #>[] source, <#= lType[x] #>[] target)
+			: base(easing, buffer, source, target)
+		{
+		
+		}
+
+		protected override void Blend(<#= lType[x] #>[] buffer, <#= lType[x] #>[] source, <#= lType[x] #>[] target, float blend, float reverseBlend)
+		{
+			int length = buffer.Length;
+			for(int x = 0; x < length; ++x)
+			{
+				buffer[x] = (<#= lType[x] #>)(source[x]*reverseBlend+target[x]*blend);
+			}
+		}
+	}
+
 <# } #>
 }

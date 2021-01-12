@@ -30,8 +30,9 @@ namespace ProceduralLevel.Common.Tween
 		protected override void OnProgressChanged(float progress)
 		{
 			float reverseBlend = 1f-progress;
-			Value = Blend(m_Source, m_Target, progress, reverseBlend);
-			OnValueChanged.Invoke(Value);
+			TValue value = Blend(m_Source, m_Target, progress, reverseBlend);
+			Value = value;
+			OnValueChanged.Invoke(value);
 		}
 
 		protected abstract TValue Blend(TValue source, TValue target, float blend, float reverseBlend);
