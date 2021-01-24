@@ -68,5 +68,11 @@ namespace Tests.Template
 				"{MethodWithParameter(Hello)}",
 				m_Data);
 		}
+
+		[Test]
+		public void PrintArray()
+		{
+			TestHelper.AssertTemplate("1, 2, 3, ", "{this}, ", new int[] { 1, 2, 3 });
+		}
 	}
 }

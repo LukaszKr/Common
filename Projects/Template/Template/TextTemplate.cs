@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using ProceduralLevel.Common.Template.Evaluator;
 
@@ -28,10 +29,11 @@ namespace ProceduralLevel.Common.Template
 		{
 			if(context.GetType().IsArray)
 			{
-				object[] arr = context as object[];
-				for(int x = 0; x < arr.Length; x++)
+				Array arr = (Array)context;
+				int length = arr.Length;
+				for(int x = 0; x < length; x++)
 				{
-					CompileObject(sb, arr[x]);
+					CompileObject(sb, arr.GetValue(x));
 				}
 			}
 			else
@@ -42,7 +44,8 @@ namespace ProceduralLevel.Common.Template
 
 		private void CompileObject(StringBuilder sb, object context)
 		{
-			for(int x = 0; x < m_Evaluators.Count; x++)
+			int count = m_Evaluators.Count;
+			for(int x = 0; x < count; x++)
 			{
 				AEvaluator evaluator = m_Evaluators[x];
 				object result = evaluator.Evaluate(context);
