@@ -4,7 +4,7 @@
 	{
 		String = 0,
 		Getter = 1,
-		DotGetter = 2,
+		KeyGetter = 2,
 		Method = 3
 	}
 }

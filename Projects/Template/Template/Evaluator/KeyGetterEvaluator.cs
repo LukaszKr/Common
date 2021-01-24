@@ -3,7 +3,7 @@
 	internal class DotGetterEvaluator
 		: AEvaluator
 	{
-		public override EEvaluatorType EvalType { get { return EEvaluatorType.DotGetter; } }
+		public override EEvaluatorType EvalType { get { return EEvaluatorType.KeyGetter; } }
 
 		private readonly AEvaluator m_Key;
 		private readonly AEvaluator m_Value;

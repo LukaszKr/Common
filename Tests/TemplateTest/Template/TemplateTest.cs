@@ -29,6 +29,12 @@ namespace Tests.Template
 		}
 
 		[Test]
+		public void NullContext()
+		{
+			TestHelper.AssertTemplate("NullContext", "NullContext", null);
+		}
+
+		[Test]
 		public void PrintString()
 		{
 			TestHelper.AssertTemplate(
@@ -72,7 +78,10 @@ namespace Tests.Template
 		[Test]
 		public void PrintArray()
 		{
-			TestHelper.AssertTemplate("1, 2, 3, ", "{this}, ", new int[] { 1, 2, 3 });
+			TestHelper.AssertTemplate(
+				"1, 2, 3, ", 
+				"{this}, ", 
+				new int[] { 1, 2, 3 });
 		}
 	}
 }

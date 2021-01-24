@@ -27,7 +27,7 @@ namespace ProceduralLevel.Common.Template
 
 		public void Compile(StringBuilder sb, object context)
 		{
-			if(context.GetType().IsArray)
+			if(context != null && context.GetType().IsArray)
 			{
 				Array arr = (Array)context;
 				int length = arr.Length;
