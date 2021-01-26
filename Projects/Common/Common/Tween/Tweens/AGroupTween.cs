@@ -25,7 +25,7 @@ namespace ProceduralLevel.Common.Tween
 
 		public AGroupTween(TweenUpdater manager)
 		{
-			m_Manager = (manager != null? manager: TweenUpdater.Default);
+			m_Manager = (manager != null ? manager : TweenUpdater.Default);
 		}
 
 		public AGroupTween Add(ITween tween)

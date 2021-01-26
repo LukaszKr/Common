@@ -7,7 +7,7 @@ namespace ProceduralLevel.Common.Tween
 		public ByteTween(EasingFunc easing, byte source, byte target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override byte Blend(byte source, byte target, float blend, float reverseBlend)
@@ -21,7 +21,7 @@ namespace ProceduralLevel.Common.Tween
 		public ByteArrayTween(EasingFunc easing, byte[] buffer, byte[] source, byte[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(byte[] buffer, byte[] source, byte[] target, float blend, float reverseBlend)
@@ -39,7 +39,7 @@ namespace ProceduralLevel.Common.Tween
 		public SByteTween(EasingFunc easing, sbyte source, sbyte target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override sbyte Blend(sbyte source, sbyte target, float blend, float reverseBlend)
@@ -53,7 +53,7 @@ namespace ProceduralLevel.Common.Tween
 		public SByteArrayTween(EasingFunc easing, sbyte[] buffer, sbyte[] source, sbyte[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(sbyte[] buffer, sbyte[] source, sbyte[] target, float blend, float reverseBlend)
@@ -71,7 +71,7 @@ namespace ProceduralLevel.Common.Tween
 		public ShortTween(EasingFunc easing, short source, short target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override short Blend(short source, short target, float blend, float reverseBlend)
@@ -85,7 +85,7 @@ namespace ProceduralLevel.Common.Tween
 		public ShortArrayTween(EasingFunc easing, short[] buffer, short[] source, short[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(short[] buffer, short[] source, short[] target, float blend, float reverseBlend)
@@ -103,7 +103,7 @@ namespace ProceduralLevel.Common.Tween
 		public UShortTween(EasingFunc easing, ushort source, ushort target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override ushort Blend(ushort source, ushort target, float blend, float reverseBlend)
@@ -117,7 +117,7 @@ namespace ProceduralLevel.Common.Tween
 		public UShortArrayTween(EasingFunc easing, ushort[] buffer, ushort[] source, ushort[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(ushort[] buffer, ushort[] source, ushort[] target, float blend, float reverseBlend)
@@ -135,7 +135,7 @@ namespace ProceduralLevel.Common.Tween
 		public IntTween(EasingFunc easing, int source, int target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override int Blend(int source, int target, float blend, float reverseBlend)
@@ -149,7 +149,7 @@ namespace ProceduralLevel.Common.Tween
 		public IntArrayTween(EasingFunc easing, int[] buffer, int[] source, int[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(int[] buffer, int[] source, int[] target, float blend, float reverseBlend)
@@ -167,7 +167,7 @@ namespace ProceduralLevel.Common.Tween
 		public UIntTween(EasingFunc easing, uint source, uint target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override uint Blend(uint source, uint target, float blend, float reverseBlend)
@@ -181,7 +181,7 @@ namespace ProceduralLevel.Common.Tween
 		public UIntArrayTween(EasingFunc easing, uint[] buffer, uint[] source, uint[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(uint[] buffer, uint[] source, uint[] target, float blend, float reverseBlend)
@@ -199,7 +199,7 @@ namespace ProceduralLevel.Common.Tween
 		public LongTween(EasingFunc easing, long source, long target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override long Blend(long source, long target, float blend, float reverseBlend)
@@ -213,7 +213,7 @@ namespace ProceduralLevel.Common.Tween
 		public LongArrayTween(EasingFunc easing, long[] buffer, long[] source, long[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(long[] buffer, long[] source, long[] target, float blend, float reverseBlend)
@@ -231,7 +231,7 @@ namespace ProceduralLevel.Common.Tween
 		public ULongTween(EasingFunc easing, ulong source, ulong target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override ulong Blend(ulong source, ulong target, float blend, float reverseBlend)
@@ -245,7 +245,7 @@ namespace ProceduralLevel.Common.Tween
 		public ULongArrayTween(EasingFunc easing, ulong[] buffer, ulong[] source, ulong[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(ulong[] buffer, ulong[] source, ulong[] target, float blend, float reverseBlend)
@@ -263,7 +263,7 @@ namespace ProceduralLevel.Common.Tween
 		public FloatTween(EasingFunc easing, float source, float target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override float Blend(float source, float target, float blend, float reverseBlend)
@@ -277,7 +277,7 @@ namespace ProceduralLevel.Common.Tween
 		public FloatArrayTween(EasingFunc easing, float[] buffer, float[] source, float[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(float[] buffer, float[] source, float[] target, float blend, float reverseBlend)
@@ -295,7 +295,7 @@ namespace ProceduralLevel.Common.Tween
 		public DoubleTween(EasingFunc easing, double source, double target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override double Blend(double source, double target, float blend, float reverseBlend)
@@ -309,7 +309,7 @@ namespace ProceduralLevel.Common.Tween
 		public DoubleArrayTween(EasingFunc easing, double[] buffer, double[] source, double[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(double[] buffer, double[] source, double[] target, float blend, float reverseBlend)

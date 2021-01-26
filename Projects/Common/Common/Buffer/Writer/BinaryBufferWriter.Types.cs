@@ -26,7 +26,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Bool
 		public BinaryBufferWriter Write(bool[] arr)
@@ -50,7 +50,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Byte
 		public BinaryBufferWriter Write(byte[] arr)
@@ -74,7 +74,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Short
 		public BinaryBufferWriter Write(short[] arr)
@@ -98,7 +98,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region UShort
 		public BinaryBufferWriter Write(ushort[] arr)
@@ -122,7 +122,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Int
 		public BinaryBufferWriter Write(int[] arr)
@@ -146,7 +146,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region UInt
 		public BinaryBufferWriter Write(uint[] arr)
@@ -170,7 +170,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Long
 		public BinaryBufferWriter Write(long[] arr)
@@ -194,7 +194,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region ULong
 		public BinaryBufferWriter Write(ulong[] arr)
@@ -218,7 +218,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region String
 		public BinaryBufferWriter Write(string[] arr)
@@ -242,7 +242,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Float
 		public BinaryBufferWriter Write(float[] arr)
@@ -266,7 +266,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 		#region Double
 		public BinaryBufferWriter Write(double[] arr)
@@ -290,7 +290,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return this;
 		}
-		#endregion 
+		#endregion
 
 	}
 }

@@ -10,7 +10,7 @@ for(int x = 0; x < lowerCase.Length; ++x)
 { #>
 		#region <#=upperCase[x] #>
 <# generateWrite(lowerCase[x], upperCase[x]); #>
-		#endregion 
+		#endregion
 
 <# } #>
 	}

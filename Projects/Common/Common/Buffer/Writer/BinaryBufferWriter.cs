@@ -6,17 +6,41 @@ namespace ProceduralLevel.Common.Buffer
 {
 	public partial class BinaryBufferWriter: ABinaryBuffer
 	{
+		private readonly bool m_CanExpand;
+
+		public bool CanExpand { get { return m_CanExpand; } }
 		public int Capacity { get { return m_Buffer.Length; } }
+		public int RemainingCapacity { get { return m_Buffer.Length-m_Position; } }
 
 		public BinaryBufferWriter(int maxCapacity)
 			: base(maxCapacity)
 		{
+			m_CanExpand = true;
 		}
 
 		public BinaryBufferWriter(byte[] buffer)
 			: base(buffer)
 		{
+			m_CanExpand = false;
+		}
 
+		private void Resize(int newCapacity)
+		{
+			byte[] oldBuffer = m_Buffer;
+			m_Buffer = new byte[newCapacity];
+			int length = Math.Min(oldBuffer.Length, newCapacity);
+			for(int x = 0; x < length; ++x)
+			{
+				m_Buffer[x] = oldBuffer[x];
+			}
+		}
+
+		private void EnsureCapacity(int requiredSpace)
+		{
+			if(m_CanExpand && requiredSpace > RemainingCapacity)
+			{
+				Resize(Capacity*2);
+			}
 		}
 
 		public byte[] ToBytes()
@@ -41,6 +65,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(Guid guid)
 		{
+			EnsureCapacity(GUID_LENGTH);
 			byte[] bytes = guid.ToByteArray();
 			for(int x = 0; x < GUID_LENGTH; ++x)
 			{
@@ -52,6 +77,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(char data)
 		{
+			EnsureCapacity(1);
 			m_Buffer[m_Position++] = (byte)data;
 			return this;
 		}
@@ -59,6 +85,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(bool data)
 		{
+			EnsureCapacity(1);
 			m_Buffer[m_Position++] = (data ? (byte)1 : (byte)0);
 			return this;
 		}
@@ -66,6 +93,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(byte data)
 		{
+			EnsureCapacity(1);
 			m_Buffer[m_Position++] = data;
 			return this;
 		}
@@ -73,6 +101,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(short data)
 		{
+			EnsureCapacity(2);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			return this;
@@ -81,6 +110,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(ushort data)
 		{
+			EnsureCapacity(2);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			return this;
@@ -89,6 +119,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(int data)
 		{
+			EnsureCapacity(4);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			m_Buffer[m_Position++] = (byte)(data >> 16);
@@ -99,6 +130,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(uint data)
 		{
+			EnsureCapacity(4);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			m_Buffer[m_Position++] = (byte)(data >> 16);
@@ -109,6 +141,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(long data)
 		{
+			EnsureCapacity(8);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			m_Buffer[m_Position++] = (byte)(data >> 16);
@@ -123,6 +156,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(ulong data)
 		{
+			EnsureCapacity(8);
 			m_Buffer[m_Position++] = (byte)data;
 			m_Buffer[m_Position++] = (byte)(data >> 8);
 			m_Buffer[m_Position++] = (byte)(data >> 16);
@@ -146,6 +180,8 @@ namespace ProceduralLevel.Common.Buffer
 				byte[] bytes = Encoding.UTF8.GetBytes(data);
 				int length = bytes.Length;
 				Write(length);
+
+				EnsureCapacity(length);
 				for(int x = 0; x < length; ++x)
 				{
 					m_Buffer[m_Position++] = bytes[x];
@@ -157,6 +193,7 @@ namespace ProceduralLevel.Common.Buffer
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public BinaryBufferWriter Write(float data)
 		{
+			EnsureCapacity(4);
 			byte[] bytes = BitConverter.GetBytes(data); //allocates memory, but I couldn't find a better way of doing this
 			m_Buffer[m_Position++] = bytes[0];
 			m_Buffer[m_Position++] = bytes[1];

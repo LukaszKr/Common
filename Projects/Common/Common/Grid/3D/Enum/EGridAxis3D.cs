@@ -33,7 +33,7 @@ namespace ProceduralLevel.Common.Grid
 
 		public static GridCoord3D GetIterator(this EGridAxis3D axis, GridSize3D size, int step = 1, bool negative = false)
 		{
-			int direction = (negative? -step: step);
+			int direction = (negative ? -step : step);
 			switch(axis)
 			{
 				case EGridAxis3D.X:

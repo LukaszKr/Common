@@ -32,8 +32,8 @@ namespace ProceduralLevel.Common.Grid
 
 			int iterator = 0;
 
-			EDirection2D xExitFace = (stepX > 0? EDirection2D.Left: EDirection2D.Right);
-			EDirection2D yExitFace = (stepY > 0? EDirection2D.Down: EDirection2D.Up);
+			EDirection2D xExitFace = (stepX > 0 ? EDirection2D.Left : EDirection2D.Right);
+			EDirection2D yExitFace = (stepY > 0 ? EDirection2D.Down : EDirection2D.Up);
 
 			EDirection2D selectedFace;
 			float startDecimalX = startX-(float)Math.Truncate(startX);

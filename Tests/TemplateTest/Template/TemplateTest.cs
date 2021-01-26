@@ -79,8 +79,8 @@ namespace Tests.Template
 		public void PrintArray()
 		{
 			TestHelper.AssertTemplate(
-				"1, 2, 3, ", 
-				"{this}, ", 
+				"1, 2, 3, ",
+				"{this}, ",
 				new int[] { 1, 2, 3 });
 		}
 	}

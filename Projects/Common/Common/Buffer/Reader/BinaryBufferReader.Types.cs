@@ -38,7 +38,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Bool
 		public void Read(List<bool> list, bool append = false)
@@ -74,7 +74,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Byte
 		public void Read(List<byte> list, bool append = false)
@@ -110,7 +110,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Short
 		public void Read(List<short> list, bool append = false)
@@ -146,7 +146,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region UShort
 		public void Read(List<ushort> list, bool append = false)
@@ -182,7 +182,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Int
 		public void Read(List<int> list, bool append = false)
@@ -218,7 +218,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region UInt
 		public void Read(List<uint> list, bool append = false)
@@ -254,7 +254,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Long
 		public void Read(List<long> list, bool append = false)
@@ -290,7 +290,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region ULong
 		public void Read(List<ulong> list, bool append = false)
@@ -326,7 +326,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region String
 		public void Read(List<string> list, bool append = false)
@@ -362,7 +362,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Float
 		public void Read(List<float> list, bool append = false)
@@ -398,7 +398,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 		#region Double
 		public void Read(List<double> list, bool append = false)
@@ -434,7 +434,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion 
+		#endregion
 
 	}
 }

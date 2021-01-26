@@ -13,8 +13,36 @@ namespace Tests.Buffer
 		[SetUp]
 		public void Initialize()
 		{
-			m_Writer = new BinaryBufferWriter(1024);
+			m_Writer = new BinaryBufferWriter(64);
 			m_Reader = new BinaryBufferReader(m_Writer.Buffer);
+		}
+
+		[Test]
+		public void DynamicWriterBufferCanExpand()
+		{
+			int originalCapacity = m_Writer.Capacity;
+			for(int x = 0; x < originalCapacity; ++x)
+			{
+				m_Writer.Write((byte)1);
+			}
+			Assert.AreEqual(0, m_Writer.RemainingCapacity);
+			m_Writer.Write(1);
+			Assert.IsTrue(originalCapacity < m_Writer.Capacity);
+		}
+
+		[Test]
+		public void StaticWriterBufferCantExpand()
+		{
+			byte[] staticBuffer = new byte[64];
+			BinaryBufferWriter writer = new BinaryBufferWriter(staticBuffer);
+			int originalCapacity = writer.Capacity;
+			for(int x = 0; x < originalCapacity; ++x)
+			{
+				writer.Write((byte)1);
+			}
+			Assert.AreEqual(0, writer.RemainingCapacity);
+			Assert.Throws(typeof(IndexOutOfRangeException), () => writer.Write(1));
+
 		}
 
 		[Test]
@@ -88,11 +116,14 @@ namespace Tests.Buffer
 		#region Helper
 		private void TestReadWrite<TData>(Func<TData, BinaryBufferWriter> write, Func<TData> read, int size, params TData[] values)
 		{
+			Assert.AreEqual(m_Writer.Capacity, m_Writer.RemainingCapacity);
 			int length = values.Length;
 			for(int x = 0; x < length; ++x)
 			{
 				write(values[x]);
 			}
+			Assert.AreEqual(m_Writer.Capacity-size*values.Length, m_Writer.RemainingCapacity);
+
 			int writtenCount = m_Writer.Position;
 			Assert.AreEqual(size*length, writtenCount);
 			for(int x = 0; x < length; ++x)

@@ -3,11 +3,10 @@
 namespace ProceduralLevel.Common.Buffer
 {
 	public abstract class ABinaryBuffer
-
 	{
 		protected const int GUID_LENGTH = 16;
 
-		protected readonly byte[] m_Buffer;
+		protected byte[] m_Buffer;
 		protected int m_Position;
 
 		public byte[] Buffer { get { return m_Buffer; } }

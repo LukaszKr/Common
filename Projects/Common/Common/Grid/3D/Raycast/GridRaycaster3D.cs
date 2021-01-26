@@ -38,9 +38,9 @@ namespace ProceduralLevel.Common.Grid
 
 			int iterator = 0;
 
-			EDirection3D xExitFace = (stepX > 0? EDirection3D.Left: EDirection3D.Right);
-			EDirection3D yExitFace = (stepY > 0? EDirection3D.Down: EDirection3D.Up);
-			EDirection3D zExitFace = (stepZ > 0? EDirection3D.Back: EDirection3D.Front);
+			EDirection3D xExitFace = (stepX > 0 ? EDirection3D.Left : EDirection3D.Right);
+			EDirection3D yExitFace = (stepY > 0 ? EDirection3D.Down : EDirection3D.Up);
+			EDirection3D zExitFace = (stepZ > 0 ? EDirection3D.Back : EDirection3D.Front);
 
 			EDirection3D selectedFace;
 			float startDecimalX = startX-(float)Math.Truncate(startX);
