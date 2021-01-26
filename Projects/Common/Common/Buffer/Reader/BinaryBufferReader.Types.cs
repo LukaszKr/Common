@@ -2,31 +2,9 @@
 
 namespace ProceduralLevel.Common.Buffer
 {
-	public partial class BinaryDataBuffer
+	public partial class BinaryBufferReader
 	{
 		#region Char
-		public BinaryDataBuffer Write(char[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<char> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<char> list, bool append = false)
 		{
 			if(!append)
@@ -60,31 +38,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Bool
-		public BinaryDataBuffer Write(bool[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<bool> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<bool> list, bool append = false)
 		{
 			if(!append)
@@ -118,31 +74,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Byte
-		public BinaryDataBuffer Write(byte[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<byte> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<byte> list, bool append = false)
 		{
 			if(!append)
@@ -176,31 +110,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Short
-		public BinaryDataBuffer Write(short[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<short> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<short> list, bool append = false)
 		{
 			if(!append)
@@ -234,31 +146,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region UShort
-		public BinaryDataBuffer Write(ushort[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<ushort> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<ushort> list, bool append = false)
 		{
 			if(!append)
@@ -292,31 +182,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Int
-		public BinaryDataBuffer Write(int[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<int> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<int> list, bool append = false)
 		{
 			if(!append)
@@ -350,31 +218,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region UInt
-		public BinaryDataBuffer Write(uint[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<uint> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<uint> list, bool append = false)
 		{
 			if(!append)
@@ -408,31 +254,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Long
-		public BinaryDataBuffer Write(long[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<long> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<long> list, bool append = false)
 		{
 			if(!append)
@@ -466,31 +290,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region ULong
-		public BinaryDataBuffer Write(ulong[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<ulong> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<ulong> list, bool append = false)
 		{
 			if(!append)
@@ -524,31 +326,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region String
-		public BinaryDataBuffer Write(string[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<string> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<string> list, bool append = false)
 		{
 			if(!append)
@@ -582,31 +362,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Float
-		public BinaryDataBuffer Write(float[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<float> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<float> list, bool append = false)
 		{
 			if(!append)
@@ -640,31 +398,9 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 		#region Double
-		public BinaryDataBuffer Write(double[] arr)
-		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
-		}
-
-		public BinaryDataBuffer Write(List<double> list)
-		{
-			int count = list.Count;
-			Write(count);
-			for(int x = 0; x < count; ++x)
-			{
-				Write(list[x]);
-			}
-			return this;
-		}
-
 		public void Read(List<double> list, bool append = false)
 		{
 			if(!append)
@@ -698,7 +434,7 @@ namespace ProceduralLevel.Common.Buffer
 			}
 			return arr;
 		}
-		#endregion
+		#endregion 
 
 	}
 }

@@ -1,0 +1,17 @@
+﻿<#@include file="./../DataBufferHelper.tt" #>
+using System.Collections.Generic;
+
+namespace ProceduralLevel.Common.Buffer
+{
+	public partial class BinaryBufferReader
+	{
+<# 
+for(int x = 0; x < lowerCase.Length; ++x)
+{ #>
+		#region <#=upperCase[x] #>
+<# generateRead(lowerCase[x], upperCase[x]); #>
+		#endregion 
+
+<# } #>
+	}
+}

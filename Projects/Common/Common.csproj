@@ -18,6 +18,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Common\Buffer\Reader\BinaryBufferReader.Types.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BinaryBufferReader.Types.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Common\Buffer\Writer\BinaryBufferWriter.Types.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BinaryBufferWriter.Types.tt</DependentUpon>
+    </Compile>
     <Compile Update="Common\Tween\Tweens\Value\ValueTween.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -27,11 +37,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>BitMask.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Common\Buffer\BinaryDataBuffer.Types.cs">
-      <DependentUpon>BinaryDataBuffer.Types.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Update="Common\Buffer\DataBufferHelper.cs">
       <DesignTime>True</DesignTime>
@@ -76,6 +81,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Common\Buffer\Reader\BinaryBufferReader.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BinaryBufferReader.Types.cs</LastGenOutput>
+    </None>
+    <None Update="Common\Buffer\Writer\BinaryBufferWriter.Types.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BinaryBufferWriter.Types.cs</LastGenOutput>
+    </None>
     <None Update="Common\Tween\Tweens\Value\ValueTween.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ValueTween.cs</LastGenOutput>
@@ -86,10 +99,6 @@
     </None>
     <None Update="Common\BitMask\HelperMethod.tt">
       <Generator></Generator>
-    </None>
-    <None Update="Common\Buffer\BinaryDataBuffer.Types.tt">
-      <LastGenOutput>BinaryDataBuffer.Types.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="Common\Buffer\DataBufferHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

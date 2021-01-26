@@ -1,5 +1,9 @@
-﻿<# Action<string, string> generateCollection = (lCase, uCase) => { #>
-		public BinaryDataBuffer Write(<#=lCase #>[] arr)
+﻿<# 
+string[] lowerCase = new string[] { "char", "bool", "byte", "short", "ushort", "int", "uint", "long", "ulong", "string", "float", "double" };
+string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "Int", "UInt", "Long", "ULong", "String", "Float", "Double" };
+#>
+<# Action<string, string> generateWrite = (lCase, uCase) => { #>
+		public BinaryBufferWriter Write(<#=lCase #>[] arr)
 		{
 			int length = arr.Length;
 			Write(length);
@@ -10,7 +14,7 @@
 			return this;
 		}
 
-		public BinaryDataBuffer Write(List<<#=lCase #>> list)
+		public BinaryBufferWriter Write(List<<#=lCase #>> list)
 		{
 			int count = list.Count;
 			Write(count);
@@ -20,7 +24,8 @@
 			}
 			return this;
 		}
-
+<# };#>
+<# Action<string, string> generateRead = (lCase, uCase) => { #>
 		public void Read(List<<#=lCase #>> list, bool append = false)
 		{
 			if(!append)
