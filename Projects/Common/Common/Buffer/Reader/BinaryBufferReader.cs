@@ -23,6 +23,11 @@ namespace ProceduralLevel.Common.Buffer
 			}
 		}
 
+		public void Skip(int length)
+		{
+			m_Position += length;
+		}
+
 		#region Read
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public Guid ReadGuid()

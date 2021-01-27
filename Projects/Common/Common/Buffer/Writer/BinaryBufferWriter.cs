@@ -24,6 +24,11 @@ namespace ProceduralLevel.Common.Buffer
 			m_CanExpand = false;
 		}
 
+		public BinaryBufferChunk StartChunk()
+		{
+			return new BinaryBufferChunk(this);
+		}
+
 		private void Resize(int newCapacity)
 		{
 			byte[] oldBuffer = m_Buffer;

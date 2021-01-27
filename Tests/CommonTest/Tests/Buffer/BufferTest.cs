@@ -113,6 +113,28 @@ namespace Tests.Buffer
 			TestReadWrite(m_Writer.Write, m_Reader.ReadGuid, 16, g);
 		}
 
+		[Test]
+		public void BufferChunk()
+		{
+			m_Writer.Write(123);
+			BinaryBufferChunk chunk = m_Writer.StartChunk();
+			for(int x = 0; x < 5; ++x)
+			{
+				m_Writer.Write(x);
+			}
+
+			int length = chunk.WriteLength();
+			m_Writer.Write(5);
+			
+			Assert.AreEqual(123, m_Reader.ReadInt());
+			Assert.AreEqual(length, m_Reader.ReadInt());
+			for(int x = 0; x < 6; ++x)
+			{
+				Assert.AreEqual(x, m_Reader.ReadInt());
+			}
+			Assert.AreEqual(m_Reader.Position, m_Writer.Position);
+		}
+
 		#region Helper
 		private void TestReadWrite<TData>(Func<TData, BinaryBufferWriter> write, Func<TData> read, int size, params TData[] values)
 		{
