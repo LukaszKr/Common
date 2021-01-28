@@ -23,6 +23,12 @@ namespace ProceduralLevel.Common.Buffer
 			}
 		}
 
+		public void SkipChunk()
+		{
+			int chunkSize = ReadInt();
+			Skip(chunkSize);
+		}
+
 		public void Skip(int length)
 		{
 			m_Position += length;
