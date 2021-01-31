@@ -7,6 +7,12 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int Index;
 		public readonly GridPoint2D Point;
 
+		public GridCoord2D(GridPoint2D point, int index)
+		{
+			Point = point;
+			Index = index;
+		}
+
 		public GridCoord2D(GridSize2D size, int index)
 		{
 			Index = index;

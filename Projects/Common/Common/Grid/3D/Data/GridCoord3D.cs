@@ -7,6 +7,12 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int Index;
 		public readonly GridPoint3D Point;
 
+		public GridCoord3D(GridPoint3D point, int index)
+		{
+			Point = point;
+			Index = index;
+		}
+
 		public GridCoord3D(GridSize3D size, int index)
 		{
 			Index = index;
