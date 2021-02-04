@@ -47,6 +47,12 @@
 			Set(cell, coord);
 		}
 
+		public void Set(TCell cell, GridPoint2D point)
+		{
+			GridCoord2D coord = new GridCoord2D(m_Size, point);
+			Set(cell, coord);
+		}
+
 		public void Set(TCell cell, GridCoord2D coord)
 		{
 			if(m_Cells.Length <= coord.Index)
