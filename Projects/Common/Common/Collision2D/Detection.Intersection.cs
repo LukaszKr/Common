@@ -36,6 +36,29 @@
 			EOrientation abb = Orientation(a.B, b);
 			return (baa != bba && aab != abb) || (baa == EOrientation.On && aab == EOrientation.On);
 		}
+
+		public static bool GetIntersection(Line a, Line b, out Point intersection)
+		{
+			float a1 = a.B.Y-a.A.Y;
+			float b1 = a.A.X-a.B.X;
+			float c1 = a1*a.A.X+b1*a.A.Y;
+
+			float a2 = b.B.Y-b.A.Y;
+			float b2 = b.A.X-b.B.X;
+			float c2 = a2*b.A.X+b2*b.A.Y;
+
+			float delta = a1*b2-a2*b1;
+			if(delta == 0)
+			{
+				intersection = new Point();
+				return false;
+			}
+
+			float x = (b2*c1-b1*c2)/delta;
+			float y = (a1*c2-a2*c1)/delta;
+			intersection = new Point(x, y);
+			return true;
+		}
 		#endregion
 	}
 }

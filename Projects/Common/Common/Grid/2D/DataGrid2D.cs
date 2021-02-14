@@ -41,6 +41,19 @@
 			return m_Cells[coord.Index];
 		}
 
+		public int GetLine(TCell[] buffer, EGridAxis2D axis, int lineIndex)
+		{
+			int lineLength = m_Size.Get(axis);
+			int iterator = m_Iterator.Get(axis);
+			int cellIndex = m_Iterator.Get(axis.GetOther())*lineIndex;
+			for(int x = 0; x < lineLength; ++x)
+			{
+				buffer[x] = m_Cells[cellIndex];
+				cellIndex += iterator;
+			}
+			return lineLength;
+		}
+
 		public void Set(TCell cell, int x, int y)
 		{
 			GridCoord2D coord = new GridCoord2D(m_Size, x, y);

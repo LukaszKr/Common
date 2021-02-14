@@ -66,6 +66,11 @@ namespace ProceduralLevel.Common.Collision2D
 		{
 			return Detection.Intersects(this, l);
 		}
+
+		public bool GetIntersection(Line l, out Point intersection)
+		{
+			return Detection.GetIntersection(this, l, out intersection);
+		}
 		#endregion
 
 		public bool Equals(Line other)
