@@ -5,22 +5,30 @@ string[] upperCase = new string[] { "Char", "Bool", "Byte", "Short", "UShort", "
 <# Action<string, string> generateWrite = (lCase, uCase) => { #>
 		public BinaryBufferWriter Write(<#=lCase #>[] arr)
 		{
-			int length = arr.Length;
-			Write(length);
-			for(int x = 0; x < length; ++x)
-			{
-				Write(arr[x]);
-			}
-			return this;
+			return Write(arr, 0, arr.Length);
 		}
 
 		public BinaryBufferWriter Write(List<<#=lCase #>> list)
 		{
-			int count = list.Count;
+			return Write(list, 0, list.Count);
+		}
+
+		public BinaryBufferWriter Write(<#=lCase #>[] arr, int offset, int length)
+		{
+			Write(length);
+			for(int x = 0; x < length; ++x)
+			{
+				Write(arr[offset+x]);
+			}
+			return this;
+		}
+
+		public BinaryBufferWriter Write(List<<#=lCase #>> list, int offset, int count)
+		{
 			Write(count);
 			for(int x = 0; x < count; ++x)
 			{
-				Write(list[x]);
+				Write(list[offset+x]);
 			}
 			return this;
 		}
