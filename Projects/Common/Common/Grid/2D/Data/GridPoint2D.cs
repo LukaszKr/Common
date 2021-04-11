@@ -115,6 +115,20 @@ namespace ProceduralLevel.Common.Grid
 					throw new NotImplementedException();
 			}
 		}
+
+		public GridPoint2D Min(GridPoint2D other)
+		{
+			int x = Math.Min(X, other.X);
+			int y = Math.Min(Y, other.Y);
+			return new GridPoint2D(x, y);
+		}
+
+		public GridPoint2D Max(GridPoint2D other)
+		{
+			int x = Math.Max(X, other.X);
+			int y = Math.Max(Y, other.Y);
+			return new GridPoint2D(x, y);
+		}
 		#endregion
 
 		public bool Equals(GridPoint2D other)

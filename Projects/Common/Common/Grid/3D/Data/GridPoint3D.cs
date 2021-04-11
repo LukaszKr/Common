@@ -158,6 +158,22 @@ namespace ProceduralLevel.Common.Grid
 					throw new NotImplementedException();
 			}
 		}
+
+		public GridPoint3D Min(GridPoint3D other)
+		{
+			int x = Math.Min(X, other.X);
+			int y = Math.Min(Y, other.Y);
+			int z = Math.Min(Z, other.Z);
+			return new GridPoint3D(x, y, z);
+		}
+
+		public GridPoint3D Max(GridPoint3D other)
+		{
+			int x = Math.Max(X, other.X);
+			int y = Math.Max(Y, other.Y);
+			int z = Math.Max(Z, other.Z);
+			return new GridPoint3D(x, y, z);
+		}
 		#endregion
 
 		public override int GetHashCode()
