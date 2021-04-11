@@ -54,18 +54,25 @@ namespace ProceduralLevel.Common.Grid
 
 		public bool Contains(GridBounds3D bounds)
 		{
-			return Contains(bounds.Min) && Contains(bounds.Max);
+			return Contains(bounds.Min) && Contains(bounds.Max, true);
 		}
 
-		public bool Contains(GridCoord3D coord)
+		public bool Contains(GridCoord3D coord, bool inclusive = false)
 		{
-			return Contains(coord.Point);
+			return Contains(coord.Point, inclusive);
 		}
 
-		public bool Contains(GridPoint3D point)
+		public bool Contains(GridPoint3D point, bool inclusive = false)
 		{
-			return (Min.X <= point.X && Min.Y <= point.Y && Min.Z <= point.Z
-					&& Max.X > point.X && Max.Y > point.Y && Max.Z > point.Z);
+			if(Min.X <= point.X && Min.Y <= point.Y && Min.Z <= point.Z)
+			{
+				if(inclusive)
+				{
+					return (Max.X >= point.X && Max.Y >= point.Y && Max.Z >= point.Z);
+				}
+				return (Max.X > point.X && Max.Y > point.Y && Max.Z > point.Z);
+			}
+			return false;
 		}
 
 		public override string ToString()

@@ -51,18 +51,28 @@ namespace ProceduralLevel.Common.Grid
 
 		public bool Contains(GridBounds2D bounds)
 		{
-			return Contains(bounds.Min) && Contains(bounds.Max);
+			return Contains(bounds.Min) && Contains(bounds.Max, true);
 		}
 
-		public bool Contains(GridCoord2D coord)
+		public bool Contains(GridCoord2D coord, bool inclusive = false)
 		{
-			return Contains(coord.Point);
+			return Contains(coord.Point, inclusive);
 		}
 
-		public bool Contains(GridPoint2D point)
+		public bool Contains(GridPoint2D point, bool inclusive = false)
 		{
-			return (Min.X <= point.X && Min.Y <= point.Y
-					&& Max.X > point.X && Max.Y > point.Y);
+			if(Min.X <= point.X && Min.Y <= point.Y)
+			{
+				if(inclusive)
+				{
+					return (Max.X >= point.X && Max.Y >= point.Y);
+				}
+				else
+				{
+					return (Max.X >= point.X && Max.Y >= point.Y);
+				}
+			}
+			return false;
 		}
 
 		public override string ToString()
