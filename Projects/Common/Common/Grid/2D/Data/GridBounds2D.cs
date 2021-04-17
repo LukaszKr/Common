@@ -69,7 +69,7 @@ namespace ProceduralLevel.Common.Grid
 				}
 				else
 				{
-					return (Max.X >= point.X && Max.Y >= point.Y);
+					return (Max.X > point.X && Max.Y > point.Y);
 				}
 			}
 			return false;
