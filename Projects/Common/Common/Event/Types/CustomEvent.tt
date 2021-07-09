@@ -6,9 +6,16 @@ namespace ProceduralLevel.Common.Event
 <# for(int x = 0; x < tCount; x++) { #>
 	public class CustomEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
 	{
-		public override void Invoke(<#= listParams(x) #>, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke(<#= listParams(x) #>)
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)

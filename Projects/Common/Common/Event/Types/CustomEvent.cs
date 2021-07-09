@@ -4,9 +4,16 @@ namespace ProceduralLevel.Common.Event
 {
 	public class CustomEvent: AEvent
 	{
-		public override void Invoke(, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke()
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)
@@ -27,9 +34,16 @@ namespace ProceduralLevel.Common.Event
 
 	public class CustomEvent<T0>: AEvent<T0>
 	{
-		public override void Invoke(T0 arg0, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke(T0 arg0)
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)
@@ -50,9 +64,16 @@ namespace ProceduralLevel.Common.Event
 
 	public class CustomEvent<T0, T1>: AEvent<T0, T1>
 	{
-		public override void Invoke(T0 arg0, T1 arg1, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke(T0 arg0, T1 arg1)
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)
@@ -73,9 +94,16 @@ namespace ProceduralLevel.Common.Event
 
 	public class CustomEvent<T0, T1, T2>: AEvent<T0, T1, T2>
 	{
-		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke(T0 arg0, T1 arg1, T2 arg2)
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)
@@ -96,9 +124,16 @@ namespace ProceduralLevel.Common.Event
 
 	public class CustomEvent<T0, T1, T2, T3>: AEvent<T0, T1, T2, T3>
 	{
-		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3, bool inReverse = false)
+		public readonly bool ReverseInvoke = false;
+
+		public CustomEvent(bool reverseInvoke = false)
 		{
-			if(inReverse)
+			ReverseInvoke = reverseInvoke;
+		}
+
+		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
+		{
+			if(ReverseInvoke)
 			{
 				int count = m_Listeners.Count-1;
 				for(int x = count; x >= 0; x--)
