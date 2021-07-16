@@ -1,37 +1,19 @@
 ﻿<#@ include file="./HelperMethod.tt" #>
-using System.Collections.Generic;
-
 namespace ProceduralLevel.Common.Event
 {
 <# for(int x = 0; x < tCount; x++) { #>
-	public abstract class AEvent<#= listGenerics(x) #>
+	public abstract class AEvent<#= listGenerics(x) #>: ABaseEvent<AEvent<#= listGenerics(x) #>.Callback>
 	{
 		public delegate void Callback(<#= listParams(x) #>);
 
-		protected List<Callback> m_Listeners = new List<Callback>();
-
 		public abstract void Invoke(<#= listParams(x) #>);
-
-		public void AddListener(Callback listener)
-		{
-			m_Listeners.Add(listener);
-		}
-
-		public bool RemoveListener(Callback listener)
-		{
-			return m_Listeners.Remove(listener);
-		}
-
-		public void RemoveAllListeners()
-		{
-			m_Listeners.Clear();
-		}
+<# if(x > 0) { #>
 
 		public override string ToString()
 		{
-			return string.Format("[Event, ListenerCount: {<#= x #>}, Types: <#= listVars("{{{0}}}", x) #>]", 
-				<#= listVars("typeof(T{0}).Name", x) #><#= (x > 0? ", ": "") #> m_Listeners.Count);
+			return base.ToString() + $"[Types(<#= listVars("{{typeof(T{0}).Name}}", x) #>)]";
 		}
+<# } #>
 	}
 
 <# } #>

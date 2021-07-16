@@ -4,23 +4,28 @@
 	{
 		public void Bind(AEvent evt, AEvent.Callback callback)
 		{
-			AddBinding(new EventBinding(evt, callback));
+			AddBinding(new EventBinding<AEvent.Callback>(evt, callback));
 		}
+
 		public void Bind<T0>(AEvent<T0> evt, AEvent<T0>.Callback callback)
 		{
-			AddBinding(new EventBinding<T0>(evt, callback));
+			AddBinding(new EventBinding<AEvent<T0>.Callback>(evt, callback));
 		}
+
 		public void Bind<T0, T1>(AEvent<T0, T1> evt, AEvent<T0, T1>.Callback callback)
 		{
-			AddBinding(new EventBinding<T0, T1>(evt, callback));
+			AddBinding(new EventBinding<AEvent<T0, T1>.Callback>(evt, callback));
 		}
+
 		public void Bind<T0, T1, T2>(AEvent<T0, T1, T2> evt, AEvent<T0, T1, T2>.Callback callback)
 		{
-			AddBinding(new EventBinding<T0, T1, T2>(evt, callback));
+			AddBinding(new EventBinding<AEvent<T0, T1, T2>.Callback>(evt, callback));
 		}
+
 		public void Bind<T0, T1, T2, T3>(AEvent<T0, T1, T2, T3> evt, AEvent<T0, T1, T2, T3>.Callback callback)
 		{
-			AddBinding(new EventBinding<T0, T1, T2, T3>(evt, callback));
+			AddBinding(new EventBinding<AEvent<T0, T1, T2, T3>.Callback>(evt, callback));
 		}
+
 	}
 }

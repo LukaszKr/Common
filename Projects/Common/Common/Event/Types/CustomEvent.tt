@@ -4,32 +4,14 @@ using System.Collections.Generic;
 namespace ProceduralLevel.Common.Event
 {
 <# for(int x = 0; x < tCount; x++) { #>
-	public class CustomEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
+	public sealed class CustomEvent<#= listGenerics(x) #>: AEvent<#= listGenerics(x) #>
 	{
-		public readonly bool ReverseInvoke = false;
-
-		public CustomEvent(bool reverseInvoke = false)
-		{
-			ReverseInvoke = reverseInvoke;
-		}
-
 		public override void Invoke(<#= listParams(x) #>)
 		{
-			if(ReverseInvoke)
+			int count = m_Listeners.Count;
+			for(int x = 0; x < count; x++)
 			{
-				int count = m_Listeners.Count-1;
-				for(int x = count; x >= 0; x--)
-				{
-					m_Listeners[x](<#= listArgs(x) #>);
-				}
-			}
-			else
-			{
-				int count = m_Listeners.Count;
-				for(int x = 0; x < count; x++)
-				{
-					m_Listeners[x](<#= listArgs(x) #>);
-				}
+				m_Listeners[x](<#= listArgs(x) #>);
 			}
 		}
 	}

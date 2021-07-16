@@ -58,11 +58,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Update="Common\Event\EventBinding.cs">
-      <DependentUpon>EventBinding.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Update="Common\Event\Types\QueueEvent.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -114,10 +109,6 @@
     </None>
     <None Update="Common\Event\EventBinder.Bind.tt">
       <LastGenOutput>EventBinder.Bind.cs</LastGenOutput>
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <None Update="Common\Event\EventBinding.tt">
-      <LastGenOutput>EventBinding.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="Common\Event\HelperMethod.tt">

@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Event
 {
-	public class StackEvent: AEvent
+	public sealed class StackEvent: AEvent
 	{
 		public override void Invoke()
 		{
@@ -12,7 +12,7 @@
 		}
 	}
 
-	public class StackEvent<T0>: AEvent<T0>
+	public sealed class StackEvent<T0>: AEvent<T0>
 	{
 		public override void Invoke(T0 arg0)
 		{
@@ -24,7 +24,7 @@
 		}
 	}
 
-	public class StackEvent<T0, T1>: AEvent<T0, T1>
+	public sealed class StackEvent<T0, T1>: AEvent<T0, T1>
 	{
 		public override void Invoke(T0 arg0, T1 arg1)
 		{
@@ -36,7 +36,7 @@
 		}
 	}
 
-	public class StackEvent<T0, T1, T2>: AEvent<T0, T1, T2>
+	public sealed class StackEvent<T0, T1, T2>: AEvent<T0, T1, T2>
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2)
 		{
@@ -48,7 +48,7 @@
 		}
 	}
 
-	public class StackEvent<T0, T1, T2, T3>: AEvent<T0, T1, T2, T3>
+	public sealed class StackEvent<T0, T1, T2, T3>: AEvent<T0, T1, T2, T3>
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
 		{
