@@ -1,6 +1,6 @@
 namespace ProceduralLevel.Common.Event
 {
-	public interface IEventBinding
+	internal interface IEventBinding
 	{
 		void Bind();
 		void Unbind();
