@@ -36,6 +36,18 @@ namespace Tests.Event
 			Assert.AreEqual(0, m_TestEvent.ListenerCount);
 		}
 
+		[Test]
+		public void SingleSelfRemoveOnInvoke()
+		{
+			AssertCleanState();
+
+			m_TestEvent.AddListener(SelfRemoveWithIndicatorCallback);
+
+			m_TestEvent.Invoke(TEST_VALUE);
+			AssertCallback();
+			Assert.AreEqual(0, m_TestEvent.ListenerCount);
+		}
+
 		#region Helpers
 		protected void AssertCallback()
 		{
@@ -48,6 +60,12 @@ namespace Tests.Event
 			Assert.IsFalse(m_CallbackCalled);
 			Assert.AreEqual(0, m_RecvValue);
 			Assert.AreEqual(0, m_TestEvent.ListenerCount);
+		}
+
+		protected void SelfRemoveWithIndicatorCallback(int value)
+		{
+			CalledIndicatorCallback(value);
+			m_TestEvent.RemoveListener(SelfRemoveWithIndicatorCallback);
 		}
 
 		protected void SelfRemoveCallback(int value)
