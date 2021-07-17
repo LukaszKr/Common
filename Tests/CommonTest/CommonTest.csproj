@@ -59,8 +59,11 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
-    <Compile Include="Tests\Event\ABaseEventTest.cs" />
-    <Compile Include="Tests\Event\CustomEventTests.cs" />
+    <Compile Include="Tests\Event\ABaseEventTests.cs" />
+    <Compile Include="Tests\Event\AEventTests.cs" />
+    <Compile Include="Tests\Event\Types\CustomEventTests.cs" />
+    <Compile Include="Tests\Event\Types\QueueEventTests.cs" />
+    <Compile Include="Tests\Event\Types\StackEventTests.cs" />
     <Compile Include="Tests\Grid\Bounds3DTests.cs" />
     <Compile Include="Tests\Grid\Coord2DTests.cs" />
     <Compile Include="Tests\Grid\Coord3DTests.cs" />

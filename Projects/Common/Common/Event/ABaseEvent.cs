@@ -7,6 +7,9 @@ namespace ProceduralLevel.Common.Event
 		where TCallback: Delegate
 	{
 		protected readonly List<TCallback> m_Listeners = new List<TCallback>();
+		private readonly List<TCallback> m_PendingRemoval = new List<TCallback>();
+
+		protected bool m_IsInvoking = false;
 
 		public int ListenerCount { get { return m_Listeners.Count; } }
 
@@ -15,9 +18,27 @@ namespace ProceduralLevel.Common.Event
 			m_Listeners.Add(listener);
 		}
 
-		public bool RemoveListener(TCallback listener)
+		public void RemoveListener(TCallback listener)
 		{
-			return m_Listeners.Remove(listener);
+			if(m_IsInvoking)
+			{
+				m_PendingRemoval.Add(listener);
+			}
+			else
+			{
+				m_Listeners.Remove(listener);
+			}
+		}
+
+		protected void FlushPendingRemoval()
+		{
+			int count = m_PendingRemoval.Count;
+			for(int x = count-1; x >= 0; --x)
+			{
+				TCallback callback = m_PendingRemoval[x];
+				m_Listeners.Remove(callback);
+			}
+			m_PendingRemoval.Clear();
 		}
 
 		public void RemoveAllListeners()
