@@ -5,7 +5,7 @@ using ProceduralLevel.Common.Buffer;
 namespace Tests.Buffer
 {
 	[TestFixture]
-	public class BufferTest
+	public class BufferTests
 	{
 		private BinaryBufferWriter m_Writer;
 		private BinaryBufferReader m_Reader;

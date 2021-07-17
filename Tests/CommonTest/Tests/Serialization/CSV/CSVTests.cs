@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Serialization.CSV;
 namespace Tests.Serialization.CSV
 {
 	[TestFixture]
-	public class CSVTest
+	public class CSVTests
 	{
 		private CSVParser m_Parser;
 

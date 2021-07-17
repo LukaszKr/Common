@@ -5,7 +5,7 @@ using ProceduralLevel.Common.Tokenize;
 namespace Tests.Tokenize.Escape
 {
 	[TestFixture]
-	public class TokenEscapeTest
+	public class TokenEscapeTests
 	{
 		private SimpleTokenizer m_Tokenizer;
 

@@ -6,7 +6,7 @@
     <ProjectGuid>{45F7CF27-3824-47E7-B0EE-DC4F35E0FFA0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProceduralLevel.CommonPerformance</RootNamespace>
+    <RootNamespace>PerformanceTests</RootNamespace>
     <AssemblyName>ProceduralLevel.CommonPerformance.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Tests\BitMask\BitMaskPerformanceTest.cs" />
+    <Compile Include="Tests\BitMask\BitMaskPerformanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

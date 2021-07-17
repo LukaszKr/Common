@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Stats;
 namespace Tests.Stats
 {
 	[TestFixture]
-	public class RollingAverageTest
+	public class RollingAverageTests
 	{
 		[Test]
 		public void Basic()

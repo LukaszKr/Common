@@ -5,7 +5,7 @@ using ProceduralLevel.Common.SimpleID;
 namespace Tests.SimpleID
 {
 	[TestFixture]
-	public class SimpleIDTest
+	public class SimpleIDTests
 	{
 		private IDGroup<ID> m_Group;
 

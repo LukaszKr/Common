@@ -5,13 +5,13 @@ using Tests.Collision2D;
 namespace Tests.Collision
 {
 	[TestFixture]
-	public class CollisionTest
+	public class CollisionTests
 	{
 		[Test]
 		public void DistancePointToPoint()
 		{
 			AssertTests(
-				new PointToPointDistanceTest(new Point(40, 100), new Point(160, 100), 120)
+				new PointToPointDistanceTests(new Point(40, 100), new Point(160, 100), 120)
 			);
 		}
 

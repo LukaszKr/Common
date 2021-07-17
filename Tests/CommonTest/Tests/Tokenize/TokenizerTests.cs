@@ -5,7 +5,7 @@ using ProceduralLevel.Common.Tokenize;
 namespace Tests.Tokenize
 {
 	[TestFixture]
-	public class TokenizerTest
+	public class TokenizerTests
 	{
 		private SimpleTokenizer m_Tokenizer;
 

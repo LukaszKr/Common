@@ -5,7 +5,7 @@ using ProceduralLevel.Common.BitMask;
 namespace PerformanceTests.BitMask
 {
 	[TestFixture]
-	public class BitMaskPerformanceTest
+	public class BitMaskPerformanceTests
 	{
 		[Test]
 		public void PerformaceSet()

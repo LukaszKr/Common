@@ -4,7 +4,7 @@ using Test.Template.Data;
 namespace Tests.Template
 {
 	[TestFixture]
-	public class TemplateTest
+	public class TemplateTests
 	{
 		private TestData m_Data;
 

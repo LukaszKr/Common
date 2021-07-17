@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using ProceduralLevel.Common.Event;
 
 namespace Tests.Event
 {
 	[TestFixture]
-	public class CustomEventTest
+	public class CustomEventTests
 	{
 		private CustomEvent<int> m_TestEvent;
 

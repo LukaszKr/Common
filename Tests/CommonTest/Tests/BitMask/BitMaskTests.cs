@@ -4,7 +4,7 @@ using ProceduralLevel.Common.BitMask;
 namespace Tests.BitMask
 {
 	[TestFixture]
-	public class BitMaskTest
+	public class BitMaskTests
 	{
 		private BitMask128 m_Mask;
 

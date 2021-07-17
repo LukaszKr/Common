@@ -6,7 +6,7 @@
     <ProjectGuid>{8B8A7132-620F-4954-8E55-0E3456BD2268}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProceduralLevel.Common</RootNamespace>
+    <RootNamespace>Tests</RootNamespace>
     <AssemblyName>ProceduralLevel.Common.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,16 +42,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests\BitMask\BitMaskTest.cs" />
-    <Compile Include="Tests\Buffer\BufferTest.cs" />
+    <Compile Include="Tests\BitMask\BitMaskTests.cs" />
+    <Compile Include="Tests\Buffer\BufferTests.cs" />
     <Compile Include="Tests\Collision2D\ACollisionTest.cs" />
-    <Compile Include="Tests\Collision2D\CollisionTest.cs" />
+    <Compile Include="Tests\Collision2D\CollisionTests.cs" />
     <Compile Include="Tests\Collision2D\Distance\ADistanceTest.cs" />
     <Compile Include="Tests\Collision2D\Distance\CircleToCircleDistanceTest.cs" />
     <Compile Include="Tests\Collision2D\Distance\CircleToLineDistanceTest.cs" />
     <Compile Include="Tests\Collision2D\Distance\PointToCircleDistanceTest.cs" />
     <Compile Include="Tests\Collision2D\Distance\PointToLineDistanceTest.cs" />
-    <Compile Include="Tests\Collision2D\Distance\PointToPointDistanceTest.cs" />
+    <Compile Include="Tests\Collision2D\Distance\PointToPointDistanceTests.cs" />
     <Compile Include="Tests\Collision2D\Intersection\AIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\CircleToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\CircleToLineIntersectionTest.cs" />
@@ -60,17 +60,17 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
     <Compile Include="Tests\Event\ABaseEventTest.cs" />
-    <Compile Include="Tests\Event\CustomEventTest.cs" />
+    <Compile Include="Tests\Event\CustomEventTests.cs" />
     <Compile Include="Tests\Grid\Bounds3DTests.cs" />
     <Compile Include="Tests\Grid\Coord2DTests.cs" />
     <Compile Include="Tests\Grid\Coord3DTests.cs" />
-    <Compile Include="Tests\Serialization\CSV\CSVTest.cs" />
-    <Compile Include="Tests\SimpleID\SimpleIDTest.cs" />
-    <Compile Include="Tests\Stats\RollingAverageTest.cs" />
+    <Compile Include="Tests\Serialization\CSV\CSVTests.cs" />
+    <Compile Include="Tests\SimpleID\SimpleIDTests.cs" />
+    <Compile Include="Tests\Stats\RollingAverageTests.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
-    <Compile Include="Tests\Tokenize\Escape\TokenEscapeTest.cs" />
+    <Compile Include="Tests\Tokenize\Escape\TokenEscapeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Tokenize\TokenizerTest.cs" />
+    <Compile Include="Tests\Tokenize\TokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Projects\Common\Common.csproj">
