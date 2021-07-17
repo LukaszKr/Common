@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ProceduralLevel.Common.Event
+﻿namespace ProceduralLevel.Common.Event
 {
 	public sealed class CustomEvent: AEvent
 	{

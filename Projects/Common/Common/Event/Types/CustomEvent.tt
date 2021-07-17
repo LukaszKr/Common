@@ -1,6 +1,4 @@
 ﻿<#@ include file="./../HelperMethod.tt" #>
-using System.Collections.Generic;
-
 namespace ProceduralLevel.Common.Event
 {
 <# for(int x = 0; x < tCount; x++) { #>

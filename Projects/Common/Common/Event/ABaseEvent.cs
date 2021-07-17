@@ -8,6 +8,8 @@ namespace ProceduralLevel.Common.Event
 	{
 		protected readonly List<TCallback> m_Listeners = new List<TCallback>();
 
+		public int ListenerCount { get { return m_Listeners.Count; } }
+
 		public void AddListener(TCallback listener)
 		{
 			m_Listeners.Add(listener);

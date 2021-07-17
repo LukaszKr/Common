@@ -6,7 +6,7 @@
     <ProjectGuid>{8B8A7132-620F-4954-8E55-0E3456BD2268}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests</RootNamespace>
+    <RootNamespace>ProceduralLevel.Common</RootNamespace>
     <AssemblyName>ProceduralLevel.Common.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -59,6 +59,8 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
+    <Compile Include="Tests\Event\ABaseEventTest.cs" />
+    <Compile Include="Tests\Event\CustomEventTest.cs" />
     <Compile Include="Tests\Grid\Bounds3DTests.cs" />
     <Compile Include="Tests\Grid\Coord2DTests.cs" />
     <Compile Include="Tests\Grid\Coord3DTests.cs" />
