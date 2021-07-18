@@ -4,14 +4,17 @@
 	{
 		public override void Invoke()
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x]();
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x]();
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 
@@ -19,14 +22,17 @@
 	{
 		public override void Invoke(T0 arg0)
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x](arg0);
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x](arg0);
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 
@@ -34,14 +40,17 @@
 	{
 		public override void Invoke(T0 arg0, T1 arg1)
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x](arg0, arg1);
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x](arg0, arg1);
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 
@@ -49,14 +58,17 @@
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2)
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x](arg0, arg1, arg2);
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x](arg0, arg1, arg2);
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 
@@ -64,14 +76,17 @@
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x](arg0, arg1, arg2, arg3);
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x](arg0, arg1, arg2, arg3);
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 

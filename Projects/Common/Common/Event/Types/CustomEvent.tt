@@ -6,14 +6,17 @@ namespace ProceduralLevel.Common.Event
 	{
 		public override void Invoke(<#= listParams(x) #>)
 		{
-			m_IsInvoking = true;
 			int count = m_Listeners.Count;
-			for(int x = 0; x < count; x++)
+			if(count > 0)
 			{
-				m_Listeners[x](<#= listArgs(x) #>);
+				m_IsInvoking = true;
+				for(int x = 0; x < count; x++)
+				{
+					m_Listeners[x](<#= listArgs(x) #>);
+				}
+				m_IsInvoking = false;
+				FlushPendingRemoval();
 			}
-			m_IsInvoking = false;
-			FlushPendingRemoval();
 		}
 	}
 
