@@ -115,7 +115,7 @@ namespace Tests.Collision
 				new LineToLineIntersectionTest(new Line(40, 40, 60, 100), new Line(100, 100, 10, 160), false),
 				new LineToLineIntersectionTest(new Line(100, 40, 100, 100), new Line(100, 20, 100, 120), true), //overlapping
 				new LineToLineIntersectionTest(new Line(40, 40, 160, 160), new Line(110, 40, 40, 120), true),
-				new LineToLineIntersectionTest(new Line(40, 40, 100, 100), new Line(60, 60, 80, 90), true) //point sticking		
+				new LineToLineIntersectionTest(new Line(40, 40, 100, 100), new Line(60, 60, 80, 90), true) //point sticking
 			);
 		}
 
