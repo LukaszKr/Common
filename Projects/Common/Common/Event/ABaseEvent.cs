@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Event
 {
-	public abstract class ABaseEvent<TCallback>: IReadonlyEvent<TCallback>
+	public abstract class ABaseEvent<TCallback> : IReadonlyEvent<TCallback>
 		where TCallback : Delegate
 	{
 		protected readonly List<TCallback> m_Listeners = new List<TCallback>();

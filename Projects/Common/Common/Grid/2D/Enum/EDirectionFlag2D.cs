@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Ext;
 namespace ProceduralLevel.Common.Grid
 {
 	[Flags]
-	public enum EDirectionFlag2D: byte
+	public enum EDirectionFlag2D : byte
 	{
 		Up = 1 << 0,
 		Down = 1 << 1,

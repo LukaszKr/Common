@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public enum EDirection2D: byte
+	public enum EDirection2D : byte
 	{
 		Up = 0,
 		Down = 1,

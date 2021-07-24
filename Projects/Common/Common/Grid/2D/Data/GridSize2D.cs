@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridSize2D: IEquatable<GridSize2D>
+	public readonly struct GridSize2D : IEquatable<GridSize2D>
 	{
 		public readonly int Length;
 

@@ -2,7 +2,7 @@
 
 namespace Tests.Collision2D
 {
-	public class PointToLineDistanceTest: ADistanceTest
+	public class PointToLineDistanceTest : ADistanceTest
 	{
 		private readonly Point m_P;
 		private readonly Line m_L;

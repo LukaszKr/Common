@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Tokenize;
 
 namespace ProceduralLevel.Common.Template.Parser
 {
-	public class TemplateParser: AParser<TemplateTokenizer, TextTemplate>
+	public class TemplateParser : AParser<TemplateTokenizer, TextTemplate>
 	{
 		private readonly List<AEvaluator> m_Evaluators = new List<AEvaluator>();
 

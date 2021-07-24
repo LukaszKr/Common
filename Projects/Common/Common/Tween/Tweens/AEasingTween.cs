@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-	public abstract class AEasingTween: ATween
+	public abstract class AEasingTween : ATween
 	{
 #if CALLSTACK_DEBUG
 		public readonly string Callstack;
@@ -48,7 +48,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public abstract class AEasingTween<TTarget>: AEasingTween
+	public abstract class AEasingTween<TTarget> : AEasingTween
 	{
 		public readonly TTarget Target;
 

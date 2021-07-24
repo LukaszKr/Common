@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Ellipse: IEquatable<Ellipse>
+	public struct Ellipse : IEquatable<Ellipse>
 	{
 		public readonly Point Position;
 		public readonly Size Size;

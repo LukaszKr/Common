@@ -2,7 +2,7 @@
 
 namespace Tests.Collision2D
 {
-	public class OrientationTest: ACollisionTest
+	public class OrientationTest : ACollisionTest
 	{
 		private readonly Line m_Line;
 		private readonly Point m_Point;

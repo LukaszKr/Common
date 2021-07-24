@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Tween
 {
-	public abstract class AGroupTween: ITween
+	public abstract class AGroupTween : ITween
 	{
 		protected readonly List<ITween> m_Tweens = new List<ITween>();
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Template.Evaluator
 {
-	internal class MethodEvaluator: AEvaluator
+	internal class MethodEvaluator : AEvaluator
 	{
 		public override EEvaluatorType EvalType { get { return EEvaluatorType.Method; } }
 

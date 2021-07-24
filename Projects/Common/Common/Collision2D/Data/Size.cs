@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Size: IEquatable<Size>
+	public struct Size : IEquatable<Size>
 	{
 		public readonly float Width;
 		public readonly float Height;

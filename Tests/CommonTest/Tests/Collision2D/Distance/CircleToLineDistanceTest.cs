@@ -2,7 +2,7 @@
 
 namespace Tests.Collision2D
 {
-	public class CircleToLineDistanceTest: ADistanceTest
+	public class CircleToLineDistanceTest : ADistanceTest
 	{
 		private readonly Circle m_C;
 		private readonly Line m_L;

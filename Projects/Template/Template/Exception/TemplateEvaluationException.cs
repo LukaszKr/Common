@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Template
 {
-	public class TemplateEvaluationException: Exception
+	public class TemplateEvaluationException : Exception
 	{
 		public readonly ETemplateEvaluationError ErrorCode;
 

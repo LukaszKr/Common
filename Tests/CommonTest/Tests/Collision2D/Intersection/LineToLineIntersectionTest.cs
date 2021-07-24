@@ -2,7 +2,7 @@
 
 namespace Tests.Collision2D
 {
-	public class LineToLineIntersectionTest: AIntersectionTest
+	public class LineToLineIntersectionTest : AIntersectionTest
 	{
 		private readonly Line m_A;
 		private readonly Line m_B;

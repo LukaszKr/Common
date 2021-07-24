@@ -8,7 +8,7 @@ namespace ProceduralLevel.Common.BitMask
 <# for(int x = 1; x <= 8; x++) {
 	int currentMask = x*32;
 #>
-	public unsafe struct BitMask<#= currentMask #>: IEquatable<BitMask<#= currentMask #>>
+	public unsafe struct BitMask<#= currentMask #> : IEquatable<BitMask<#= currentMask #>>
 	{
 		public const int LENGTH = <#= currentMask #>;
 

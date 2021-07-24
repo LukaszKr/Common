@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.SimpleID
 {
-	public class ID: IComparable<ID>, IEquatable<ID>
+	public class ID : IComparable<ID>, IEquatable<ID>
 	{
 		public readonly uint Value;
 		public readonly string Name;

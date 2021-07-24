@@ -3,7 +3,7 @@ using ProceduralLevel.Common.Tokenize;
 
 namespace ProceduralLevel.Common.Serialization.CSV
 {
-	public sealed class CSVParser: AParser<CSVTokenizer, CSVTable>
+	public sealed class CSVParser : AParser<CSVTokenizer, CSVTable>
 	{
 		public CSVParser() : base(new CSVTokenizer())
 		{

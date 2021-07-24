@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Event
 {
-	public class EventBinding<TCallback>: IEventBinding
+	public class EventBinding<TCallback> : IEventBinding
 		where TCallback : Delegate
 	{
 		private readonly ABaseEvent<TCallback> m_Target;

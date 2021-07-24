@@ -7,12 +7,12 @@ using ProceduralLevel.Common.Easing;
 namespace ProceduralLevel.Common.Tween
 {
 <# for(int x = 0; x < lType.Length; ++x) { #>
-	public class <#= uType[x] #>Tween: AValueTween<<#= lType[x] #>>
+	public sealed class <#= uType[x] #>Tween : AValueTween<<#= lType[x] #>>
 	{
 		public <#= uType[x] #>Tween(EasingFunc easing, <#= lType[x] #> source, <#= lType[x] #> target)
 			: base(easing, source, target)
 		{
-		
+
 		}
 
 		protected override <#= lType[x] #> Blend(<#= lType[x] #> source, <#= lType[x] #> target, float blend, float reverseBlend)
@@ -21,12 +21,12 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class <#= uType[x] #>ArrayTween: AValueArrayTween<<#= lType[x] #>>
+	public sealed class <#= uType[x] #>ArrayTween : AValueArrayTween<<#= lType[x] #>>
 	{
 		public <#= uType[x] #>ArrayTween(EasingFunc easing, <#= lType[x] #>[] buffer, <#= lType[x] #>[] source, <#= lType[x] #>[] target)
 			: base(easing, buffer, source, target)
 		{
-		
+
 		}
 
 		protected override void Blend(<#= lType[x] #>[] buffer, <#= lType[x] #>[] source, <#= lType[x] #>[] target, float blend, float reverseBlend)

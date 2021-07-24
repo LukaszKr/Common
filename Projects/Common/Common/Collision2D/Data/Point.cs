@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Point: IEquatable<Point>
+	public struct Point : IEquatable<Point>
 	{
 		public readonly float X;
 		public readonly float Y;

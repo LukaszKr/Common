@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Tween
 {
-	public sealed class LinearGroupTween: AGroupTween
+	public sealed class LinearGroupTween : AGroupTween
 	{
 		private ITween m_Current;
 

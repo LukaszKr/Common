@@ -4,7 +4,7 @@ using ProceduralLevel.Common.Event;
 namespace Tests.Event.Types
 {
 	[TestFixture]
-	public class CustomEventTests: AEventTests<CustomEvent<int>>
+	public class CustomEventTests : AEventTests<CustomEvent<int>>
 	{
 		[Test]
 		public void RemoveFirstDuringInvoke()

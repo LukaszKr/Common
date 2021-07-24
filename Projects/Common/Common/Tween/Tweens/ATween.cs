@@ -3,7 +3,7 @@ using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Tween
 {
-	public abstract class ATween: ITween
+	public abstract class ATween : ITween
 	{
 		private ETweenState m_State;
 

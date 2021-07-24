@@ -2,7 +2,7 @@
 
 namespace Tests.Event.Types
 {
-	public class StackEventTests: AEventTests<StackEvent<int>>
+	public class StackEventTests : AEventTests<StackEvent<int>>
 	{
 	}
 }

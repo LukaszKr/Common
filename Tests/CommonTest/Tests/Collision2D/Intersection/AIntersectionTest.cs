@@ -1,6 +1,6 @@
 ﻿namespace Tests.Collision2D
 {
-	public abstract class AIntersectionTest: ACollisionTest
+	public abstract class AIntersectionTest : ACollisionTest
 	{
 		protected readonly bool m_Expected;
 

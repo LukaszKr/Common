@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public enum EGridAxis2D: byte
+	public enum EGridAxis2D : byte
 	{
 		X = 0,
 		Y = 1,

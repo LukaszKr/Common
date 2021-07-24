@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-	public class ByteTween: AValueTween<byte>
+	public sealed class ByteTween : AValueTween<byte>
 	{
 		public ByteTween(EasingFunc easing, byte source, byte target)
 			: base(easing, source, target)
@@ -16,7 +16,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class ByteArrayTween: AValueArrayTween<byte>
+	public sealed class ByteArrayTween : AValueArrayTween<byte>
 	{
 		public ByteArrayTween(EasingFunc easing, byte[] buffer, byte[] source, byte[] target)
 			: base(easing, buffer, source, target)
@@ -34,7 +34,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class SByteTween: AValueTween<sbyte>
+	public sealed class SByteTween : AValueTween<sbyte>
 	{
 		public SByteTween(EasingFunc easing, sbyte source, sbyte target)
 			: base(easing, source, target)
@@ -48,7 +48,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class SByteArrayTween: AValueArrayTween<sbyte>
+	public sealed class SByteArrayTween : AValueArrayTween<sbyte>
 	{
 		public SByteArrayTween(EasingFunc easing, sbyte[] buffer, sbyte[] source, sbyte[] target)
 			: base(easing, buffer, source, target)
@@ -66,7 +66,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class ShortTween: AValueTween<short>
+	public sealed class ShortTween : AValueTween<short>
 	{
 		public ShortTween(EasingFunc easing, short source, short target)
 			: base(easing, source, target)
@@ -80,7 +80,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class ShortArrayTween: AValueArrayTween<short>
+	public sealed class ShortArrayTween : AValueArrayTween<short>
 	{
 		public ShortArrayTween(EasingFunc easing, short[] buffer, short[] source, short[] target)
 			: base(easing, buffer, source, target)
@@ -98,7 +98,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class UShortTween: AValueTween<ushort>
+	public sealed class UShortTween : AValueTween<ushort>
 	{
 		public UShortTween(EasingFunc easing, ushort source, ushort target)
 			: base(easing, source, target)
@@ -112,7 +112,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class UShortArrayTween: AValueArrayTween<ushort>
+	public sealed class UShortArrayTween : AValueArrayTween<ushort>
 	{
 		public UShortArrayTween(EasingFunc easing, ushort[] buffer, ushort[] source, ushort[] target)
 			: base(easing, buffer, source, target)
@@ -130,7 +130,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class IntTween: AValueTween<int>
+	public sealed class IntTween : AValueTween<int>
 	{
 		public IntTween(EasingFunc easing, int source, int target)
 			: base(easing, source, target)
@@ -144,7 +144,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class IntArrayTween: AValueArrayTween<int>
+	public sealed class IntArrayTween : AValueArrayTween<int>
 	{
 		public IntArrayTween(EasingFunc easing, int[] buffer, int[] source, int[] target)
 			: base(easing, buffer, source, target)
@@ -162,7 +162,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class UIntTween: AValueTween<uint>
+	public sealed class UIntTween : AValueTween<uint>
 	{
 		public UIntTween(EasingFunc easing, uint source, uint target)
 			: base(easing, source, target)
@@ -176,7 +176,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class UIntArrayTween: AValueArrayTween<uint>
+	public sealed class UIntArrayTween : AValueArrayTween<uint>
 	{
 		public UIntArrayTween(EasingFunc easing, uint[] buffer, uint[] source, uint[] target)
 			: base(easing, buffer, source, target)
@@ -194,7 +194,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class LongTween: AValueTween<long>
+	public sealed class LongTween : AValueTween<long>
 	{
 		public LongTween(EasingFunc easing, long source, long target)
 			: base(easing, source, target)
@@ -208,7 +208,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class LongArrayTween: AValueArrayTween<long>
+	public sealed class LongArrayTween : AValueArrayTween<long>
 	{
 		public LongArrayTween(EasingFunc easing, long[] buffer, long[] source, long[] target)
 			: base(easing, buffer, source, target)
@@ -226,7 +226,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class ULongTween: AValueTween<ulong>
+	public sealed class ULongTween : AValueTween<ulong>
 	{
 		public ULongTween(EasingFunc easing, ulong source, ulong target)
 			: base(easing, source, target)
@@ -240,7 +240,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class ULongArrayTween: AValueArrayTween<ulong>
+	public sealed class ULongArrayTween : AValueArrayTween<ulong>
 	{
 		public ULongArrayTween(EasingFunc easing, ulong[] buffer, ulong[] source, ulong[] target)
 			: base(easing, buffer, source, target)
@@ -258,7 +258,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class FloatTween: AValueTween<float>
+	public sealed class FloatTween : AValueTween<float>
 	{
 		public FloatTween(EasingFunc easing, float source, float target)
 			: base(easing, source, target)
@@ -272,7 +272,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class FloatArrayTween: AValueArrayTween<float>
+	public sealed class FloatArrayTween : AValueArrayTween<float>
 	{
 		public FloatArrayTween(EasingFunc easing, float[] buffer, float[] source, float[] target)
 			: base(easing, buffer, source, target)
@@ -290,7 +290,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class DoubleTween: AValueTween<double>
+	public sealed class DoubleTween : AValueTween<double>
 	{
 		public DoubleTween(EasingFunc easing, double source, double target)
 			: base(easing, source, target)
@@ -304,7 +304,7 @@ namespace ProceduralLevel.Common.Tween
 		}
 	}
 
-	public class DoubleArrayTween: AValueArrayTween<double>
+	public sealed class DoubleArrayTween : AValueArrayTween<double>
 	{
 		public DoubleArrayTween(EasingFunc easing, double[] buffer, double[] source, double[] target)
 			: base(easing, buffer, source, target)

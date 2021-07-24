@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Collision2D
 {
-	public struct BoundBox: IEquatable<BoundBox>
+	public struct BoundBox : IEquatable<BoundBox>
 	{
 		public readonly Point Position;
 		public readonly Size Size;

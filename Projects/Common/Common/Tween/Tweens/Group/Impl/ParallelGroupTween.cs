@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Tween
 {
-	public sealed class ParallelGroupTween: AGroupTween
+	public sealed class ParallelGroupTween : AGroupTween
 	{
 		public ParallelGroupTween(AGroupTween parent)
 			: base(parent)

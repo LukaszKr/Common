@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Event
 {
-	public sealed class CustomEvent: AEvent
+	public sealed class CustomEvent : AEvent
 	{
 		public override void Invoke()
 		{
@@ -18,7 +18,7 @@
 		}
 	}
 
-	public sealed class CustomEvent<T0>: AEvent<T0>
+	public sealed class CustomEvent<T0> : AEvent<T0>
 	{
 		public override void Invoke(T0 arg0)
 		{
@@ -36,7 +36,7 @@
 		}
 	}
 
-	public sealed class CustomEvent<T0, T1>: AEvent<T0, T1>
+	public sealed class CustomEvent<T0, T1> : AEvent<T0, T1>
 	{
 		public override void Invoke(T0 arg0, T1 arg1)
 		{
@@ -54,7 +54,7 @@
 		}
 	}
 
-	public sealed class CustomEvent<T0, T1, T2>: AEvent<T0, T1, T2>
+	public sealed class CustomEvent<T0, T1, T2> : AEvent<T0, T1, T2>
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2)
 		{
@@ -72,7 +72,7 @@
 		}
 	}
 
-	public sealed class CustomEvent<T0, T1, T2, T3>: AEvent<T0, T1, T2, T3>
+	public sealed class CustomEvent<T0, T1, T2, T3> : AEvent<T0, T1, T2, T3>
 	{
 		public override void Invoke(T0 arg0, T1 arg1, T2 arg2, T3 arg3)
 		{

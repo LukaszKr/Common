@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridPoint2D: IEquatable<GridPoint2D>
+	public readonly struct GridPoint2D : IEquatable<GridPoint2D>
 	{
 		public readonly int X;
 		public readonly int Y;

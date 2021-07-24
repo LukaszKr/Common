@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Collision2D
 {
-	public struct Circle: IEquatable<Circle>
+	public struct Circle : IEquatable<Circle>
 	{
 		public readonly Point Center;
 		public readonly float Radius;

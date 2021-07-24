@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProceduralLevel.Common.Buffer
 {
-	public partial class BinaryBufferWriter: ABinaryBuffer
+	public partial class BinaryBufferWriter : ABinaryBuffer
 	{
 		private readonly bool m_CanExpand;
 

@@ -2,7 +2,7 @@
 
 namespace Tests.Collision2D
 {
-	public abstract class ADistanceTest: ACollisionTest
+	public abstract class ADistanceTest : ACollisionTest
 	{
 		private const float TOLERANCE = 0.0001f;
 

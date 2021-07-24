@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Tokenize
 {
-	public class ParserException<ErrorIDType>: Exception
+	public class ParserException<ErrorIDType> : Exception
 	{
 		public readonly ErrorIDType ErrorCode;
 		public readonly Token Token;

@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Tween
 {
-	public sealed class WaitTween: ATween
+	public sealed class WaitTween : ATween
 	{
 		private readonly float m_Duration;
 		private float m_Elapsed = 0;

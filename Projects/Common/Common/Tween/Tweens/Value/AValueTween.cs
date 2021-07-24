@@ -3,7 +3,7 @@ using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Tween
 {
-	public abstract class AValueTween<TValue>: AEasingTween
+	public abstract class AValueTween<TValue> : AEasingTween
 	{
 		private readonly TValue m_Source;
 		private readonly TValue m_Target;

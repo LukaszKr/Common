@@ -3,7 +3,7 @@ using ProceduralLevel.Common.Ext;
 
 namespace ProceduralLevel.Common.Grid
 {
-	public enum EGridAxis3D: byte
+	public enum EGridAxis3D : byte
 	{
 		X = 0,
 		Y = 1,

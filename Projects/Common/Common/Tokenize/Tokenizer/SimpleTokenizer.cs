@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Tokenize
 {
-	public class SimpleTokenizer: ATokenizer
+	public class SimpleTokenizer : ATokenizer
 	{
 		private char[] m_Separators;
 

@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridPoint3D: IEquatable<GridPoint3D>
+	public readonly struct GridPoint3D : IEquatable<GridPoint3D>
 	{
 		public static readonly GridPoint3D ZERO = new GridPoint3D(0, 0, 0);
 
