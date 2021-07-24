@@ -125,7 +125,7 @@ namespace Tests.Buffer
 
 			int length = chunk.WriteLength();
 			m_Writer.Write(5);
-			
+
 			Assert.AreEqual(123, m_Reader.ReadInt());
 			Assert.AreEqual(length, m_Reader.ReadInt());
 			for(int x = 0; x < 6; ++x)

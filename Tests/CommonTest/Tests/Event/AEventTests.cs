@@ -25,7 +25,7 @@ namespace Tests.Event
 		public void AddInvokeRemove()
 		{
 			AssertCleanState();
-			
+
 			m_TestEvent.AddListener(CalledIndicatorCallback);
 			Assert.AreEqual(1, m_TestEvent.ListenerCount);
 
