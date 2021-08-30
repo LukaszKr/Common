@@ -31,7 +31,7 @@ namespace ProceduralLevel.Common.Grid
 		public GridCoord2D(GridSize2D size, GridPoint2D point)
 		{
 			Point = point;
-			Index = point.Y*size.X+point.X;
+			Index = (point.Y*size.X)+point.X;
 		}
 
 		public static GridCoord2D Create(GridSize2D size, GridAxes2D axes, int a, int b)

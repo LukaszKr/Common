@@ -10,6 +10,12 @@ namespace ProceduralLevel.Common.Grid
 		public int SizeX { get { return Max.X-Min.X; } }
 		public int SizeY { get { return Max.Y-Min.Y; } }
 
+		public GridBounds2D(int maxX, int maxY)
+		{
+			Min = new GridPoint2D(0, 0);
+			Max = new GridPoint2D(maxX, maxY);
+		}
+
 		public GridBounds2D(int minX, int minY, int maxX, int maxY)
 		{
 			Min = new GridPoint2D(minX, minY);

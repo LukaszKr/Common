@@ -11,6 +11,12 @@ namespace ProceduralLevel.Common.Grid
 		public int SizeY { get { return Max.Y-Min.Y; } }
 		public int SizeZ { get { return Max.Z-Min.Z; } }
 
+		public GridBounds3D(int maxX, int maxY, int maxZ)
+		{
+			Min = new GridPoint3D(0, 0, 0);
+			Max = new GridPoint3D(maxX, maxY, maxZ);
+		}
+
 		public GridBounds3D(int minX, int minY, int minZ, int maxX, int maxY, int maxZ)
 		{
 			Min = new GridPoint3D(minX, minY, minZ);

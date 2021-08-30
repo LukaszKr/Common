@@ -33,7 +33,7 @@ namespace ProceduralLevel.Common.Grid
 		public GridCoord3D(GridSize3D size, GridPoint3D point)
 		{
 			Point = point;
-			Index = point.Z*size.X*size.Y+point.Y*size.X+point.X;
+			Index = (point.Z*size.X*size.Y)+(point.Y*size.X)+point.X;
 		}
 
 		public static GridCoord3D Create(GridSize3D size, GridAxes3D axes, int a, int b, int c)
