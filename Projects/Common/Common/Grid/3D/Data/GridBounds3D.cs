@@ -35,6 +35,7 @@ namespace ProceduralLevel.Common.Grid
 			Max = new GridPoint3D(size.X, size.Y, size.Z);
 		}
 
+		#region Intersection
 		public GridBounds3D GetIntersection(GridBounds3D bounds)
 		{
 			if(Intersects(bounds))
@@ -57,7 +58,9 @@ namespace ProceduralLevel.Common.Grid
 			return !(Min.X > otherMax.X || Min.Y > otherMax.Y || Min.Z > otherMax.Z
 				|| Max.X < otherMin.X || Max.Y < otherMin.Y || Max.Z < otherMin.Z);
 		}
+		#endregion
 
+		#region Contains
 		public bool Contains(GridBounds3D bounds)
 		{
 			return Contains(bounds.Min) && Contains(bounds.Max, true);
@@ -80,6 +83,7 @@ namespace ProceduralLevel.Common.Grid
 			}
 			return false;
 		}
+		#endregion
 
 		public override string ToString()
 		{

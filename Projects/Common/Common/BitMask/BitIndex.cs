@@ -13,7 +13,7 @@
 			int offset = 0;
 			int counter = 0;
 			m_Cache = new BitIndex[LOOKUP_SIZE];
-			for(int x = 0; x < LOOKUP_SIZE; ++x)
+			for(int x = 0; x < m_Cache.Length; ++x)
 			{
 				m_Cache[x] = new BitIndex((byte)offset, (byte)counter);
 				++counter;

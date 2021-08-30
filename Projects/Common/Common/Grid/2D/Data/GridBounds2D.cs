@@ -34,6 +34,7 @@ namespace ProceduralLevel.Common.Grid
 			Max = new GridPoint2D(size.X, size.Y);
 		}
 
+		#region Intersection
 		public GridBounds2D GetIntersection(GridBounds2D bounds)
 		{
 			if(Intersects(bounds))
@@ -54,7 +55,9 @@ namespace ProceduralLevel.Common.Grid
 			return !(Min.X > otherMax.X || Min.Y > otherMax.Y
 				|| Max.X < otherMin.X || Max.Y < otherMin.Y);
 		}
+		#endregion
 
+		#region Contains
 		public bool Contains(GridBounds2D bounds)
 		{
 			return Contains(bounds.Min) && Contains(bounds.Max, true);
@@ -73,13 +76,11 @@ namespace ProceduralLevel.Common.Grid
 				{
 					return (Max.X >= point.X && Max.Y >= point.Y);
 				}
-				else
-				{
-					return (Max.X > point.X && Max.Y > point.Y);
-				}
+				return (Max.X > point.X && Max.Y > point.Y);
 			}
 			return false;
 		}
+		#endregion
 
 		public override string ToString()
 		{

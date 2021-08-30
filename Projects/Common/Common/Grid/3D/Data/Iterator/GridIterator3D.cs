@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public struct GridIterator3D
+	public readonly struct GridIterator3D
 	{
 		public readonly int X;
 		public readonly int Y;
