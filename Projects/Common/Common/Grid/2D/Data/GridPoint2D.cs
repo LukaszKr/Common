@@ -99,6 +99,19 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Other
+		public GridPoint2D Translate(EGridAxis2D axis, int distance)
+		{
+			switch(axis)
+			{
+				case EGridAxis2D.X:
+					return new GridPoint2D(X+distance, Y);
+				case EGridAxis2D.Y:
+					return new GridPoint2D(X, Y+distance);
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
 		public GridPoint2D Translate(EDirection2D direction, int distance)
 		{
 			switch(direction)

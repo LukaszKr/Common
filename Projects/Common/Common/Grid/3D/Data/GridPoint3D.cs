@@ -138,6 +138,21 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
+		public GridPoint3D Translate(EGridAxis3D axis, int distance)
+		{
+			switch(axis)
+			{
+				case EGridAxis3D.X:
+					return new GridPoint3D(X+distance, Y, Z);
+				case EGridAxis3D.Y:
+					return new GridPoint3D(X, Y+distance, Z);
+				case EGridAxis3D.Z:
+					return new GridPoint3D(X, Y, Z+distance);
+				default:
+					throw new NotImplementedException();
+			}
+		}
+
 		public GridPoint3D Translate(EDirection3D direction, int distance)
 		{
 			switch(direction)
