@@ -126,13 +126,13 @@ namespace ProceduralLevel.Common.Grid
 				case EDirection3D.Down:
 					return new GridPoint3D(X, Z, -Y);
 				case EDirection3D.Front:
-					return new GridPoint3D(X, Y, Z);
-				case EDirection3D.Back:
 					return new GridPoint3D(-X, Y, -Z);
+				case EDirection3D.Back:
+					return new GridPoint3D(X, Y, Z);
 				case EDirection3D.Left:
-					return new GridPoint3D(Z, Y, -X);
-				case EDirection3D.Right:
 					return new GridPoint3D(-Z, Y, X);
+				case EDirection3D.Right:
+					return new GridPoint3D(Z, Y, -X);
 				default:
 					throw new NotImplementedException();
 			}
