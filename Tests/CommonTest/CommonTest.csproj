@@ -68,7 +68,6 @@
     <Compile Include="Tests\Grid\Coord2DTests.cs" />
     <Compile Include="Tests\Grid\Coord3DTests.cs" />
     <Compile Include="Tests\Serialization\CSV\CSVTests.cs" />
-    <Compile Include="Tests\Stats\RollingAverageTests.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
     <Compile Include="Tests\Tokenize\Escape\TokenEscapeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,6 +4,31 @@ namespace ProceduralLevel.Common.Ext
 {
 	public static class ArrayExt
 	{
+		public static TData[][] Create<TData>(int width, int height)
+		{
+			TData[][] array = new TData[width][];
+			for(int x = 0; x < array.Length; ++x)
+			{
+				array[x] = new TData[height];
+			}
+			return array;
+		}
+
+		public static TData[][][] Create<TData>(int width, int height, int depth)
+		{
+			TData[][][] array = new TData[width][][];
+			for(int x = 0; x < array.Length; ++x)
+			{
+				TData[][] column = new TData[height][];
+				array[x] = column;
+				for(int y = 0; y < column.Length; ++y)
+				{
+					column[y] = new TData[depth];
+				}
+			}
+			return array;
+		}
+
 		public static TData[] Resize<TData>(this TData[] array, int length)
 		{
 			if(array == null)

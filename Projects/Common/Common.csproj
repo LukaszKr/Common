@@ -72,11 +72,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StackEvent.tt</DependentUpon>
     </Compile>
-    <Compile Update="Common\Stats\RollingAverage.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RollingAverage.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -125,10 +120,6 @@
     <None Update="Common\Event\Types\StackEvent.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>StackEvent.cs</LastGenOutput>
-    </None>
-    <None Update="Common\Stats\RollingAverage.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RollingAverage.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
