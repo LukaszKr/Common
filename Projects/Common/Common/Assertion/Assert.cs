@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace ProceduralLevel.Common.Assertion
 {
 	public static partial class Assert
-
 	{
 		private const float APPROX = 0.00001f;
 
