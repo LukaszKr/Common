@@ -5,26 +5,26 @@ namespace ProceduralLevel.Common.Context
 	public abstract class AContextClass<TContext>
 		where TContext : class
 	{
-		protected TContext m_Value;
+		protected TContext m_Context;
 		private readonly EventBinder m_ContextBinder = new EventBinder();
 
-		public TContext Value { get { return m_Value; } }
+		public TContext Context { get { return m_Context; } }
 
-		public void SetValue(TContext value)
+		public void SetContext(TContext context)
 		{
-			if(value == m_Value)
+			if(context == m_Context)
 			{
 				return;
 			}
 
 			m_ContextBinder.UnbindAll();
-			TContext oldValue = m_Value;
-			m_Value = value;
-			if(value != null)
+			TContext oldContext = m_Context;
+			m_Context = context;
+			if(context != null)
 			{
-				if(oldValue != null)
+				if(oldContext != null)
 				{
-					OnReplace(m_ContextBinder, oldValue);
+					OnReplace(m_ContextBinder, oldContext);
 				}
 				else
 				{
@@ -37,7 +37,7 @@ namespace ProceduralLevel.Common.Context
 			}
 		}
 
-		protected virtual void OnReplace(EventBinder binder, TContext oldValue)
+		protected virtual void OnReplace(EventBinder binder, TContext oldContext)
 		{
 			OnDetach();
 			OnAttach(binder);
