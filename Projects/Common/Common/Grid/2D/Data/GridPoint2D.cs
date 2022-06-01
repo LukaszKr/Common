@@ -7,6 +7,9 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int X;
 		public readonly int Y;
 
+		public static bool operator ==(GridPoint2D left, GridPoint2D right) => left.Equals(right);
+		public static bool operator !=(GridPoint2D left, GridPoint2D right) => !left.Equals(right);
+
 		public GridPoint2D(int x, int y)
 		{
 			X = x;
@@ -143,6 +146,15 @@ namespace ProceduralLevel.Common.Grid
 			return new GridPoint2D(x, y);
 		}
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is GridPoint2D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
 
 		public bool Equals(GridPoint2D other)
 		{

@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Grid
 {
-	public struct GridAxisIterator2D
+	public readonly struct GridAxisIterator2D
 	{
 		public readonly EGridAxis2D Axis;
 		public readonly int StartIndex;

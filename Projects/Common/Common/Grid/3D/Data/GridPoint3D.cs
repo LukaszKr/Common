@@ -10,6 +10,9 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int Y;
 		public readonly int Z;
 
+		public static bool operator ==(GridPoint3D left, GridPoint3D right) => left.Equals(right);
+		public static bool operator !=(GridPoint3D left, GridPoint3D right) => !left.Equals(right);
+
 		public GridPoint3D(int x, int y, int z)
 		{
 			X = x;
@@ -191,6 +194,20 @@ namespace ProceduralLevel.Common.Grid
 		}
 		#endregion
 
+		public override bool Equals(object obj)
+		{
+			if(obj is GridPoint3D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
+
+		public bool Equals(GridPoint3D other)
+		{
+			return X == other.X && Y == other.Y && Z == other.Z;
+		}
+
 		public override int GetHashCode()
 		{
 			int hash = 17;
@@ -198,11 +215,6 @@ namespace ProceduralLevel.Common.Grid
 			hash = (hash * 23) + Y.GetHashCode();
 			hash = (hash * 23) + Z.GetHashCode();
 			return hash;
-		}
-
-		public bool Equals(GridPoint3D other)
-		{
-			return X == other.X && Y == other.Y && Z == other.Z;
 		}
 
 		public override string ToString()

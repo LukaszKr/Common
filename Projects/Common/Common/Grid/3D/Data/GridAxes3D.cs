@@ -1,6 +1,6 @@
 ﻿namespace ProceduralLevel.Common.Grid
 {
-	public struct GridAxes3D
+	public readonly struct GridAxes3D
 	{
 		public readonly EGridAxis3D A;
 		public readonly EGridAxis3D B;

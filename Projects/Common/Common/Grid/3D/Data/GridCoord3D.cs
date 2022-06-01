@@ -7,6 +7,9 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int Index;
 		public readonly GridPoint3D Point;
 
+		public static bool operator ==(GridCoord3D left, GridCoord3D right) => left.Equals(right);
+		public static bool operator !=(GridCoord3D left, GridCoord3D right) => !left.Equals(right);
+
 		public GridCoord3D(GridPoint3D point, int index)
 		{
 			Point = point;
@@ -57,9 +60,23 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
+		public override bool Equals(object obj)
+		{
+			if(obj is GridCoord3D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
+
 		public bool Equals(GridCoord3D other)
 		{
 			return Index == other.Index;
+		}
+
+		public override int GetHashCode()
+		{
+			return Index;
 		}
 
 		public override string ToString()
