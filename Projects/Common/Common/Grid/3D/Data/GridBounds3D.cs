@@ -2,7 +2,7 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridBounds3D
+	public readonly struct GridBounds3D : IEquatable<GridBounds3D>
 	{
 		public readonly GridPoint3D Min;
 		public readonly GridPoint3D Max;
@@ -10,6 +10,9 @@ namespace ProceduralLevel.Common.Grid
 		public int SizeX { get { return Max.X-Min.X; } }
 		public int SizeY { get { return Max.Y-Min.Y; } }
 		public int SizeZ { get { return Max.Z-Min.Z; } }
+
+		public static bool operator ==(GridBounds3D left, GridBounds3D right) => left.Equals(right);
+		public static bool operator !=(GridBounds3D left, GridBounds3D right) => !left.Equals(right);
 
 		public GridBounds3D(int maxX, int maxY, int maxZ)
 		{
@@ -84,6 +87,28 @@ namespace ProceduralLevel.Common.Grid
 			return false;
 		}
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is GridBounds3D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
+
+		public bool Equals(GridBounds3D other)
+		{
+			return Min == other.Min && Max == other.Max;
+		}
+
+		public override int GetHashCode()
+		{
+			int hash = 17;
+			hash = (hash * 23) + Min.GetHashCode();
+			hash = (hash * 23) + Max.GetHashCode();
+			return hash;
+		}
 
 		public override string ToString()
 		{

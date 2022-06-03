@@ -9,6 +9,9 @@ namespace ProceduralLevel.Common.Grid
 		public readonly int X;
 		public readonly int Y;
 
+		public static bool operator ==(GridSize2D left, GridSize2D right) => left.Equals(right);
+		public static bool operator !=(GridSize2D left, GridSize2D right) => !left.Equals(right);
+
 		public GridSize2D(int x, int y)
 		{
 			X = x;
@@ -45,9 +48,26 @@ namespace ProceduralLevel.Common.Grid
 			return index < Length;
 		}
 
+		public override bool Equals(object obj)
+		{
+			if(obj is GridSize2D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
+
 		public bool Equals(GridSize2D other)
 		{
 			return (X == other.X) && (Y == other.Y);
+		}
+
+		public override int GetHashCode()
+		{
+			int hash = 17;
+			hash = (hash * 23) + X.GetHashCode();
+			hash = (hash * 23) + Y.GetHashCode();
+			return hash;
 		}
 
 		public override string ToString()

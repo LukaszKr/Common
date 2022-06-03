@@ -2,13 +2,16 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridBounds2D
+	public readonly struct GridBounds2D : IEquatable<GridBounds2D>
 	{
 		public readonly GridPoint2D Min;
 		public readonly GridPoint2D Max;
 
 		public int SizeX { get { return Max.X-Min.X; } }
 		public int SizeY { get { return Max.Y-Min.Y; } }
+
+		public static bool operator ==(GridBounds2D left, GridBounds2D right) => left.Equals(right);
+		public static bool operator !=(GridBounds2D left, GridBounds2D right) => !left.Equals(right);
 
 		public GridBounds2D(int maxX, int maxY)
 		{
@@ -81,6 +84,28 @@ namespace ProceduralLevel.Common.Grid
 			return false;
 		}
 		#endregion
+
+		public override bool Equals(object obj)
+		{
+			if(obj is GridBounds2D other)
+			{
+				return Equals(other);
+			}
+			return false;
+		}
+
+		public bool Equals(GridBounds2D other)
+		{
+			return Min == other.Min && Max == other.Max;
+		}
+
+		public override int GetHashCode()
+		{
+			int hash = 17;
+			hash = (hash * 23) + Min.GetHashCode();
+			hash = (hash * 23) + Max.GetHashCode();
+			return hash;
+		}
 
 		public override string ToString()
 		{
