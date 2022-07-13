@@ -31,7 +31,7 @@ namespace ProceduralLevel.Common.Context
 					OnAttach(m_ContextBinder);
 				}
 			}
-			else
+			else if(oldContext != null)
 			{
 				OnDetach();
 			}
