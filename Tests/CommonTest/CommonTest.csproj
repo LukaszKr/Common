@@ -59,6 +59,7 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
+    <Compile Include="Tests\Context\ContextTests.cs" />
     <Compile Include="Tests\Event\ABaseEventTests.cs" />
     <Compile Include="Tests\Event\AEventTests.cs" />
     <Compile Include="Tests\Event\Types\CustomEventTests.cs" />
@@ -81,10 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit">
-      <Version>3.12.0</Version>
+      <Version>3.13.3</Version>
     </PackageReference>
     <PackageReference Include="NUnit3TestAdapter">
-      <Version>3.17.0</Version>
+      <Version>4.2.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

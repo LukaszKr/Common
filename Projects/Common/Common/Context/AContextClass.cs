@@ -1,4 +1,5 @@
-﻿using ProceduralLevel.Common.Event;
+﻿using System;
+using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Context
 {
@@ -14,7 +15,7 @@ namespace ProceduralLevel.Common.Context
 		{
 			if(context == m_Context)
 			{
-				return;
+				throw new InvalidOperationException();
 			}
 
 			m_ContextBinder.UnbindAll();

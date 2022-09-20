@@ -1,13 +1,14 @@
 ﻿using System.Diagnostics;
-using NUnit.Framework;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
 using ProceduralLevel.Common.BitMask;
 
 namespace PerformanceTests.BitMask
 {
-	[TestFixture]
+	[Orderer(SummaryOrderPolicy.Method)]
 	public class BitMaskPerformanceTests
 	{
-		[Test]
+		[Benchmark]
 		public void PerformaceSet()
 		{
 			const int passes = 1000000;
@@ -22,10 +23,9 @@ namespace PerformanceTests.BitMask
 					mask.Set(y);
 				}
 			}
-			TestContext.WriteLine($"128bitmask, {passes} passes, time elapsed: {watch.ElapsedMilliseconds}ms");
 		}
 
-		[Test]
+		[Benchmark]
 		public void PerformaceContains()
 		{
 			const int passes = 100000000;
@@ -39,7 +39,6 @@ namespace PerformanceTests.BitMask
 			{
 				maskA.Contains(maskB);
 			}
-			TestContext.WriteLine($"128bitmask, {passes} passes, time elapsed: {watch.ElapsedMilliseconds}ms");
 		}
 
 	}

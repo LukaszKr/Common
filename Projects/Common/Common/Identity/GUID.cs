@@ -33,7 +33,7 @@ namespace ProceduralLevel.Common.Identity
 			Value = new Guid(guid);
 		}
 
-		#region Serialziation
+		#region Serialization
 		public GUID(BinaryBufferReader reader)
 		{
 			Value = new Guid(reader.ReadString());
