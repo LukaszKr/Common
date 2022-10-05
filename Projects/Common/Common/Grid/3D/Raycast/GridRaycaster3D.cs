@@ -20,9 +20,6 @@ namespace ProceduralLevel.Common.Grid
 			int currentX = (int)Math.Floor(startX);
 			int currentY = (int)Math.Floor(startY);
 			int currentZ = (int)Math.Floor(startZ);
-			currentX = Math.Max(currentX, 0);
-			currentY = Math.Max(currentY, 0);
-			currentZ = Math.Max(currentZ, 0);
 
 			float nextBoundX = CalculateBound(currentX, startX, stepX);
 			float nextBoundY = CalculateBound(currentY, startY, stepY);
