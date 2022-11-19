@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests\BitMask\BitMaskTests.cs" />
-    <Compile Include="Tests\Buffer\BufferTests.cs" />
     <Compile Include="Tests\Collision2D\ACollisionTest.cs" />
     <Compile Include="Tests\Collision2D\CollisionTests.cs" />
     <Compile Include="Tests\Collision2D\Distance\ADistanceTest.cs" />

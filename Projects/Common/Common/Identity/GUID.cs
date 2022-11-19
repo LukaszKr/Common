@@ -1,5 +1,5 @@
 ﻿using System;
-using ProceduralLevel.Common.Buffer;
+using System.IO;
 
 namespace ProceduralLevel.Common.Identity
 {
@@ -34,12 +34,12 @@ namespace ProceduralLevel.Common.Identity
 		}
 
 		#region Serialization
-		public GUID(BinaryBufferReader reader)
+		public GUID(BinaryReader reader)
 		{
 			Value = new Guid(reader.ReadString());
 		}
 
-		public void WriteToBuffer(BinaryBufferWriter writer)
+		public void WriteToBuffer(BinaryWriter writer)
 		{
 			writer.Write(Value.ToString());
 		}
