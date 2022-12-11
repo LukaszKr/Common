@@ -19,7 +19,7 @@ namespace Tests.Context
 			public int DetachCallCount;
 			public int ReplaceCallCount;
 
-			protected override void OnAttach(EventBinder binder)
+			protected override void OnAttach(EventBinder binder, TestClassData context)
 			{
 				AttachCallCount++;
 			}
@@ -29,7 +29,7 @@ namespace Tests.Context
 				DetachCallCount++;
 			}
 
-			protected override void OnReplace(EventBinder binder, TestClassData oldContext)
+			protected override void OnReplace(EventBinder binder, TestClassData oldContext, TestClassData newContext)
 			{
 				ReplaceCallCount++;
 			}
