@@ -11,7 +11,7 @@ namespace ProceduralLevel.Common.Context
 
 		public delegate void OnDetachDelegate();
 		public delegate void OnAttachDelegate(EventBinder binder);
-		public delegate void OnReplaceDelegate(EventBinder binder, TContext oldContext, TContext newContext);
+		public delegate void OnReplaceDelegate(EventBinder binder, TContext oldContext);
 
 		public ContextClass(OnAttachDelegate onAttach, OnDetachDelegate onDetach, OnReplaceDelegate onReplace = null)
 		{
@@ -30,15 +30,15 @@ namespace ProceduralLevel.Common.Context
 			m_OnDetach();
 		}
 
-		protected override void OnReplace(EventBinder binder, TContext oldContext, TContext newContext)
+		protected override void OnReplace(EventBinder binder, TContext oldContext)
 		{
 			if(m_OnReplace != null)
 			{
-				m_OnReplace(binder, oldContext, newContext);
+				m_OnReplace(binder, oldContext);
 			}
 			else
 			{
-				base.OnReplace(binder, oldContext, newContext);
+				base.OnReplace(binder, oldContext);
 			}
 		}
 	}
