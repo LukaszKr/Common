@@ -9,8 +9,6 @@ namespace ProceduralLevel.Common.Context
 		protected TContext m_Context;
 		private readonly EventBinder m_ContextBinder = new EventBinder();
 
-		public TContext Context { get { return m_Context; } }
-
 		public void SetContext(TContext context)
 		{
 			if(context == m_Context)
@@ -29,7 +27,7 @@ namespace ProceduralLevel.Common.Context
 				}
 				else
 				{
-					OnAttach(m_ContextBinder, context);
+					OnAttach(m_ContextBinder);
 				}
 			}
 			else if(oldContext != null)
@@ -41,10 +39,10 @@ namespace ProceduralLevel.Common.Context
 		protected virtual void OnReplace(EventBinder binder, TContext oldContext, TContext newContext)
 		{
 			OnDetach();
-			OnAttach(binder, newContext);
+			OnAttach(binder);
 		}
 
-		protected abstract void OnAttach(EventBinder binder, TContext context);
+		protected abstract void OnAttach(EventBinder binder);
 		protected abstract void OnDetach();
 	}
 }
