@@ -105,7 +105,7 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Other
-		public GridIndex2D Translate(EGridAxis2D axis, int distance)
+		public GridIndex2D Translate(EGridAxis2D axis, int distance = 1)
 		{
 			switch(axis)
 			{
@@ -118,7 +118,7 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
-		public GridIndex2D Translate(EDirection2D direction, int distance)
+		public GridIndex2D Translate(EDirection2D direction, int distance = 1)
 		{
 			switch(direction)
 			{

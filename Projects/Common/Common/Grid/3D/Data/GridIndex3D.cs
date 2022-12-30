@@ -144,7 +144,7 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
-		public GridIndex3D Translate(EGridAxis3D axis, int distance)
+		public GridIndex3D Translate(EGridAxis3D axis, int distance = 1)
 		{
 			switch(axis)
 			{
@@ -159,7 +159,7 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
-		public GridIndex3D Translate(EDirection3D direction, int distance)
+		public GridIndex3D Translate(EDirection3D direction, int distance = 1)
 		{
 			switch(direction)
 			{
