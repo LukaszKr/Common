@@ -65,8 +65,8 @@
     <Compile Include="Tests\Event\Types\QueueEventTests.cs" />
     <Compile Include="Tests\Event\Types\StackEventTests.cs" />
     <Compile Include="Tests\Grid\Bounds3DTests.cs" />
-    <Compile Include="Tests\Grid\Coord2DTests.cs" />
-    <Compile Include="Tests\Grid\Coord3DTests.cs" />
+    <Compile Include="Tests\Grid\DataGrid2DTests.cs" />
+    <Compile Include="Tests\Grid\DataGrid3DTests.cs" />
     <Compile Include="Tests\Serialization\CSV\CSVTests.cs" />
     <Compile Include="Tests\Tokenize\TokenizerTestHelper.cs" />
     <Compile Include="Tests\Tokenize\Escape\TokenEscapeTests.cs" />

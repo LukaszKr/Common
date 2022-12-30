@@ -1,77 +1,69 @@
-﻿namespace ProceduralLevel.Common.Grid
+﻿using System;
+using ProceduralLevel.Common.Ext;
+
+namespace ProceduralLevel.Common.Grid
 {
 	public class DataGrid2D<TCell>
 	{
-		public readonly TCell[] Cells;
+		public readonly TCell[][] Cells;
 		public readonly GridSize2D Size;
-		public readonly GridIterator2D Iterator;
+
+		public DataGrid2D(int x, int y)
+			: this(new GridSize2D(x, y))
+		{
+
+		}
 
 		public DataGrid2D(GridSize2D size)
 		{
 			Size = size;
-			Iterator = new GridIterator2D(size);
-			Cells = new TCell[size.Length];
+			Cells = ArrayExt.Create<TCell>(size);
 		}
 
 		#region Get
-		public TCell Get(int x, int y)
-		{
-			GridCoord2D coord = new GridCoord2D(Size, x, y);
-			return Get(coord);
-		}
-
 		public TCell Get(GridPoint2D point)
 		{
-			GridCoord2D coord = new GridCoord2D(Size, point);
-			return Get(coord);
-		}
-
-		public TCell Get(GridCoord2D coord)
-		{
-			return Cells[coord.Index];
+			return Cells[point.X][point.Y];
 		}
 
 		public int GetLine(TCell[] buffer, EGridAxis2D axis, int lineIndex)
 		{
-			int lineLength = Size.Get(axis);
-			int iterator = Iterator.Get(axis);
-			int cellIndex = Iterator.Get(axis.GetOther())*lineIndex;
-			for(int x = 0; x < lineLength; ++x)
+			switch(axis)
 			{
-				buffer[x] = Cells[cellIndex];
-				cellIndex += iterator;
+				case EGridAxis2D.X:
+					for(int x = 0; x < Cells.Length; ++x)
+					{
+						buffer[x] = Cells[x][lineIndex];
+					}
+					return Cells.Length;
+				case EGridAxis2D.Y:
+					TCell[] line = Cells[lineIndex];
+					for(int x = 0; x < line.Length; ++x)
+					{
+						buffer[x] = line[x];
+					}
+					return line.Length;
+				default:
+					throw new NotImplementedException();
 			}
-			return lineLength;
 		}
 		#endregion
 
 		#region Set
-		public void Set(TCell cell, int x, int y)
-		{
-			GridCoord2D coord = new GridCoord2D(Size, x, y);
-			Set(cell, coord);
-		}
-
 		public void Set(TCell cell, GridPoint2D point)
 		{
-			GridCoord2D coord = new GridCoord2D(Size, point);
-			Set(cell, coord);
+			Cells[point.X][point.Y] = cell;
 		}
 
-		public void Set(TCell cell, GridCoord2D coord)
+		public void SetAll(TCell cell)
 		{
-			if(Cells.Length <= coord.Index)
+			for(int x = 0; x < Cells.Length; ++x)
 			{
-				throw new System.Exception();
-			}
-			Cells[coord.Index] = cell;
-		}
-
-		public void SetAll(TCell data)
-		{
-			for(int x = 0; x < Size.Length; ++x)
-			{
-				Cells[x] = data;
+				TCell[] xArray = Cells[x];
+				for(int y = 0; y < xArray.Length; ++y)
+				{
+					xArray[y] = cell;
+				}
 			}
 		}
 		#endregion

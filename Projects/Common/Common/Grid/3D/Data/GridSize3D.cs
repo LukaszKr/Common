@@ -4,8 +4,6 @@ namespace ProceduralLevel.Common.Grid
 {
 	public readonly struct GridSize3D : IEquatable<GridSize3D>
 	{
-		public readonly int Length;
-
 		public readonly int X;
 		public readonly int Y;
 		public readonly int Z;
@@ -18,8 +16,6 @@ namespace ProceduralLevel.Common.Grid
 			X = x;
 			Y = y;
 			Z = z;
-
-			Length = X*Y*Z;
 		}
 
 		public int Get(EGridAxis3D axis)
@@ -40,16 +36,6 @@ namespace ProceduralLevel.Common.Grid
 		{
 			return point.X < X && point.Y < Y && point.Z < Z &&
 				point.X >= 0 && point.Y >= 0 && point.Z >= 0;
-		}
-
-		public bool Contains(GridCoord3D coord)
-		{
-			return coord.Index < Length;
-		}
-
-		public bool Contains(int index)
-		{
-			return index < Length;
 		}
 
 		public override bool Equals(object obj)
@@ -77,7 +63,7 @@ namespace ProceduralLevel.Common.Grid
 
 		public override string ToString()
 		{
-			return $"(Length: {Length} ({X}, {Y}, {Z}))";
+			return $"({X}, {Y}, {Z})";
 		}
 	}
 }

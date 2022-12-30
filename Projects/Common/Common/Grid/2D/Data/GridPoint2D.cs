@@ -10,6 +10,9 @@ namespace ProceduralLevel.Common.Grid
 		public static bool operator ==(GridPoint2D left, GridPoint2D right) => left.Equals(right);
 		public static bool operator !=(GridPoint2D left, GridPoint2D right) => !left.Equals(right);
 
+		public static GridPoint2D operator +(GridPoint2D left, GridPoint2D right) => left.Add(right);
+		public static GridPoint2D operator -(GridPoint2D left, GridPoint2D right) => left.Remove(right);
+
 		public GridPoint2D(int x, int y)
 		{
 			X = x;

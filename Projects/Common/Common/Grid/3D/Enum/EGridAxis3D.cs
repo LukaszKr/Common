@@ -29,22 +29,5 @@ namespace ProceduralLevel.Common.Grid
 				return EGridAxis3D.X;
 			}
 		}
-
-
-		public static GridCoord3D GetIterator(this EGridAxis3D axis, GridSize3D size, int step = 1, bool negative = false)
-		{
-			int direction = (negative ? -step : step);
-			switch(axis)
-			{
-				case EGridAxis3D.X:
-					return new GridCoord3D(size, direction, 0, 0);
-				case EGridAxis3D.Y:
-					return new GridCoord3D(size, 0, direction, 0);
-				case EGridAxis3D.Z:
-					return new GridCoord3D(size, 0, 0, direction);
-				default:
-					throw new NotImplementedException();
-			}
-		}
 	}
 }

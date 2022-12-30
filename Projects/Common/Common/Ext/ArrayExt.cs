@@ -1,9 +1,15 @@
 ﻿using System;
+using ProceduralLevel.Common.Grid;
 
 namespace ProceduralLevel.Common.Ext
 {
 	public static class ArrayExt
 	{
+		public static TData[][] Create<TData>(GridSize2D size)
+		{
+			return Create<TData>(size.X, size.Y);
+		}
+
 		public static TData[][] Create<TData>(int width, int height)
 		{
 			TData[][] array = new TData[width][];
@@ -12,6 +18,11 @@ namespace ProceduralLevel.Common.Ext
 				array[x] = new TData[height];
 			}
 			return array;
+		}
+
+		public static TData[][][] Create<TData>(GridSize3D size)
+		{
+			return Create<TData>(size.X, size.Y, size.Z);
 		}
 
 		public static TData[][][] Create<TData>(int width, int height, int depth)

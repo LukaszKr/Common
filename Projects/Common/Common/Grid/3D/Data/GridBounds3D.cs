@@ -69,11 +69,6 @@ namespace ProceduralLevel.Common.Grid
 			return Contains(bounds.Min) && Contains(bounds.Max, true);
 		}
 
-		public bool Contains(GridCoord3D coord, bool inclusive = false)
-		{
-			return Contains(coord.Point, inclusive);
-		}
-
 		public bool Contains(GridPoint3D point, bool inclusive = false)
 		{
 			if(Min.X <= point.X && Min.Y <= point.Y && Min.Z <= point.Z)
