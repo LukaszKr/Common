@@ -4,23 +4,23 @@ namespace ProceduralLevel.Common.Grid
 {
 	public readonly struct GridHit2D : IEquatable<GridHit2D>
 	{
-		public readonly GridPoint2D Point;
+		public readonly GridIndex2D Index;
 		public readonly EDirection2D Face;
 
-		public GridHit2D(GridPoint2D point, EDirection2D face)
+		public GridHit2D(GridIndex2D index, EDirection2D face)
 		{
-			Point = point;
+			Index = index;
 			Face = face;
 		}
 
 		public bool Equals(GridHit2D other)
 		{
-			return (Face == other.Face && Point.Equals(other.Point));
+			return (Face == other.Face && Index.Equals(other.Index));
 		}
 
 		public override string ToString()
 		{
-			return $"({Point}, {Face})";
+			return $"({Index}, {Face})";
 		}
 	}
 }

@@ -28,7 +28,7 @@ namespace ProceduralLevel.Common.Grid
 			throw new NotImplementedException();
 		}
 
-		public bool Contains(GridPoint2D point)
+		public bool Contains(GridIndex2D point)
 		{
 			return point.X < X && point.Y < Y &&
 				point.X >= 0 && point.Y >= 0;

@@ -2,27 +2,28 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridPoint3D : IEquatable<GridPoint3D>
+	public readonly struct GridIndex3D : IEquatable<GridIndex3D>
 	{
-		public static readonly GridPoint3D ZERO = new GridPoint3D(0, 0, 0);
+		public static readonly GridIndex3D ZERO = new GridIndex3D(0, 0, 0);
 
 		public readonly int X;
 		public readonly int Y;
 		public readonly int Z;
 
-		public static bool operator ==(GridPoint3D left, GridPoint3D right) => left.Equals(right);
-		public static bool operator !=(GridPoint3D left, GridPoint3D right) => !left.Equals(right);
-		public static GridPoint3D operator +(GridPoint3D left, GridPoint3D right) => left.Add(right);
-		public static GridPoint3D operator -(GridPoint3D left, GridPoint3D right) => left.Remove(right);
+		public static bool operator ==(GridIndex3D left, GridIndex3D right) => left.Equals(right);
+		public static bool operator !=(GridIndex3D left, GridIndex3D right) => !left.Equals(right);
+		public static GridIndex3D operator +(GridIndex3D left, GridIndex3D right) => left.Add(right);
+		public static GridIndex3D operator -(GridIndex3D left, GridIndex3D right) => left.Remove(right);
 
-		public GridPoint3D(int x, int y, int z)
+		public GridIndex3D
+			(int x, int y, int z)
 		{
 			X = x;
 			Y = y;
 			Z = z;
 		}
 
-		public GridPoint3D(EDirection3D direction, int length = 1)
+		public GridIndex3D(EDirection3D direction, int length = 1)
 		{
 			X = 0;
 			Y = 0;
@@ -53,13 +54,13 @@ namespace ProceduralLevel.Common.Grid
 			}
 		}
 
-		public static GridPoint3D Create(GridAxes3D axes, int a, int b, int c)
+		public static GridIndex3D Create(GridAxes3D axes, int a, int b, int c)
 		{
-			GridPoint3D coord = new GridPoint3D(a, b, c);
+			GridIndex3D coord = new GridIndex3D(a, b, c);
 			int x = coord.Get(axes.A);
 			int y = coord.Get(axes.B);
 			int z = coord.Get(axes.C);
-			return new GridPoint3D(x, y, z);
+			return new GridIndex3D(x, y, z);
 		}
 
 		public int Get(EGridAxis3D axis)
@@ -76,34 +77,34 @@ namespace ProceduralLevel.Common.Grid
 			throw new NotImplementedException();
 		}
 
-		public GridPoint3D Set(EGridAxis3D axis, int value)
+		public GridIndex3D Set(EGridAxis3D axis, int value)
 		{
 			switch(axis)
 			{
 				case EGridAxis3D.X:
-					return new GridPoint3D(value, Y, Z);
+					return new GridIndex3D(value, Y, Z);
 				case EGridAxis3D.Y:
-					return new GridPoint3D(X, value, Z);
+					return new GridIndex3D(X, value, Z);
 				case EGridAxis3D.Z:
-					return new GridPoint3D(X, Y, value);
+					return new GridIndex3D(X, Y, value);
 				default:
 					throw new NotImplementedException();
 			}
 		}
 
 		#region Math
-		public GridPoint3D Add(GridPoint3D other)
+		public GridIndex3D Add(GridIndex3D other)
 		{
-			return new GridPoint3D(
+			return new GridIndex3D(
 				X+other.X,
 				Y+other.Y,
 				Z+other.Z
 			);
 		}
 
-		public GridPoint3D Remove(GridPoint3D other)
+		public GridIndex3D Remove(GridIndex3D other)
 		{
-			return new GridPoint3D(
+			return new GridIndex3D(
 				X-other.X,
 				Y-other.Y,
 				Z-other.Z
@@ -122,90 +123,90 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Other
-		public GridPoint3D Rotate(EDirection3D direction)
+		public GridIndex3D Rotate(EDirection3D direction)
 		{
 			switch(direction)
 			{
 				case EDirection3D.Up:
-					return new GridPoint3D(X, -Z, Y);
+					return new GridIndex3D(X, -Z, Y);
 				case EDirection3D.Down:
-					return new GridPoint3D(X, Z, -Y);
+					return new GridIndex3D(X, Z, -Y);
 				case EDirection3D.Front:
-					return new GridPoint3D(-X, Y, -Z);
+					return new GridIndex3D(-X, Y, -Z);
 				case EDirection3D.Back:
-					return new GridPoint3D(X, Y, Z);
+					return new GridIndex3D(X, Y, Z);
 				case EDirection3D.Left:
-					return new GridPoint3D(-Z, Y, X);
+					return new GridIndex3D(-Z, Y, X);
 				case EDirection3D.Right:
-					return new GridPoint3D(Z, Y, -X);
+					return new GridIndex3D(Z, Y, -X);
 				default:
 					throw new NotImplementedException();
 			}
 		}
 
-		public GridPoint3D Translate(EGridAxis3D axis, int distance)
+		public GridIndex3D Translate(EGridAxis3D axis, int distance)
 		{
 			switch(axis)
 			{
 				case EGridAxis3D.X:
-					return new GridPoint3D(X+distance, Y, Z);
+					return new GridIndex3D(X+distance, Y, Z);
 				case EGridAxis3D.Y:
-					return new GridPoint3D(X, Y+distance, Z);
+					return new GridIndex3D(X, Y+distance, Z);
 				case EGridAxis3D.Z:
-					return new GridPoint3D(X, Y, Z+distance);
+					return new GridIndex3D(X, Y, Z+distance);
 				default:
 					throw new NotImplementedException();
 			}
 		}
 
-		public GridPoint3D Translate(EDirection3D direction, int distance)
+		public GridIndex3D Translate(EDirection3D direction, int distance)
 		{
 			switch(direction)
 			{
 				case EDirection3D.Up:
-					return new GridPoint3D(X, Y+distance, Z);
+					return new GridIndex3D(X, Y+distance, Z);
 				case EDirection3D.Down:
-					return new GridPoint3D(X, Y-distance, Z);
+					return new GridIndex3D(X, Y-distance, Z);
 				case EDirection3D.Right:
-					return new GridPoint3D(X+distance, Y, Z);
+					return new GridIndex3D(X+distance, Y, Z);
 				case EDirection3D.Left:
-					return new GridPoint3D(X-distance, Y, Z);
+					return new GridIndex3D(X-distance, Y, Z);
 				case EDirection3D.Front:
-					return new GridPoint3D(X, Y, Z+distance);
+					return new GridIndex3D(X, Y, Z+distance);
 				case EDirection3D.Back:
-					return new GridPoint3D(X, Y, Z-distance);
+					return new GridIndex3D(X, Y, Z-distance);
 				default:
 					throw new NotImplementedException();
 			}
 		}
 
-		public GridPoint3D Min(GridPoint3D other)
+		public GridIndex3D Min(GridIndex3D other)
 		{
 			int x = Math.Min(X, other.X);
 			int y = Math.Min(Y, other.Y);
 			int z = Math.Min(Z, other.Z);
-			return new GridPoint3D(x, y, z);
+			return new GridIndex3D(x, y, z);
 		}
 
-		public GridPoint3D Max(GridPoint3D other)
+		public GridIndex3D Max(GridIndex3D other)
 		{
 			int x = Math.Max(X, other.X);
 			int y = Math.Max(Y, other.Y);
 			int z = Math.Max(Z, other.Z);
-			return new GridPoint3D(x, y, z);
+			return new GridIndex3D(x, y, z);
 		}
 		#endregion
 
 		public override bool Equals(object obj)
 		{
-			if(obj is GridPoint3D other)
+			if(obj is GridIndex3D other)
 			{
 				return Equals(other);
 			}
 			return false;
 		}
 
-		public bool Equals(GridPoint3D other)
+		public bool Equals(GridIndex3D other)
 		{
 			return X == other.X && Y == other.Y && Z == other.Z;
 		}

@@ -4,8 +4,8 @@ namespace ProceduralLevel.Common.Grid
 {
 	public readonly struct GridBounds2D : IEquatable<GridBounds2D>
 	{
-		public readonly GridPoint2D Min;
-		public readonly GridPoint2D Max;
+		public readonly GridIndex2D Min;
+		public readonly GridIndex2D Max;
 
 		public int SizeX { get { return Max.X-Min.X; } }
 		public int SizeY { get { return Max.Y-Min.Y; } }
@@ -15,17 +15,17 @@ namespace ProceduralLevel.Common.Grid
 
 		public GridBounds2D(int maxX, int maxY)
 		{
-			Min = new GridPoint2D(0, 0);
-			Max = new GridPoint2D(maxX, maxY);
+			Min = new GridIndex2D(0, 0);
+			Max = new GridIndex2D(maxX, maxY);
 		}
 
 		public GridBounds2D(int minX, int minY, int maxX, int maxY)
 		{
-			Min = new GridPoint2D(minX, minY);
-			Max = new GridPoint2D(maxX, maxY);
+			Min = new GridIndex2D(minX, minY);
+			Max = new GridIndex2D(maxX, maxY);
 		}
 
-		public GridBounds2D(GridPoint2D min, GridPoint2D max)
+		public GridBounds2D(GridIndex2D min, GridIndex2D max)
 		{
 			Min = min;
 			Max = max;
@@ -33,8 +33,8 @@ namespace ProceduralLevel.Common.Grid
 
 		public GridBounds2D(GridSize2D size)
 		{
-			Min = new GridPoint2D(0, 0);
-			Max = new GridPoint2D(size.X, size.Y);
+			Min = new GridIndex2D(0, 0);
+			Max = new GridIndex2D(size.X, size.Y);
 		}
 
 		#region Intersection
@@ -53,8 +53,8 @@ namespace ProceduralLevel.Common.Grid
 
 		public bool Intersects(GridBounds2D bounds)
 		{
-			GridPoint2D otherMin = bounds.Min;
-			GridPoint2D otherMax = bounds.Max;
+			GridIndex2D otherMin = bounds.Min;
+			GridIndex2D otherMax = bounds.Max;
 			return !(Min.X > otherMax.X || Min.Y > otherMax.Y
 				|| Max.X < otherMin.X || Max.Y < otherMin.Y);
 		}
@@ -66,7 +66,7 @@ namespace ProceduralLevel.Common.Grid
 			return Contains(bounds.Min) && Contains(bounds.Max, true);
 		}
 
-		public bool Contains(GridPoint2D point, bool inclusive = false)
+		public bool Contains(GridIndex2D point, bool inclusive = false)
 		{
 			if(Min.X <= point.X && Min.Y <= point.Y)
 			{

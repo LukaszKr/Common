@@ -21,7 +21,7 @@ namespace ProceduralLevel.Common.Grid
 		}
 
 		#region Get
-		public TCell Get(GridPoint2D point)
+		public TCell Get(GridIndex2D point)
 		{
 			return Cells[point.X][point.Y];
 		}
@@ -50,7 +50,7 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Set
-		public void Set(TCell cell, GridPoint2D point)
+		public void Set(TCell cell, GridIndex2D point)
 		{
 			Cells[point.X][point.Y] = cell;
 		}

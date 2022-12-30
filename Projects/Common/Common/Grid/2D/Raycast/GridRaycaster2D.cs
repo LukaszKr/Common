@@ -1,9 +1,71 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ProceduralLevel.Common.Grid
 {
 	public static class GridRaycaster2D
 	{
+		public static IEnumerable<GridHit2D> Raycast(float startX, float startY, float directionX, float directionY)
+		{
+			int stepX = Math.Sign(directionX);
+			int stepY = Math.Sign(directionY);
+
+			if(stepX == 0 && stepY == 0)
+			{
+				yield break;
+			}
+
+			int currentX = (int)Math.Floor(startX);
+			int currentY = (int)Math.Floor(startY);
+			currentX = Math.Max(currentX, 0);
+			currentY = Math.Max(currentY, 0);
+
+			float nextBoundX = CalculateBound(currentX, startX, stepX);
+			float nextBoundY = CalculateBound(currentY, startY, stepY);
+
+			float deltaX = (1f/directionX)*stepX;
+			float deltaY = (1f/directionY)*stepY;
+
+			float travelX = nextBoundX/directionX;
+			float travelY = nextBoundY/directionY;
+
+			EDirection2D xExitFace = (stepX > 0 ? EDirection2D.Left : EDirection2D.Right);
+			EDirection2D yExitFace = (stepY > 0 ? EDirection2D.Down : EDirection2D.Up);
+
+			EDirection2D selectedFace;
+			float startDecimalX = startX-(float)Math.Truncate(startX);
+			float startDecimalY = startY-(float)Math.Truncate(startY);
+			if(startDecimalX < startDecimalY)
+			{
+				selectedFace = (directionX > 0 ? EDirection2D.Left : EDirection2D.Right);
+			}
+			else
+			{
+				selectedFace = (directionY > 0 ? EDirection2D.Down : EDirection2D.Up);
+			}
+
+			while(true)
+			{
+				GridIndex2D point = new GridIndex2D(currentX, currentY);
+				if(travelX < travelY)
+				{
+					yield return new GridHit2D(point, selectedFace);
+					selectedFace = xExitFace;
+
+					currentX += stepX;
+					travelX += deltaX;
+				}
+				else
+				{
+					yield return new GridHit2D(point, selectedFace);
+					selectedFace = yExitFace;
+
+					currentY += stepY;
+					travelY += deltaY;
+				}
+			}
+		}
+
 		public static int Raycast(float startX, float startY, float directionX, float directionY, GridHit2D[] hitBuffer)
 		{
 			int stepX = Math.Sign(directionX);
@@ -49,7 +111,7 @@ namespace ProceduralLevel.Common.Grid
 
 			while(iterator < bufferSize)
 			{
-				GridPoint2D point = new GridPoint2D(currentX, currentY);
+				GridIndex2D point = new GridIndex2D(currentX, currentY);
 				if(travelX < travelY)
 				{
 					hitBuffer[iterator++] = new GridHit2D(point, selectedFace);

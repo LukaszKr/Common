@@ -4,8 +4,8 @@ namespace ProceduralLevel.Common.Grid
 {
 	public readonly struct GridBounds3D : IEquatable<GridBounds3D>
 	{
-		public readonly GridPoint3D Min;
-		public readonly GridPoint3D Max;
+		public readonly GridIndex3D Min;
+		public readonly GridIndex3D Max;
 
 		public int SizeX { get { return Max.X-Min.X; } }
 		public int SizeY { get { return Max.Y-Min.Y; } }
@@ -16,17 +16,17 @@ namespace ProceduralLevel.Common.Grid
 
 		public GridBounds3D(int maxX, int maxY, int maxZ)
 		{
-			Min = new GridPoint3D(0, 0, 0);
-			Max = new GridPoint3D(maxX, maxY, maxZ);
+			Min = new GridIndex3D(0, 0, 0);
+			Max = new GridIndex3D(maxX, maxY, maxZ);
 		}
 
 		public GridBounds3D(int minX, int minY, int minZ, int maxX, int maxY, int maxZ)
 		{
-			Min = new GridPoint3D(minX, minY, minZ);
-			Max = new GridPoint3D(maxX, maxY, maxZ);
+			Min = new GridIndex3D(minX, minY, minZ);
+			Max = new GridIndex3D(maxX, maxY, maxZ);
 		}
 
-		public GridBounds3D(GridPoint3D min, GridPoint3D max)
+		public GridBounds3D(GridIndex3D min, GridIndex3D max)
 		{
 			Min = min;
 			Max = max;
@@ -34,8 +34,8 @@ namespace ProceduralLevel.Common.Grid
 
 		public GridBounds3D(GridSize3D size)
 		{
-			Min = new GridPoint3D(0, 0, 0);
-			Max = new GridPoint3D(size.X, size.Y, size.Z);
+			Min = new GridIndex3D(0, 0, 0);
+			Max = new GridIndex3D(size.X, size.Y, size.Z);
 		}
 
 		#region Intersection
@@ -56,8 +56,8 @@ namespace ProceduralLevel.Common.Grid
 
 		public bool Intersects(GridBounds3D bounds)
 		{
-			GridPoint3D otherMin = bounds.Min;
-			GridPoint3D otherMax = bounds.Max;
+			GridIndex3D otherMin = bounds.Min;
+			GridIndex3D otherMax = bounds.Max;
 			return !(Min.X > otherMax.X || Min.Y > otherMax.Y || Min.Z > otherMax.Z
 				|| Max.X < otherMin.X || Max.Y < otherMin.Y || Max.Z < otherMin.Z);
 		}
@@ -69,7 +69,7 @@ namespace ProceduralLevel.Common.Grid
 			return Contains(bounds.Min) && Contains(bounds.Max, true);
 		}
 
-		public bool Contains(GridPoint3D point, bool inclusive = false)
+		public bool Contains(GridIndex3D point, bool inclusive = false)
 		{
 			if(Min.X <= point.X && Min.Y <= point.Y && Min.Z <= point.Z)
 			{

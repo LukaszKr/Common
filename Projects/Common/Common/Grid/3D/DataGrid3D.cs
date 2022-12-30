@@ -20,14 +20,14 @@ namespace ProceduralLevel.Common.Grid
 		}
 
 		#region Get
-		public TCell Get(GridPoint3D point)
+		public TCell Get(GridIndex3D point)
 		{
 			return Cells[point.X][point.Y][point.Z];
 		}
 		#endregion
 
 		#region Set
-		public void Set(TCell cell, GridPoint3D point)
+		public void Set(TCell cell, GridIndex3D point)
 		{
 			Cells[point.X][point.Y][point.Z] = cell;
 		}

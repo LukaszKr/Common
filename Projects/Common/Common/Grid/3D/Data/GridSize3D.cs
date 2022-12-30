@@ -32,7 +32,7 @@ namespace ProceduralLevel.Common.Grid
 			throw new NotImplementedException();
 		}
 
-		public bool Contains(GridPoint3D point)
+		public bool Contains(GridIndex3D point)
 		{
 			return point.X < X && point.Y < Y && point.Z < Z &&
 				point.X >= 0 && point.Y >= 0 && point.Z >= 0;
