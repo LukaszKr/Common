@@ -27,7 +27,7 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Set
-		public void Set(TCell cell, GridIndex3D point)
+		public void Set(GridIndex3D point, TCell cell)
 		{
 			Cells[point.X][point.Y][point.Z] = cell;
 		}

@@ -50,7 +50,7 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Set
-		public void Set(TCell cell, GridIndex2D point)
+		public void Set(GridIndex2D point, TCell cell)
 		{
 			Cells[point.X][point.Y] = cell;
 		}
