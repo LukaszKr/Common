@@ -37,6 +37,11 @@ namespace ProceduralLevel.Common.Grid
 			Max = new GridIndex2D(size.X, size.Y);
 		}
 
+		public GridBounds2D Combine(GridBounds2D other)
+		{
+			return new GridBounds2D(Min.Min(other.Min), Max.Max(other.Max));
+		}
+
 		#region Intersection
 		public GridBounds2D GetIntersection(GridBounds2D bounds)
 		{
