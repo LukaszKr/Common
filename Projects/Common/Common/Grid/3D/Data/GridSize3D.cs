@@ -18,6 +18,13 @@ namespace ProceduralLevel.Common.Grid
 			Z = z;
 		}
 
+		public GridSize3D(GridIndex3D index)
+		{
+			X = index.X;
+			Y = index.Y;
+			Z = index.Z;
+		}
+
 		public int Get(EGridAxis3D axis)
 		{
 			switch(axis)

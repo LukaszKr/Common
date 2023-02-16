@@ -16,6 +16,12 @@ namespace ProceduralLevel.Common.Grid
 			Y = y;
 		}
 
+		public GridSize2D(GridIndex2D index)
+		{
+			X = index.X;
+			Y = index.Y;
+		}
+
 		public int Get(EGridAxis2D axis)
 		{
 			switch(axis)

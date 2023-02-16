@@ -6,10 +6,7 @@ namespace ProceduralLevel.Common.Grid
 	{
 		public readonly GridIndex3D Min;
 		public readonly GridIndex3D Max;
-
-		public int SizeX { get { return Max.X-Min.X; } }
-		public int SizeY { get { return Max.Y-Min.Y; } }
-		public int SizeZ { get { return Max.Z-Min.Z; } }
+		public readonly GridSize3D Size;
 
 		public static bool operator ==(GridBounds3D left, GridBounds3D right) => left.Equals(right);
 		public static bool operator !=(GridBounds3D left, GridBounds3D right) => !left.Equals(right);
@@ -18,24 +15,28 @@ namespace ProceduralLevel.Common.Grid
 		{
 			Min = new GridIndex3D(0, 0, 0);
 			Max = new GridIndex3D(maxX, maxY, maxZ);
+			Size = new GridSize3D(maxX, maxY, maxZ);
 		}
 
 		public GridBounds3D(int minX, int minY, int minZ, int maxX, int maxY, int maxZ)
 		{
 			Min = new GridIndex3D(minX, minY, minZ);
 			Max = new GridIndex3D(maxX, maxY, maxZ);
+			Size = new GridSize3D(maxX-minX, maxY-minY, maxZ-minZ);
 		}
 
 		public GridBounds3D(GridIndex3D min, GridIndex3D max)
 		{
 			Min = min;
 			Max = max;
+			Size = new GridSize3D(max-min);
 		}
 
 		public GridBounds3D(GridSize3D size)
 		{
 			Min = new GridIndex3D(0, 0, 0);
 			Max = new GridIndex3D(size.X, size.Y, size.Z);
+			Size = size;
 		}
 
 		public GridBounds3D Combine(GridBounds3D other)

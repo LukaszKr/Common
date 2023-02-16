@@ -6,9 +6,7 @@ namespace ProceduralLevel.Common.Grid
 	{
 		public readonly GridIndex2D Min;
 		public readonly GridIndex2D Max;
-
-		public int SizeX { get { return Max.X-Min.X; } }
-		public int SizeY { get { return Max.Y-Min.Y; } }
+		public readonly GridSize2D Size;
 
 		public static bool operator ==(GridBounds2D left, GridBounds2D right) => left.Equals(right);
 		public static bool operator !=(GridBounds2D left, GridBounds2D right) => !left.Equals(right);
@@ -17,24 +15,28 @@ namespace ProceduralLevel.Common.Grid
 		{
 			Min = new GridIndex2D(0, 0);
 			Max = new GridIndex2D(maxX, maxY);
+			Size = new GridSize2D(maxX, maxY);
 		}
 
 		public GridBounds2D(int minX, int minY, int maxX, int maxY)
 		{
 			Min = new GridIndex2D(minX, minY);
 			Max = new GridIndex2D(maxX, maxY);
+			Size = new GridSize2D(maxX-minX, maxY-minY);
 		}
 
 		public GridBounds2D(GridIndex2D min, GridIndex2D max)
 		{
 			Min = min;
 			Max = max;
+			Size = new GridSize2D(max-min);
 		}
 
 		public GridBounds2D(GridSize2D size)
 		{
 			Min = new GridIndex2D(0, 0);
 			Max = new GridIndex2D(size.X, size.Y);
+			Size = size;
 		}
 
 		public GridBounds2D Combine(GridBounds2D other)
