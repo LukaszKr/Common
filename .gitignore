@@ -43,3 +43,5 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
+.ark_ignore
+.ark/
