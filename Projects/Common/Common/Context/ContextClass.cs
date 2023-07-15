@@ -13,8 +13,6 @@ namespace ProceduralLevel.Common.Context
 		public delegate void OnAttachDelegate(EventBinder binder);
 		public delegate void OnReplaceDelegate(EventBinder binder, TContext oldContext);
 
-		public TContext Context => m_Context;
-
 		public ContextClass(OnAttachDelegate onAttach, OnDetachDelegate onDetach, OnReplaceDelegate onReplace = null)
 		{
 			m_OnAttach = onAttach;

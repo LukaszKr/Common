@@ -9,6 +9,14 @@ namespace ProceduralLevel.Common.Context
 		protected TContext m_Context;
 		private readonly EventBinder m_ContextBinder = new EventBinder();
 
+		public void ClearContext()
+		{
+			if(m_Context != null)
+			{
+				SetContext(null);
+			}
+		}
+
 		public void SetContext(TContext context)
 		{
 			if(context == m_Context)
