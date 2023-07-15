@@ -10,7 +10,7 @@ namespace ProceduralLevel.Common.Identity
 		public static bool operator ==(ID<T> left, ID<T> right) => (left.Value == right.Value);
 		public static bool operator !=(ID<T> left, ID<T> right) => (left.Value != right.Value);
 
-		public int GenericValue => Value;
+		int IGenericID.Value => Value;
 
 		public ID(int value)
 		{

@@ -10,7 +10,7 @@ namespace ProceduralLevel.Common.Identity
 		public static bool operator ==(GUID<T> left, GUID<T> right) => (left.Value == right.Value);
 		public static bool operator !=(GUID<T> left, GUID<T> right) => (left.Value != right.Value);
 
-		public Guid GenericValue => Value;
+		Guid IGenericGUID.Value => Value;
 
 		public static GUID<T> Create()
 		{

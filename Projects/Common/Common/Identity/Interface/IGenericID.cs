@@ -2,6 +2,6 @@
 {
 	public interface IGenericID
 	{
-		int GenericValue { get; }
+		int Value { get; }
 	}
 }
