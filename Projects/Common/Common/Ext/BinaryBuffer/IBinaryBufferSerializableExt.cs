@@ -1,15 +1,10 @@
 ﻿using System.IO;
 
-namespace ProceduralLevel.Common.Serialization.Binary
+namespace ProceduralLevel.Common.Ext
 {
-	public interface IBufferSerializable
-	{
-		void WriteToBuffer(BinaryWriter writer);
-	}
-
 	public static class IBufferSerializableExt
 	{
-		public static byte[] WriteToByteArray(this IBufferSerializable serializable)
+		public static byte[] WriteToByteArray(this IBinarySerializable serializable)
 		{
 			using(MemoryStream stream = new MemoryStream())
 			{

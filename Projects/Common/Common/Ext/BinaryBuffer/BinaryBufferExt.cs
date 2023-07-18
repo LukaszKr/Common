@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using ProceduralLevel.Common.Grid;
 
-namespace ProceduralLevel.Common.Serialization.Binary
+namespace ProceduralLevel.Common.Ext
 {
 	public static class BinaryBufferExt
 	{
