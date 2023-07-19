@@ -79,5 +79,10 @@ namespace ProceduralLevel.Common.Event
 				Disable();
 			}
 		}
+
+		public void Bind<TValue>(Observable<TValue> observable, CustomEvent<TValue>.Callback callback)
+		{
+			AddBinding(new EventBinding<AEvent<TValue>.Callback>(observable.OnChanged, callback));
+		}
 	}
 }
