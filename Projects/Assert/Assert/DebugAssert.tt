@@ -1,0 +1,134 @@
+﻿<#@ include file="./HelperMethod.tt" #>
+
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace ProceduralLevel.Common.Assertion
+{
+	public static partial class DebugAssert
+	{
+		public const string CONDITIONAL = "DEBUG_ASSERT";
+
+		private const float APPROX = 0.00001f;
+
+		#region IsTrue
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void IsTrue<#= listGenerics(x, false) #>(bool condition, <#= listParams(x) #>)
+		{
+			Assert.IsTrue(condition, message);
+		}
+
+<# } #>
+		#endregion
+
+		#region IsFalse
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void IsFalse<#= listGenerics(x, false) #>(bool condition, <#= listParams(x) #>)
+		{
+			Assert.IsFalse(condition, message);
+		}
+		
+<# } #>
+		#endregion
+
+		#region IsNull
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void IsNull<T<#= listGenerics(x, true) #>>(T obj, <#= listParams(x) #>)
+			where T : class
+		{
+			Assert.IsNull(obj, message);
+		}
+
+<# } #>
+		#endregion
+
+		#region IsNotNull
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void IsNotNull<T<#= listGenerics(x, true) #>>(T obj, <#= listParams(x) #>)
+			where T : class
+		{
+			Assert.IsNotNull(obj, message);
+		}
+
+<# } #>
+		#endregion
+
+		#region AreEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, <#= listParams(x) #>)
+		{
+			Assert.AreEqual(expected, actual, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, IEqualityComparer<T> comparer, <#= listParams(x) #>)
+		{
+			Assert.AreEqual(expected, actual, comparer, message);
+		}
+<# } #>
+		#endregion
+
+		#region AreNotEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreNotEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, <#= listParams(x) #>)
+		{
+			Assert.AreNotEqual(expected, actual, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreNotEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, IEqualityComparer<T> comparer, <#= listParams(x) #>)
+		{
+			Assert.AreNotEqual(expected, actual, comparer, message);
+		}
+<# } #>
+		#endregion
+
+		#region AreApproximatelyEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, <#= listParams(x) #>)
+		{
+			Assert.AreApproximatelyEqual(expected, actual, APPROX, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, float tolerance, <#= listParams(x) #>)
+		{
+			Assert.AreApproximatelyEqual(expected, actual, tolerance, message);
+		}
+
+<# } #>
+		#endregion
+
+		#region AreNotApproximatelyEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreNotApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, <#= listParams(x) #>)
+		{
+			Assert.AreNotApproximatelyEqual(expected, actual, APPROX, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		[Conditional(CONDITIONAL)]
+		public static void AreNotApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, float tolerance, <#= listParams(x) #>)
+		{
+			Assert.AreNotApproximatelyEqual(expected, actual, tolerance, message);
+		}
+
+<# } #>
+		#endregion
+	}
+}

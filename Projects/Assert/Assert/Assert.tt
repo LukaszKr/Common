@@ -1,0 +1,152 @@
+﻿<#@ include file="./HelperMethod.tt" #>
+
+using System;
+using System.Collections.Generic;
+
+namespace ProceduralLevel.Common.Assertion
+{
+	public static partial class Assert
+	{
+		private const float APPROX = 0.00001f;
+
+		#region IsTrue
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void IsTrue<#= listGenerics(x, false) #>(bool condition, <#= listParams(x) #>)
+		{
+			if(!condition)
+			{
+				throw new AssertException($"[IsTrue<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region IsFalse
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void IsFalse<#= listGenerics(x, false) #>(bool condition, <#= listParams(x) #>)
+		{
+			if(condition)
+			{
+				throw new AssertException($"[IsFalse<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region IsNull
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void IsNull<T<#= listGenerics(x, true) #>>(T obj, <#= listParams(x) #>)
+			where T : class
+		{
+			if(obj != null)
+			{
+				throw new AssertException($"[IsNull, {typeof(T).Name}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region IsNotNull
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void IsNotNull<T<#= listGenerics(x, true) #>>(T obj, <#= listParams(x) #>)
+			where T : class
+		{
+			if(obj == null)
+			{
+				throw new AssertException($"[IsNotNull, {typeof(T).Name}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region AreEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, <#= listParams(x) #>)
+		{
+			if(!Equals(expected, actual))
+			{
+				throw new AssertException($"[AreEqual, {expected} != {actual}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, IEqualityComparer<T> comparer, <#= listParams(x) #>)
+		{
+			if(!comparer.Equals(expected, actual))
+			{
+				throw new AssertException($"[AreEqual, {expected} != {actual}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region AreNotEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreNotEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, IEqualityComparer<T> comparer, <#= listParams(x) #>)
+		{
+			if(comparer.Equals(expected, actual))
+			{
+				throw new AssertException($"[AreNotEqual, {expected} == {actual}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreNotEqual<T<#= listGenerics(x, true) #>>(T expected, T actual, <#= listParams(x) #>)
+		{
+			if(Equals(expected, actual))
+			{
+				throw new AssertException($"[AreNotEqual, {expected} == {actual}<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region AreApproximatelyEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, <#= listParams(x) #>)
+		{
+			AreApproximatelyEqual(expected, actual, APPROX, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, float tolerance, <#= listParams(x) #>)
+		{
+			if(Math.Abs(expected-actual) > tolerance)
+			{
+				throw new AssertException($"[AreApproximatelyEqual<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+
+		#region AreNotApproximatelyEqual
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreNotApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, <#= listParams(x) #>)
+		{
+			AreNotApproximatelyEqual(expected, actual, APPROX, message);
+		}
+
+<# } #>
+<# for(int x = 0; x <= tArgs; ++x) { #>
+		public static void AreNotApproximatelyEqual<#= listGenerics(x, false) #>(float expected, float actual, float tolerance, <#= listParams(x) #>)
+		{
+			if(Math.Abs(expected-actual) <= tolerance)
+			{
+				throw new AssertException($"[AreNotApproximatelyEqual<#= listFormat(x) #>]");
+			}
+		}
+
+<# } #>
+		#endregion
+	}
+}

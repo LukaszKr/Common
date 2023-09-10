@@ -14,4 +14,35 @@
     <OutputPath>..\..\build\Debug\</OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Assert\Assert.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Assert.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Assert\DebugAssert.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DebugAssert.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assert\Assert.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Assert.cs</LastGenOutput>
+    </None>
+    <None Update="Assert\DebugAssert.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DebugAssert.cs</LastGenOutput>
+    </None>
+    <None Update="Assert\HelperMethod.tt">
+      <Generator></Generator>
+    </None>
+  </ItemGroup>
+
 </Project>

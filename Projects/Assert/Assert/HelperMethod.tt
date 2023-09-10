@@ -1,0 +1,46 @@
+﻿<# Func<string, int, bool, string> listVars = (string format, int count, bool embedded) => {
+	string str = "";
+	for(int x = 0; x < count; x++)
+	{
+		if(x > 0 || embedded) 
+		{
+			str += ", ";
+		}
+		str += string.Format(format, x.ToString());
+	}
+	return str;
+}; 
+
+Func<int, bool, string> listGenerics = (int count, bool embedded) => {
+	if(count > 0)
+	{
+		if(embedded)
+		{
+			return listVars("Arg{0}", count, embedded);
+		}
+		return "<"+listVars("Arg{0}", count, embedded)+">";
+	}
+	return "";
+}; 
+
+Func<int, bool, string> listArgs = (int count, bool embedded) => {
+	return listVars("arg{0}", count, embedded);
+};
+
+Func<int, string> listParams = (int count) => {
+	if(count > 0)
+	{
+		return $"string message, {listVars("Arg{0} arg{0}", count, false)}";
+	}
+	return "string message = default";
+};
+
+Func<int, string> listFormat = (int count) => {
+	if(count > 0)
+	{
+		return $", {{string.Format(message, {listArgs(count, false)})}}";
+	}
+	return ", {message}";
+};
+int tArgs = 4;
+#>
