@@ -32,6 +32,13 @@ namespace ProceduralLevel.Common.Grid
 			Size = new GridSize2D(max-min);
 		}
 
+		public GridBounds2D(GridIndex2D size)
+		{
+			Min = new GridIndex2D(0, 0);
+			Max = size;
+			Size = new GridSize2D(size);
+		}
+
 		public GridBounds2D(GridSize2D size)
 		{
 			Min = new GridIndex2D(0, 0);

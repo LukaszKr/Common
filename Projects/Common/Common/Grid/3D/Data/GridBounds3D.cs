@@ -32,6 +32,13 @@ namespace ProceduralLevel.Common.Grid
 			Size = new GridSize3D(max-min);
 		}
 
+		public GridBounds3D(GridIndex3D size)
+		{
+			Min = new GridIndex3D(0, 0, 0);
+			Max = size;
+			Size = new GridSize3D(size);
+		}
+
 		public GridBounds3D(GridSize3D size)
 		{
 			Min = new GridIndex3D(0, 0, 0);

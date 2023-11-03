@@ -19,6 +19,12 @@ namespace ProceduralLevel.Common.Grid
 			Y = y;
 		}
 
+		public GridIndex2D(GridSize2D size)
+		{
+			X = size.X;
+			Y = size.Y;
+		}
+
 		public GridIndex2D(EDirection2D direction, int length = 1)
 		{
 			X = 0;

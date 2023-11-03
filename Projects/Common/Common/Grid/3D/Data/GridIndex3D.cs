@@ -15,12 +15,18 @@ namespace ProceduralLevel.Common.Grid
 		public static GridIndex3D operator +(GridIndex3D left, GridIndex3D right) => left.Add(right);
 		public static GridIndex3D operator -(GridIndex3D left, GridIndex3D right) => left.Remove(right);
 
-		public GridIndex3D
-			(int x, int y, int z)
+		public GridIndex3D(int x, int y, int z)
 		{
 			X = x;
 			Y = y;
 			Z = z;
+		}
+
+		public GridIndex3D(GridSize3D size)
+		{
+			X = size.X;
+			Y = size.Y;
+			Z = size.Z;
 		}
 
 		public GridIndex3D(EDirection3D direction, int length = 1)
