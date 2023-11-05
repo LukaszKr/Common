@@ -32,11 +32,11 @@ namespace ProceduralLevel.Common.Grid
 			Size = new GridSize2D(max-min);
 		}
 
-		public GridBounds2D(GridIndex2D size)
+		public GridBounds2D(GridIndex2D max)
 		{
 			Min = new GridIndex2D(0, 0);
-			Max = size;
-			Size = new GridSize2D(size);
+			Max = max;
+			Size = new GridSize2D(max.X, max.Y);
 		}
 
 		public GridBounds2D(GridSize2D size)
@@ -77,17 +77,13 @@ namespace ProceduralLevel.Common.Grid
 		#region Contains
 		public bool Contains(GridBounds2D bounds)
 		{
-			return Contains(bounds.Min) && Contains(bounds.Max, true);
+			return Contains(bounds.Min) && Contains(bounds.Max);
 		}
 
-		public bool Contains(GridIndex2D point, bool inclusive = false)
+		public bool Contains(GridIndex2D point)
 		{
 			if(Min.X <= point.X && Min.Y <= point.Y)
 			{
-				if(inclusive)
-				{
-					return (Max.X >= point.X && Max.Y >= point.Y);
-				}
 				return (Max.X > point.X && Max.Y > point.Y);
 			}
 			return false;
