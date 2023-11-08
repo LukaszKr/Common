@@ -1,47 +1,59 @@
 ﻿using System;
+using System.Collections.Generic;
 using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Context
 {
 	public abstract class AContextClass<TContext>
-		where TContext : class
 	{
 		protected TContext m_Context;
 		private readonly EventBinder m_ContextBinder = new EventBinder();
 
+		private bool m_ContextIsSet;
+
 		public void ClearContext()
 		{
-			if(m_Context != null)
+			if(m_ContextIsSet)
 			{
-				SetContext(null);
+				Detach();
 			}
 		}
 
 		public void SetContext(TContext context)
 		{
-			if(context == m_Context)
+			if(m_ContextIsSet)
 			{
-				throw new InvalidOperationException();
+				Replace(m_Context);
+			}
+			else
+			{
+				Attach(context);
 			}
 
 			m_ContextBinder.UnbindAll();
+		}
+
+		private void Attach(TContext context)
+		{
+			m_ContextIsSet = true;
+			m_ContextBinder.UnbindAll();
+			m_Context = context;
+			OnAttach(m_ContextBinder);
+		}
+
+		private void Replace(TContext context)
+		{
+			m_ContextBinder.UnbindAll();
 			TContext oldContext = m_Context;
 			m_Context = context;
-			if(context != null)
-			{
-				if(oldContext != null)
-				{
-					OnReplace(m_ContextBinder, oldContext);
-				}
-				else
-				{
-					OnAttach(m_ContextBinder);
-				}
-			}
-			else if(oldContext != null)
-			{
-				OnDetach();
-			}
+			OnReplace(m_ContextBinder, oldContext);
+		}
+
+		private void Detach()
+		{
+			m_ContextIsSet = false;
+			m_Context = default;
+			OnDetach();
 		}
 
 		protected virtual void OnReplace(EventBinder binder, TContext oldContext)

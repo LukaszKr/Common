@@ -59,7 +59,7 @@
     <Compile Include="Tests\Collision2D\Intersection\PointToCircleIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Intersection\PointToLineIntersectionTest.cs" />
     <Compile Include="Tests\Collision2D\Other\OrientationTest.cs" />
-    <Compile Include="Tests\Context\ContextTests.cs" />
+    <Compile Include="Tests\Context\ContextClassTests.cs" />
     <Compile Include="Tests\Event\ABaseEventTests.cs" />
     <Compile Include="Tests\Event\AEventTests.cs" />
     <Compile Include="Tests\Event\Types\CustomEventTests.cs" />

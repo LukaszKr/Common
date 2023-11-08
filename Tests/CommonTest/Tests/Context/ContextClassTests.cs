@@ -6,7 +6,7 @@ using ProceduralLevel.Common.Event;
 namespace Tests.Context
 {
 	[TestFixture]
-	public class ContextTests
+	public class ContextClassTests
 	{
 		private class TestClassData
 		{
@@ -36,25 +36,25 @@ namespace Tests.Context
 		}
 
 		[Test]
-		public void SetAndRemoveContextData()
+		public void SetAndClearContext()
 		{
 			TestClass instance = new TestClass();
 			TestClassData data = new TestClassData();
 			instance.SetContext(data);
-			instance.SetContext(null);
+			instance.ClearContext();
 			Assert.AreEqual(1, instance.AttachCallCount);
 			Assert.AreEqual(1, instance.DetachCallCount);
 		}
 
 		[Test]
-		public void ReplaceMethodWasCalled()
+		public void ReplaceContextWithDifferentContext()
 		{
 			TestClass instance = new TestClass();
 			TestClassData data1 = new TestClassData();
 			TestClassData data2 = new TestClassData();
 			instance.SetContext(data1);
 			instance.SetContext(data2);
-			instance.SetContext(null);
+			instance.ClearContext();
 
 			Assert.AreEqual(1, instance.AttachCallCount);
 			Assert.AreEqual(1, instance.ReplaceCallCount);
@@ -62,19 +62,17 @@ namespace Tests.Context
 		}
 
 		[Test]
-		public void TrySetTheSameContextDataTwice()
+		public void ReplaceContextWithTheSameContext()
 		{
 			TestClass instance = new TestClass();
-			TestClassData data = new TestClassData();
-			instance.SetContext(data);
-			Assert.Throws<InvalidOperationException>(() => instance.SetContext(data));
-		}
+			TestClassData data1 = new TestClassData();
+			instance.SetContext(data1);
+			instance.SetContext(data1);
+			instance.ClearContext();
 
-		[Test]
-		public void TrySetNullContextToClassThatAlreadyHasNoContext()
-		{
-			TestClass instance = new TestClass();
-			Assert.Throws<InvalidOperationException>(() => instance.SetContext(null));
+			Assert.AreEqual(1, instance.AttachCallCount);
+			Assert.AreEqual(1, instance.ReplaceCallCount);
+			Assert.AreEqual(1, instance.DetachCallCount);
 		}
 	}
 }
