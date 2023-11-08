@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using ProceduralLevel.Common.Event;
+﻿using ProceduralLevel.Common.Event;
 
 namespace ProceduralLevel.Common.Context
 {
@@ -15,45 +13,28 @@ namespace ProceduralLevel.Common.Context
 		{
 			if(m_ContextIsSet)
 			{
-				Detach();
+				m_ContextIsSet = false;
+				m_Context = default;
+				OnDetach();
 			}
 		}
 
 		public void SetContext(TContext context)
 		{
+			m_ContextBinder.UnbindAll();
+
 			if(m_ContextIsSet)
 			{
-				Replace(m_Context);
+				TContext oldContext = m_Context;
+				m_Context = context;
+				OnReplace(m_ContextBinder, oldContext);
 			}
 			else
 			{
-				Attach(context);
+				m_ContextIsSet = true;
+				m_Context = context;
+				OnAttach(m_ContextBinder);
 			}
-
-			m_ContextBinder.UnbindAll();
-		}
-
-		private void Attach(TContext context)
-		{
-			m_ContextIsSet = true;
-			m_ContextBinder.UnbindAll();
-			m_Context = context;
-			OnAttach(m_ContextBinder);
-		}
-
-		private void Replace(TContext context)
-		{
-			m_ContextBinder.UnbindAll();
-			TContext oldContext = m_Context;
-			m_Context = context;
-			OnReplace(m_ContextBinder, oldContext);
-		}
-
-		private void Detach()
-		{
-			m_ContextIsSet = false;
-			m_Context = default;
-			OnDetach();
 		}
 
 		protected virtual void OnReplace(EventBinder binder, TContext oldContext)
