@@ -4,7 +4,11 @@
 	{
 		private TValue m_Value;
 
-		public TValue Value => m_Value;
+		public TValue Value
+		{
+			get => m_Value;
+			set => Set(value);
+		}
 
 		public readonly CustomEvent<TValue> OnChanged = new CustomEvent<TValue>();
 
