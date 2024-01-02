@@ -12,6 +12,8 @@
 
 		public readonly CustomEvent<TValue> OnChanged = new CustomEvent<TValue>();
 
+		public static implicit operator TValue(Observable<TValue> o) => o.Value;
+
 		public void Set(TValue value)
 		{
 			if(Equals(m_Value, value))
