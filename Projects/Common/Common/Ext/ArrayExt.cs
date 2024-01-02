@@ -109,7 +109,7 @@ namespace ProceduralLevel.Common.Ext
 					int minSizeZ = Math.Min(yAxisNew.Length, yAxis.Length);
 					for(int z = 0; z < minSizeZ; ++z)
 					{
-						yAxisNew[y] = yAxis[y];
+						yAxisNew[z] = yAxis[z];
 					}
 				}
 			}
