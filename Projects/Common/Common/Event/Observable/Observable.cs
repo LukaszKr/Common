@@ -14,6 +14,15 @@
 
 		public static implicit operator TValue(Observable<TValue> o) => o.Value;
 
+		public Observable()
+		{
+		}
+
+		public Observable(TValue initialValue)
+		{
+			m_Value = initialValue;
+		}
+
 		public void Set(TValue value)
 		{
 			if(Equals(m_Value, value))
