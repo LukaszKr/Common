@@ -20,16 +20,18 @@ namespace ProceduralLevel.Common.Grid
 		}
 
 		#region Get
-		public TCell Get(GridIndex3D point)
+		public TCell Get<TIndex>(TIndex index)
+			where TIndex : IGridIndex3D
 		{
-			return Cells[point.X][point.Y][point.Z];
+			return Cells[index.X][index.Y][index.Z];
 		}
 		#endregion
 
 		#region Set
-		public void Set(GridIndex3D point, TCell cell)
+		public void Set<TIndex>(TIndex index, TCell cell)
+			where TIndex : IGridIndex3D
 		{
-			Cells[point.X][point.Y][point.Z] = cell;
+			Cells[index.X][index.Y][index.Z] = cell;
 		}
 
 		public void SetAll(TCell cell)

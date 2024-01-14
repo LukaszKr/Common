@@ -21,9 +21,10 @@ namespace ProceduralLevel.Common.Grid
 		}
 
 		#region Get
-		public TCell Get(GridIndex2D point)
+		public TCell Get<TIndex>(TIndex index)
+			where TIndex : IGridIndex2D
 		{
-			return Cells[point.X][point.Y];
+			return Cells[index.X][index.Y];
 		}
 
 		public int GetLine(TCell[] buffer, EGridAxis2D axis, int lineIndex)
@@ -50,9 +51,10 @@ namespace ProceduralLevel.Common.Grid
 		#endregion
 
 		#region Set
-		public void Set(GridIndex2D point, TCell cell)
+		public void Set<TIndex>(TIndex index, TCell cell)
+			where TIndex : IGridIndex2D
 		{
-			Cells[point.X][point.Y] = cell;
+			Cells[index.X][index.Y] = cell;
 		}
 
 		public void SetAll(TCell cell)

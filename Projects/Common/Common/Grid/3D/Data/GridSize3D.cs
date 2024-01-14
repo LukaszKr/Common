@@ -39,10 +39,11 @@ namespace ProceduralLevel.Common.Grid
 			throw new NotImplementedException();
 		}
 
-		public bool Contains(GridIndex3D point)
+		public bool Contains<TIndex>(TIndex index)
+			where TIndex : IGridIndex3D
 		{
-			return point.X < X && point.Y < Y && point.Z < Z &&
-				point.X >= 0 && point.Y >= 0 && point.Z >= 0;
+			return index.X < X && index.Y < Y && index.Z < Z &&
+				index.X >= 0 && index.Y >= 0 && index.Z >= 0;
 		}
 
 		public override bool Equals(object obj)

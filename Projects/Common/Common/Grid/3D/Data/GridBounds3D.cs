@@ -48,7 +48,7 @@ namespace ProceduralLevel.Common.Grid
 
 		public GridBounds3D Combine(GridBounds3D other)
 		{
-			 return new GridBounds3D(Min.Min(other.Min), Max.Max(other.Max));
+			return new GridBounds3D(Min.Min(other.Min), Max.Max(other.Max));
 		}
 
 		#region Intersection
@@ -82,11 +82,12 @@ namespace ProceduralLevel.Common.Grid
 			return Contains(bounds.Min) && Contains(bounds.Max);
 		}
 
-		public bool Contains(GridIndex3D point)
+		public bool Contains<TIndex>(TIndex index)
+			where TIndex : IGridIndex3D
 		{
-			if(Min.X <= point.X && Min.Y <= point.Y && Min.Z <= point.Z)
+			if(Min.X <= index.X && Min.Y <= index.Y && Min.Z <= index.Z)
 			{
-				return (Max.X > point.X && Max.Y > point.Y && Max.Z > point.Z);
+				return (Max.X > index.X && Max.Y > index.Y && Max.Z > index.Z);
 			}
 			return false;
 		}

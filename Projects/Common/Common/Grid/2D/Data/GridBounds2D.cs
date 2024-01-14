@@ -80,11 +80,12 @@ namespace ProceduralLevel.Common.Grid
 			return Contains(bounds.Min) && Contains(bounds.Max);
 		}
 
-		public bool Contains(GridIndex2D point)
+		public bool Contains<TIndex>(TIndex index)
+			where TIndex : IGridIndex2D
 		{
-			if(Min.X <= point.X && Min.Y <= point.Y)
+			if(Min.X <= index.X && Min.Y <= index.Y)
 			{
-				return (Max.X > point.X && Max.Y > point.Y);
+				return (Max.X > index.X && Max.Y > index.Y);
 			}
 			return false;
 		}

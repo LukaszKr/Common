@@ -2,13 +2,13 @@
 
 namespace ProceduralLevel.Common.Grid
 {
-	public readonly struct GridIndex3D : IEquatable<GridIndex3D>
+	public readonly struct GridIndex3D : IEquatable<GridIndex3D>, IGridIndex3D
 	{
 		public static readonly GridIndex3D ZERO = new GridIndex3D(0, 0, 0);
 
-		public readonly int X;
-		public readonly int Y;
-		public readonly int Z;
+		public int X { get; }
+		public int Y { get; }
+		public int Z { get; }
 
 		public static bool operator ==(GridIndex3D left, GridIndex3D right) => left.Equals(right);
 		public static bool operator !=(GridIndex3D left, GridIndex3D right) => !left.Equals(right);
@@ -27,6 +27,20 @@ namespace ProceduralLevel.Common.Grid
 			X = size.X;
 			Y = size.Y;
 			Z = size.Z;
+		}
+
+		public GridIndex3D(GridIndex3D index)
+		{
+			X = index.X;
+			Y = index.Y;
+			Z = index.Z;
+		}
+
+		public GridIndex3D(IGridIndex3D index)
+		{
+			X = index.X;
+			Y = index.Y;
+			Z = index.Z;
 		}
 
 		public GridIndex3D(EDirection3D direction, int length = 1)
