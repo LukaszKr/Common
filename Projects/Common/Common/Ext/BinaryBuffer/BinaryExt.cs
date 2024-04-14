@@ -3,8 +3,20 @@ using ProceduralLevel.Common.Grid;
 
 namespace ProceduralLevel.Common.Ext
 {
-	public static class BinaryBufferExt
+	public static class BinaryExt
 	{
+		public static byte[] WriteToByteArray(this IBinarySerializable serializable)
+		{
+			using(MemoryStream stream = new MemoryStream())
+			{
+				using(BinaryWriter writer = new BinaryWriter(stream))
+				{
+					serializable.WriteToBuffer(writer);
+				}
+				return stream.ToArray();
+			}
+		}
+
 		#region Array
 		public static BinaryReader ToBinaryReader(this byte[] array)
 		{
