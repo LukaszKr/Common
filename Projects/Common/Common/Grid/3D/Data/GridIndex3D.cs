@@ -140,6 +140,11 @@ namespace ProceduralLevel.Common.Grid
 		{
 			return Math.Max(Math.Max(X, Y), Z);
 		}
+
+		public float GetAverage()
+		{
+			return (X+Y+Z)/3f;
+		}
 		#endregion
 
 		#region Other

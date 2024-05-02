@@ -39,6 +39,21 @@ namespace ProceduralLevel.Common.Grid
 			throw new NotImplementedException();
 		}
 
+		public int GetMinValue()
+		{
+			return Math.Min(Math.Min(X, Y), Z);
+		}
+
+		public int GetMaxValue()
+		{
+			return Math.Max(Math.Max(X, Y), Z);
+		}
+
+		public float GetAverage()
+		{
+			return (X+Y+Z)/3f;
+		}
+
 		public bool Contains<TIndex>(TIndex index)
 			where TIndex : IGridIndex3D
 		{

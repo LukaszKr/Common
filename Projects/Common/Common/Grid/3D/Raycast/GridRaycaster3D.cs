@@ -5,7 +5,7 @@ namespace ProceduralLevel.Common.Grid
 {
 	public static class GridRaycaster3D
 	{
-		public static IEnumerable<GridHit3D> Raycast(float startX, float startY, float startZ, float directionX, float directionY, float directionZ)
+		public static IEnumerable<GridHit3D> Raycast(float startX, float startY, float startZ, float directionX, float directionY, float directionZ, int range = 200)
 		{
 			int stepX = Math.Sign(directionX);
 			int stepY = Math.Sign(directionY);
@@ -53,8 +53,9 @@ namespace ProceduralLevel.Common.Grid
 				selectedFace = (directionZ > 0 ? EDirection3D.Back : EDirection3D.Front);
 			}
 
-			while(true)
+			while(range > 0)
 			{
+				--range;
 				GridIndex3D point = new GridIndex3D(currentX, currentY, currentZ);
 				if(travelX < travelY)
 				{
